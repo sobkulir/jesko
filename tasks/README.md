@@ -6,3 +6,9 @@ akurát mu treba zmeniť hlavičku odkiaľ berie include. Potom by to malo fungo
 Tex.
 
 Pri každej úlohe by malo byť zadanie a priečinok test/ kde budú uložené vstupy a výstupy.
+
+Okrem toho, úlohy sú združené do sád, napríklad
+* tasks/dasa/vector
+* tasks/dasa/queue
+* tasks/binsearch/teplozima
+* ...
