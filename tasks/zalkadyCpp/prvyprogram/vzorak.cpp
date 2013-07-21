@@ -1,6 +1,6 @@
 // v knižnici cstdio sú naprogramované funkcie na načítavanie vstupu a vypisovanie výstupu
 
-// v knižnici algorithm je naprogramovaných veľa užitočných vunkcií, napríklad funkcia min,
+// v knižnici algorithm je naprogramovaných veľa užitočných funkcií, napríklad funkcia min,
 // ktorá má dostane dve a vráti menšie z nich
 
 #include<cstdio> //scanf, printf
