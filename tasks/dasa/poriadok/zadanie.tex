@@ -1,0 +1,47 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Poriadok}
+
+Malý ježko bol znovu neposlušný, preto ho jeho mama poslala za trest do izby, aby si upratal svoje
+hračky. Teraz by chcela ísť skontrolovať, či sú už hračky upratané, keďže ich je však veľa, zišla by
+sa jej vaša pomoc.
+
+\nadpis{Úloha}
+
+V ježkovej izbe je $n$ hračiek. Každá z nich má svoju veľkosť $v_i$ vyjadrenú ako kladné celé číslo.
+Ježko má hračky upratané, ak ich má buď zoradené od najmenšej po najväčšiu alebo od najväčšej po
+najmenšiu. Zistite, či má ježko hračky upratané a podajte o tom správu jeho mame.
+
+\nadpis{Vstup}
+
+Na prvom riadku je číslo $n$ ($1 \leq n \leq 1000$) -- počet ježkových hračiek.
+
+Na druhom riadku je $n$ kladných celých čísiel $v_i$ ($1 \leq v_i \leq 1000$) určujéce veľkosti
+ježkových hračiek v poradí v akom sú zoradené.
+
+\nadpis{Výstup}
+
+Ak sú ježkove hračky upratané, teda sú zoradené buď od najmenšej po najväčšiu alebo od najväčšej po
+najmenšiu vypíšte jeden riadok so slovom \texttt{poriadok}.
+
+Inak vypíšte jeden riadok so slovom \texttt{bordel}.
+
+\nadpis{Príklady}
+
+\vstup
+4
+1 5 8 13
+\vystup
+poriadok
+\koniec
+
+\vstup
+4
+5 3 8 1
+\vystup
+bordel
+\koniec
+
+\end{document}

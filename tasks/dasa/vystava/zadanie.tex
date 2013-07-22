@@ -1,0 +1,50 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Výstavný kus}
+
+Ježko si nazbieral veľa húb. A jedna z nich je naozaj parádny výstavný kus. Má ich teraz rozložené
+pred sebou na poličke. Chcel by však, aby jeho výstavný kus bol na hrdej prvej pozícii. Pomôžte mu
+to spraviť.
+
+\nadpis{Úloha}
+
+Na vstupe dostanete popis poličky, teda poradie v akom sú huby uložené a tiež nakoľko sú červivé.
+Samozrejme, najmenej červivá huba je ježkov výstavný kus. Chce spraviť jedinú operáciu. Vymeniť hubu
+na prvej pozícii s jeho výstavným kusom. Ostatných húb sa ani nedotkne. Vypíšte, ako bude vyzerať
+polička po tejto výmene.
+
+\nadpis{Vstup}
+
+Na prvom riadku je číslo $n$ ($1 \leq n \leq 100000$) -- počet ježkových húb.
+
+Na druhom riadku je $n$ kladných celých čísiel $c_i$ ($1 \leq c_i \leq 1000$) určujúce červivosti
+jednotlivých húb v poradí v akom sú na poličke.
+
+\nadpis{Výstup}
+
+Vypíšte, ako vyzerá polička, ak ježko vymení hubu na prvom mieste s jeho výstavným kusom.
+
+\nadpis{Príklady}
+
+\vstup
+4
+5 7 2 5
+\vystup
+2 7 5 5
+\komentar
+Výstavným kusom je huba s červivosťou $2$ na tretej pozície. Po výmene s prvou pozíciou dostaneme
+situáciu vo výstupe.
+\koniec
+
+\vstup
+3
+1 2 3
+\vystup
+1 2 3
+\komentar
+Výstavný kus už je na prvom mieste, preto sa nič nezmení.
+\koniec
+
+\end{document}

@@ -1,0 +1,101 @@
+\input ../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Triedenie}
+
+Obsah:
+\begin{itemize}
+    \item cieľ
+    \item $n^2$ sorty
+    \item $n\log n$ sorty
+    \item nejde to lepšie
+    \item $n$ sorty
+    \item STL
+\end{itemize}
+
+\medskip
+
+Ako napovedá názov textu, budeme sa rozprávať o triedení. Schopnosť zoradiť veci do poradia je totiž
+veľmi dôležitá a využívaná. Však stačí, že chcete zoradiť futbalové družstvá podľa počtu bodov čo
+získali. Alebo hráte karty a chcete ich mať na ruke pekne poporadí od najmenšej po najväčšiu. Pri
+tomto všetkom potrebujeme usporiadať veci podľa určitej vlastnosti a od nás informatikov sa čaká, že
+to budeme vedieť robiť rýchlo a efektívne a to aj pre viac ako $14$ kariet na ruke, alebo $30$ tímov
+vo futbalovom rebríčku.
+
+\medskip
+
+Na oboznámenie sa s utriedenými postupnosťami, skúste vyriešiť úlohu \textbf{poriadok}.
+
+\nadpis{Pomalšie triedenia}
+
+Začnime s ľahšími (na nakódenie aj pochopenie), ale pomalšími algoritmami, riešiacimi problém
+triedenia. Ten môžeme chápať nasledovne: V poli $A$ máme $n$ prvkov. Chceme preusporiadať pole $A$
+tak, aby v ňom prvky boli od najmenšieho po najväčší.
+
+Dôležité je si určiť, čo znamená najmenší prvok a vôbec operátor \texttt{menší}. Keď porovnávame
+čísla, je to jasné. Používame normálne $<$, teda $2<8$, $47<212$ \dots Nie vždy však pracujeme len s
+číslami. Môžeme dostať napríklad písmená. Tie môžeme porovnávať podľa poradia v abecede. Samozrejme
+to nie je všetko, čo môžeme robiť. Našu operáciu \texttt{menší} si môžeme zvoliť podľa ľubovôle,
+stačí aby nám dávala zmysel a po celý čas sme sa jej držali. V ďalšom texte však budeme
+predpokladať, že pracujeme s celými číslami a používame normálne $<$.
+
+\medskip
+
+Aby som vás týmto úplne neunudil, vyriešte úlohu \textbf{vystava}.
+
+\medskip
+
+Prečo práve takúto úlohu? Dostať najmenší prvok na začiatok poľa a nič iné nemeniť? Vedie nás to
+totiž k našému prvému triediacemu algoritmu -- \texttt{Minsort}. Jeho myšlienka je veľmi jednoduchá.
+Zoberme si pole $A$ celých čísiel a chceme ho usporiadať od najmenšieho po najväčší prvok. Ktoré
+číslo sa bude nachádzať na začiatku takto utriedenej postupnosti? Samozrejme, že to najmenšie. Ak by
+to tak nebolo, potom by niektorá časť poľa predsa nebola utriedená. Vieme teda, čo je na prvej
+pozícii výsledného poľa. Zvyšných $n-1$ čísiel, ktoré sú teraz na pozíciách $2$ až $n$ je však stále
+neusporiadaných.
+
+Tu sa však dá použiť znova tá istá myšlienka. Najmenšie číslo, ktoré je teraz na pozícii $1$ necháme
+tak, to už je umiestnené dobre. Skúsime nájsť číslo na pozíciu $2$. A to bude samozrejme najmenšie
+číslo z čísiel zvyšných, teda tých, čo sú na pozíciách $2$ až $n$. A takto postupujeme ďalej a
+ďalej. Postupne priraďujeme čísla na prvú, druhú, tretiu až $n$-tú pozíciu a vždy ho nájdeme ako
+minimum z čísiel zvyšných. Znamená to, že $n$ krát urobíte to, čo ste robili v úlohe
+\textbf{vystava}, akurát na stále menšom poli. A to už predsa nie je problém.
+Výsledná časová zložiťosť však bude $O(n^2)$. Nie zlé, ale stále nie najlepšie.
+
+\medskip
+
+Predpokladám, že teraz už bez problémov viete naprogramovať vlastný \texttt{Minsort}, môžete si to
+teda hneď vyskúšať na úlohe \textbf{utried1}.
+
+\medskip
+
+Asi vás veľmi neprekvapivý, že na úlohu sa dá pozrieť aj opačne. Aké číslo je na poslednom mieste
+zoradeného poľa. Samozrejme, že je to maximum, čo dá vznik algoritmu \texttt{Maxsort}.
+
+\bigskip
+
+Zostaňme ešte chvíľu pri triedeniach so zložitosťou $O(n^2)$. Na začiatku sme spomínali ukladanie
+kariet. Tento proces je všetkým známi. Postupne, jednu po jedne, beriete karty z vašej kôpky a
+nachádzate im príslušné miesto na ruke. Ako však nájdete miesto, kam daná karta patrí? Začnete na
+konci. Porovnáte novú kartu s poslednou kartou v ruke. Ak je nová karta väčšia, rovno ju dáte na
+koniec, lebo viete, že všetky ostatné karty na ruke sú od nej tiež menšie. Ak je však menšia ako
+posledná karta, znamená to, že ju treba zaradiť niekam ďalej. Pozriete sa teda na predposlednú
+kartu. Takto postupujete, až kým prvýkrát nie je nová karta väčšia ako karta, na ktorú sa pozeráte,
+alebo ste dosiahli úplný začiatok. Na toto miesto kartu vsuniete.
+
+Tento istý prístup sa dá simulovať aj programom. Postupne beriete čísla a máte pole, kde si ukladáte
+výsledok. Postupne idete od konca poľa a sledujete, či vaše nové číslo nie je väčšie. Takto mu
+nájdete správne miesto. Problém však je, že neviete toto číslo strčiť do stredu poľa tak ako kartu.
+Toto môžete vyriešiť tak, že vždy keď zistíte, že nové číslo je menšie ako číslo skúmané, posuniete
+toto číslo o jedna dozadu v poli. Takto si spravíte priestor pre nové číslo, ktoré tam potom viete
+pohodlne vložiť. Tento algoritmus má tiež zložitosť $O(n^2)$ a volá sa \texttt{Insertsort}. Kvôli 
+problematickému vsúvaniu čísiel sa nedá viac vylepšiť. Jeho naprogramovanie si tiež môžete vyskúšať
+na úlohe \textbf{utried1}, dajte si však pozor, aby ste skontrolovali, či nie ste už na začiatku poľa.
+
+Toto samozrejme nie je posledný zo série triediacich algoritmov so zložitsťou $O(n^2)$. Existuje ich
+ešte o dosť viac, od šialených až po tie rozumnejšie. Nie sú však až tak dôležité, vrhnime sa preto
+na algoritmy rýchlejšie.
+
+\nadpis{Rýchle triedenia}
+
+\end{document}
