@@ -18,9 +18,8 @@ Obsah:
     \item cieľ
     \item $n^2$ sorty
     \item $n\log n$ sorty
-    \item nejde to lepšie
     \item $n$ sorty
-    \item STL
+    \item nejde to lepšie
 \end{itemize}
 
 \medskip
@@ -161,6 +160,47 @@ Svoju novonadobudnutú znalosť si hneď môžete vyskúšať na úlohe \textbf{
 
 \medskip
 
-To však nie je všetko.
+To však nie je všetko. \texttt{Mergesort} totiž nie je jediný a dokonca ani najpoužívanejší
+triediaci algoritmus v čase $O(n \log n)$. To čo sa používa oveľa viac je takzvaný
+\texttt{Quicksort}. Tento algoritmus sa dá totiž oveľa ľahšie naprogramovať bez pamäte naviac a
+taktiež má veľmi malý počet cache-missov. Poďme sa teda pozrieť na to, čo robí. Predtým však môžete
+skúsiť vyriešiť úlohu \textbf{pivot}.
+
+Ako správne predpokládate, ani táto úloha sem nie je zaradená úplne náhodne a má s
+\texttt{Quicksortom} priami súvis. Úloha znie tak, že máme pole celých čísiel $A$ a číslo $p$. Toto
+číslo nazývame pivot. Našou úlohou je rozdeliť pole na tri menšie polia, čísla menšie ako $p$, čísla
+rovnaké ako $p$ a čísla väčšie ako $p$. Naviac nás vôbec nezaujíma vzájomné poradie prvkov v týchto
+poliach.
+
+Riešenie je samozrejme veľmi jednoduché. Stačí postupne prechádzať naším poľom $A$ a rozdeľovať
+prvky po poradí do príslušného výsledného poľa. Ako nám však toto pomôže pri triedení celého poľa
+$A$. No vieme, že výsledok bude vyzerať nasledovne: najskôr pôjdu zoradené prvky menšie ako $p$,
+potom prvky rovné $p$ a na záver zoradené prvky väčšie ako $p$. To znamená, že sme si našu úlohu
+rozdelili opäť na dve menšie časti, na ktoré sa potrebujeme rekurzívne zavolať. Vidíme, že rozdeliť
+pole podľa pivota $p$ -- zpivotizovať ho, nám trvá čas $O(n)$. A ak by sme si vybrali prvok $p$ vždy
+tak, aby menšie prvky tvorili polovicu všetkých prvkov, mali by sme $\log n$ úrovní, na každej s
+prácou $O(n)$, takže výsledný čas by bol $O(n \log n)$.
+
+To je síce pekné, ale príliš optimistické. Poďme sa pozriť aj na to, ako najdlhšie môže bežať náš
+algoritmus. Môžeme mať smolu a prvok $p$ si vždy vybrať ako najväčší prvok nášho neutriedeného poľa.
+To znamená, že namiesto $\log n$ úrovní, budeme mať úrovní $n$. A na každej bude stále o jedna menej
+prvkov. To znamená, že zložitosť bude $O(n^2)$. To ako vieme, je pre veľké polia nepoužiteľné. Čo s
+tým?
+
+Ak by sme cheli, aby náš program rozdelil pole vždy na polovice, ako prvok $p$ by sme si museli
+zvoliť stredný prvok postupnosti -- medián. Pozitívne, existuje algoritmu, ktorý nájde medián v
+postupnosti v čase $O(n)$. Bohužiaľ, tento algoritmus je dosť komplikovaný (môžete si o ňom prečítať
+v samostatnej sekcii) a má privysokú konštantu, aby sa dal používať prakticky. To čo teda spravíme
+je, že to necháme na náhodu.
+
+Pozrime sa na to tak intuitívne. Ak vyberiem daný prvok, z ešte neutriedených prvkov, náhodne, je
+predsa oveľa pravdepodobnejšie, že to bude prvok blízko stredu ako že to bude prvok maximálny.
+Existuje dôkaz (bohužiaľ trochu komplikovanejší), ktorý ukáže, že v priemernom prípade je časová
+zložitosť \texttt{Quicksortu} naozaj $O(n \log n)$ a je veľmi nepravdepodobné, že to bude viac. A to
+naozaj úplne stačí. Dostaneme jednoduchý a rýchly algoritmus.
+
+Môžete si aj vyskúšať naprogramovať na úlohe \textbf{utried2}. Dávam vám však do pozornosti aj náš
+vzorový program. Ukazuje, ako sa dá \texttt{Quicksort} implementovať bez pomocného poľa, aj keď je
+to trochu trikové, lebo sa netreba zapliesť v $\pm 1$. Určite si ho teda naštudujte.
 
 \end{document}
