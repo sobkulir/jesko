@@ -4,6 +4,11 @@
 
 \velkynadpis{Triedenie}
 
+\textit{Ako správne používať tento študijný text: Milý čitateľ. Chystáš sa prečítať si kuchárku o
+triedení. Počas čítania narazíš na niekoľko problémov, ktoré ti odporúčame vyriešiť. Má to dopomôcť
+k tomu, aby si lepšie pochopil o čom sa rozprávame. Samozrejme nikto ti nezakazuje čítať ďalej,
+vystavuješ sa tým však riziku, že si prezradíš riešenie.}
+
 Obsah:
 \begin{itemize}
     \item cieľ
@@ -97,5 +102,59 @@ ešte o dosť viac, od šialených až po tie rozumnejšie. Nie sú však až ta
 na algoritmy rýchlejšie.
 
 \nadpis{Rýchle triedenia}
+
+V tejto časti sa budeme snažiť čas výpočtu znížiť na $O(n\log n)$. K tomu budeme používať rekurziu,
+ktorá bude rozdeľovať naše pole na menšie a menšie kusy, tie samostatne utriedi a nakoniec z nich
+vyskladá riešenie.
+
+Prvým z algoritmov bude \texttt{Mergesort}, teda triedenie spájaním. Tento algoritmus sa pýta, či ak
+rozdelím pole na dve polky, každú z nich samostatne utriedim, či ich viem potom spojiť do jedného
+výsledného utriedeného poľa.
+
+\medskip
+
+Pred pokračovaním čítania, kde bude postup riešenia vysvetlený, môžete sa nad tým zamyslieť sami pri
+úlohe \textbf{merge}.
+
+\medskip
+
+Predpokladajme, že máme dve utriedené polia čísiel $A$ a $B$ a chceme ich teraz spojiť do jedného
+usporiadaného poľa. Ktorý prvok môže byť na začiatku výsledného poľa? Chceme tam najmenší prvok. A
+vieme, že na začiatku $A$ je najmenší prvok aj na začiatku $B$ je najmenší prvok, lebo sú utriedené.
+To ale znamená, že menšie z týchto dvoch čísiel je najmenšie aj celkovo. Vieme teda prvý prvok
+výsledku. Nech je to prvé číslo z $A$. Vyhodíme ho teda zo začiatku $A$ a dostávam tú istú situáciu.
+Znova, ktorýkoľvek z prvkov na začiatku polí $A$ a $B$ môže byť aktuálne najmenší a teda ísť na
+druhú pozíciu. Opakovaním tohoto postupu dostanem výsledného poľa.
+
+Čo sa týka konkrétnej implementácie, samozrejme nechceme prvky z poľa vyhadzovať, lebo to zaberá
+príliš veľa času. Radšej si zoberieme dve premenné $a$ a $b$, ktoré budú ukazovať na pomyselný
+začiatok oboch polí. Ak teda "vyhodíme" prvok zo začiatku $A$, znamená to, že len o $1$ zväčšíme
+premennú $a$. Tiež si dajte pozor, aby ste kontrolovali, či ste niektoré pole nevyčerpali celé, aby
+ste nevypadli mimo pamäť.
+
+S touto jednoduchou úvahou je už výsledný algritmus jednoduchý. Ak mám pole veľkosti $1$ alebo $2$,
+toto pole viem jednoducho utriediť najviac jednou výmenou. Ak je naše pole väčšie, rozdelím ho na
+dve polovice a na tie rekurzívne zavolám ten istý algoritmus. To znamená, že ich dostanem obe
+utriedené a potrebujem ich spojiť. A na to použijem hore vysvetlené spájanie (merge). Na konci
+dostanem utriedené celé pole.
+
+Treba si všimnúť, že algoritmus potrebuje naviac jedno pomocné pole, kam bude mergovať výsledok. Dá
+sa to síce aj bez neho, ale nie je to príjemné a pole naviac nám nijak neuškodí.
+
+Otázkou zostáva, či je to naozaj také rýchle ako som tvrdil. Aké rýchle je naše spájanie. No
+jednoducho lineárne od počtu prvkov, ktoré spájam. Predstavme si teraz čo robí náš algoritmus.
+Najskôr rozdelí pole na dve polovice (to je prvá úroveň). Tie rozdelí na dokopy štyri štvrtiny
+(druhá úroveň) atď. až kým nedosiahne polia veľkosti $1$. Keďže veľkosti časťí na úrovniach sa stále
+delia na polovicu, znamená to, že mám približne $\log n$ úrovní. Otázkou zostáva, koľko práce
+vykonám na každej úrovni. Na to si stačí všimnúť, že každý prvok pôvodného poľa je na každej úrovni
+zastúpený práve raz, teda na každej úrovni je $n$ prvkov. No a na každej úrovni použijem lineárny
+merge. To znamená, že spravím $O(n)$ operácií. Na $\log n$ úrovniach spravím $O(n)$ operácií, teda
+výsledný čas je $O(n \log n)$.
+
+\medskip
+
+Svoju novonadobudnutú znalosť si hneď môžete vyskúšať na úlohe \textbf{utried2}.
+
+\medskip
 
 \end{document}
