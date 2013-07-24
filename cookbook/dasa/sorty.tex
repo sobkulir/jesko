@@ -117,7 +117,7 @@ výsledného utriedeného poľa.
 \medskip
 
 Pred pokračovaním čítania, kde bude postup riešenia vysvetlený, môžete sa nad tým zamyslieť sami pri
-úlohe \textbf{merge}.
+úlohe \textbf{telesna}.
 
 \medskip
 
@@ -202,5 +202,88 @@ naozaj úplne stačí. Dostaneme jednoduchý a rýchly algoritmus.
 Môžete si aj vyskúšať naprogramovať na úlohe \textbf{utried2}. Dávam vám však do pozornosti aj náš
 vzorový program. Ukazuje, ako sa dá \texttt{Quicksort} implementovať bez pomocného poľa, aj keď je
 to trochu trikové, lebo sa netreba zapliesť v $\pm 1$. Určite si ho teda naštudujte.
+
+\nadpis{Triky na rýchlejšie riešenia}
+
+Čo mali spoločné všetky predchádzajúce algoritmy? Rozhodovali sa na základe porovnávania prvkov
+medzi sebou. Patria teda medzi \texttt{triedenia porovnávaním}. Ako si neskôr ukážeme, časová
+zložitosť $O(n \log n)$, ktorú sme dosiahli pomocou \texttt{Mergesortom} alebo \texttt{Quicksortom}
+je najlepšie, čo vieme dosiahnuť. Napriek tomu, v niektorých špecifických prípadoch, vieme spraviť,
+iný, rýchlejší algoritmus.
+
+Výhodou triedení porovnávaním je to, že nezáleží aké veľké sú prvky, ktoré triedime. Či sú to čísla
+po $10^9$ alebo $10^{18}$, nič sa nemení, algoritmus funguje tak isto. Poďme sa však pozrieť, čo by
+sme vedeli robiť, ak by sme si obmedzili čísla, ktoré triedime do $10^6$ -- milióna. Jedna z
+hlavných vecí, ktoré sa zmenia oproti napríklad $10^9$ je to, že si vieme v časovom limite vytvoriť
+pole veľkosti milión a pracovať s ním.
+
+Prichádza teda jedna veľmi jednoduchá myšlienka. Ak si vieme vytvoriť pole veľkosti milión, tak pre
+každý prvok v našej postupnosti, ktorú chceme utriediť, si vieme porátať, koľkokrát sa v danej
+postupnosti nachádza. Na to nám stačí vytvoriť pole $P[1000000]$ na začiatku naplnené nulami.
+Následne prejdem našou postupnosťou a ak vidím prvok $x$, zväčším o jedna $P[x]$. Po jednom
+prejdení, budem teda pre každé číslo vedieť, koľkokrát sa nachádza v našej postupnosti. Na koniec,
+už len prejdem poľom od $0$ po $1000000$ a každé číslo vypíšem $P[x]$ krát.
+
+Aká je zložitosť našeho riešenia. Potrebujeme prejsť postupnosťou -- $n$ operácií a potrebujem
+prejsť celým poľom, takže $1000000$ operácií. Samozrejme, o takom veľkom čísle si už nepovieme, že
+je to konštanta, označme si ho ako $r$. Presnejšie, nech $r$ je horná hranica na čísla, ktoré sa
+môžu vyskytovať v našej postupnosti. Výsledná časová zložitosť je teda $O(n+r)$. Táto zložitosť je
+v podstate lineárna od $n$.
+
+Vyššie spomenutý algoritmus má názov \texttt{Countsort}. Všimnite si, že naozaj nepatrí medzi
+triedenia porovnávaním, lebo nikdy medzi sebou neporovná dva prvky postupnosti. A tak ako
+predchádzajúce, môžete si ho vyskúšať na úlohe \textbf{utried3}.
+
+%TODO radix sort
+
+Tieto algoritmy vyzerajú lákavo, keďže sú také rýchle, v praxi sa však veľmi nepoužívajú. Väčšinou
+sa s nimi môžete stretnúť iba v teoretických príkladoch, kde záleží na skutočnej časovej zložitosti.
+V praktických súťažiach väčšinou stačí použiť \texttt{Quicksort}, ktorý má naviac implementáciu v
+C++.
+
+\nadpis{Dolná hranica triedení porovnávaním}
+
+Čo robia triedenia porovnávaním? Porovnávajú prvky medzi sebou a podľa toho ich vymieňajú. Môžete si
+všimnúť, že \texttt{Mergesort} aj \texttt{Quicksort} mali $O(n\log n)$ porovnaní. Otázkou však je,
+či je toto najlepšie možné riešenie, či sa to nedá zlepšiť. Hľadáme teda, dolnú hranicu na počet
+porovnaní, ktoré potrebuje ľubovoľný algoritmus.
+
+Predstavme si, že algoritmy trochu upravíme. Najskôr spravia všetky porovnania a až potom prvky
+povymieňajú. Môžete si rozmyslieť, že takto sa na nich nič nezmení. Taktiež množina výmen je
+jednoznačne určená porovnaniami, ktoré algoritmus urobí. Taktiež sa zamýšľajme len na postupnosťami,
+kde prvky tvoria permutáciu čísiel $1$ až $n$. Uvedomte si, že pre algoritmus je to absolútne
+nerozlíšené a nám to pomôže v argumentácii.
+
+Výmen, ktoré algoritmus reálne potrebuje na to, aby pole utriedil je relatívne malý, vždy mu stačí
+$O(n)$ výmen. Problém však je, že tou dobou si už algoritmus musí byť istý, ktorú permutáciu má pred
+sebou. Nemôžu mu zostať dve, lebo by sa mohol pomýliť. Nakreslime si teda takzvaný rozhodovací
+strom. Vrchol tohoto stromu bude tvoriť porovnanie, ktoré algoritmus urobí. Z každého vrchola pôjdu
+dve hrany, podľa odpovede, ktorú dostane a listy stromu budú možné permutácie, ktoré mohol dostať.
+Takýto strom má teda $n!$ listov.
+
+Každému algoritmu zodpovedá jeden takýto rozhodovací strom. Našou úlohou bude dokázať, že vždy
+obsahuje cestu dĺžky aspoň $O(n\log n)$. Tým pádom existuje vstup, na ktorom bude musieť spraviť
+aspoň toľko porovnaní a dokážeme, že potrebujeme zložitosť $\Omega (n\log n)$.
+
+Poďme sa pozrieť na to, koľko úrovní (hĺbok) musí mať náš rozhodovací strom. Na prvej úrovni je
+jeden vrchol. Na druhej úrovni je ich najviac dva, na tretej najviac štyri atď. To znamená, že $n!$
+vrcholov a teda aj listov sa môže prvýkrát objaviť v hĺbke $\log n!$. Tým pádom dolná hranica na
+počet porovnaní je $\log n!$. Poďme si toto číslo odhadnúť.
+
+Zhora vieme spraviť jednoduchý odhad $n^n \geq n!$. Zdola môžeme spraviť nasledovný odhad. Prvých
+$n/2$ členov faktoriálu, je väčších ako $n/2$, teda $n! \geq (n/2)^{n/2}$.
+Dostaneme teda $n^n \geq n! \geq (n/2)^{n/2}$. 
+Po zlogaritmovaní: $n\log n \geq \log n! \geq \frac{n}{2} \log \frac{n}{2}$. A v $O$ notácii
+dostanem $O(n\log n) \geq O(\log n!) \geq O(n\log n)$, teda $O(\log n!) = O(n \log n)$.
+
+Smutný a zároveň veselý výsledok. Smutný je, lebo je nám jasné, že nevieme triediť rýchlejšie, čo je
+však oveľa lepšie je to, že máme optimálne riešenie tohoto problému. A to je obrovský úspech, na
+ktorý môžeme ako informatici byť právom hrdí. A teraz už aj vy viete všetko o triedení.
+
+\medskip
+
+Teraz sa môžete vrátiť a doriešiť si príklady, ktoré ste počas čítania preskočili, alebo môžete
+vyskúšať zriešiť niektorý z nasledovných príkladov:
+Ich spoločnou témou je síce triedenie, je však podané netradičnejšie a skryte.
 
 \end{document}
