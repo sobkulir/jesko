@@ -1,0 +1,56 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Jabĺčka}
+
+Ježko Pichliačik má véééééľa jabĺčok. Každé z nich má vek, ktorý vie ježko určiť s presnosťou na
+nanosekundy. Povedal si, že jabĺčko je zrelé ak je staré práve $p$ nanosekúnd. Pomôžte ježkovi
+rozdeliť jeho jabĺčka na nezrelé, zrelé a prezrelé.
+
+\nadpis{Úloha}
+
+Na vstupe máte postupnosť $n$ celých čísiel, udávajúce vek jednotlivých jabĺčok a číslo $p$ --
+optimálny vek. Vašou úlohou je rozdeliť túto postupnosť na tri menšie postupnosti. V prvej budú
+jabĺčka mladšie ako $p$ nanosekúnd, v druhej tie, ktoré majú presne $p$ nanosekúnd a v tretej tie, ktoré sú
+staršie ako $p$ nanosekúnd. Naviac je jedno, v akom poradí vypíšete čísla v rámci jednej
+postupnosti.
+
+\nadpis{Vstup}
+
+Na prvom riadku je číslo $n$ a $p$ ($1 \leq n \leq 1000000$, $1 \leq p \leq 10^9$) -- počet
+ježkových jabĺčok a optimálny vek jabĺčka.
+
+Na druhom riadku je $n$ kladných celých čísiel $v_i$ ($1 \leq v_i \leq 10^9$) určujéce vek ježkových
+jabĺčok.
+
+\nadpis{Výstup}
+
+Vypíšte tri riadky. Každý z nich má obsahovať množinu čísiel odelených medzerami. Na prvom riadku
+majú byť čísla z postupnosti $v_1, v_2 \dots v_n$ menšie ako $p$, na druhom rovné ako $p$ a na
+treťom väčšie ako $p$.
+
+\nadpis{Príklady}
+
+\vstup
+5 3
+1 8 13 5 3
+\vystup
+1
+3
+8 13 5
+\komentar
+Toto samozrejme jediný správny výstup. Posledný riadok môže vyzerať nasledovne: $(5, 8, 13)$, $(5,
+13, 8)$, $(8, 5, 13)$, $(8, 13, 5)$, $(13, 5, 8)$ alebo $(13, 8, 5)$. 
+\koniec
+
+\vstup
+4 4
+7 2 8 1
+\vystup
+2 1
+
+8 7
+\koniec
+
+\end{document}
