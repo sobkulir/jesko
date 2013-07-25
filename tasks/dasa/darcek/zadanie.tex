@@ -1,0 +1,41 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Nepodarený darček}
+
+Ježko Pichliač mal nedávno narodeniny. A ako darček, dostal od svojej mamy postupnosť celých čísiel.
+Bohužiaľ, táto postupnosť sa ježkovi hrozne nepáčila. Rozhodol sa ju zmeniť, nechcel však zarmútiť
+svoju mamu, preto si povedal, že zmení práve jedno číslo.
+
+Pre každú pozíciu $i$ by ho teraz zaujímalo, aké najmenšie číslo môže byť na $i$-tom mieste, ak v
+pôvodnej postupnosti vymení jeden prvok a túto postupnosť utriedi od najmenšieho prvku.
+
+\nadpis{Úloha}
+
+Na vstupe dostanete postupnosť celých čísiel z rozsahu $1$ až $10^9$. Jedno číslo tejto postupnosti
+musíte nahradiť iným číslom. Nové číslo musí byť iné ako to staré a musí opäť ležať v intervale $1$
+až $10^9$. Pre každú pozíciu vypíšte, aké najmenšie číslo sa môže nachádzať na danej pozícii po
+výmene jedného čísla a zoradení postupnosti. 
+
+\nadpis{Vstup}
+
+Na prvom riadku je číslo $n$ ($1 \leq n \leq 10^5$) -- počet čísiel v postupnosti.
+
+Na druhom riadku je $n$ celých čísiel z rozsahu $1$ až $10^9$, určujúce postupnosť.
+
+\nadpis{Výstup}
+
+Na jeden riadok vypíšte $n$ medzerou odelenných čísiel. $i$-te číslo určuje najmenšie číslo, ktoré
+vie byť na $i$-tej pozícii.
+
+\nadpis{Príklady}
+
+\vstup
+5
+4 7 2 1 6
+\vystup
+1 1 2 4 6
+\koniec
+
+\end{document}
