@@ -50,3 +50,7 @@ Thumbs.db
 *.pdf
 *.aux
 *.log
+
+# Other #
+#########
+*ignore-me*
