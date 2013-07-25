@@ -1,0 +1,56 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Banková lúpež}
+
+Ježko Dušan a čajka Karolínka sú zlodeji. A špecializujú sa na banky. Karolínka vždy najskôr zvedie
+riaditeľa banky a po prehýrenej noci sa vytratí z jeho bytu aj s kľúčom od trezoru. Na ďalší deň
+Dušan nabehne zamaskovaný do banky a vďaka kľúču ju bleskovo vylúpi a rýchlo zmizne.
+
+Bol dohodnutý s Karolínkou, že jej nechá jej podiel v smetnom koši na rohu Smrekovej a Bažinovej.
+Dušan je však ježko nepoctivý a rozhodol sa čajku ošidiť a dať jej menší podiel. Z banky ukradol $n$
+mincí hodnôt $a_1$ až $a_n$ (niektoré môžu byť aj rovnaké). Teraz by si chcel zobrať väčší podiel.
+To znamená, že súčet hodnôt mincí, ktoré si zoberie Dušan musí byť \textbf{väčší} ako súčet mincí,
+ktoré dá Karolínke.
+
+Aby však nebol príliš nápadný, chce si zobrať mincí čo najmenej. Zistite koľko najmenej mincí si
+Dušan musí zobrať, aby ich súčet bol väčší ako súčet zvyšných mincí.
+
+\nadpis{Úloha}
+
+Na vstupe dostanete hodnoty mincí, ktoré Dušan ukradol. Zistite, koľko najmenej mincí si musí
+zobrať, aby mal \textbf{väčší} podiel.
+
+\nadpis{Vstup}
+
+Na prvom riadku je číslo $n$ ($1 \leq n \leq 1000$) -- počet ukradnutých mincí.
+
+Na druhom riadku sú hodnoty $a_1$ až $a_n$ ($1 \leq a_i \leq 1000$).
+
+\nadpis{Výstup}
+
+Vypíšte jedno celé číslo -- najmenší počet mincí, ktoré si Dušan musí zobrať, aby mal väčší podiel.
+
+\nadpis{Príklady}
+
+\vstup
+2
+8 8
+\vystup
+2
+\komentar
+Dušan si musí zobrať obe mince. Ak by si zobral len jednu, podiel by bol rovnaký.
+\koniec
+
+\vstup
+6
+4 3 6 3 3 2
+\vystup
+3
+\komentar
+Ak si Dušan zoberie mince $6$, $3$ a $3$ bude mať v súčte $12$ peňazí, kým Karolínke zostane len
+$9$.
+\koniec
+
+\end{document}
