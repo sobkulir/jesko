@@ -1,0 +1,61 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Stavebnicové kocky}
+
+Ježko Vladko má hromadu stavebnicových kociek rôznych veľkostí, usporiadané pekne od najmenšej po
+najväčšiu. Rád by daroval nejakú sadu týchto kociek svojej kamarátke kačičke Márii. Mária je však
+trošku náročná a nie je ochotná prijmuť ľubovoľnú sadu kociek -- predsa len sa jej musia hodiť k
+topánkam. Našťastie, nie je ani tak rozmaznaná a je ochotná prijmuť viacero sád. Vladko vie, aké
+sadt kociek Mária prijme. Pomôžte mu zistiť, ktoré z týchto sád sa nachádzahú medzi jeho kockami.
+
+\nadpis{Úloha}
+
+Na vstupe dostanete popis Vladkových kociek, usporiadaných podľa veľkosti. Taktiež budete mať zoznam
+sád, ktoré Mária akceptuje. Každá sada sa skladá z niekoľkých kociek a je usporiadaná podľa veľkosti.
+Pre každú sadu zistite, či sa dá vyskladať z Vladkových kociek, teda či má Vladko všetky kocky v
+danej sade.
+
+\nadpis{Vstup}
+
+Na prvom riadku sú dve celé čísla $n$ a $q$ ($1 \leq n \leq 100000$, $1 \leq q \leq 1000$) -- počet
+Vladkových kociek a počet dobrých sád.
+
+Na ďalšom riadku je $n$ čísiel $a_1$ až $a_n$ určujúce veľkosti Vladkových kociek. Platí, že $a_1
+\leq a_2 \leq \dots \leq a_n$.
+
+Nasleduje $q$ riadkov, každý obsahuje popis jednej sady kociek, ktoré Mária prijme. Každý riadok
+začína celým číslom $k_i$ ($1 \leq k_i \leq 1000$), ktoré určuje počet kociek v danej sade. Nasleduje $k_i$ čísiel
+$b_{i,1}$  až $b_{i,k_i}$ -- veľkosti kociek v danej sade. Platí, že $b_{i,1} \leq b_{i,2} \leq \dost
+\leq b_{i,k_i}$.
+
+Môžete predpokladať, že súčet všetkých $k_i$ nepresiahne $10000$. Taktiež, všetky $a_i$ a $b_{i,j}$
+sú menšie ako $10^9$.
+
+\nadpis{Výstup}
+
+Vypíšte $q$ riadkov, riadok $i$ obsahuje odpoveď na $i$-tu sadu kociek. Ak sa z Vladkových kociek dá
+vybrať daná sada, vypíšte slovo \texttt{ano}, inak vypíšte \texttt{nie}.
+
+\nadpis{Príklady}
+
+\vstup
+10 4
+1 3 6 7 7 13 14 20 21 100
+3 1 6 13
+4 1 2 3 6
+5 3 6 7 7 100
+4 6 7 7 7
+\vystup
+ano
+nie
+ano
+nie
+\komentar
+Druhá sada: Vladkove kocky neobsahujú kocku $2$.
+
+Štvrtá sada: Vladkove kocky obsahujú kocku $7$ len dvakrát.
+\koniec
+
+\end{document}
