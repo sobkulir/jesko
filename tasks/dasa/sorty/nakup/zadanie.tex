@@ -1,0 +1,46 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Nákupy so zľavou}
+
+Ježko Jano bol minule na nákupoch v jednom nemenovanom obchodnom reťazci. Tam mali veľké množstvo
+zliav. Jano si chcel kúpiť $n$ vecí, s cenami $c_1, c_2 \dots c_n$. Každú si môže kúpiť aj normálne,
+keď zaplatí jej plnú sumu, alebo ju môže kúpiť v ámci akcie.
+
+Akcie fungujú nasledovne. V obhode ponúkajú $m$ akcií. Ak si chce uplatniť $i$-tu akciu, musí si
+kúpiť $z_i$ vecí a k týmto veciam dostane $0$, $1$ alebo $2$ veci zadarmo. Jano si môže zvoliť,
+koľko vecí zadarmo si zoberie. Musí však platiť, že veci, ktoré si zoberie zadarmo, nie sú drahšie
+ako najlacnejšia z vecí kúpených v tejto akcii. Kadú akciu môže Jano použiť ľubovoľne veľa krát a
+môže ich ľubovoľne kombinovať.
+
+Zistite, koľko najmenej peňazí, musí Jano zaplatiť, ak využije zľavový systém optimálne.
+
+\nadpis{Úloha}
+
+Dostanete popis vecí, ktoré si chce Jano kúpiť a popis zliav, ktoré obchod ponúka. Zistite koľko
+najmenej musí Jano zaplatiť, ak si chce kúpiť všetky veci na zoznam a žiadnu najviac.
+
+\nadpis{Vstup}
+
+Na prvom riadku sú dve čísla $n$ a $m$ ($1 \leq n, m \leq 10^5$) -- počet vecí čo si chce Jano kúpiť
+a počet zliav.
+
+Na druhom riadku je $n$ celých čísiel $c_1, c_2 \dots c_n$ ($1 \leq c_i \leq 10^9$)-- ceny predmetov,
+ktoré si chce Jano kúpiť.
+
+Ďalších $m$ riadkov popisuje jednotlivé akcie. Každý riadok obsahuje jedno celé číslo $z_i$ ($1 \leq
+z_i \leq 10^5$). Číslo $z_i$ určuje, koľko vecí si Jano môže kúpiť aby si mohol uplatniť akciu $i$.
+
+\nadpis{Výstup}
+
+Vypíšte jedno číslo, minimálnu sumu peňazí, ktorí musí Jano zaplatiť, za nákup všetkých vecí. Dajte
+si pozor, že výsledok sa nemusí zmestiť do normálnej $32$ bitovej premennej.
+
+\nadpis{Príklady}
+
+\vstup
+\vystup
+\koniec
+
+\end{document}
