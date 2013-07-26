@@ -8,14 +8,25 @@
 % inak tych K deti posleme do lesa a poslednemu (ten, co prisiel najneskor) 
 % z tychto deti dame mapu. jeho meno vypiseme.
 
-\velkynadpis{Nocna hra}
+\velkynadpis{Nočná hra}
+Sústredenie KSP, deň štvrtý. Štvrtá nočná hra. Účastníci sa búria, schovávajú 
+sa a vedúci ich zúfalo hľadajú. Predsa len sa jedná o hľadaní druhého 
+najzápadnejšieho prítoku Nitry! Potrebujú na to teda aj mapu. Vedúci sú už 
+natoľko zúfalí, źe ich ani neposielajú von podľa pôvodných družiniek: stáči 
+aby sedel počet.
+
+Vedúci sa teda rozbili na dve skupiny: jedna skupina pobehuje po chate, hľadá 
+účastníkov a posiela ich do predsiene. Druhá časť je vonku, a raz za čas 
+vstúpi do predsiene, zoberie $K$ prvých účastnikov (tých, čo tam vstúpili 
+skôr), poslednému z nich dá mapu a pošlú ich do lesa. Nás zaujímajú mená tých, 
+čo dostali mapy (predsa ich potom musia vrátiť!).
 
 \nadpis{Úloha}
-
+Vstup bude obsahovať dva druhy riadkov: mená účastníkov, čo vstupili do predsiene, alebo príkaz ''von'' (bez úvodzoviek), ktorý znamená, že prišli vedúci zvonku a chcú poslať do lesa ďalšiu skupinu účastníkov. Ak je účastníkov v predsieni dosť, tak pošlú von prvých $K$ a treba vypísať meno toho, kto dostal mapu. Ak účastníkov dosť nie je (je ich aktuálne v predsieni menej ako $K$), tak treba vypísať na výstup riadok ''malo deti'' (bez úvodzoviek).
 \nadpis{Vstup}
-
+Na prvom riadku vstupu je celé čísla $N$ a $K$, kde $K$ je veľkosť skupín, v ktorých sa účastníci posielajú do lesa ($1 \leq N \leq 10000$, $1 \leq K \leq 12$). Ďalšie $N$ riadkov obsahujú buď mená účastníkov (obsahujú iba malé a velké písmená anglickej abecedy a dĺžka mien neprekročí $12$) alebo riadok ''von''.
 \nadpis{Výstup}
-
+Výstup obsahuje reakcie na každý riadok ''von'' zo vstupu: buď meno účastníka, ktorý dostal mapu, alebo riadok ''malo deti'' (bez úvodzoviek).
 \nadpis{Príklady}
 
 \vstup
@@ -27,7 +38,7 @@ Filip
 \vystup
 Zygro
 \komentar
-Isli Basa a Zygro, Zygro dostal mapu.
+Išli Baša a Zygro, Zygro dostal mapu.
 Filip ostal na chate :(
 \koniec
 
@@ -42,7 +53,7 @@ von
 malo deti
 Filip
 \komentar
-Dvaja nestacili, ale spolu s Filipom uz ist mozu. Mapu dostane Filip.
+Dvaja nestáčili, ale spolu s Filipom už ísť môžu. Mapu dostane Filip.
 \koniec
 
 \end{document}
