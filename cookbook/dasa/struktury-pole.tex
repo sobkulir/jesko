@@ -1,20 +1,61 @@
 %Tu si môžete zaznačiť, že pracujete na danej veci. V prípade, že ste napísali len časť a ďalej už
 %nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by však fajn, aby jedu vec robil jeden
-%človek ak celok a zvyšný len kontrolovali
+%človek ak celok a zvyšní len kontrolovali
 %vypracuva: Askar
 \input ../../include/include.tex
 
 \begin{document}
 
 \velkynadpis{Dátové štruktúry nad poľom}
+\textit{Návod na použitie: očakáva sa, že čítateľ už niečo vie o pojmoch 
+''časová(pamäťová) zložitiosť'', ''pole''. Ak takéto
+pojmy nepoznáš, tak Ti odporúčam najprv preštudovať príslušné časti tejto 
+úžasnej kuchárky.}
+
 
 Obsah:
 \begin{itemize}
     \item načo nám sú dátové štruktúry
+    \item stack    
     \item queue
-    \item stack
     \item deque
     \item linked-list
 \end{itemize}
 
+\medskip
+
+Dátovú štruktúru si môžeme neformálne predstaviť ako modrú krabičku, do ktorej 
+vkladáme nejake údaje (napríklad čísla, reťazce, súradnice kozmických lodí v 
+$5$-dimenziálnom priestore, atď), a potom pomocou vstavaných tlačitiek sa 
+môžeme opýtať na nejakú informáciu o nich. Môže to byť čokoľvek (tu a ďalej: 
+bavíme sa o krabičkách, ktoré ako vstup berú čísla): počet dvojok spomedzi 
+prídaných čisel, počet párnych čísel, najmenšie číslo, najväčšie číslo, prvé 
+alebo posledné prídané číslo, priemer nepárnych čísel, atď.
+Druhou možnosťou často je schopnosť nejakým spôsobom (pomocou iných tlačitiek) 
+meniť tieto údaje. Napríklad: prídať ďalší prvok, zvýšiť všetky čísla o $15$, 
+vyhodiť všetky päťky, prepísať druhé najmenšie číslo na iné, atď. 
+
+Používateľov takýchto modrých krabičiek väčšinou nezaujíma, čo sa nachádza vo 
+vnutri. Stáči, aby to fungovalo spoľahlivo a rýchlo. No a tu prichádza odpoveď na 
+otázku ''Načo potrebujeme dátové štruktúry?''. Nie každý spôsob ukladania dát 
+môže dovoliť rýchlo odpovedať na takéto otázky. Potrebujeme špecifikovať spôsob 
+spracovania dát v závislosti od požiadaviek na danú modrú krabičku, aby každé 
+''tlačitko'' pracovalo rýchlo.
+
+\nadpis{Zásobník}
+
+Záčneme DŠ (dátovou štruktúrou), ktorá má následovné tlačitká (funkcie): 
+$PUSH(x)$, $TOP()$, $POP()$, $SIZE()$. \\
+$PUSH(x)$ pridáva ďalši prvok do DŠ, $TOP()$ zobrazuje posledný podľa času 
+prídania prvok v DŠ, $POP()$ vyhadzuje z DŠ posledný podľa času prídania prvok 
+(ten, čo ukazuje funkcia $TOP()$), $SIZE()$ ukazuje aktuálny počet prvkov v DŠ.
+
+Znie to veľmi múdro, ale v skutočnosti chceme modrú krabičku, ktorá by simulovala 
+proces pridávania (a odstraňovania) prvkov do krabice chipsov Pringles (''Once 
+you pop, you can't stop!'' $:)$) s podmienkou, že ''šírka'' prvkov je takmer
+rovna priemeru tejto trubici, a teda žiadne dva prvky si nevedia vymeniť poradie, 
+kým sú vo vnútri trubice. 
+
+Naším cieľom je teda naprogramovať takúto krabičku s podmienkou, že každá z 
+týchto 4 operácií je rýchla. 
 \end{document}
