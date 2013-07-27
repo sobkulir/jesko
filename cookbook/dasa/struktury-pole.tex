@@ -38,21 +38,23 @@ vyhodiť všetky päťky, prepísať druhé najmenšie číslo na iné, atď.
 Používateľov takýchto modrých krabičiek väčšinou nezaujíma, čo sa nachádza vo 
 vnutri. Stáči, aby to fungovalo spoľahlivo a rýchlo. No a tu prichádza odpoveď na 
 otázku ''Načo potrebujeme dátové štruktúry?''. Nie každý spôsob ukladania dát 
-môže dovoliť rýchlo odpovedať na takéto otázky. Potrebujeme špecifikovať spôsob 
+môže dovoliť rýchlo odpovedať na takéto requesty. Potrebujeme špecifikovať spôsob 
 spracovania dát v závislosti od požiadaviek na danú modrú krabičku, aby každé 
-''tlačitko'' pracovalo rýchlo.
+''tlačitko'' pracovalo rýchlo (tu a ďalej: s optimálnou časovou a pamäťovou 
+zložitosťou vzhľadom na množstvo prvkov v danej DŠ).
 
 \nadpis{Zásobník}
 
-Záčneme DŠ (dátovou štruktúrou), ktorá má následovné tlačitká (funkcie): 
+Záčneme DŠ (dátovou štruktúrou (modrou krabičkou)), ktorá má následovné tlačitká 
+(funkcie): 
 $PUSH(x)$, $TOP()$, $POP()$, $SIZE()$. \\
-$PUSH(x)$ pridáva ďalši prvok do DŠ, $TOP()$ zobrazuje posledný podľa času 
+$PUSH(x)$ pridáva prvok $x$ do DŠ, $TOP()$ zobrazuje posledný podľa času 
 prídania prvok v DŠ, $POP()$ vyhadzuje z DŠ posledný podľa času prídania prvok 
 (ten, čo ukazuje funkcia $TOP()$), $SIZE()$ ukazuje aktuálny počet prvkov v DŠ.
 
 Znie to veľmi múdro, ale v skutočnosti chceme modrú krabičku, ktorá by simulovala 
-proces pridávania (a odstraňovania) prvkov do krabice chipsov Pringles (''Once 
-you pop, you can't stop!'' $:)$) s podmienkou, že ''šírka'' prvkov je takmer
+proces pridávania (a odstraňovania) prvkov do krabice chipsov Pringles (\textit{''Once 
+you pop, you can't stop!''} $:)$) s podmienkou, že ''šírka'' prvkov je takmer
 rovna priemeru tejto trubici, a teda žiadne dva prvky si nevedia vymeniť poradie, 
 kým sú vo vnútri trubice. 
 
