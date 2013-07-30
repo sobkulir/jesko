@@ -54,10 +54,42 @@ prídania prvok v DŠ, $POP()$ vyhadzuje z DŠ posledný podľa času prídania 
 
 Znie to veľmi múdro, ale v skutočnosti chceme modrú krabičku, ktorá by simulovala 
 proces pridávania (a odstraňovania) prvkov do krabice chipsov Pringles (\textit{''Once 
-you pop, you can't stop!''} $:)$) s podmienkou, že ''šírka'' prvkov je takmer
+you pop, you can't stop!''} ) s podmienkou, že ''šírka'' prvkov je takmer
 rovna priemeru tejto trubici, a teda žiadne dva prvky si nevedia vymeniť poradie, 
-kým sú vo vnútri trubice. 
+kým sú vo vnútri trubice. Dá sa toto tiež predstavovať ako proces pridávania 
+nábojov do zásobníku zbrane, odkiaľ vlastne aj plynie názov, ale analógia s Pringles
+je presnejšia a vystižnejšia, lebo pri každej operácii vkládania do zásobníku zbrane sa 
+hybú všetky náboje, čo ale vôbec nie je optimálne a v žiadnom prípade to simulovať nebudeme. 
 
 Naším cieľom je teda naprogramovať takúto krabičku s podmienkou, že každá z 
 týchto 4 operácií je rýchla. 
+
+\medskip
+
+Najľahšia je implementácia pomocou obyčajného poľa. Najprv odhadneme maximálnu veľkosť 
+zásobníka. Nech bude rovná $N$. Prvky budeme postupne ukladať na pozíciách $0$ až $N-1$. 
+A teda, čím neskôr je prvok vložený, tým väčšie je číslo políčka, kde bude uložený.
+Spolu s poľom budeme v premennej $size$ pamätať aktuálne množstvo prvkov v zásobníku.
+Teda, ak máme $size = 5$, tak máme prvky uložené v políčkach $0$ až $4$.
+   
+Funkcia $SIZE()$ sa potom implementuje jednoducho vypísaním premennej $size$.
+
+Funkcia $TOP()$ sa realizuje tak, že vypíšeme číslo na políčku $size-1$, 
+lebo tam je uložený posledný podľa času pridania prvok.
+
+Funkcia $PUSH(x)$ sa realizuje tak, že zapíšeme $x$ na políčko $size$ a zväčšíme premennú $size$ 
+o $1$ (všetky prvky, čo boli pridané pred tým, sú uložené na pozíciách $0$ až 
+$size-1$, čiže pridanie nového prvku na políčko $size$ je úplne spravné, lebo 
+to zachová náš invariant). 
+
+Funkcia $POP()$ sa realizuje tak, že jednoducho zmenšíme 
+premennú $size$ o jedna (môžeme síce ten prvok aj premázať, ale načo? Keď sa 
+tam dostaneme nabudúce, tak tam zapíšeme už nový prvok).
+
+Toto je jednoduchá implementácia vyše opísaného:
+\listing{stack/stack_easy.cc}
+
+Toto je to isté, len celý zásobník je spravený ako poriadna štruktúra:
+\listing{stack/stack_easy_nice.cc}
+
 \end{document}
