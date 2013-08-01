@@ -43,7 +43,7 @@
 
 \def\velkynadpis#1{%
   \vynechaj@ktreba{1cm}%
-  \noindent\centerline{\sf\large\bfseries #1}%
+  \noindent\centerline{\sf\LARGE\bfseries #1}%
   \par\medskip%
 }
 
@@ -51,6 +51,12 @@
   \vynechaj@ktreba{1cm}%
   \noindent{\sf\large\bfseries #1\quad #2}%
   \def\men@ulohy{#1}%
+  \par\medskip%
+}
+
+\def\kapitola#1{%
+  \vynechaj@ktreba{1cm}%
+  \noindent{\sf\Large\bfseries #1}%
   \par\medskip%
 }
 
@@ -67,6 +73,16 @@
 \hline
 \end{tabularx}}
 \par\bigskip
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% CVICENIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\cvicenie#1{%
+  \textbf{Cvičenie #1:}%
+}
+
+\def\riesenie#1{%
+  \textbf{Riešenie #1:}%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% I/O %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
