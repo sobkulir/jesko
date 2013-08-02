@@ -84,6 +84,8 @@ Hneď vás varujem. Nasledujúce odseky budú obsahovať nejaké formálne defin
 tvrdenia. Ono je to celé veľmi intuitívne a keď s tým začnete pracovať, rýchlo si na to zvyknete.
 Môže to byť však zo začiatku trochu mätúce, pokúsim sa vám to však podať čo najlepšie.
 
+%TODO dorobiť obrázky funkcií
+
 Začnime s príkladom. Majme program, ktorý vykoná $f(n) = n^2/2 + 5n + 4$. Prvé pravidlo znie,
 konštanty zanedbáme. To či spravíme operácií $n$ alebo $5n$ je skoro jedno, zdvihne sa to len o
 konštantu, ktorá nezávisí od veľkosti vstupu. Zrazu máme teda $f'(n) = n^2 + n$. Druhé pravidlo zase
@@ -95,5 +97,39 @@ Možno sa to zdá hrubé, koľko vecí sme zanedbali, ale ono to vôbec nie je t
 je najviac konštantne viac ako to čo nám zostalo. A to nám stačí. Samozrejme takýto spôsob škrtania
 je škaredý a tie dve pravidlá sú len pomôcky. Potrebujeme jasnú definíciu a tou je už spomínaná
 $O$-notácia.
+
+\textbf{Definícia:} Majme dve funkcie $f$ a $g$. Hovoríme, že $f \in O(g)$ ak existuje $n_0$ a $c>0$
+také, že pre všetky $n \geq n_0$ platí $|f(n)|\leq c|g(n)|$.
+
+\textbf{A slovami:} Hovoríme, že funkcia $f$ patrí do $O(g)$ (všimnite si, že $O(g)$ je množina
+všetkýh funkií, pre ktoré platí daná vlastnosť) ak existujú také konštanty $n_0$ a $c$, že pre dosť veľké $n$ (lebo $n \geq n_0$) je
+$c|g(n)|$ (absolútna hodnota) väčšia ako $f(n)$.
+
+Teraz už ľahko určíme, že naozaj naše $f(n) = n^2/2 + 5n +4 = O(n^2)$ (tento zápis síce nie je úplne
+korektný, lebo $O(n^2)$ je množina, napriek tomu sa často používa). Stačí, ak si zvolíme $n_0=10$ a
+$c=2$. Ľahko potom nahliadneme, že $n^2/2 + 5n + 4 \leq 2n^2$, lebo toto je vlastne $5n + 4 \leq
+3n^2/2$. Táto nerovnosť pre $n=10$ platí a ďalej bude už len masívne narastať.
+
+Tiež si všimnite, že napríklad $n^3 \notin O(n^2)$. Ak si zvolíte totiž ľubovoľné $c$, tak $n^3$ je
+väčšie od $cn^2$ pre všetky $n\geq c$. Naopak však platí, že $n^2 \in O(n^3)$, lebo to vyhovuje
+definícii pre $c=n_0=1$.
+
+\nadpis{Najhorší prípad a dolná hranica}
+
+Samozrejme, nikto neočakáva, že hneď pochopíte čo to vlastne znamená. Postupne sa však s
+$O$-notáciou budete stretávať neustále. Práve v nej sa totiž neustále vyjadruje časová aj pamäťová
+zložitosť všetkých algoritmov. My si ukážeme pár funkií, s ktorými sa stretnete najčastejšie.
+
+Ešte sme si však nepovedali, na ktorom vstupe rátame zložitosť. Môže sa totiž stať, že niekde bude
+náš program potrebovať len $O(n)$ operácií a inde zase $O(n^2)$. V tomto prípade samozrejme berieme
+najhorší možný príklad a zložitosť výpočtu na ňom prehlásime za zložitosť riešenia.
+
+Ďalšia vec je, že my informatici sme tak trochu flákači. Vyjadrovanie sa v $O$-notácii je totiž
+mierne nepresné. Ako sme totiž ukazovali, tak $n^2 = O(n^3)$. Ak máme teda algoritmus so zložitosťou
+$f(n)$, nič nám nebráni povedať, že to je vlastne $O(n^3)$. Nás však zaujíma, takpovediac najmenšia
+dolná hranica, v tomto prípade $n^2$. Takúto zložitosť by ste mali udávať aj všade, kde po vás
+požadujú zložitosť.
+
+%TODO tabuľka s častými zložitosťami
 
 \end{document}
