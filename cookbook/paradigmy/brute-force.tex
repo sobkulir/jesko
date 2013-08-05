@@ -1,0 +1,104 @@
+%Tu si môžete zaznačiť, že pracujete na danej veci. V prípade, že ste napísali len časť a ďalej už
+%nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by však fajn, aby jedu vec robil jeden
+%človek ak celok a zvyšný len kontrolovali
+%vypracuva: Zaba 
+\input ../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Použitie hrubej sily}
+
+Obsah:
+\begin{itemize}
+    \item cieľ tejto časti
+    \item n!
+    \item $2^n$
+    \item orezávania
+\end{itemize}
+
+Úlohy čo tu chcem využit:
+
+Máme číslo $n$. Nájdite najmenšie číslo menšie ako $n$, ktoré má všetky cifry rôzne.
+
+Máme $n$ čísiel kladných aj záporných. Koľko je takých poradí preskúmavania, aby hodnota nikdy
+neklesla pod 0.
+
+Koniec úloh
+
+Ako sa vraví: Keď to nejde silou, používate jej primálo.
+
+Častokrát sa nám stane, že nevieme vymyslieť rýchle riešenie, jediné čo nás napadne je hrubé
+priamočiare skúšanie všetkých možností. Napríklad ak hľadáme všetky čísla menšie ako $1000$, ktoré
+sú deliteľné $5$ a ich druhá mocnina je deliteľná $4$. Jedna možnosť je zamyslieť sa, ako také čísla
+vyzerajú a vypísať tie správne. Druhá možnosť je naozaj vyskúšať všetkých $1000$ čísiel či
+nevyhovujú zadaniu.
+
+Takéto riešenie je pre nás ľudí nevyhovujúce. Umocňovať $1000$ čísiel na druhú a ešte kontrolovať či
+sú deliteľné $4$? V žiadnom prípade. Ale počítač je na tom inak. Jeho hlavná výhoda je výpočtová
+sila. Počítač nemá problém umocniť číslo a zistiť deliteľnosť v priebehu milisekúnd. A vyskúšať to
+$1000$ krát \dots brnkačka.
+
+V tejto kapitole sa teda porozprávame, ako dostať silu počítaču pod našu kontrolu, naučíme sa kedy a
+ako používať hrubú silu a zopár trikov, aby to ani tomu počítaču netrvalo tak dlho. A ak sa nudíte,
+môžete sa rovno vrhnúť na úlohu \textbf{rôzne cifry}.
+
+\textbf{Permutácie}
+
+Prvou možnosťou na generovanie všetkých možností sú permutácie. Zoberme si napríklad úlohu
+\textbf{pamiatky}. V tejto úlohe máme $n$ pamiatok a na svojej výhliadkovej túre, si ich chceme
+všetky postupne pozrieť. Každá pamiatka nám však pridá alebo uberie radosť z výletu. Samozrejme
+nechceme, aby naša radosť bola pod $0$. Otázka je, koľko je takých postupností návštevy pamiatok, že
+naša radosť neklesne pod $0$.
+
+Vieme, že existuje najviac $n!$ rôznych pozretí pamiatok, keďže každá ich permutácia určuje jednu
+postupnosť, ktorou sa môžeme vybrať. Takisto vieme, že v najväčšom možnom vstupe, je $n=9$, takže
+rôznych permutácií je $9!=362\,880$. A to vôbec nie je tak veľa.
+
+No a úplne najlepšia správa je, že ak vám dám konkrétnu permutáciu pamiatok, viete veľmi jednoducho
+zistiť, či táto permutácia poruší podmienku zo zadania a teda radosť z jej prejdenia klesne pod $0$.
+Na to stačí simulovať prechádzku po pamiatkach a stále si pamätať, akú máme momentálne radosť. Ak
+niekedy klesne pod $0$, daná postupnosť je zlá, ak sa to nikdy nestane, môžeme si pripočítať $1$ k
+výsledku.
+
+Ten najdôležitejší krok však zostáva. Ako si vygenerovať postupne všetky permutácie čísiel od $1$ po
+$n$. Poprípade to ani nemusia byť prvky od $1$ po $n$, môžu to byť aj čísla oveľa väčšie alebo
+opakujúce sa.
+
+\medskip
+
+Prvou možnosťou je spraviť si vlastnú rekurzívnu funkciu. Ako parametre dostane táto funkcia dve
+polia: prvé obsahuje prvky, ktoré ešte nepoužila a treba ich zaradiť do vytváranej permutácie, druhá
+obsahuje prvky, ktoré vytvárajú aktuálnu permutáciu. To čo treba spraviť ako ďalší krok, je vybrať
+prvok, ktorý bude ležať na ďalšom mieste v našej permutácii. A vhodný kandidáti sú všetky ešte
+nezaradené prvky. No a keďže chceme vytvoriť permutácie všetky, postupne skúšame dosadiť všetky
+nezaradené prvky na ďalšie voľné miesto. Keď si zvolíme prvok $x$, vyberieme ho z nezaradených prvkov,
+pridáme ho do permutácie a znova sa rekurzívne vnoríme.
+
+Keď spotrebujeme všetky prvky ostane nám výsledná permutácia. A tento prístup ich postupne
+vygeneruje všetky. Tu je k tomu názorný program:
+
+%\listing{permutacie-rekurzia.cpp}
+
+Nevýhodou na tomto riešení je, že si posúva dve polia ako parametre funkcie. To ho dosť spomaľuje.
+Samozrejme, dá sa toho zbaviť, ale napriek tomu, potrebujeme napísať sami zbytočne veľa kódu, v
+ktorom je veľká šanca, že sa pomýlime. Niekto však ten kód už napísal za nás, tak prečo ho nepoužiť.
+
+V STL existuje funkcia \texttt{next_permutation()}, ktorá ako napovedá názov vytvorí z poľa, ktoré
+jej dáme ako parameter ďalšiu jeho permutáciu. A toto má množstvo výhod. Nemusíme skoro nič
+programovať, všetko dostaneme zadarmo. Túto funkcia môžeme používať opakovane a prejsť tak postupne
+cez všetky možné permutácie. A taktiež vždy nájde permutáciu, ktorá je lexikograficky väčšia. To
+znamená, že ak pole obsahuje niekoľko rovnakých prvkov, táto funkcia vie preskočiť všetky také,
+ktoré sa líšia len výmenou niektorých dvoch rovnakých. Ak teda máme $n$ prvkov a $p$ z nich sú
+rovnaké a ostatné sú rôzne, tak namiesto $n!$ možností vygeneruje len $\fact{n!}{p!}$.
+
+Jediné na čo si treba dať pozor je, že na začiatku chcete dať do tejto funkcie prvky usporiadané od
+najmenšieho po najväčší. Toto je totiž lexikograficky najmenšia permutácia a ako som spomínal
+\texttt{next_permutation()} vytvára vždy väčšiu. Tu si môžete pozriež najčastejšie použitie tejto
+funkcie:
+
+%\listing{permutacie-next.cpp}
+
+Bude veľmi dobré, ak sa tento kúsok kódu naučíte, zíde sa vám, keď budete generovať všetky
+permutácie.
+
+\end{document}
