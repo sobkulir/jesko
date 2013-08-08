@@ -104,18 +104,19 @@ permutácie.
 \nadpis{Množiny}
 
 Množiny sú ďalší matematický objekt, ktorý nám vie pomôcť. Zoberme si úlohu \textbf{zlodej}. V tejto
-úlohe ste zlodej, ktorý sa snaží z domu ukradnúť čo najviac predmetov, každý predmet má vlastnú váhu.
-Máte však len jeden batoh, ktorý unesie veci, ktorých spoločná váha nepresiahne $w$.
+úlohe ste zlodej, ktorý sa snaží z domu ukradnúť predmety s čo najväčšou spoločnou váhou, má však
+batoh, ktorý unesie najviac hmotnosť $w$. Chcete teda vybrať takú sadu vecí, že ich spoločná váha je
+čo najbližšie k $w$.
 
 Táto úloha je od predchádzajúcej trochu odlišná. Je pravda, že by sme sa stále mohli pýtať na všetky
 permutácie prvkov, pridávať ich v tom poradí do batohu a keď batoh naplníme, prestaneme a zrátame,
-koľko prvkov sme do batohu vložili.
+koľko vážia dokopy veci v batohu.
 
 To však ani zďaleka nie je to, čo by sme chceli robiť, dokonca to od nás nevyžaduje ani úloha. Nás
 totiž vôbec nezaujíma, v akom poradí vložíme veci do batoha. Nás zaujíma, ktoré veci budú na konci v
 batohu. Predstavte si, že viete vložiť $k$ vecí do batohu. Existuje $k!$ možností ako ich tam
-vložiť, ale stále dostaneme to isté -- tieto predmety sa do batohu zmestia. Bolo by fajn teda
-vyskúšať túto množinu len raz.
+vložiť, ale stále dostaneme to isté -- tieto predmety sa do batohu zmestia a zaberú stále rovnako
+miesta. Bolo by fajn teda vyskúšať túto množinu len raz.
 
 A tu prichádzame na koreň problému -- množiny. Chceli by sme vedieť rýchlo prezerať všetky množiny
 vecí (množina je reprezentovaná tým, či danú vec zoberiem, alebo nie) a potom overiť, či daná

@@ -1,0 +1,51 @@
+\input ../../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Zlodej}
+
+Zo svojej ultraľahkej kuše ste vystrelili šíp s hákom, za ktorým sa tiahlo tenké, no pevné lano. Hák
+sa zachytil na rebríku neďalekej budovy. Potichu ako mačka prerúčkujete cez lano, ktoré je teraz
+vo výške dvadsiatich metrov. Nepozeráte sa dole, svoj cieľ máte pred sebou.
+
+Zoskočíte na balkón prominentného milionára. Vytiahnete vašu najnovšiu hračku, laserový rezač skla,
+pomocou, ktorého spravíte dieru do sklennej výplne. Opatrne si otvoríte dvere a potichu sa vtiahnete
+dnu. Do vzduchu pred sebou nastriekate aerosolový sprej. Hneď sa pred vami objaví slabo svietiaca
+červená sieť poplašného zariadenia.
+
+V štýle profesionálneho gymastu sa prehýbaš medzi červenými lúčmi až nakoniec skončíš uprostred
+obývačky. V obývačke je $n$ rôznych vecí. Je ti jedno, ktoré z nich zoberieš, lebo všetky majú
+obrovskú cenu. Každý má však nejakú hmotnosť a batoh, ktorý máš na chrbte unesie len $w$ váhy. A ty
+chceš svoj batoh naplniť čo najviac. Aká je najväčšia hmotnosť nepresahujúca $w$, ktorú vieš zbaliť?
+
+\nadpis{Úloha}
+
+Na vstupe dostanete číslo $n$ a $w$ -- počet predmetov a váhu, ktorú unesie batoh. Pre každú z vecí
+dostanete hodnotu $v_i$ -- hmotnosť $i$-teho objektu. Zistite, akú najväčšiu hmotnosť viete nabaliť
+do batoha s nosnosťou $w$ použitím daných predmetov.
+
+\nadpis{Vstup}
+
+Prvý riadok obsahuje dve čísla $n$ a $w$ ($1 \leq n \leq 25$, $1\leq w \leq 10^9$) -- počet vecí a
+nostnosť batoha.
+
+Druhý riadok obsahuje $n$ celých čísiel $v_1$ až $v_n$ ($1 \leq v_i \leq 10\,000 $) -- váhy
+jednotlivých vecí.
+
+\nadpis{Výstup}
+
+Jedno celé číslo -- maximálny počet vecí, ktoré si vieš zbaliť do batoha vzhľadom na jeho obmedzenú
+hmotnosť.
+
+\nadpis{Príklady}
+
+\vstup
+3 5
+5 2 2
+\vystup
+5
+\komentar
+Použitím dvoch vecí s váhou $2$ dosiahnem len objem $4$. Iné možnosti presiahnu nosnosť batoha.
+\koniec
+
+\end{document}
