@@ -77,7 +77,7 @@ pridáme ho do permutácie a znova sa rekurzívne vnoríme.
 Keď spotrebujeme všetky prvky ostane nám výsledná permutácia. A tento prístup ich postupne
 vygeneruje všetky. Tu je k tomu názorný program:
 
-%\listing{permutacie-rekurzia.cpp}
+\listing{brute-force/permutacie-rekurzia.cpp}
 
 Nevýhodou na tomto riešení je, že si posúva dve polia ako parametre funkcie. To ho dosť spomaľuje.
 Samozrejme, dá sa toho zbaviť, ale napriek tomu, potrebujeme napísať sami zbytočne veľa kódu, v
@@ -96,7 +96,7 @@ najmenšieho po najväčší. Toto je totiž lexikograficky najmenšia permutác
 \texttt{next\_permutation()} vytvára vždy väčšiu. Tu si môžete pozriež najčastejšie použitie tejto
 funkcie:
 
-%\listing{permutacie-next.cpp}
+\listing{brute-force/permutacie-next.cpp}
 
 Bude veľmi dobré, ak sa tento kúsok kódu naučíte, zíde sa vám, keď budete potrebovať generovať všetky
 permutácie.
@@ -132,7 +132,7 @@ ju z nerozhodnutých a rekurzívne sa zavoláme. Ak si ju neberieme, aj tak ju v
 nerozhodnutých vecí, lebo sme sa už rozhodli, že ju neberieme a zavoláme sa rekurzívne. Dostaneme
 takýto jednoduchý kúsok kódu:
 
-%\listing{mnoziny-rekurzia.cpp}
+\listing{brute-force/mnoziny-rekurzia.cpp}
 
 Opäť to však nie je najľahší prístup. Existuje aj prístup oveľa jednoduchší, samozrejme, ale viac
 trikovejší. Majme našich $n$ vecí a dajme im nejaké poradie, napríklad podľa toho, kedy sa
@@ -148,7 +148,7 @@ C++ pracuje veľmi pohodlne a keďže sú interne reprezentované ako $0$ a $1$,
 veľa pekných operácií. Tu je program, ktorý ukazuje, ako sa dá postupne prejsť cez všetky množiny a
 tiež zistiť, ktoré čísla do nich patria:
 
-%\listing{mnoziny-bit.cpp}
+\listing{brute-force/mnoziny-bit.cpp}
 
 Niektoré operácie ste možno ešte nestretli. \texttt{$1<<n$} je takzvaný bitový posun doľava. V
 princípe to znamená, že k číslu naľavo ($1$) v bitovom zápise pridá číslo napravo ($n$) núl. Teda z
