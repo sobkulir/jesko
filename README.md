@@ -16,4 +16,5 @@ Pre viac moznosti pouzite `./clean.sh help`
 Pokial sa vam nechce pred kazdym commitovanim spustat `clean.sh`, pouzite namiesto commitovania 
 `./autopush.sh` (ten zavola postupne `./clean rm`, `git add -A`, `git commit` a `git push`
 
-(ak `clean.sh` a `autopush.sh` nie su u vas spustitelne, zafunguje `chmod 700 subor` 
+(ak `clean.sh` a `autopush.sh` nie su u vas spustitelne, zafunguje `chmod 700 subor` (alebo 
+este lepsie: `chmod +x subor`) 
