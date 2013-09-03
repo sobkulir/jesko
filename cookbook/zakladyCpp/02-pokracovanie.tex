@@ -24,8 +24,8 @@ Obsah:
     \item podmienky alebo rozhodnutia
     \item cykly alebo opakovanie 
     \item načítavanie vstupu
-    \item výrazy
     \item polia
+    \item výrazy
 \end{itemize}
 
 \medskip
@@ -123,10 +123,10 @@ zľava doprava. Kompletný prehľad nájdete napríklad na
 je, že ak si nie ste istí, tak zátvorkujte, a inak sa to správa relatívne
 rozumne.
 
-\cvicenie{1} Akú pravdivostnú hodnotu má výraz 
+\cvicenie Akú pravdivostnú hodnotu má výraz 
 \verb'( (!7 == false) && (0 | (a = 5)) <= 4 )'?
 
-\riesenie{1} \verb'( (!7 == false) && (0 | (a = 5)) <= 4 )' $\rightarrow$
+\riesenie \verb'( (!7 == false) && (0 | (a = 5)) <= 4 )' $\rightarrow$
 \verb'( ( false == false) && (0 | 5) <= 4 )' $\rightarrow$
 \verb'( ( true ) && (5) <= 4 )' $\rightarrow$ \verb'( true && false )' $\rightarrow$ \verb'false'
 
@@ -191,12 +191,12 @@ for(int i = 0; i<8; ++i)
     printf("%d\n", i);
 \end{lstlisting}
 
-\cvicenie{2} Napíšte program, ktorý vypíše prvých 50 nepárnych čísel (1, 3,
+\cvicenie Napíšte program, ktorý vypíše prvých 50 nepárnych čísel (1, 3,
 5, \dots) Zvyšok po delení dvoma (paritu) vieme zistiť napríklad operátorom \verb!%!.
 \verb!a % b! vráti zvyšok \verb!a! po delení \verb!b!. Napríklad \verb!47 % 10 == 7!, \verb!10 % 2 == 0!.
 Pozor treba dávať na záporné čísla, \verb!-13 % 5 == -3!.
 
-\riesenie{2} Predvedieme si tri spôsoby. 
+\riesenie Predvedieme si tri spôsoby. 
 \lstlang{cpp}\begin{lstlisting}
 for(int i = 0; i<100; ++i)
     if (i%2 == 1)
@@ -254,17 +254,14 @@ int main(){
 }
 \end{lstlisting}
 
+Časom sa naučíme načítavať aj iné veci ako čísla, aby sme to však zvládali, tak musíme tie iné veci spoznať.
 
 
 
 
-\medskip
+%\cvicenie 
 
-
-
-%\cvicenie{1} 
-
-%\riesenie{1} 
+%\riesenie 
 
 %\lstlang{cpp}\begin{lstlisting}
 %\end{lstlisting}
@@ -272,9 +269,9 @@ int main(){
 
 
 
-%\cvicenie{1} 
+%\cvicenie 
 
-%\riesenie{1} 
+%\riesenie 
 
 %\lstlang{cpp}\begin{lstlisting}
 %#include<cstdio>

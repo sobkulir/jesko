@@ -77,16 +77,25 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% CVICENIA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\cvicenie#1{%
-  \vynechaj@ktreba{5pt}%
-  \textbf{Cvičenie #1:}%
-}
+\newcount\cislocvi
+\newcount\cislorie
 
-\def\riesenie#1{%
+\def\cvicenie{%
+  \global\advance\cislocvi1%
   \vynechaj@ktreba{5pt}%
-  \textbf{Riešenie #1:}%
+  \textbf{Cvičenie \the\cislocvi: }%
 }
+\def\fakecvicenie{\global\advance\cislocvi1}
 
+\def\riesenie{%
+  \global\advance\cislorie1%
+  \vynechaj@ktreba{5pt}%
+  \textbf{Riešenie \the\cislorie: }%
+}
+\def\fakeriesenie{\global\advance\cislorie1}
+
+\def\cvicenien#1{\global\cislocvi #1\relax \global\advance\cislocvi-1 \cvicenie}
+\def\riesenien#1{\global\cislorie #1\relax \global\advance\cislorie-1 \riesenie}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%% I/O %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

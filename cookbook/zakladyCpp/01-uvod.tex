@@ -164,28 +164,28 @@ takže ich píšeme pomocou znaku \verb!'\'!. Viac nájdete napríklad na
 
 \medskip
 
-\cvicenie{1} skompilujte si vyššie uvedený program. A spustite ho. Čo sa stalo?
+\cvicenie skompilujte si vyššie uvedený program. A spustite ho. Čo sa stalo?
 Čo sa stane, keď z programu vynecháte znak \verb!'\'!? Prečo?  Ako by ste
 vypísali dva riadky so slovom \verb!jesko!?
 
-\cvicenie{2} čo všetko môžeme s programu vynechať, aby stále robil to isté?
+\cvicenie čo všetko môžeme s programu vynechať, aby stále robil to isté?
  
-\cvicenie{3} skúste na obrazovku vypísať reťazec \verb!"jesko"! aj s
+\cvicenie skúste na obrazovku vypísať reťazec \verb!"jesko"! aj s
 úvodzovkami.
 
-\riesenie{1} Program vypíše reťazec \verb"jesko". Keď vynecháme znak \verb!'\'!
+\riesenie Program vypíše reťazec \verb"jesko". Keď vynecháme znak \verb!'\'!
 program vypíše \verb"jeskon" a riadok neukončí.  Dva krát vypísať reťazec
 \verb"jesko" môžeme dvoma spôsobmi: buď \verb!printf("jesko\njesko\n");! alebo
 \verb!printf("jesko\n"); printf("jesko\n");!.
 
-\riesenie{2} Niektoré prebytočné medzery a prázdny riadok. Z nasledovného
+\riesenie Niektoré prebytočné medzery a prázdny riadok. Z nasledovného
 programu už nie je možné nič vynechať bez straty funkčnosti.
 \lstlang{cpp}\begin{lstlisting}
 #include<cstdio>
 int main(){printf("jesko\n");}
 \end{lstlisting}
 
-\riesenie{3} Použijeme príkaz \verb!printf("\"jesko\"\n");!
+\riesenie Použijeme príkaz \verb!printf("\"jesko\"\n");!
 
 \kapitola{Premenné}
 
@@ -220,7 +220,7 @@ premennej/krabičky s menom $a$.  Výraz $4 + 7$ má hodnotu $11$. Pokiaľ v $a$
 Výraz musí mať hodnotu preto, lebo práve táto hodnota sa uloží do premennej:
 Napríklad, keď napíšeme $a = 3 + 8;$ tak do a sa priradí číslo $11$.
 
-\cvicenie{1} Skúste určiť, čo robí nasledovný program. Aké hodnoty budu na
+\cvicenie Skúste určiť, čo robí nasledovný program. Aké hodnoty budu na
 konci v premenných $a$, $b$ ,$c$?
 \lstlang{cpp}\begin{lstlisting}
 int main(){
@@ -235,7 +235,7 @@ int main(){
 }
 \end{lstlisting}
 
-\riesenie{1}
+\riesenie
 Najskôr sme vyrobili premennú $a$. Potom sme do nej priradili hodnotu $4$.
 Následne sme do nej priradili hodnotu $7$ (stará hodnota $4$ sa zahodila), teda
 premenná bude obsahovať iba číslo $7$. Potom sme vyrobili dve nové premenné $b$
@@ -295,8 +295,9 @@ Všimnite si riadok \verb!int a = 7;! ide o skrátený zápis dvoch príkazov
 teda \verb!int a = 1, b = 2, c = 3;! je skrátený zápis pre \verb!int a = 1;!
 \verb!int b = 2;! \verb!int c = 3;!
 
-\cvicenie{2} Skúste na rôznych miestach programu z cvičenia 1 vypísať hodnoty
+\cvicenie Skúste na rôznych miestach programu z cvičenia 1 vypísať hodnoty
 premenných. Všeliako upravujte program a pozorujte, čo sa deje.
+\fakeriesenie
 
 \nadpis{Typy číselných premenných}
 
@@ -310,7 +311,8 @@ prípade premennej typu \verb!int! sú to hodnoty od $-2^{31}$ po $2^{31}-1$
 (záporných čísel je presne polovica, kladných čísel je o 1 menej, kvôli číslu
 0).
 
-\cvicenie{3} Vyskúšajte si spustiť príkaz \verb!printf("%d\n", 2147483647 + 1);!.
+\cvicenie Vyskúšajte si spustiť príkaz \verb!printf("%d\n", 2147483647 + 1);!.
+\fakeriesenie
 
 \medskip
 
@@ -366,23 +368,23 @@ Opačný prevod sme už zvládli vyššie, napríklad ak nás zaujíma hodnota
 $101111_2$, stačí jednoducho sčítať $1\cdot 1 + 1\cdot 2 + 1\cdot 4 + 1\cdot 8
 + 0\cdot 16 + 1\cdot 32 = 47_{10}$.
 
-\cvicenie{4} Preveďte z desiatkovej sústavy nasledovné čísla $31$, $200$,
+\cvicenie Preveďte z desiatkovej sústavy nasledovné čísla $31$, $200$,
 $1024$.
 
-\cvicenie{5} Preveďte z dvojkovej sústavy do desiatkovej čísla $10101$,
+\cvicenie Preveďte z dvojkovej sústavy do desiatkovej čísla $10101$,
 $100000000$, $1100110011$.
 
-\cvicenie{6} Sčítajte v binárnej sústave čísla $110110$ a $1111101$. Následne
+\cvicenie Sčítajte v binárnej sústave čísla $110110$ a $1111101$. Následne
 ich preveďte do desiatkovej sústavy a sčítajte v desiatkovej sústave. Výsledok
 preveďte naspäť do dvojkovej a výsledok overte.
 
-\riesenie{4} $31_{10} = 11111_2$. $200_{10} = 11001000$. $1024_{10} =
+\riesenie $31_{10} = 11111_2$. $200_{10} = 11001000$. $1024_{10} =
 10000000000$, lebo $1024 = 2^{10}$.
 
-\riesenie{5} $10101_2 = 21_{10}$. $100000000_2 = 256$. $1100110011_2 =
+\riesenie $10101_2 = 21_{10}$. $100000000_2 = 256$. $1100110011_2 =
 819_{10}$
 
-\riesenie{6} V binárnej sústave sčítavme rovnako ako v desiatkovej, napíšeme si
+\riesenie V binárnej sústave sčítavme rovnako ako v desiatkovej, napíšeme si
 čísla pod seba, sčitave zľava doprava a pripočítavame prípadné zvyšky.
 \begin{verbatim}
     110110     =     54
@@ -468,7 +470,7 @@ bude 400.
 
 Treba si dávať \textbf{pozor} na nasledovnú vec.
 
-\cvicenie{7} Skopírujte, skompilujte a spustite nasledovný program.  (Pokiaľ
+\cvicenie Skopírujte, skompilujte a spustite nasledovný program.  (Pokiaľ
 používate windows, použite miesto \verb!%lld! \verb!%I64d!)
 \lstlang{cpp}\begin{lstlisting}
 #include<cstdio>
@@ -480,7 +482,7 @@ int main(){
 Čo vypísal? Prečo? Ako by ste ho opravili aby naozj vypísal
 $1\,000\,000\,000\,000$?
 
-\riesenie{7} Vynásobili sme dva \verb!int!y, keďže majú rovnaký typ, nič sa
+\riesenie Vynásobili sme dva \verb!int!y, keďže majú rovnaký typ, nič sa
 nepretypuje.  Keďže výsledok je príliš velký nastáva pretečenie a výsledkom
 násobenia bude \verb!int!  $-727\,379\,968$. Následne sa vykoná priradenie
 \verb!a = -727379968!, ale správna hodnota už je nenávratne preč. Opraviť to
@@ -493,7 +495,7 @@ Pretypovanie bežne funguje automaticky, ale vieme ho spôsobovať aj ručne.
 Syntax je \verb!(<typ>)<hodnota>! alebo \verb!<typ>(hodnota)! alebo použijeme
 obe dvojice zátvoriek.
 
-\cvicenie{8} Aké budu hodnoty v $a$, $b$ po nasledovných priradeniach? 
+\cvicenie Aké budu hodnoty v $a$, $b$ po nasledovných priradeniach? 
 \begin{lstlisting}
 int a = 1234, b;
 b = (char)a;
@@ -501,7 +503,7 @@ b = char(a);
 b = char(a)*a;
 \end{lstlisting}
 
-\riesenie{8} Hodnota $a$ bude vždy 1234, pretypovanie nemení premenné. 
+\riesenie Hodnota $a$ bude vždy 1234, pretypovanie nemení premenné. 
 $b$ bude mať hodnoty -46, -46 a -56764 (teda $-46\cdot 1234$).
 
 \medskip
@@ -548,8 +550,9 @@ int main(){
 }
 \end{lstlisting}
 
-\cvicenie{1} Vezmite nejaký program, kde ste viackrát použili \verb!printf! a
+\cvicenie Vezmite nejaký program, kde ste viackrát použili \verb!printf! a
 prepíšte ho na streamy.
+\fakeriesenie
 
 \end{document}
 
