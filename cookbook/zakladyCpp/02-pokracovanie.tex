@@ -84,36 +84,36 @@ hodnotu true, považujeme ho za pravdivý, false je nepravdivý.
 
 Poznáme mnoho operátorov, ktoré vracajú true/false. 
 
-Napríklad \verb'==' \verb'!=' \verb'<=' \verb'>=' \verb'<' \verb'>' sú binárne
+Napríklad \verb'==', \verb'!=', \verb'<=', \verb'>=', \verb'<' a \verb'>' patria medzi binárne
 operátory (t.j. dávame ich medzi dva výrazy, napr. \verb!(a + 7) <= (b * 2)!).
-Správanie je opäť intuitívne, \verb'a < b' je true vtedy, keď $a$ je menej ako
-$b$.  \verb'!=' znamená nerovná sa, čiže \verb'a != 0' vráti \verb!true!, keď
-$a$ nie je 0. Pozor, nesmieme si zameniť \verb'a == b' a \verb'a = b'.  Prvé z
-toho je výraz, ktorý vráti \verb!true!, v prípade, že $a$ má rovnakú hodnotu
-ako $b$. Druhá vec je normálne priradenie, takže do $a$ vloží hodnotu $b$-čka,
-a následne vráti novú hodnotu $a$. Preto \verb!if (a = 7)! vráti \verb!true!
-bez ohľadu na pôvodnú hodnotu $a$ a navyše zmení hodnotu $a$ na sedem.  Na toto
+Správanie je opäť intuitívne, \verb'a < b' je true vtedy, keď \verb!a! je menej ako
+\verb!b!.  \verb'!=' znamená nerovná sa, čiže \verb'a != 0' vráti \verb!true!, keď
+\verb!a! nie je 0. Pozor, nesmieme si zameniť \verb'a == b' a \verb'a = b'.  Prvé z
+toho je výraz, ktorý vráti \verb!true!, v prípade, že \verb!a! má rovnakú hodnotu
+ako \verb!b!. Druhá vec je normálne priradenie, takže do \verb!a! vloží hodnotu \verb!b!-čka,
+a následne vráti novú hodnotu \verb!a!. Preto \verb!if (a = 7)! vráti \verb!true!
+bez ohľadu na pôvodnú hodnotu \verb!a! a navyše zmení hodnotu \verb!a! na sedem.  Na toto
 si treba dávať fakt veľký pozor. 
 
 Potom poznáme aj logické operátory, \verb!&&!(a zároveň), \verb!||!(alebo) a
 \verb'!'(nie je pravda, že). Ktoré sa správajú opäť intuitívne.  
-\verb!(a == 7) && (b < 3)! je \verb!true! práve vtedy, keď $a$ má hodnotu 7 a
-$b$ je menej ako 3. \verb!(a == 3) || (b < 7)! je pravda, keď platí aspoň jedna
+\verb!(a == 7) && (b < 3)! je \verb!true! práve vtedy, keď \verb!a! má hodnotu 7 a
+\verb!b! je menej ako 3. \verb!(a == 3) || (b < 7)! je pravda, keď platí aspoň jedna
 z podmienok \verb!(a == 3)!, \verb!(b < 7)!. \verb'!' robí z 
 \verb!false! \verb!true! a z \verb!true! \verb!false!, takže napr. \verb'!(a < 3)' je
 ekvivalentné s \verb'a >= 3'.  Zaujímavé je, že \verb!||! a \verb!&&! sa
-správajú šetrne, napríklad ak máme \verb!a || b! a vieme, že $a$ je true, tak
-nemusíme vyhodnocovať $b$ ('pravda alebo hocičo' je stále pravda). A v C++ sa
+správajú šetrne, napríklad ak máme \verb!a || b! a vieme, že \verb!a! je true, tak
+nemusíme vyhodnocovať \verb!b! ('pravda alebo hocičo' je stále pravda). A v C++ sa
 to teda ani vyhodnocovať nebude.  Preto zatiaľ čo \verb!(true && a = 5)! a
-\verb!(false || a = 5)!  zmenia hodnotu $a$ na 5, \verb!(false && a = 5)! a
+\verb!(false || a = 5)!  zmenia hodnotu \verb!a! na 5, \verb!(false && a = 5)! a
 \verb!(true || a = 5)! ju nechajú na pokoji (príkaz a = 5 sa nevykoná).
 
 Tiež si netreba mýliť \verb!&&! s \verb!&!(bitwise and) a \verb!||! s
 \verb!|!(bitwise or). Dvojité verzie pracujú s bool-mi, teda najprv sa pokúsia
-pretypovať operandy na booly a potom vyrobia nový bool. $(10 || 6)$ je true.
+pretypovať operandy na booly a potom vyrobia nový bool. \verb!(10 || 6)! je true.
 Jednotité verzie rozbijú číslo na bity, s každým bitom spravia operáciu zvlášť
-(0 = false, 1 = true) a výsledné bity poskladajú naspať do čísla. $(10 | 6) =
-(1010_2 | 110_2) = 1110_2 = 14$.  Bitová verzia \verb'!' je \verb'~'.
+(0 = false, 1 = true) a výsledné bity poskladajú naspať do čísla. 
+\verb!(10 | 6) = (1010_2 | 110_2) = 1110_2 = 14!.  Bitová verzia \verb'!' je \verb'~'.
 
 Treba si dávať pozor na prioritu (precedenciu) operátorov (tak ako násobenie má
 prednosť pri sčítaní, aj ostatné operátory majú medzi sebou nejakú hierarchiu).
@@ -161,9 +161,9 @@ while(i < 10){
     i = i+1;
 }
 \end{lstlisting}
-Najprv nastavíme $i$ na 1. Následne budeme vykonávať vnútro \verb!{}! pokiaľ $i
-< 10$. Keďže vo vnútri \verb!{}! zväčšíme $i$ vždy o 1, celý cyklus sa zopakuje
-10 krát, až kým sa nestane, že $i == 10$ a teda \verb'!(i < 10)' a teda cyklus
+Najprv nastavíme \verb!i! na 1. Následne budeme vykonávať vnútro \verb!{}! pokiaľ 
+\verb!i < 10!. Keďže vo vnútri \verb!{}! zväčšíme \verb!i! vždy o 1, celý cyklus sa zopakuje
+10 krát, až kým sa nestane, že \verb!i == 10! a teda \verb'!(i < 10)' a teda cyklus
 skončí.  Preto aj tento program vypíše "ahoj" 10 krát. Prerobiť ho, aby vypísal
 "ahoj" tisíckrát by nám nerobilo žiaden problém však?
 
@@ -192,9 +192,9 @@ for(int i = 0; i<8; ++i)
 \end{lstlisting}
 
 \cvicenie{2} Napíšte program, ktorý vypíše prvých 50 nepárnych čísel (1, 3,
-5,\dots) Zvyšok po delení dvoma (paritu) vieme zistiť napríklad operátorom \%.
-$a \% b$ vráti zvyšok $a$ po delení $b$. Napríklad $47 \% 10 == 7$, $10 \% 2 ==
-0$. Pozor treba dávať na záporné čísla, $-13 \% 5 == -3$.
+5, \dots) Zvyšok po delení dvoma (paritu) vieme zistiť napríklad operátorom \verb!%!.
+\verb!a % b! vráti zvyšok \verb!a! po delení \verb!b!. Napríklad \verb!47 % 10 == 7!, \verb!10 % 2 == 0!.
+Pozor treba dávať na záporné čísla, \verb!-13 % 5 == -3!.
 
 \riesenie{2} Predvedieme si tri spôsoby. 
 \lstlang{cpp}\begin{lstlisting}
@@ -209,8 +209,57 @@ for(int i = 1; i<100; i+=2)
     printf("%d\n", i);
 \end{lstlisting}
 
+Pri cykloch si treba dávať pozor, keďže sa môžu zacykliť a potom váš program bude bežať donekonečna (kým ho nezabijete).
+Príklady nekonečných cyklov sú napr. while(true); for(int i = 10; i>0; ++i); ale aj while(a<7); 
+(lebo premenná a sa v cykle nemení).
+
 
 \kapitola{Načítavanie vstupu}
+
+Doteraz všetky programy boli relatívne nanič, pretože pri každom spustení vypisovali to isté.
+Namiesto programov typu "vypíš prvých 10 nepárnych čísel" by sme radi mali "načítaj číslo n a vypíš prvých n nepárnych čísel".
+
+Takže potrebujeme vedieť načítavať vstup.
+
+Na načítavanie sa dá použiť funkcia \verb!scanf()!, ktorá sa syntaxou veľmi podobá \verb!printf()!. Prvý parameter je opäť 
+formátovací reťazec, ale ďalšie už nie sú výrazy, ale smerníky na premenné. Teda ak chceme načítať jedno číslo do premennej
+a, napíšeme \verb!scanf("%d", &a);!
+
+Prečo tam je \verb!&a! miesto \verb!a!? Dôvod je veľmi jednoduchý, \verb!a! je výraz, ktorého hodnota je hodnota \verb!a!, napríklad číslo 7.
+A zavolaním \verb!scanf("%d", 7);! ťažko budeme vedieť, kam máme uložiť načítanú hodnotu. (Vieme ukladať len do premenných, 
+nie do hodnnôt). Keď však napíšeme \verb!&a!, tak výsledkom výrazu nebude hodnota \verb!a!, ale miesto, kde je \verb!a! uložené v pamäti počítača.
+Funkcia teda načíta číslo a uloží ho na to miesto v pamäti, kde bola pred tým hodnota \verb!a!.
+
+Vyskúšajte si skompilovať a spustiť tento program:
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){
+    int a, b;
+    scanf("%d %d", &a, &b);
+    printf("%d\n", a+b);
+}
+\end{lstlisting}
+
+Po spustení, program čaká, kým mu napíšete dve čísla napr. \verb"105 21". Po zadaní čísel musíte stlačiť enter,
+inak sa k programu nedostanú. 
+
+Pokiaľ sa vám scanf nepáči, dajú sa použiť streamy.
+\lstlang{cpp}\begin{lstlisting}
+#include<iostream>
+using namespace std;
+int main(){
+    int a, b;
+    cin >> a >> b;
+    cout << a + b << endl;
+}
+\end{lstlisting}
+
+
+
+
+
+\medskip
+
 
 
 %\cvicenie{1} 

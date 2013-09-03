@@ -116,14 +116,18 @@
 \lst@CCPutMacro\lst@ProcessOther{"7D}{\lst@ttfamily{\char '175{}}{\char '175{}}}\@empty\z@\@empty
 
 %% Below we have our general settings for listings in all languages.
+\def\codewidth{16.4cm}
 
 \lstset{
     basicstyle=\fontfamily{pcr}\fontseries{m}\fontshape{n}\fontsize{7}{9}\selectfont, % a very small \tt font
     keywordstyle=\fontseries{b}\fontshape{n}\selectfont, % the same but in bold
     commentstyle=\fontseries{m}\fontshape{sl}\selectfont, % the same but slanted
-    tabsize=8,
+    tabsize=4,
     showtabs=false,
     inputencoding=utf8/latin2,
+    frame=single,
+    xleftmargin=0.6cm,
+    linewidth=\codewidth, 
     lineskip=-2pt, % more dense baselines
     keepspaces=true, % for instance to keep "/* comment" from turning to "/*comment"
 }
