@@ -1,0 +1,240 @@
+%Tu si môžete zaznačiť, že pracujete na danej veci. V prípade, že ste napísali
+%len časť a ďalej už nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by
+%však fajn, aby jedu vec robil jeden človek ak celok a zvyšný len kontrolovali
+%vypracuva: Jano
+\input ../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Pokračovanie C++}
+
+\textit{Ako správne používať tento študijný text: Milý čitateľ. Chystáš sa
+prečítať si kuchárku o základoch programovacieho jazyka C++. Najdôležitejšie
+pri učení nového programovacieho jazyka je poriadne si ho precvičiť. Preto
+počas čítania narazíš na niekoľko úloh, ktoré ti odporúčame vyriešiť a
+naprogramovať.  Má to dopomôcť k tomu, aby si všetko lepšie zapamätal a dostal
+do krvi.}
+
+\textit{Tento text je písaný aj pre ľudí, ktorí nikdy program nevideli. Pokiaľ
+už máš nejaké základy z programovania, môžeš kludne preskakovať tie časti,
+ktoré ovládaš}
+
+Obsah:
+\begin{itemize}
+    \item podmienky alebo rozhodnutia
+    \item cykly alebo opakovanie 
+    \item načítavanie vstupu
+    \item výrazy
+    \item polia
+\end{itemize}
+
+\medskip
+
+\kapitola{Podmienky alebo rozhodnutia}
+
+Bez toho aby sa program vedel rozhodovať, by sme ďaleko nezašli. Vo väčších
+aplikáciách je dôležité interagovať s užívateľom -- \verb!ak! užívateľ stlačí
+toto tlačidlo, spravím toto, \verb!inak!  nerobím nič a podobne. 
+
+V našich programoch môžeme chcieť, aby sa program správal odlišne, keď je v
+nejakej premennej párne číslo a odlišne, keď je tam nepárne.
+
+Na rozhodovanie v jazyku C++ slúži príkaz \verb!if! (po slovensky 'ak') so
+syntaxou \verb!if (<podmienka>) <príkaz-t>! alebo \verb!if (<podmienka>) <príkaz-t> else <príkaz-f>!
+('else' = 'inak'). Jeho správanie je veľmi intuitívne, pokiaľ je
+\verb!<podmienka>! pravdivá, vykoná sa \verb!<príkaz-t>!.  Pokiaľ je podmienka
+nepravdivá, tak vykoná to čo je za \verb!else!, alebo sa nevykoná nič, ak tam
+slovíčko \verb!else! nie je.
+
+Príklady použitia:
+\lstlang{cpp}\begin{lstlisting}
+int x = 1;
+
+if (x == 7) 
+    printf("x je sedem\n");
+else
+    printf("x nie je sedem\n");
+
+if (x > 0)
+    printf("x je kladne cislo\n");
+
+if (x > 0)
+    if (x < 2)
+        printf("x je jedna\n");
+\end{lstlisting}
+
+Pokiaľ chceme vykonať viac príkazov, stačí miesto \verb!<príkaz>! napísať \verb!{ <príkaz-1>; <príkaz-2>; ...  <príkaz-n>; }!
+\lstlang{cpp}\begin{lstlisting}
+int x = 1;
+if (x != 7){
+    printf("x nie je sedem\n");
+    x = 7;
+    printf("preto som zmenil x na sedem\n");
+} else {
+    printf("x nie je sedem\n");
+    printf("takze nemusim nic robit\n");
+}
+\end{lstlisting}
+
+\medskip
+
+Čo všetko môže byť podmienka?  Podmienkou môže byť ľubovoľný výraz, ktorý má
+hodnotu typu bool (v prípade, že nevracia, tak sa pretypuje).  Keď má výraz
+hodnotu true, považujeme ho za pravdivý, false je nepravdivý.
+
+Poznáme mnoho operátorov, ktoré vracajú true/false. 
+
+Napríklad \verb'==' \verb'!=' \verb'<=' \verb'>=' \verb'<' \verb'>' sú binárne
+operátory (t.j. dávame ich medzi dva výrazy, napr. \verb!(a + 7) <= (b * 2)!).
+Správanie je opäť intuitívne, \verb'a < b' je true vtedy, keď $a$ je menej ako
+$b$.  \verb'!=' znamená nerovná sa, čiže \verb'a != 0' vráti \verb!true!, keď
+$a$ nie je 0. Pozor, nesmieme si zameniť \verb'a == b' a \verb'a = b'.  Prvé z
+toho je výraz, ktorý vráti \verb!true!, v prípade, že $a$ má rovnakú hodnotu
+ako $b$. Druhá vec je normálne priradenie, takže do $a$ vloží hodnotu $b$-čka,
+a následne vráti novú hodnotu $a$. Preto \verb!if (a = 7)! vráti \verb!true!
+bez ohľadu na pôvodnú hodnotu $a$ a navyše zmení hodnotu $a$ na sedem.  Na toto
+si treba dávať fakt veľký pozor. 
+
+Potom poznáme aj logické operátory, \verb!&&!(a zároveň), \verb!||!(alebo) a
+\verb'!'(nie je pravda, že). Ktoré sa správajú opäť intuitívne.  
+\verb!(a == 7) && (b < 3)! je \verb!true! práve vtedy, keď $a$ má hodnotu 7 a
+$b$ je menej ako 3. \verb!(a == 3) || (b < 7)! je pravda, keď platí aspoň jedna
+z podmienok \verb!(a == 3)!, \verb!(b < 7)!. \verb'!' robí z 
+\verb!false! \verb!true! a z \verb!true! \verb!false!, takže napr. \verb'!(a < 3)' je
+ekvivalentné s \verb'a >= 3'.  Zaujímavé je, že \verb!||! a \verb!&&! sa
+správajú šetrne, napríklad ak máme \verb!a || b! a vieme, že $a$ je true, tak
+nemusíme vyhodnocovať $b$ ('pravda alebo hocičo' je stále pravda). A v C++ sa
+to teda ani vyhodnocovať nebude.  Preto zatiaľ čo \verb!(true && a = 5)! a
+\verb!(false || a = 5)!  zmenia hodnotu $a$ na 5, \verb!(false && a = 5)! a
+\verb!(true || a = 5)! ju nechajú na pokoji (príkaz a = 5 sa nevykoná).
+
+Tiež si netreba mýliť \verb!&&! s \verb!&!(bitwise and) a \verb!||! s
+\verb!|!(bitwise or). Dvojité verzie pracujú s bool-mi, teda najprv sa pokúsia
+pretypovať operandy na booly a potom vyrobia nový bool. $(10 || 6)$ je true.
+Jednotité verzie rozbijú číslo na bity, s každým bitom spravia operáciu zvlášť
+(0 = false, 1 = true) a výsledné bity poskladajú naspať do čísla. $(10 | 6) =
+(1010_2 | 110_2) = 1110_2 = 14$.  Bitová verzia \verb'!' je \verb'~'.
+
+Treba si dávať pozor na prioritu (precedenciu) operátorov (tak ako násobenie má
+prednosť pri sčítaní, aj ostatné operátory majú medzi sebou nejakú hierarchiu).
+A aby toho nebolo málo, niektoré veci sa vyhodnocujú sprava doľava a niektoré
+zľava doprava. Kompletný prehľad nájdete napríklad na
+\url{http://en.cppreference.com/w/cpp/language/operator\_precedenceu} Dôležité
+je, že ak si nie ste istí, tak zátvorkujte, a inak sa to správa relatívne
+rozumne.
+
+\cvicenie{1} Akú pravdivostnú hodnotu má výraz 
+\verb'( (!7 == false) && (0 | (a = 5)) <= 4 )'?
+
+\riesenie{1} \verb'( (!7 == false) && (0 | (a = 5)) <= 4 )' $\rightarrow$
+\verb'( ( false == false) && (0 | 5) <= 4 )' $\rightarrow$
+\verb'( ( true ) && (5) <= 4 )' $\rightarrow$ \verb'( true && false )' $\rightarrow$ \verb'false'
+
+\kapitola{Cykly alebo opakovanie}
+
+Ako by ste 10 krát vypísali "ahoj"? Spravili by ste to takto?
+\lstlang{cpp}\begin{lstlisting}
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+\end{lstlisting}
+A čo keby ste chceli vypísať "ahoj" tisíckrát, alebo milionkrát?
+
+Nebojte sa, aj na toto probramátori mysleli, a vymysleli cykly.  Najjednoduchší
+cyklus je \verb!while! cyklus. Jeho syntax je 
+\verb!while(<podmienka>) <príkaz>! prípadne namiesto \verb!<príkazu>! 
+môžeme napísať viacero príkazov zabalených v \verb!{}!.
+
+Tento cyklus funguje veľmi jednoducho - dokým je podmienka splnená, opakuje
+príkaz. Vysvetlíme si to na príklade.
+\lstlang{cpp}\begin{lstlisting}
+int i = 0;
+while(i < 10){
+    printf("ahoj\n");
+    i = i+1;
+}
+\end{lstlisting}
+Najprv nastavíme $i$ na 1. Následne budeme vykonávať vnútro \verb!{}! pokiaľ $i
+< 10$. Keďže vo vnútri \verb!{}! zväčšíme $i$ vždy o 1, celý cyklus sa zopakuje
+10 krát, až kým sa nestane, že $i == 10$ a teda \verb'!(i < 10)' a teda cyklus
+skončí.  Preto aj tento program vypíše "ahoj" 10 krát. Prerobiť ho, aby vypísal
+"ahoj" tisíckrát by nám nerobilo žiaden problém však?
+
+Ešte poznamenajme, že miesto \verb!i = i+1! vieme písať \verb!i += 1! alebo
+dokonca \verb!i++!, či \verb!++i!.
+
+\medskip
+
+Vyššie uvedená konštrukcia -- nainicializujeme premennú, pokým premenná nie je
+nejaká, robíme niečo je natoľko častá, že jej programátori vymysleli nový
+názov. \verb!for(<príkaz1>; <podmienka>; <príkaz2>) <príkaz-telo-cyklu>! najprv
+vykoná \verb!<príkaz1>! následne kým platí podmienka, vykonáva
+\verb!<príkaz-telo-cyklu>! a \verb!<príkaz2>!.
+
+Vyššie uvedený program teda vieme prepísať na
+\lstlang{cpp}\begin{lstlisting}
+for(int i = 0; i<10; ++i)
+    printf("ahoj\n");
+\end{lstlisting}
+
+Samozrejme premennú i, môžeme využiť aj v tele cyklu, nasledovný program vypíše
+čísla 0 až 7, každé na zvlášť riadku.
+\lstlang{cpp}\begin{lstlisting}
+for(int i = 0; i<8; ++i)
+    printf("%d\n", i);
+\end{lstlisting}
+
+\cvicenie{2} Napíšte program, ktorý vypíše prvých 50 nepárnych čísel (1, 3,
+5,\dots) Zvyšok po delení dvoma (paritu) vieme zistiť napríklad operátorom \%.
+$a \% b$ vráti zvyšok $a$ po delení $b$. Napríklad $47 \% 10 == 7$, $10 \% 2 ==
+0$. Pozor treba dávať na záporné čísla, $-13 \% 5 == -3$.
+
+\riesenie{2} Predvedieme si tri spôsoby. 
+\lstlang{cpp}\begin{lstlisting}
+for(int i = 0; i<100; ++i)
+    if (i%2 == 1)
+        printf("%d\n", i);
+
+for(int i = 0; i<50; ++i)
+    printf("%d\n", 2*i + 1);
+
+for(int i = 1; i<100; i+=2)
+    printf("%d\n", i);
+\end{lstlisting}
+
+
+\kapitola{Načítavanie vstupu}
+
+
+%\cvicenie{1} 
+
+%\riesenie{1} 
+
+%\lstlang{cpp}\begin{lstlisting}
+%\end{lstlisting}
+
+
+
+
+%\cvicenie{1} 
+
+%\riesenie{1} 
+
+%\lstlang{cpp}\begin{lstlisting}
+%#include<cstdio>
+%int main(){
+%    ll a = 1000000*1000000;    
+%    printf("d = %lld\n",d);
+%}
+%\end{lstlisting}
+
+\end{document}
+
+
