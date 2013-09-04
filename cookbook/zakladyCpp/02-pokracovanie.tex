@@ -21,11 +21,11 @@ ktoré ovládaš}
 
 Obsah:
 \begin{itemize}
-    \item podmienky alebo rozhodnutia
-    \item cykly alebo opakovanie 
+    \item podmienky
+    \item cykly 
     \item načítavanie vstupu
     \item polia
-    \item výrazy
+    \item testovač
 \end{itemize}
 
 \medskip
@@ -209,26 +209,50 @@ for(int i = 1; i<100; i+=2)
     printf("%d\n", i);
 \end{lstlisting}
 
-Pri cykloch si treba dávať pozor, keďže sa môžu zacykliť a potom váš program bude bežať donekonečna (kým ho nezabijete).
-Príklady nekonečných cyklov sú napr. while(true); for(int i = 10; i>0; ++i); ale aj while(a<7); 
-(lebo premenná a sa v cykle nemení).
+Pri cykloch si treba dávať pozor, keďže sa môžu zacykliť a potom váš program
+bude bežať donekonečna (kým ho nezabijete).  Príklady nekonečných cyklov sú
+napr. \verb!while(true);! \verb!for(int i = 10; i>0; ++i);! ale aj
+\verb!while(a<7);! (lebo premenná a sa v cykle nemení).
+
+\medskip
+
+Cykly a podmienky sa samozrejme dajú do seba ľubovoľne veľa krát vkladať, napríklad ako v nasledujúcom
+nezmyselnom programe.
+
+\lstlang{cpp}\begin{lstlisting}
+int a = 7;
+while(a<70) {
+    if (a == 2) {
+        a = 31;
+    } else {
+        for (int i = 0; i<a; ++i) {
+            while(i<a) ++i;
+        }
+    }
+}
+\end{lstlisting}
 
 
 \kapitola{Načítavanie vstupu}
 
-Doteraz všetky programy boli relatívne nanič, pretože pri každom spustení vypisovali to isté.
-Namiesto programov typu "vypíš prvých 10 nepárnych čísel" by sme radi mali "načítaj číslo n a vypíš prvých n nepárnych čísel".
+Doteraz všetky programy boli relatívne nanič, pretože pri každom spustení
+vypisovali to isté.  Namiesto programov typu "vypíš prvých 10 nepárnych čísel"
+by sme radi mali "načítaj číslo $n$ a vypíš prvých $n$ nepárnych čísel".
 
 Takže potrebujeme vedieť načítavať vstup.
 
-Na načítavanie sa dá použiť funkcia \verb!scanf()!, ktorá sa syntaxou veľmi podobá \verb!printf()!. Prvý parameter je opäť 
-formátovací reťazec, ale ďalšie už nie sú výrazy, ale smerníky na premenné. Teda ak chceme načítať jedno číslo do premennej
-a, napíšeme \verb!scanf("%d", &a);!
+Na načítavanie sa dá použiť funkcia \verb!scanf()!, ktorá sa syntaxou veľmi
+podobá \verb!printf()!. Prvý parameter je opäť formátovací reťazec, ale ďalšie
+už nie sú výrazy, ale smerníky na premenné. Teda ak chceme načítať jedno číslo
+do premennej a, napíšeme \verb!scanf("%d", &a);!
 
-Prečo tam je \verb!&a! miesto \verb!a!? Dôvod je veľmi jednoduchý, \verb!a! je výraz, ktorého hodnota je hodnota \verb!a!, napríklad číslo 7.
-A zavolaním \verb!scanf("%d", 7);! ťažko budeme vedieť, kam máme uložiť načítanú hodnotu. (Vieme ukladať len do premenných, 
-nie do hodnnôt). Keď však napíšeme \verb!&a!, tak výsledkom výrazu nebude hodnota \verb!a!, ale miesto, kde je \verb!a! uložené v pamäti počítača.
-Funkcia teda načíta číslo a uloží ho na to miesto v pamäti, kde bola pred tým hodnota \verb!a!.
+Prečo tam je \verb!&a! miesto \verb!a!? Dôvod je veľmi jednoduchý, \verb!a! je
+výraz, ktorého hodnota je hodnota \verb!a!, napríklad číslo 7.  A zavolaním
+\verb!scanf("%d", 7);! ťažko budeme vedieť, kam máme uložiť načítanú hodnotu.
+(Vieme ukladať len do premenných, nie do hodnnôt). Keď však napíšeme \verb!&a!,
+tak výsledkom výrazu nebude hodnota \verb!a!, ale miesto, kde je \verb!a!
+uložené v pamäti počítača.  Funkcia teda načíta číslo a uloží ho na to miesto v
+pamäti, kde bola pred tým hodnota \verb!a!.
 
 Vyskúšajte si skompilovať a spustiť tento program:
 \lstlang{cpp}\begin{lstlisting}
@@ -240,10 +264,10 @@ int main(){
 }
 \end{lstlisting}
 
-Po spustení, program čaká, kým mu napíšete dve čísla napr. \verb"105 21". Po zadaní čísel musíte stlačiť enter,
-inak sa k programu nedostanú. 
+Po spustení, program čaká, kým mu napíšete dve čísla napr. \verb"105 21". Po
+zadaní čísel musíte stlačiť enter, inak sa k programu nedostanú. 
 
-Pokiaľ sa vám scanf nepáči, dajú sa použiť streamy.
+Pokiaľ sa vám \verb!scanf! nepáči, dajú sa použiť streamy.
 \lstlang{cpp}\begin{lstlisting}
 #include<iostream>
 using namespace std;
@@ -254,9 +278,85 @@ int main(){
 }
 \end{lstlisting}
 
-Časom sa naučíme načítavať aj iné veci ako čísla, aby sme to však zvládali, tak musíme tie iné veci spoznať.
+Časom sa naučíme načítavať aj iné veci ako čísla, aby sme to však zvládali, tak
+musíme tie iné veci spoznať.
 
+\kapitola{Polia}
 
+Sú situácie, kde si jednoducho neporadíme s obmedzeným množstvom premenných.
+(Vedeli by ste načítať $n$ čísel zo vstupu a následne ich vypísať v opačnom
+poradí?) To sa s obmedzeným množstvom číselných premenných nedá, pretože ak je
+na vstupe viac čísel, ako máme premenných, tak si ich nedokážeme zapamätať na
+neskorší výpis. 
+
+Aj keby sme mali napríklad na vstupe 20 čísel, tak je veľmi nepraktické vyrobiť
+si premenné \verb!a0! až \verb!a19! do ktorých si vstup načítame.
+
+Preto existujú polia. Pole je akokeby skupina premenných rovnakého typu
+naukladaných za sebou.  V súvislosti s nimi používame hrnaté závtorky
+\verb![]!. Pole intov dĺžky 20 vyrobíme napríklad takto \verb!int pole[20];!
+Tento príkaz nám vyrobí 20 \verb!int!ových premenných ku ktorým vieme pristupovať
+\verb!pole[0]!, \verb!pole[1]!, \verb!pole[2]!, \dots \verb!pole[19]!.
+
+Pozrite si príklad použitia v nasledovnom programe:
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){
+    int a[47];
+    a[0] = 0;
+    a[1] = 1;
+    for(int i = 2; i<30; ++i){
+        a[i] = a[i-1] + a[i-2];
+    }
+    for(int i = 0; i<30; ++i)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+\end{lstlisting}
+
+Na čo si treba dávať pozor?
+
+Keď pristupujeme mimo poľa, napríklad \verb!int b[40];! \verb!b[53] = 7;!
+\verb!b[-1] = 3;! \verb!int a = b[40];! \dots dejú sa zlé veci. Niekedy program
+hneď spadne a vyhlási chybu, inokedy pokračuje ďalej a robí čudné veci,
+premenným sa záhadne zmení hodnota vykonávajú sa \verb!if!y, ktoré by nemali
+atď.  Preto si vždy dávajte veľký pozor, keď používate polia, aby ste
+nepristupovali mimo nich.  Pozor treba dávať aj na to, že \verb!int b[40];!
+tvoria premenné \verb!b[0]! až \verb!b[39]!  (teda ich je 40, ale premenná
+\verb!b[40]! tam nie je).
+
+Pri deklarácii poľa musí byť v \verb![]! konštanta.  \textbf{Nesmiete} spraviť
+\verb!int a = 7; int b[a];! hoci vám to kompilátor pravdepodobne dovolí, môžu
+sa diať zlé a nepredvídateľné veci.  Pokiaľ chcete pole so závislou veľkosťou,
+použite \verb!int *b = new b[a];! ale reálne toto nebudete potrebovať. V
+drvivej väčšine úloh máte zadané obmedzenia, napríklad "na vstupe je číslo $n$,
+$1\leq n\leq 1000$". Vtedy, ak budete potrebovať pole veľkosti $n$, tak si
+môžete natvrdo vyrobiť pole veľkosti 1000 a netrápiť sa.
+
+Odporúčame však vyrábať troška väčšie polia, napríklad keď $n<10000$ tak pole
+by mohlo mať veľkosť 10047. Menej ako 1\% nárast nič nepokazí, a trocha pomôže,
+ak náhodou siahame o pár políčok ďalej, ako by sme čakali. 
+
+Pamäť počítača má prekvapivo obmedzenú veľkosť. Jeden int zaberá 4 bajty, takže
+pole \verb!int velkepole[1000000];! zaberá približne 1MB. Bežne na sútažiach
+máte pamäťový limit obmedzený na 64 MB, 256 MB, alebo 1024MB, tak na to treba
+myslieť.
+
+Navyše na bežných počítačoch je limitovaná veľkosť lokálnych premenných (tie sú
+vo vnútri \verb!main()! alebo iných funkcií, na 8MB, takže to tiež môže robiť
+problémy, keď si doma budete spúšťať programy s veľkými pamäťovými nárokmi (na
+našom testovači by tento limit nemal byť).
+
+\medskip
+
+Pole je v podstate zasa len premenná a z premenných vieme robiť polia, takže aj
+z polí vieme robiť polia. Pole polí (dvojrozmerné pole) vieme vyrobiť napríklad
+takto \verb!int A[1000][1000];! Takto vieme ísť aj ďalej, len treba zasa dávať
+pozor na pamäť \verb!int A[100][100][100][10][10];! zaberá cca 400MB.
+
+\kapitola{Zoznámte sa s testovačom}
+
+Teraz už by ste mali vedieť dosť na to, aby ste vyrišili tieto úlohy:
 
 
 %\cvicenie 
