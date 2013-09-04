@@ -30,6 +30,32 @@ Obsah:
 
 \medskip
 
+\kapitola{Komentáre}
+
+Často z dôvodu väčšej prehľadnosti alebo zrozumiteľnosti píšeme do kódov komentáre,  
+čiže text, ktorý nie je určený pre kompilátor a počítač, ale je určený pre ľudí,
+ktorí si kód pozerajú. 
+
+Z hľadiska funkčnosti programu, sa správa, ako keby tam ani nebol.
+My si pomocou nich budeme občas niečo vysvetlovať. 
+Jednoriadkové komentáre píšeme pomocou \verb!//!. Všetko, čo je za touto dvojicou
+znakov až do konca riadku, sa ignoruje.
+
+Viacriadkové komentáre uzatvárame medzi \verb!/*! a \verb!*/!.
+
+\lstlang{cpp}\begin{lstlisting}
+\\ toto je jednoriadkovy komentar
+int main(){
+    /*
+        viac riadkovy komentar moze vyzerat napriklad takto.
+        Do vnutra mozeme napisat vsetko okrem
+        hviezdicky a lomitka, ktore komentar ukoncuju
+    */
+    
+    int x = 0; // do x priradime 0
+}
+\end{lstlisting}
+
 \kapitola{Podmienky alebo rozhodnutia}
 
 Bez toho aby sa program vedel rozhodovať, by sme ďaleko nezašli. Vo väčších
@@ -78,7 +104,7 @@ if (x != 7){
 
 \medskip
 
-Čo všetko môže byť podmienka?  Podmienkou môže byť ľubovoľný výraz, ktorý má
+Čo všetko môže byť podmienka? Podmienkou môže byť ľubovoľný výraz, ktorý má
 hodnotu typu bool (v prípade, že nevracia, tak sa pretypuje).  Keď má výraz
 hodnotu true, považujeme ho za pravdivý, false je nepravdivý.
 
@@ -232,6 +258,44 @@ while(a<70) {
 }
 \end{lstlisting}
 
+\medskip
+
+Keď už teda ľahkovážne pcháme všelikam zátvorky {}, zíde sa nám vedieť jedna vec o premenných
+-- majú obmedzenú platnosť. Každá premenná existuje len v rámci ${}$ v ktorých bola vyrobená. 
+Potom proste zanikne.
+
+\lstlang{cpp}\begin{lstlisting}
+
+int a = 0; // toto je globalna premenna, ta existuje stale a vsade
+
+int main(){
+    int b = 0; // tato premenna existuje iba vnutri main()
+
+    if (true) {
+        int c = 1;
+    }
+    c = 7; // !! chyba !! c prestalo existovat na predoslom riadku
+    if (true) {
+        c = 7; // !! stale chyba !!
+    }
+    int c = 1;
+    if (true) {
+        c = 7; // OK
+        int b = 3; /*
+         Vyrobit novu premennu b vam sice kompilator dovoli
+         ale fakt to nerobte (nenazyvajte dve premenne
+         vo vnorenych blokoch rovnako). Niekedy sa to moze spravat
+         cudne.
+        */
+    }    
+
+    for(int i; i<a; ++i){
+        i+=1; // OK
+    }
+    i = 7; // !! zasa chyba !! premenna i existovala len v ramci for-cyklu
+}
+
+\end{lstlisting}
 
 \kapitola{Načítavanie vstupu}
 
