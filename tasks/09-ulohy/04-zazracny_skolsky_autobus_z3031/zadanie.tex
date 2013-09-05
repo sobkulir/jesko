@@ -1,0 +1,108 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Zázračný školský autobus}
+
+
+Možno poznáte rozprávku s názvom Zázračný školský autobus.
+Je to rozprávka o deťoch, ktoré poznávajú svet pomocou zázračného autobusu,
+ktorý vie lietať, plávať, zmeniť sa na raketu\dots\ Vie urobiť vlastne všetko,
+čo si len zmyslíte. Verte či nie, tento autobus naozaj existuje
+a svoju zázračnú neviditeľnú garáž má priamo v~Bratislave.
+Maru ho občas vidí zo svojej izby ako vlietava alebo vylieta zo svojej garáže.
+Keď má šťastie a má pri sebe fotoaparát, tak ho odfotí.
+To sa stáva len zriedka, lebo autobus väčšinou rýchlo zmizne.
+
+Teraz má Maru doma hŕbu fotiek zázračného autobusu. Rozhodla sa, že si urobí štatistiku,
+koľkokrát ho odfotila, keď vylietaval a koľkokrát, keď vlietaval do garáže.
+Tých fotiek je však strašne veľa a Maru ako vždy nemá čas. Preto vás žiada o pomoc.
+Pomôžte Maru rozhodnúť, či autobus na fotke vlietaval, alebo vylietaval z~garáže.
+Bude stačiť ak zistíte, či letel doprava alebo doľava.
+
+\nadpis{Úloha}
+
+\newcommand{\bs}{\symbol{`\\}}
+\newcommand{\us}{\symbol{`_}}
+
+Na vstupe bude obrázok autobusu zložený zo znakov
+\texttt{/}, \texttt{|}, \texttt{\bs}, \texttt{\us}, \texttt{-}, \texttt{O}, \texttt{o}, \texttt{.}  
+a \texttt{H}.
+Vašou úlohou je zistiť, či autobus na obrázku letí doprava alebo doľava.
+Môžete si byť istí, že letí vodorovne a je otočený bokom k vám.
+
+\nadpis{Formát vstupu}
+
+V prvom riadku vstupu budú dve celé čísla $r$ a $s$ $(1 \leq r,s \leq 1\,000)$
+udávajúce počet riadkov a písmen v~riadkoch, ktoré tvoria obrázok autobusu.
+Ďalej nasleduje $r$ riadkov. V každom riadku je presne $s$ znakov.
+Znaky, ktoré môžu byť v obrázku, znamenajú toto: \texttt{/}, \texttt{|}, \texttt{\bs},
+\texttt{\us}, \texttt{-}  sú hrany karosérie, \texttt{.} je plocha karosérie alebo pozadie,
+\texttt{O} je koleso, \texttt{o} je okno a \texttt{H} sú dvere.
+Žiaden iný znak sa tam nevyskytne.
+
+\nadpis{Formát výstupu}
+
+Vypíšte slovo \texttt{doprava}, ak autobus letí doprava, prípadne slovo \texttt{dolava}, ak letí doľava.
+
+\nadpis{Príklady}
+
+
+%...............______________.............
+%...........___/....___/......\............
+%.......___/......./.........oo\...........
+%....._/........__/....oo..ooooo\..........
+%..../....___---...\.ooooo..oooo.\.........
+%.../__---..oo..HHH.\.ooooo..oo...----__...
+%../.o..ooo.ooo..HHH.\.oo............|||\..
+%..\.oo.oooo.ooo..HHH.\..................|.
+%...\.oo..o........HHH.\..___.|||.....___|.
+%....\..............HHH.\/OOO\.....__/OO...
+%.....\..............HHH.\OOOO\___/..OO....
+%......\...________-------.OOOOOO..........
+%.......---.OOO.............OOOO...........
+%..........................................
+\vstup
+14 42
+...............______________.............
+...........___/....___/......\bs{}............
+.......___/......./.........oo\bs{}...........
+....._/........__/....oo..ooooo\bs{}..........
+..../....___---...\bs{}.ooooo..oooo.\bs{}.........
+.../__---..oo..HHH.\bs{}.ooooo..oo...----__...
+../.o..ooo.ooo..HHH.\bs{}.oo............|||\bs{}..
+..\bs{}.oo.oooo.ooo..HHH.\bs{}..................|.
+...\bs{}.oo..o........HHH.\bs{}..___.|||.....___|.
+....\bs{}..............HHH.\bs{}/OOO\bs{}.....__/OO...
+.....\bs{}..............HHH.\bs{}OOOO\bs{}___/..OO....
+......\bs{}...________-------.OOOOOO..........
+.......---.OOO.............OOOO...........
+..........................................
+\vystup
+doprava
+\komentar
+\includegraphics[width=230pt]{prikl1-autobus.jpg}
+\koniec
+%..............|..........
+%......._____|...|_____...
+%.._.../.oo.oo.oo.HH.oo\..
+%.| \_/..oo.oo.oo.HH.ooo\.
+%.| |_............HH....|.
+%.|_/.\_________________/
+%.........................
+\vstup
+7 25
+..............|..........
+......._____|...|_____...
+.._.../.oo.oo.oo.HH.oo\bs{}..
+.|.\bs{}_/..oo.oo.oo.HH.ooo\bs{}.
+.|.|_............HH....|.
+.|_/.\bs{}_________________/.
+.........................
+\vystup
+doprava
+\komentar
+Zázračný školský autobus sa vie premeniť napríklad aj na ponorku.
+\koniec
+
+\end{document}
