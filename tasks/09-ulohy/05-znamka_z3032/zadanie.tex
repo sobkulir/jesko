@@ -4,5 +4,52 @@
 
 \velkynadpis{Známka}
 
+Žaba na Vianoce dostal stroj času, a tak sa ho ešte cez prázdniny rozhodol vyskúšať. Keďže má vyššie ciele
+ako napríklad zabiť Hitlera, premiestnil sa do času pred štyrmi rokmi, keď ešte usilovne študoval na gymnáziu v slávnom
+Lučenci.
+
+Tam sa úspešne vlámal do budovy školy s jedinou myšlienkou v hlave: nájsť klasifikačný hárok a prepísať
+niekoľko známok v ňom tak, aby mu na polrok vychádzala z nemčiny "čistá dvojka" -- teda aby jeho priemer bol
+presne $2.0$. Tak totiž docieli, že vtedajší Žaba dostane bez ďalšieho skúšania dvojku. (No a to, aby sa vtedajší
+Žaba vyhol skúšaniu a pritom dostal známku, ktorá je dosť dobrá, no nie až podozrivo dobrá, je veľmi podstatné
+pre správny chod vesmíru.)
+
+\nadpis{Úloha}
+
+Na vstupe dostanete počet jednotiek, dvojok, trojok, štvoriek a pätiek v klasifikačnom hárku. Zistite,
+koľko najmenej z nich treba zmeniť (t.j. prepísať na ľubovoľnú známku), aby ich priemer bol presne $2$.
+
+\nadpis{Formát vstupu}
+
+V jedinom riadku vstupu je päť čísel:  $z_1,\ldots,z_5$, pričom $z_i$ je počet známok s hodnotou $i$, ktoré má Žaba
+v klasifikačnom hárku. Súčet počtov známok neprekročí $10^{10}$.
+
+\textbf{Pozor!} Klasické premenné, \verb!longint! v Pascale a \verb!int! v C++, majú obmedzenú
+veľkosť, čiže sa do nich zmestia čísla len od $-2^{31}$ do $2^{31}-1$ ($-2\,147\,483\,648,\dots,
+2\,147\,483\,647$) vrátane. Čísla na vstupe môžu presiahnuť túto veľkosť. Použite
+\verb!int64! resp. \verb!long long!.
+
+\nadpis{Formát výstupu}
+
+Vypíšte jeden riadok a v ňom jedno celé číslo: najmenší počet známok, po zmene ktorých bude Žabov priemer
+presne $2.0$.
+
+\nadpis{Príklady}% alebo Príklady, ak ich je viac
+
+\vstup
+1 2 1 0 2
+\vystup
+2
+\komentar
+Priemer je pred zmenou $3.0$. Na priemer $2.0$ stačí zmeniť napríklad obe päťky na dvojky.
+\koniec
+
+\vstup
+3 1 0 0 0
+\vystup
+1
+\komentar
+Priemer je pred zmenou $1.25$. Priemer $2.0$ sa dá dosiahnuť napríklad zmenou jednej jednotky na štvorku.
+\koniec
 
 \end{document}
