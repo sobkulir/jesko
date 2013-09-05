@@ -349,15 +349,13 @@ pamäti.}
 %pracovať s takým zápisom, na aký sme zvyknutý z desiatkovej sústavy. (Teda
 %číslo tristodvadsaťpäť píšeme 325 nie 523)}
 
-%gramaticka korekcia potialto
-
 \medskip
 Čísla sú teda v pamäti napísané v dvojkovej (binárnej) sústave. Tá je veľmi
 podobná našej desiatkovej (decimálnej), takže sa jej netreba báť.  Aby sme sa
-neplietli, tak teraz chvíľu budeme písať sústavu do dolného indexu, lebo napr
+neplietli, tak teraz chvíľu budeme písať sústavu do dolného indexu, lebo napr.
 $11_2 \neq 11_{10}$. (Alebo $3_{10} \neq 11_{10}$)
 
-V desiatkovej sústave keď napíšeme $325_{10}$ myslíme tým tri stovky, dve
+Keď v desiatkovej sústave napíšeme $325_{10}$ myslíme tým tri stovky, dve
 desiatky a päť jednotiek. V dvojkovej sústave napr. $1101_2$ je jedna osmička,
 jedna štvorka, žiadna dvojka a jedna jednotka. Dokopy $8+4+0+1 = 13$, teda
 $1101_2 = 13_{10}$. 
@@ -372,7 +370,7 @@ Opačný prevod sme už zvládli vyššie, napríklad ak nás zaujíma hodnota
 $101111_2$, stačí jednoducho sčítať $1\cdot 1 + 1\cdot 2 + 1\cdot 4 + 1\cdot 8
 + 0\cdot 16 + 1\cdot 32 = 47_{10}$.
 
-\cvicenie Preveďte z desiatkovej sústavy nasledovné čísla $31$, $200$,
+\cvicenie Preveďte z desiatkovej sústavy do dvojkovej nasledovné čísla $31$, $200$,
 $1024$.
 
 \cvicenie Preveďte z dvojkovej sústavy do desiatkovej čísla $10101$,
@@ -388,8 +386,8 @@ preveďte naspäť do dvojkovej a výsledok overte.
 \riesenie $10101_2 = 21_{10}$. $100000000_2 = 256$. $1100110011_2 =
 819_{10}$
 
-\riesenie V binárnej sústave sčítavme rovnako ako v desiatkovej, napíšeme si
-čísla pod seba, sčitave zľava doprava a pripočítavame prípadné zvyšky.
+\riesenie V binárnej sústave sčítavame rovnako ako v desiatkovej, napíšeme si
+čísla pod seba, sčitavame zľava doprava a pripočítavame prípadné zvyšky.
 \begin{verbatim}
     110110     =     54
 +  1111101     =  + 125
@@ -399,7 +397,7 @@ preveďte naspäť do dvojkovej a výsledok overte.
 
 \medskip
 
-Kladné čísla sú v pamäti reprezentované práve dvojkovej sústave. Keď je čílo
+Kladné čísla sú v pamäti reprezentované práve v dvojkovej sústave. Keď je číslo
 príliš veľké, jednoducho sa zahodia prvé bity -- ukážeme si to na príklade.
 Premenná typu \verb!unsigned char! má jeden bajt (8 bitov) a teda je schopná
 reprezentovať čísla od 0 po 255. Nie je žiadným prekvapením, že 5 bude
@@ -412,7 +410,7 @@ Preto pri premennej unsigned char $255+1 = 0$ alebo $100\cdot 100 = 16$.
 \medskip
 
 Ale ako je to s premennými ktoré podporujú aj záporné čísla?  Kladné čísla sa
-reprezentujú tak ako predtým, napríklad v v premennej typu \verb!char! $0 =
+reprezentujú tak ako predtým, napríklad v premennej typu \verb!char! $0 =
 00000000$ až $127 = 01111111$.
 
 Čo sa stane, keď od nuly odpočítame 1? $00000000 - 1 = ...11111111111111$
@@ -420,9 +418,9 @@ reprezentujú tak ako predtým, napríklad v v premennej typu \verb!char! $0 =
 Takže $-1 = 11111111$. Keď ďalej odpočítavame 1 dostávame $-2 = 11111110$, $-3
 = 11111101$ \dots $-128 = 10000000$. 
 
-Super je, že sa nám zachovali logické vlasnosti, napríklad že $-1 + 1 = 0$,
-$-50 + 40 = -10$, $-31 + 100 = 69$\dots bez~toho, aby sme museli pri práci s
-binárnym čislom rozlišovať, či je číslo záporné alebo kladné.  Jednoducho
+Super je, že sa nám zachovali logické vlastnosti, napríklad že $-1 + 1 = 0$,
+$-50 + 40 = -10$, $-31 + 100 = 69$\dots bez toho, aby sme museli pri práci s
+binárnym čislom rozlišovať, či je číslo záporné alebo kladné. Jednoducho
 sčítame čísla pod sebou a ak sa výsledok nezmestí, tak zahodíme prvé bity.
 
 Napr. $-1 + (-1) = 11111111 + 11111111 = 1011111110 \rightarrow 11111110 = -2$.
@@ -435,14 +433,14 @@ binárnej sústave a tých, ktorí jej nerozumejú."}
 
 \nadpis{Pretypovanie}
 
-Sčítavať, odčítavať, násobiť, priradzovať, porovnávať\dots sa dajú len premenné
-a čísla rovnakých typov.  (Všimnite si, že aj čísla (napríklad číslo 45) majú
+Sčítavať, odčítavať, násobiť, priraďovať, porovnávať\dots sa dajú len premenné
+a čísla rovnakých typov. (Všimnite si, že aj čísla (napríklad číslo 45) majú
 svoje typy.)
 
-Pokiaľ sú pri operácii typy rôzne, treba ich pretypovať a máme štastie, že v
+Pokiaľ sú pri operácii typy rôzne, treba ich pretypovať a naštastie v
 C++ sa mnohé pretypovanie robí automaticky. Napríklad medzi číslami.  
 \verb!int a = 47; char c = a;! nie je žiaden veľký problém.  (V tajnosti
-prebehne jedno pretypovanie, v príkaze \verb!c = a!, sa a vyhotnotí ako
+prebehne jedno pretypovanie, v príkaze \verb!c = a!, sa a vyhodnotí ako
 \verb!(int)47!, pretypuje sa na \verb!(char)47! a následne sa priradí i
 \verb!c = (char)47!.
 
@@ -460,7 +458,7 @@ pretypovaní sa môže číslo zmeniť.  \verb!(int)200! $= 00000000 00000000
 Bežné čísla, ktoré napíšete v programe majú typ \verb!int!.  Teda aj pri
 \verb!char a = 20;! nastáva pretypovanie z \verb!int! do \verb!char!.
 
-Keď niekde napíšete číslo $123\,456\,789\,123$ tak vám pravdepodobne kompilátor
+Keď niekde napíšete číslo $123\,456\,789\,123$, tak vám pravdepodobne kompilátor
 vypíše varovanie, lebo dané číslo je typu \verb!int!, ale nezmestí sa do jeho
 rozsahu. Treba písať \verb!123465789123LL! alebo \verb!123456789123ll!.
 
@@ -475,19 +473,19 @@ bude 400.
 Treba si dávať \textbf{pozor} na nasledovnú vec.
 
 \cvicenie Skopírujte, skompilujte a spustite nasledovný program.  (Pokiaľ
-používate windows, použite miesto \verb!%lld! \verb!%I64d!)
+používate windows, použite miesto \verb!\%lld! \verb!\%I64d!)
 \lstlang{cpp}\begin{lstlisting}
 #include<cstdio>
 int main(){
     ll a = 1000000*1000000;    
-    printf("d = %lld\n",d);
+    printf("d = \%lld\n",d);
 }
 \end{lstlisting}
-Čo vypísal? Prečo? Ako by ste ho opravili aby naozj vypísal
+Čo vypísal? Prečo? Ako by ste ho opravili, aby naozaj vypísal
 $1\,000\,000\,000\,000$?
 
 \riesenie Vynásobili sme dva \verb!int!y, keďže majú rovnaký typ, nič sa
-nepretypuje.  Keďže výsledok je príliš velký nastáva pretečenie a výsledkom
+nepretypuje.  Keďže výsledok je príliš veľký, nastáva pretečenie a výsledkom
 násobenia bude \verb!int!  $-727\,379\,968$. Následne sa vykoná priradenie
 \verb!a = -727379968!, ale správna hodnota už je nenávratne preč. Opraviť to
 môžeme tak, že zmeníme \verb!1000000! na \verb!1000000LL!. (Stačí zmeniť
@@ -521,8 +519,8 @@ je 0 hoci posledný bit v zápise 4 je 0.  Pre \verb!bool! platí, že
 \kapitola{Alternatívny výstup}
 
 V C++ sa dá na výstup vypisovať aj inak ako cez \verb!printf!. Pokiaľ
-includnene knižnicu iostream, môžeme vypisovať pomocou streamu
-\verb!std::cout!. Používa sa veľmi jednoucho hoci vo vnútri je schovanej veľa
+includneme knižnicu iostream, môžeme vypisovať pomocou streamu
+\verb!std::cout!. Používa sa veľmi jednoducho, hoci vo vnútri je schovanej veľa
 mágie.
 
 \begin{lstlisting}
@@ -534,12 +532,12 @@ int main(){
 }
 \end{lstlisting}
 
-Nevýhodou streamov je, že sú o máličko pomalšie príkazy z \verb!cstdio!.  Bežne
+Nevýhodou streamov je, že sú o máličko pomalšie ako príkazy z \verb!cstdio!. Bežne
 to nepostrehnete, ale pokiaľ by ste chceli načítať/vypísať niekoľkostotisíc
 prvkov, odporúčame použiť \verb!cstdio!.
 
-Jednou z výhod, je že sa nemusíte starať o typy a formátovacie značky
-\verb"%lld". Preto vám odporúčame používať streamy, ak programujete na windowse
+Jednou z výhod je, že sa nemusíte starať o typy a formátovacie značky
+\verb"\%lld". Preto vám odporúčame používať streamy, ak programujete na Windowse
 a vypisujete \verb!long long!y.
 
 Pokiaľ nechcete stále písať pred každým príkazom \verb!std::!, stačí pridať
