@@ -1,0 +1,76 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Zahrajme si!}
+
+V KSPárni je mnoho vecí a medzi nimi má svoje čestné miesto aj KSPácky synťák.
+Má už svoje roky a naraz zvláda zahrať len jeden tón. Jano sa rozhodol,
+že preň spíše zbierku skladieb, a zaumienil si, že tieto skladby sa budú
+hrať len jednou (pravou) rukou. Jedna z otázok, ktorú Jano pri písaní skladieb rieši,
+je určenie ich náročnosti.
+
+Aby Jano mohol dať svojej tvorivosti čo najväčší priestor, zišiel by sa mu na
+určenie náročnosti skladby nejaký program, ktorý by to robil za neho.
+
+\nadpis{Úloha}
+
+Synťák má $k$ klávesov očíslovaných 1 až $k$ zľava doprava.
+Hráčova pravá ruka je široká ako $\ell$ klávesov. Pokiaľ má teda hráč palec na $i$-tom klávese, dokáže stlačiť len klávesy
+na pozíciách $i$, $i+1$, \dots, $i+\ell-1$. Ak by chcel hráč zahrať iný kláves, musí pohnúť rukou.
+Na začiatku skladby je ruka vždy položená na klávesoch 1 až $\ell$.
+
+Počas hrania skladby je možné kedykoľvek pohnúť rukou do ľubovoľnej strany o ľubovoľný počet klávesov.
+Súčet vzdialeností, o ktoré sa ruka pohla počas hrania, nazvime \emph{náročnosť zahrania}.
+\emph{Náročnosť skladby} je potom najmenšia \emph{náročnosť zahrania} pre všetky možné spôsoby, akými sa dá skladba zahrať.
+
+%% este raz zhrnutie co maju robit
+Napíšte program, ktorý pre danú skladbu zistí jej náročnosť, teda najmenšiu vzdialenosť, o ktorú sa musí
+dokopy pohnúť ruka počas jej hrania.
+
+
+\nadpis{Formát vstupu}
+
+Na prvom riadku sú medzerami oddelené čísla $n$, $k$ a $\ell$, pričom $1\leq n\leq 500\,000$ a
+$1\leq \ell\leq k\leq 10^9$.
+
+Nasleduje $n$ riadkov s notami
+Janovej skladby v poradí, v akom ich treba zahrať. Nota je určená číslom klávesu,
+ktorý treba na KSPáckom synťáku stlačiť, čiže sú to celé čísla v rozsahu 1 až $k$.  
+
+\nadpis{Formát výstupu}
+
+Na výstupe bude jedno celé číslo -- celková vzdialenosť, ktorú musí ruka prejsť na zahranie
+skladby na vstupe. Uvedomte si, že výsledok sa nemusí vždy zmestiť do 32-bitovej premennej.
+
+\nadpis{Príklady}
+
+\vstup
+5 8 4
+1
+2
+3
+4
+5
+\vystup
+1
+\komentar
+Celá skladba sa nedá zahrať bez pohybu. Na jeden pohyb to však už ide --
+napríklad po prvom tóne posunieme ruku o jeden kláves doprava.
+\koniec
+
+\vstup
+3 5 1
+1
+5
+3
+\vystup
+6
+
+\komentar
+Po prvom tóne posunieme ručičku o 4 klávesy doprava, po druhom tóne o 2 klávesy
+späť.
+
+\koniec
+
+\end{document}
