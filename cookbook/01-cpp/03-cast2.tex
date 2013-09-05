@@ -1,0 +1,195 @@
+%Tu si môžete zaznačiť, že pracujete na danej veci. V prípade, že ste napísali
+%len časť a ďalej už nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by
+%však fajn, aby jedu vec robil jeden človek ak celok a zvyšný len kontrolovali
+%vypracuva: Jano
+\input ../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Pokračovanie C++}
+
+\textit{Ako správne používať tento študijný text: Milý čitateľ. Chystáš sa
+prečítať si kuchárku o základoch programovacieho jazyka C++. Najdôležitejšie
+pri učení nového programovacieho jazyka je poriadne si ho precvičiť. Preto
+počas čítania narazíš na niekoľko úloh, ktoré ti odporúčame vyriešiť a
+naprogramovať. Má to dopomôcť k tomu, aby si všetko lepšie zapamätal a dostal
+do krvi.}
+
+\textit{Tento text je písaný aj pre ľudí, ktorí nikdy program nevideli. Pokiaľ
+už máš nejaké základy z programovania, môžeš kludne preskakovať tie časti,
+ktoré ovládaš}
+
+Obsah:
+\begin{itemize}
+    \item komentáre
+    \item funkcie
+    \item znaky
+    \item reálne čísla
+    \item matematika
+    \item vlastné typy premenných
+    \item makrá
+\end{itemize}
+
+\medskip
+
+
+\kapitola{Funkcie}
+\textit{Ako neprogramovať jednu vec viac kráť}
+
+Doteraz, keď sme v programovaní chceli niečo zopakovať viac krát, tak
+sme použili cyklus. Niekedy však potrebujeme danú vec robiť na všeliakých rôznych miestach.
+Napríklad vypisovať čísla 1 až 10, v rôznych častiach programu.
+
+\lstlang{cpp}\begin{lstlisting}
+int main(){
+    // radi by sme napisali desat cisel na zaciatku programu
+    for(int i = 0; i<10; ++i)
+        printf("%d ", i+1);
+    printf("\n");
+
+    int n;
+    scanf("%d", &n);
+    if (n < 0) {
+        // potom raz v pripade, ze uzivatel zada zaporne cislo
+        for(int i = 0; i<10; ++i)
+            printf("%d ", i+1);
+        printf("\n");
+    }
+
+    for(int j = 0; j<n; ++j) {
+        // alebo n krat, ked uzivatel zada kladne n
+        for(int i = 0; i<10; ++i)
+            printf("%d ", i+1);
+        printf("\n");        
+    }
+}
+\end{lstlisting}
+
+Čo je na vyššie uvedenom programe zle?
+
+Veľakrát používa rovnaký kód. A to máme ešte štastie, že opakujeme len trikrát 
+a opakujúci kód je dlhý len tri riadky. Aj tak, keď si zmyslíme, že nechceme vypisovať 10 čísel
+ale 11. Treba to všade prepísať, fuj.
+
+Teraz si predstavme, že robíme niečo podstatne zložitejšie a 
+na 200 miestach by sme mali rovnaký 10 riadkový blok. Keby sme tam chceli zmeniť, tak sa zbláznime.
+A určite pri nejakom prepise spravíme chybu. A nemáme šancu tú chybu nájsť.
+
+Proste copy-pastovanie kódu je zlo, a chceme sa tomu vyhnúť, 
+lebo tvorí neprehľadné a chybné programy. Ale ako sa mu vyhneme?
+
+\medskip
+
+Celkom dobrý spôsob je zabaliť kus kódu do funckie -- nejako si ten kus kódu nazvať.
+Funkciu môžeme chápať ako samostatný program. Proste postupnosť príkazov, ktorá niečo robí.
+Konieckoncov všetky naše doterajšie programy boli len funkcia \verb!int main()!.
+
+Funkciu vyrobíme, tým, že ju zadeklarujeme v tvare \verb!<typ> <meno>(<argumenty>){<príkazy>}!
+Spúšťame (voláme, po anglicky call) funkcie \verb!<meno>(<hodnoty-argumentov>)!
+
+Podivný program zhora vieme prepísať napríklad takto:
+
+\lstlang{cpp}\begin{lstlisting}
+// nasledujuca funkcia je typu void, vola sa vypis_desat_cisel a nema ziadne argumenty
+
+void vypis_desat_cisel(){
+    for(int i = 0; i<10; ++i)
+        printf("%d ", i+1);
+    printf("\n"); 
+}
+
+// s funkciou main uz sme sa stretli
+
+int main(){
+    // zavolame funkciu
+    vypis_desat_cisel()
+    
+    int n;
+    scanf("%d", &n);
+    if (n < 0)
+        vypis_desat_cisel()
+
+    for(int j = 0; j<n; ++j) 
+        vypis_desat_cisel()
+}
+\end{lstlisting}
+
+Dostali sme oveľa prehľadnejší kód, a ak chceme napríklad zmeniť počet vypisovaných čísel,
+stačí to spraviť na jednom mieste.
+
+\medskip 
+
+Čo je to void a vôbec ten typ?
+
+Funkcia môže vraciať nejakú hodnotu, a \textit{ten} typ je typ hodnoty akú funkcia vracia.
+void znamená, že funkcia nevracia nič. Funkcia ktorá niečo vracia, môže byť 
+napríklad funkcia \verb!osem()! z nasledujúceho príkladu. Isto ste všimnete, že
+na vrátenie hodnoty slúži príkaz \verb!return!. Príkaz \verb!return! zároveň skončí
+vykonávanie funkcie, preto všetko, čo je za nimi sa už nevykoná. 
+
+\lstlang{cpp}\begin{lstlisting}
+int osem(){
+    return 8;
+}
+
+int devat(){
+    return 9;
+    printf("tento prikaz sa nevykona\n");
+}
+
+void nic_nerob(){
+    return; // pri void funkcii nemame co vratit, tak piseme return; bez hodnoty
+    printf("ani tento\n");
+}
+
+int main(){
+    // navratove hotnoty mozeme vyuzivat vo vyrazoch:
+
+    printf("funkcia osem vracia %d\n", osem());
+    int a = devat();
+    printf("a je %d\n", a);
+
+    // V jazyku C sa musel na konci main() pisat aj tento riadok:
+    return 0;
+    // V C++ pokial nic nevratime, vrati sa nejaka defaultna hodnota, napr. 0,
+    // takze ten riadok pisat nemusime
+}   
+\end{lstlisting}
+
+\medskip
+    
+Zatiaľ tie funkcie nie sú veľmi úžasné, lebo robia stále to isté (asi ako programy bez vstupu).
+A stále nevieme, čo sú to tie argumenty.
+
+Tak si vysvetlíme dve veci zároveň. Argumenty sú akoby vstup pre vunkciu.
+Už sme sa s tým stretli, keď sme napríklad funkcii printf() do zátvoriek zadávali, čo má vypísať.
+Analogicky namiesto funkcie \verb!vypis_desat_cisel()! môžeme použiť všeobecnejšiu funkciu
+
+\lstlang{cpp}\begin{lstlisting}
+void vypis_cisla(int pocet){
+    for(int i = 0; i<pocet; ++i)
+        printf("%d ", i+1);
+    printf("\n"); 
+}
+
+int main(){
+    vypis_cisla(10);
+
+    // takto vieme pouzivat funkciu na rozne pocty vypisovanych cisel
+    vypis_cisla(17);
+    int n;
+    scanf("%d", n);
+    vypis_cisla(n);
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+\end{document}
+
+

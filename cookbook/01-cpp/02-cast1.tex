@@ -1,0 +1,450 @@
+%Tu si môžete zaznačiť, že pracujete na danej veci. V prípade, že ste napísali
+%len časť a ďalej už nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by
+%však fajn, aby jedu vec robil jeden človek ak celok a zvyšný len kontrolovali
+%vypracuva: Jano
+\input ../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Pokračovanie C++}
+
+\textit{Ako správne používať tento študijný text: Milý čitateľ. Chystáš sa
+prečítať si kuchárku o základoch programovacieho jazyka C++. Najdôležitejšie
+pri učení nového programovacieho jazyka je poriadne si ho precvičiť. Preto
+počas čítania narazíš na niekoľko úloh, ktoré ti odporúčame vyriešiť a
+naprogramovať.  Má to dopomôcť k tomu, aby si všetko lepšie zapamätal a dostal
+do krvi.}
+
+\textit{Tento text je písaný aj pre ľudí, ktorí nikdy program nevideli. Pokiaľ
+už máš nejaké základy z programovania, môžeš kludne preskakovať tie časti,
+ktoré ovládaš}
+
+Obsah:
+\begin{itemize}
+    \item podmienky
+    \item cykly 
+    \item načítavanie vstupu
+    \item polia
+    \item testovač
+\end{itemize}
+
+\medskip
+
+\kapitola{Komentáre}
+
+Často z dôvodu väčšej prehľadnosti alebo zrozumiteľnosti píšeme do kódov komentáre,  
+čiže text, ktorý nie je určený pre kompilátor a počítač, ale je určený pre ľudí,
+ktorí si kód pozerajú. 
+
+Z hľadiska funkčnosti programu, sa správa, ako keby tam ani nebol.
+My si pomocou nich budeme občas niečo vysvetlovať. 
+Jednoriadkové komentáre píšeme pomocou \verb!//!. Všetko, čo je za touto dvojicou
+znakov až do konca riadku, sa ignoruje.
+
+Viacriadkové komentáre uzatvárame medzi \verb!/*! a \verb!*/!.
+
+\lstlang{cpp}\begin{lstlisting}
+\\ toto je jednoriadkovy komentar
+int main(){
+    /*
+        viac riadkovy komentar moze vyzerat napriklad takto.
+        Do vnutra mozeme napisat vsetko okrem
+        hviezdicky a lomitka, ktore komentar ukoncuju
+    */
+    
+    int x = 0; // do x priradime 0
+}
+\end{lstlisting}
+
+\kapitola{Podmienky alebo rozhodnutia}
+
+Bez toho aby sa program vedel rozhodovať, by sme ďaleko nezašli. Vo väčších
+aplikáciách je dôležité interagovať s užívateľom -- \verb!ak! užívateľ stlačí
+toto tlačidlo, spravím toto, \verb!inak!  nerobím nič a podobne. 
+
+V našich programoch môžeme chcieť, aby sa program správal odlišne, keď je v
+nejakej premennej párne číslo a odlišne, keď je tam nepárne.
+
+Na rozhodovanie v jazyku C++ slúži príkaz \verb!if! (po slovensky 'ak') so
+syntaxou \verb!if (<podmienka>) <príkaz-t>! alebo \verb!if (<podmienka>) <príkaz-t> else <príkaz-f>!
+('else' = 'inak'). Jeho správanie je veľmi intuitívne, pokiaľ je
+\verb!<podmienka>! pravdivá, vykoná sa \verb!<príkaz-t>!.  Pokiaľ je podmienka
+nepravdivá, tak vykoná to čo je za \verb!else!, alebo sa nevykoná nič, ak tam
+slovíčko \verb!else! nie je.
+
+Príklady použitia:
+\lstlang{cpp}\begin{lstlisting}
+int x = 1;
+
+if (x == 7) 
+    printf("x je sedem\n");
+else
+    printf("x nie je sedem\n");
+
+if (x > 0)
+    printf("x je kladne cislo\n");
+
+if (x > 0)
+    if (x < 2)
+        printf("x je jedna\n");
+\end{lstlisting}
+
+Pokiaľ chceme vykonať viac príkazov, stačí miesto \verb!<príkaz>! napísať \verb!{ <príkaz-1>; <príkaz-2>; ...  <príkaz-n>; }!
+\lstlang{cpp}\begin{lstlisting}
+int x = 1;
+if (x != 7){
+    printf("x nie je sedem\n");
+    x = 7;
+    printf("preto som zmenil x na sedem\n");
+} else {
+    printf("x nie je sedem\n");
+    printf("takze nemusim nic robit\n");
+}
+\end{lstlisting}
+
+\medskip
+
+Čo všetko môže byť podmienka? Podmienkou môže byť ľubovoľný výraz, ktorý má
+hodnotu typu bool (v prípade, že nevracia, tak sa pretypuje).  Keď má výraz
+hodnotu true, považujeme ho za pravdivý, false je nepravdivý.
+
+Poznáme mnoho operátorov, ktoré vracajú true/false. 
+
+Napríklad \verb'==', \verb'!=', \verb'<=', \verb'>=', \verb'<' a \verb'>' patria medzi binárne
+operátory (t.j. dávame ich medzi dva výrazy, napr. \verb!(a + 7) <= (b * 2)!).
+Správanie je opäť intuitívne, \verb'a < b' je true vtedy, keď \verb!a! je menej ako
+\verb!b!.  \verb'!=' znamená nerovná sa, čiže \verb'a != 0' vráti \verb!true!, keď
+\verb!a! nie je 0. Pozor, nesmieme si zameniť \verb'a == b' a \verb'a = b'.  Prvé z
+toho je výraz, ktorý vráti \verb!true!, v prípade, že \verb!a! má rovnakú hodnotu
+ako \verb!b!. Druhá vec je normálne priradenie, takže do \verb!a! vloží hodnotu \verb!b!-čka,
+a následne vráti novú hodnotu \verb!a!. Preto \verb!if (a = 7)! vráti \verb!true!
+bez ohľadu na pôvodnú hodnotu \verb!a! a navyše zmení hodnotu \verb!a! na sedem.  Na toto
+si treba dávať fakt veľký pozor. 
+
+Potom poznáme aj logické operátory, \verb!&&!(a zároveň), \verb!||!(alebo) a
+\verb'!'(nie je pravda, že). Ktoré sa správajú opäť intuitívne.  
+\verb!(a == 7) && (b < 3)! je \verb!true! práve vtedy, keď \verb!a! má hodnotu 7 a
+\verb!b! je menej ako 3. \verb!(a == 3) || (b < 7)! je pravda, keď platí aspoň jedna
+z podmienok \verb!(a == 3)!, \verb!(b < 7)!. \verb'!' robí z 
+\verb!false! \verb!true! a z \verb!true! \verb!false!, takže napr. \verb'!(a < 3)' je
+ekvivalentné s \verb'a >= 3'.  Zaujímavé je, že \verb!||! a \verb!&&! sa
+správajú šetrne, napríklad ak máme \verb!a || b! a vieme, že \verb!a! je true, tak
+nemusíme vyhodnocovať \verb!b! ('pravda alebo hocičo' je stále pravda). A v C++ sa
+to teda ani vyhodnocovať nebude.  Preto zatiaľ čo \verb!(true && a = 5)! a
+\verb!(false || a = 5)!  zmenia hodnotu \verb!a! na 5, \verb!(false && a = 5)! a
+\verb!(true || a = 5)! ju nechajú na pokoji (príkaz a = 5 sa nevykoná).
+
+Tiež si netreba mýliť \verb!&&! s \verb!&!(bitwise and) a \verb!||! s
+\verb!|!(bitwise or). Dvojité verzie pracujú s bool-mi, teda najprv sa pokúsia
+pretypovať operandy na booly a potom vyrobia nový bool. \verb!(10 || 6)! je true.
+Jednotité verzie rozbijú číslo na bity, s každým bitom spravia operáciu zvlášť
+(0 = false, 1 = true) a výsledné bity poskladajú naspať do čísla. 
+\verb!(10 | 6) = (1010_2 | 110_2) = 1110_2 = 14!.  Bitová verzia \verb'!' je \verb'~'.
+
+Treba si dávať pozor na prioritu (precedenciu) operátorov (tak ako násobenie má
+prednosť pri sčítaní, aj ostatné operátory majú medzi sebou nejakú hierarchiu).
+A aby toho nebolo málo, niektoré veci sa vyhodnocujú sprava doľava a niektoré
+zľava doprava. Kompletný prehľad nájdete napríklad na
+\url{http://en.cppreference.com/w/cpp/language/operator\_precedenceu} Dôležité
+je, že ak si nie ste istí, tak zátvorkujte, a inak sa to správa relatívne
+rozumne.
+
+\cvicenie Akú pravdivostnú hodnotu má výraz 
+\verb'( (!7 == false) && (0 | (a = 5)) <= 4 )'?
+
+\riesenie \verb'( (!7 == false) && (0 | (a = 5)) <= 4 )' $\rightarrow$
+\verb'( ( false == false) && (0 | 5) <= 4 )' $\rightarrow$
+\verb'( ( true ) && (5) <= 4 )' $\rightarrow$ \verb'( true && false )' $\rightarrow$ \verb'false'
+
+\kapitola{Cykly alebo opakovanie}
+
+Ako by ste 10 krát vypísali "ahoj"? Spravili by ste to takto?
+\lstlang{cpp}\begin{lstlisting}
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+printf("ahoj\n");
+\end{lstlisting}
+A čo keby ste chceli vypísať "ahoj" tisíckrát, alebo milionkrát?
+
+Nebojte sa, aj na toto probramátori mysleli, a vymysleli cykly.  Najjednoduchší
+cyklus je \verb!while! cyklus. Jeho syntax je 
+\verb!while(<podmienka>) <príkaz>! prípadne namiesto \verb!<príkazu>! 
+môžeme napísať viacero príkazov zabalených v \verb!{}!.
+
+Tento cyklus funguje veľmi jednoducho - dokým je podmienka splnená, opakuje
+príkaz. Vysvetlíme si to na príklade.
+\lstlang{cpp}\begin{lstlisting}
+int i = 0;
+while(i < 10){
+    printf("ahoj\n");
+    i = i+1;
+}
+\end{lstlisting}
+Najprv nastavíme \verb!i! na 1. Následne budeme vykonávať vnútro \verb!{}! pokiaľ 
+\verb!i < 10!. Keďže vo vnútri \verb!{}! zväčšíme \verb!i! vždy o 1, celý cyklus sa zopakuje
+10 krát, až kým sa nestane, že \verb!i == 10! a teda \verb'!(i < 10)' a teda cyklus
+skončí.  Preto aj tento program vypíše "ahoj" 10 krát. Prerobiť ho, aby vypísal
+"ahoj" tisíckrát by nám nerobilo žiaden problém však?
+
+Ešte poznamenajme, že miesto \verb!i = i+1! vieme písať \verb!i += 1! alebo
+dokonca \verb!i++!, či \verb!++i!.
+
+\medskip
+
+Vyššie uvedená konštrukcia -- nainicializujeme premennú, pokým premenná nie je
+nejaká, robíme niečo je natoľko častá, že jej programátori vymysleli nový
+názov. \verb!for(<príkaz1>; <podmienka>; <príkaz2>) <príkaz-telo-cyklu>! najprv
+vykoná \verb!<príkaz1>! následne kým platí podmienka, vykonáva
+\verb!<príkaz-telo-cyklu>! a \verb!<príkaz2>!.
+
+Vyššie uvedený program teda vieme prepísať na
+\lstlang{cpp}\begin{lstlisting}
+for(int i = 0; i<10; ++i)
+    printf("ahoj\n");
+\end{lstlisting}
+
+Samozrejme premennú i, môžeme využiť aj v tele cyklu, nasledovný program vypíše
+čísla 0 až 7, každé na zvlášť riadku.
+\lstlang{cpp}\begin{lstlisting}
+for(int i = 0; i<8; ++i)
+    printf("%d\n", i);
+\end{lstlisting}
+
+\cvicenie Napíšte program, ktorý vypíše prvých 50 nepárnych čísel (1, 3,
+5, \dots) Zvyšok po delení dvoma (paritu) vieme zistiť napríklad operátorom \verb!%!.
+\verb!a % b! vráti zvyšok \verb!a! po delení \verb!b!. Napríklad \verb!47 % 10 == 7!, \verb!10 % 2 == 0!.
+Pozor treba dávať na záporné čísla, \verb!-13 % 5 == -3!.
+
+\riesenie Predvedieme si tri spôsoby. 
+\lstlang{cpp}\begin{lstlisting}
+for(int i = 0; i<100; ++i)
+    if (i%2 == 1)
+        printf("%d\n", i);
+
+for(int i = 0; i<50; ++i)
+    printf("%d\n", 2*i + 1);
+
+for(int i = 1; i<100; i+=2)
+    printf("%d\n", i);
+\end{lstlisting}
+
+Pri cykloch si treba dávať pozor, keďže sa môžu zacykliť a potom váš program
+bude bežať donekonečna (kým ho nezabijete).  Príklady nekonečných cyklov sú
+napr. \verb!while(true);! \verb!for(int i = 10; i>0; ++i);! ale aj
+\verb!while(a<7);! (lebo premenná a sa v cykle nemení).
+
+\medskip
+
+Cykly a podmienky sa samozrejme dajú do seba ľubovoľne veľa krát vkladať, napríklad ako v nasledujúcom
+nezmyselnom programe.
+
+\lstlang{cpp}\begin{lstlisting}
+int a = 7;
+while(a<70) {
+    if (a == 2) {
+        a = 31;
+    } else {
+        for (int i = 0; i<a; ++i) {
+            while(i<a) ++i;
+        }
+    }
+}
+\end{lstlisting}
+
+\medskip
+
+Keď už teda ľahkovážne pcháme všelikam zátvorky {}, zíde sa nám vedieť jedna vec o premenných
+-- majú obmedzenú platnosť. Každá premenná existuje len v rámci ${}$ v ktorých bola vyrobená. 
+Potom proste zanikne.
+
+\lstlang{cpp}\begin{lstlisting}
+
+int a = 0; // toto je globalna premenna, ta existuje stale a vsade
+
+int main(){
+    int b = 0; // tato premenna existuje iba vnutri main()
+
+    if (true) {
+        int c = 1;
+    }
+    c = 7; // !! chyba !! c prestalo existovat na predoslom riadku
+    if (true) {
+        c = 7; // !! stale chyba !!
+    }
+    int c = 1;
+    if (true) {
+        c = 7; // OK
+        int b = 3; /*
+         Vyrobit novu premennu b vam sice kompilator dovoli
+         ale fakt to nerobte (nenazyvajte dve premenne
+         vo vnorenych blokoch rovnako). Niekedy sa to moze spravat
+         cudne.
+        */
+    }    
+
+    for(int i; i<a; ++i){
+        i+=1; // OK
+    }
+    i = 7; // !! zasa chyba !! premenna i existovala len v ramci for-cyklu
+}
+
+\end{lstlisting}
+
+\kapitola{Načítavanie vstupu}
+
+Doteraz všetky programy boli relatívne nanič, pretože pri každom spustení
+vypisovali to isté.  Namiesto programov typu "vypíš prvých 10 nepárnych čísel"
+by sme radi mali "načítaj číslo $n$ a vypíš prvých $n$ nepárnych čísel".
+
+Takže potrebujeme vedieť načítavať vstup.
+
+Na načítavanie sa dá použiť funkcia \verb!scanf()!, ktorá sa syntaxou veľmi
+podobá \verb!printf()!. Prvý parameter je opäť formátovací reťazec, ale ďalšie
+už nie sú výrazy, ale smerníky na premenné. Teda ak chceme načítať jedno číslo
+do premennej a, napíšeme \verb!scanf("%d", &a);!
+
+Prečo tam je \verb!&a! miesto \verb!a!? Dôvod je veľmi jednoduchý, \verb!a! je
+výraz, ktorého hodnota je hodnota \verb!a!, napríklad číslo 7.  A zavolaním
+\verb!scanf("%d", 7);! ťažko budeme vedieť, kam máme uložiť načítanú hodnotu.
+(Vieme ukladať len do premenných, nie do hodnnôt). Keď však napíšeme \verb!&a!,
+tak výsledkom výrazu nebude hodnota \verb!a!, ale miesto, kde je \verb!a!
+uložené v pamäti počítača.  Funkcia teda načíta číslo a uloží ho na to miesto v
+pamäti, kde bola pred tým hodnota \verb!a!.
+
+Vyskúšajte si skompilovať a spustiť tento program:
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){
+    int a, b;
+    scanf("%d %d", &a, &b);
+    printf("%d\n", a+b);
+}
+\end{lstlisting}
+
+Po spustení, program čaká, kým mu napíšete dve čísla napr. \verb"105 21". Po
+zadaní čísel musíte stlačiť enter, inak sa k programu nedostanú. 
+
+Pokiaľ sa vám \verb!scanf! nepáči, dajú sa použiť streamy.
+\lstlang{cpp}\begin{lstlisting}
+#include<iostream>
+using namespace std;
+int main(){
+    int a, b;
+    cin >> a >> b;
+    cout << a + b << endl;
+}
+\end{lstlisting}
+
+Časom sa naučíme načítavať aj iné veci ako čísla, aby sme to však zvládali, tak
+musíme tie iné veci spoznať.
+
+\kapitola{Polia}
+
+Sú situácie, kde si jednoducho neporadíme s obmedzeným množstvom premenných.
+(Vedeli by ste načítať $n$ čísel zo vstupu a následne ich vypísať v opačnom
+poradí?) To sa s obmedzeným množstvom číselných premenných nedá, pretože ak je
+na vstupe viac čísel, ako máme premenných, tak si ich nedokážeme zapamätať na
+neskorší výpis. 
+
+Aj keby sme mali napríklad na vstupe 20 čísel, tak je veľmi nepraktické vyrobiť
+si premenné \verb!a0! až \verb!a19! do ktorých si vstup načítame.
+
+Preto existujú polia. Pole je akokeby skupina premenných rovnakého typu
+naukladaných za sebou.  V súvislosti s nimi používame hrnaté závtorky
+\verb![]!. Pole intov dĺžky 20 vyrobíme napríklad takto \verb!int pole[20];!
+Tento príkaz nám vyrobí 20 \verb!int!ových premenných ku ktorým vieme pristupovať
+\verb!pole[0]!, \verb!pole[1]!, \verb!pole[2]!, \dots \verb!pole[19]!.
+
+Pozrite si príklad použitia v nasledovnom programe:
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){
+    int a[47];
+    a[0] = 0;
+    a[1] = 1;
+    for(int i = 2; i<30; ++i){
+        a[i] = a[i-1] + a[i-2];
+    }
+    for(int i = 0; i<30; ++i)
+        printf("%d ", a[i]);
+    printf("\n");
+}
+\end{lstlisting}
+
+Na čo si treba dávať pozor?
+
+Keď pristupujeme mimo poľa, napríklad \verb!int b[40];! \verb!b[53] = 7;!
+\verb!b[-1] = 3;! \verb!int a = b[40];! \dots dejú sa zlé veci. Niekedy program
+hneď spadne a vyhlási chybu, inokedy pokračuje ďalej a robí čudné veci,
+premenným sa záhadne zmení hodnota vykonávajú sa \verb!if!y, ktoré by nemali
+atď.  Preto si vždy dávajte veľký pozor, keď používate polia, aby ste
+nepristupovali mimo nich.  Pozor treba dávať aj na to, že \verb!int b[40];!
+tvoria premenné \verb!b[0]! až \verb!b[39]!  (teda ich je 40, ale premenná
+\verb!b[40]! tam nie je).
+
+Pri deklarácii poľa musí byť v \verb![]! konštanta.  \textbf{Nesmiete} spraviť
+\verb!int a = 7; int b[a];! hoci vám to kompilátor pravdepodobne dovolí, môžu
+sa diať zlé a nepredvídateľné veci.  Pokiaľ chcete pole so závislou veľkosťou,
+použite \verb!int *b = new b[a];! ale reálne toto nebudete potrebovať. V
+drvivej väčšine úloh máte zadané obmedzenia, napríklad "na vstupe je číslo $n$,
+$1\leq n\leq 1000$". Vtedy, ak budete potrebovať pole veľkosti $n$, tak si
+môžete natvrdo vyrobiť pole veľkosti 1000 a netrápiť sa.
+
+Odporúčame však vyrábať troška väčšie polia, napríklad keď $n<10000$ tak pole
+by mohlo mať veľkosť 10047. Menej ako 1\% nárast nič nepokazí, a trocha pomôže,
+ak náhodou siahame o pár políčok ďalej, ako by sme čakali. 
+
+Pamäť počítača má prekvapivo obmedzenú veľkosť. Jeden int zaberá 4 bajty, takže
+pole \verb!int velkepole[1000000];! zaberá približne 1MB. Bežne na sútažiach
+máte pamäťový limit obmedzený na 64 MB, 256 MB, alebo 1024MB, tak na to treba
+myslieť.
+
+Navyše na bežných počítačoch je limitovaná veľkosť lokálnych premenných (tie sú
+vo vnútri \verb!main()! alebo iných funkcií, na 8MB, takže to tiež môže robiť
+problémy, keď si doma budete spúšťať programy s veľkými pamäťovými nárokmi (na
+našom testovači by tento limit nemal byť).
+
+\medskip
+
+Pole je v podstate zasa len premenná a z premenných vieme robiť polia, takže aj
+z polí vieme robiť polia. Pole polí (dvojrozmerné pole) vieme vyrobiť napríklad
+takto \verb!int A[1000][1000];! Takto vieme ísť aj ďalej, len treba zasa dávať
+pozor na pamäť \verb!int A[100][100][100][10][10];! zaberá cca 400MB.
+
+\kapitola{Zoznámte sa s testovačom}
+
+Teraz už by ste mali vedieť dosť na to, aby ste vyrišili tieto úlohy:
+
+
+%\cvicenie 
+
+%\riesenie 
+
+%\lstlang{cpp}\begin{lstlisting}
+%\end{lstlisting}
+
+
+
+
+%\cvicenie 
+
+%\riesenie 
+
+%\lstlang{cpp}\begin{lstlisting}
+%#include<cstdio>
+%int main(){
+%    ll a = 1000000*1000000;    
+%    printf("d = %lld\n",d);
+%}
+%\end{lstlisting}
+
+\end{document}
+
+

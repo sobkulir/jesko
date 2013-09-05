@@ -1,0 +1,560 @@
+%Tu si môžete zaznačiť, že pracujete na danej veci. V prípade, že ste napísali
+%len časť a ďalej už nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by
+%však fajn, aby jedu vec robil jeden človek ak celok a zvyšný len kontrolovali
+%vypracuva: Jano
+\input ../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Úvod do C++}
+
+\textit{Ako správne používať tento študijný text: Milý čitateľ. Chystáš sa
+prečítať si kuchárku o základoch programovacieho jazyka C++. Najdôležitejšie
+pri učení nového programovacieho jazyka je poriadne si ho precvičiť. Preto
+počas čítania narazíš na niekoľko úloh, ktoré ti odporúčame vyriešiť a
+naprogramovať.  Má to dopomôcť k tomu, aby si všetko lepšie zapamätal a dostal
+do krvi.}
+
+\textit{Tento text je písaný aj pre ľudí, ktorí nikdy program nevideli. Pokiaľ
+už máš nejaké základy z programovania, môžeš kludne preskakovať tie časti,
+ktoré ovládaš}
+
+Obsah:
+\begin{itemize}
+    \item čo je to program?
+    \item kompilácia - linux
+    \item kompilácia - windows %TODO
+    \item náš prvý program
+    \item premenné
+\end{itemize}
+
+\medskip
+
+\kapitola{Program} \textit{O čom tu celý čas rozprávame? Čo je to program? Čo
+je to algoritmus? Čo je to programovací jazyk?  Ak si myslíš že tieto základy
+už vieš, môžeš túto sekciu preskočiť, inak si ju radšej prečítaj}
+
+\textbf{Algoritmus} je potupnosť niekoľkých dobre definovaných inštrukcií --
+úkonov, ktorá slúži na vykonanie nejakej úlohy.  Napríklad algoritmus na
+uvarenie čaju môže byť nasledovný:
+
+\texttt{Zoberieme pohár, vrecúško čaju a rýchlovarnú kanvicu. Naplníme kanvicu
+vodou, zapojíme do zásuvky a zapneme. Kým voda nevrie, čakáme.  Do pohára
+vložime vrecúško čaju a zalejeme vriacou vodou. Kanvicu vypneme a vypojíme zo
+zásuvky. Počkáme 8 minút a potom vyberieme vrecúško.}
+
+Super, vieme uvariť čaj (teda ak máme kanvicu atď..) ale v tejto chvíli nás
+zaujímajú počítače. A počítač nevie naplniť kanvicu vodou, ani nevie čo je
+kanvica alebo čo je voda. Predošlý algoritmus je ozajstným \emph{algoritmom}
+len vtedy, ak vieme čo znamenajú jednotlivé úkony (napríklad čo znamená zobrať
+pohár). 
+
+\medskip
+
+Keď budeme vytvárať algoritmy pre počítače, tak budeme používať celkom iné
+inštrukcie -- také ktorým počítač rozumie a vie ich aj vykonávať.
+
+Medzi inštrukcie, ktoré počítač vie vykonávať patria napríklad jednoduché
+aritmetické operácie (sčítanie, delenie\dots), čítanie z pamäte ukladanie do
+pamäte ale aj mnoho ďalších. 
+
+Avšak aby im dobre rozumel, musia byť zapísané ako hromada núl a jednotiek. A
+tým zasa veľmi nerozumieme my ľudia.  Preto existujú \textbf{Programovacie
+jazyky}. Tie sú (väčšinou) dobre čitateľné ľudmi a navyše si ich vie program
+prepísať do svojich jednotiek a núl.
+
+My sa budeme zaoberať programovacím jazykom C++, ktorý patrí medzi vyššie
+programovacie jazyky -- to znamená, že sa lepšie čítajú ľuďmi a zvládajú toho
+oveľa viac nižšie.
+
+\medskip
+
+\textbf{Program} je skupina inštrukcií v nejakom programovacom jazyku.  A tieto
+programy obvykle niečo robia, inak by nám boli nanič. 
+
+V našom prípade budeme pracovať s programami, ktoré načítajú nejaký vstup a
+vypíšu nejaký výstup.  Napríklad sčítací program môže načítať dve čísla a
+vypísať ich súčet.
+
+Napríklad toto:
+\lstlang{cpp}\begin{lstlisting}
+int main(){
+}
+\end{lstlisting}
+je program v jazyku C++, ktorý nerobí vôbec nič. Ale dá sa skompilovať. 
+
+\kapitola{Kompilácia - Linux}
+
+\textbf{Kompilácia} je prepis programu napísaného v programovacom jazyku do
+strojového kódu (jednotek a núl), ktorý dokáže počítač spustiť.
+
+Teraz sa ideme naučiť skompilovať program na Linuxe, vyskúšajte si to:
+\begin{itemize}
+    \item Uistíme sa, že máme nainštalovaný kompilátor (napríklad napíšeme \verb!g++ -v! malo by nám to 
+    výpísať okrem balastu aj verziu kompilátora)
+    \item Napíšeme program a uložíme ho súboru \verb!hocico.cpp!
+    \item Otvoríme konzolu a vôjdeme do priečinka, kde sa nachádza súbor \verb!hocico.cpp!
+    \item Skompilujeme jendným z nasledovných príkazov:
+    \begin{itemize}
+        \item \verb!g++ hocico.cpp! skompiluje program a výsledok uloží do \verb!a.out!
+        \item \verb!g++ hocico.cpp -o hocico! skompiluje program a výsledok uloží do \verb!hocico!
+        \item \verb!make hocico! za bežných okolností zavolá \verb!g++ hocico.cpp -o hocico!, ale dá
+        sa nastaviť aj iné správanie
+    \end{itemize}
+    \item Ak kompilátor vypísal chybu, skúsime ju opraviť a skompilujeme
+    program znova (nezabudnúť uložiť súbor) 
+    \item Spustíme skompilovaný program
+    buď \verb!./a.out! alebo \verb!./hocico!, podľa toho kam sa nám uložil.
+    
+\end{itemize}
+
+\kapitola{Kompilácia - Windows}
+
+\textbf{Kompilácia} je prepis programu napísaného v programovacom jazyku do
+strojového kódu (jednotek a núl), ktorý dokáže počítač spustiť.
+
+\kapitola{Náš prvý program}
+
+Napíšme si náš prvý program a vysvetlime si, čo robí:
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+
+int main(){
+    printf("jesko\n");
+}
+\end{lstlisting}
+
+V každom programe C++ sa musí nachádzať funkcia int main(). Táto funkcia sa
+totiž začne vykonávať pri štarte programu, teda začnú sa vykonávať príkazy v
+jej tele.  Jej telo je obalené kučeravými zátvorkami \verb'{' a \verb'}'. A
+príkaz vo vnútri je len jeden, konkrétne funkcia \verb!printf("jesko\n");! (Za
+každým príkazom musí nasledovať bodkočiarka.)
+
+\medskip
+
+Pokiaľ nevieme, čo sú to funkcie, môžeme si ich predstavovať ako samostatné
+programy. Napríklad pokiaľ funkcia \verb!kup_mlieko()! by bola program na
+kúpenie mlieka, tak algoritmus \verb!kup_mlieko();! \verb!kup_mlieko();!
+\verb!kup_mlieko();! by kúpil tri mlieka.
+
+Funkcie môžu mať aj argumenty/parametre, ktoré sa píšu do vnútra zátvoriek a
+ovplyvnňujú dianie funkcií. Môžete hádať, čo by urobil nasledovný algoritmus:
+\verb!kup(mlieko);! \verb!kup(chlieb, tesco);! \verb!kup(rozky, kaufland);!.
+
+Viac o funkciách sa naučíme neskôr, naučíme sa ich aj vytvárať.
+
+\medskip
+
+Vráťme sa k funkcii s názvom \verb!printf!. Túto funkciu normálne kompilátor
+nepozná.  Preto je na začiatku programu riadok \verb!#include<cstdio>!.
+
+\verb!cstdio! (c++ standard input output) je názov knižnice, v ktorej je
+definovaných mnoho užitočných funkcií súvisiacich s načítavanim vstupu a
+vypisovaným výstupu. Keď na začiatok programu dáme správny riadok tak sa z
+knižnice kompilátor naučí všetky pojmy.
+
+Funkcia \verb!printf!, ktorá je v knižnici \verb!cstdio!, slúži na vypisovanie
+výstupu.  A pokiaľ jej do závtorky vopcháme nejaký reťazec znakov v
+úvodzovkách, tak ich vypíše na obrazovku.  V našom príklade má reťazec 6 znakov
+\verb!'j'!, \verb!'e'!, \verb!'s'!, \verb!'k'!, \verb!'o'! a \verb!'\n'!.
+Prvých 5 sú obyčajné písmená, posledný je znak konca riadku. (Niektoré znaky
+(napríklad koniec riadku, alebo \verb!"!) nemôžeme do reťazca napísať priamo,
+takže ich píšeme pomocou znaku \verb!'\'!. Viac nájdete napríklad na
+\url{http://en.cppreference.com/w/cpp/language/escape})
+
+\medskip
+
+\cvicenie skompilujte si vyššie uvedený program. A spustite ho. Čo sa stalo?
+Čo sa stane, keď z programu vynecháte znak \verb!'\'!? Prečo?  Ako by ste
+vypísali dva riadky so slovom \verb!jesko!?
+
+\cvicenie čo všetko môžeme s programu vynechať, aby stále robil to isté?
+ 
+\cvicenie skúste na obrazovku vypísať reťazec \verb!"jesko"! aj s
+úvodzovkami.
+
+\riesenie Program vypíše reťazec \verb"jesko". Keď vynecháme znak \verb!'\'!
+program vypíše \verb"jeskon" a riadok neukončí.  Dva krát vypísať reťazec
+\verb"jesko" môžeme dvoma spôsobmi: buď \verb!printf("jesko\njesko\n");! alebo
+\verb!printf("jesko\n"); printf("jesko\n");!.
+
+\riesenie Niektoré prebytočné medzery a prázdny riadok. Z nasledovného
+programu už nie je možné nič vynechať bez straty funkčnosti.
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){printf("jesko\n");}
+\end{lstlisting}
+
+\riesenie Použijeme príkaz \verb!printf("\"jesko\"\n");!
+
+\kapitola{Premenné}
+
+Bez toho aby sme si mohli údaje zapamätávať sa programovať nedá. Na zapamätanie
+nejakých hodnôt nám slúžia premenné. \textbf{Premennú} si môžeme predstaviť ako
+krabičku, do ktorej vieme všeličo strčiť. Krabičky majú svoje mená a aj svoj
+typ. 
+
+\emph{Meno} krabičky/premennej slúži na to, aby sme s nimi vedeli pracovať.
+Napríklad "ulož číslo do tamtej premennej" počítač nepochopí, on by rád počul
+"ulož číslo do premennej s menom 'krabicka'". 
+
+\emph{Typ} premennej zasa určuje, čo do nej môžeme vkladať. Do premennej typu
+\verb!int! (odvodené od anglického slova integer) môžeme ukladať celé číslo, do
+premennej typu \verb!string! (od slova reťazec) zasa môžeme vkladať reťazce
+znakov (na \verb!string!y potrebujeme knižnicu). Neskôr sa naučíme používať
+oveľa viac typov premenných, dokonca vyrábať vlastné typy.
+
+\medskip
+
+Ako premenné používať? Na to aby sme mohli s premennou niečo robiť, musíme si
+ju vytvoriť (deklarovať). To sa robí príkazom \verb!<typ-premennej> <meno-premennej>;!
+napríklad \verb!int cislo;! 
+
+Do premenných môžeme vkladať priradením, teda pomocou \verb'='. Syntax je
+\verb!<meno-premennej> = <výraz>!, napríklad \verb!a = 4!. O výrazoch si
+povieme viac neskôr, dôležité zatiaľ je, že výraz musí mať nejakú hodnotu.
+Napríklad výraz $4$ má hodnotu $4$. Výraz $a$ má hodnotu toho, čo je vnútri
+premennej/krabičky s menom $a$.  Výraz $4 + 7$ má hodnotu $11$. Pokiaľ v $a$ je
+číslo $5$, tak výraz $a + 5$ má hodnotu $10$.
+
+Výraz musí mať hodnotu preto, lebo práve táto hodnota sa uloží do premennej:
+Napríklad, keď napíšeme $a = 3 + 8;$ tak do a sa priradí číslo $11$.
+
+\cvicenie Skúste určiť, čo robí nasledovný program. Aké hodnoty budu na
+konci v premenných $a$, $b$ ,$c$?
+\lstlang{cpp}\begin{lstlisting}
+int main(){
+    int a;
+    a = 4;
+    a = 7;
+
+    int b, c;
+    b = a;
+    c = a + b;
+    a = a + 4;
+}
+\end{lstlisting}
+
+\riesenie
+Najskôr sme vyrobili premennú $a$. Potom sme do nej priradili hodnotu $4$.
+Následne sme do nej priradili hodnotu $7$ (stará hodnota $4$ sa zahodila), teda
+premenná bude obsahovať iba číslo $7$. Potom sme vyrobili dve nové premenné $b$
+a $c$ (správne, premenných rovnakého typu vieme vyrábať aj viac naraz, stačí
+ich mená oddeliť čiarkou).  Do premennej $b$ sa priradila hodnota výrazu $a$,
+teda $7$. Do $c$ sa priradí hodnota výrazu $a + b$, čo je hodnotou výrazu $7 +
+7$ teda $14$. Nakoniec sa do $a$ priradí $a + 4$, čiže $7+4$, čiže $11$. V
+$a,b,c$ budú na konci programu postupne hodnoty $11,7,14$.
+
+\medskip
+
+Aby sme vedeli lepšie pozorovať, čo sa v programe deje, naučíme sa vypisovať
+premenné na obrazovku. Bude na to slúžiť príkaz \verb!printf()!, ale teraz bude
+použitý zložitejšie. Funkcii \verb!printf()! totiž môžeme do zátvoriek napísať
+viac argumentov ako jeden.  Prvý argument totiž nemusí byť obyčajný reťazec,
+ale môže byť špecíálny formátovací reťazec. Od obyčajného sa lýši tým, že
+obsahuje podivné značky ako \verb!%d! \verb!%lf! \verb!%4d! a mnohé ďalšie.
+Tieto značky sú pri spracovaní funkciou nahradené hodnotami, ktoré určíme v
+ďalších argumentoch tejto funkcie.
+
+Vyskúšajte si skompilovať a spustiť nasledovný program.
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){
+    printf("%d + %d = %d\n",4,7,4+7);
+}
+\end{lstlisting}
+Mal by vypísať reťazec \verb!4 + 7 = 11!. Totiž funkcii \verb!printf! sme dali
+4 argumenty (argumenty oddelujeme čiarkou) reťazec \verb!"%d + %d = %d\n"! a
+tri výrazy $4$, $7$ a $4+7$ s hodnotami $4$, $7$ a $11$.  Funkcia najprv
+zoberie prvý argument, ktorý musí byť reťazec, nájde tam všetky výskyty
+\verb!%<nieco>! a nahradí ich hodnotami ďalších argumentov.  \verb!%d! znamená,
+že argument bude celé číslo, ktoré chceme vypísať v desiatkovej sústave. O
+iných značkách si povieme viac neskôr, slúžia buď na vypisovanie iných typov
+objektov (reálne čísla, znaky, reťazce\dots) alebo rôzny spôsob ich vypísania
+(počet desatinných miest, sústava\dots).
+
+Keďže premenné sú tiež výrazy, tak môžeme vypisovať ich hodnoty takto:
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){
+    int a;
+    a = 17;
+    printf("premenna a ma hodnotu %d\n",a);
+}
+\end{lstlisting}
+Alebo bez zbytočných blábolov:
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){
+    int a = 7;
+    printf("%d\n",a);
+}
+\end{lstlisting}
+Všimnite si riadok \verb!int a = 7;! ide o skrátený zápis dvoch príkazov
+\verb!int a; a = 7!. Dá sa to použiť aj pri deklarácií viacerých premenných
+teda \verb!int a = 1, b = 2, c = 3;! je skrátený zápis pre \verb!int a = 1;!
+\verb!int b = 2;! \verb!int c = 3;!
+
+\cvicenie Skúste na rôznych miestach programu z cvičenia 1 vypísať hodnoty
+premenných. Všeliako upravujte program a pozorujte, čo sa deje.
+\fakeriesenie
+
+\nadpis{Typy číselných premenných}
+
+K číselným premenným treba poznamenať ešte niekoľko dôležitých vecí.  Každá
+číselná premenná a aj každé číslo má obmedzenú veľkosť.
+
+Napríklad premenná typu \verb!int! môže mať v sebe uložené len celé číslo od
+-2147483648 po 2147483647. Je to preto, že \verb!int! je v pamäti zapísaný ako
+32 jednotiek a núl. Teda si vieme zapamätať len $2^{32}$ rôznych hodnôt.  V
+prípade premennej typu \verb!int! sú to hodnoty od $-2^{31}$ po $2^{31}-1$
+(záporných čísel je presne polovica, kladných čísel je o 1 menej, kvôli číslu
+0).
+
+\cvicenie Vyskúšajte si spustiť príkaz \verb!printf("%d\n", 2147483647 + 1);!.
+\fakeriesenie
+
+\medskip
+
+Existujú premenné aj s menším rozsahom, napríklad \verb!short int! má rozsah
+$-32768..32767$ alebo $-2^{15}..2^{15}-1$.  \verb!char! má rozsah $-128..127$
+resp. $-2^7..2^7-1$. Premenná typu \verb!bool! má len dve hodnoty 
+\verb!false! resp. 0 (nepravda) alebo \verb!true! resp. 1 (pravda).
+
+Väčší rozsah majú zasa premenné \verb!long long!, od $-2^{63}..2^{63}$. Pri ich
+vypisovaní však treba dávať pozor, namiesto \verb!"%d"! treba písať
+\verb!"%lld"! na linuxe alebo \verb!"%I64d"! na windowse.
+
+Existujú aj typy premenných, ktoré neukladajú záporné čísla. Napríklad
+\verb!unsigned int! má rozsah $0..2^{32}-1$.  Pri ich používaní treba byť
+obozretný lebo sa vám môže stať, že mínus jedna je viac ako nula.  (Totiž mínus
+v bezznamienkovej premennej môže byť 4294967295.)
+
+\nadpis{Binárna sústava a reprezentácia dát v pamäti.}
+
+Každá hodnota je v pamäti počítača reprezentovaná ako postupnosť núl a
+jednotiek -- bitov. Osem bitov je jeden bajt. Napríklad \verb!int! má veľkosť 4
+bajty, čiže 32 bitov. \verb!Char! má zase len jeden bajt -- 8 bitov. Keď máme v
+premennej typu \verb!char! uložené číslo 47, tak v pamäti počítača to vyzerá
+ako 00101111. Rovnaké číslo v premennej typu \verb!int! vyzerá 00000000
+00000000 00000000 00101111. 
+
+\textit{Poznámka, niektoré počítače alebo systémy majú iné poradie bitov v
+pamäti.}
+%\textit{Poznámka: niektoré počítače alebo systémy majú opačné poradie, teda 47
+%môže vyzerať aj 00101111 00000000 00000000 00000000 ale aj 111101000 00000000
+%00000000 00000000 alebo 00000000 00000000 00000000 00101111. My budeme
+%pracovať s takým zápisom, na aký sme zvyknutý z desiatkovej sústavy. (Teda
+%číslo tristodvadsaťpäť píšeme 325 nie 523)}
+
+\medskip
+Čísla sú teda v pamäti napísané v dvojkovej (binárnej) sústave. Tá je veľmi
+podobná našej desiatkovej (decimálnej), takže sa jej netreba báť.  Aby sme sa
+neplietli, tak teraz chvíľu budeme písať sústavu do dolného indexu, lebo napr
+$11_2 \neq 11_{10}$. (Alebo $3_{10} \neq 11_{10}$)
+
+V desiatkovej sústave keď napíšeme $325_{10}$ myslíme tým tri stovky, dve
+desiatky a päť jednotiek. V dvojkovej sústave napr. $1101_2$ je jedna osmička,
+jedna štvorka, žiadna dvojka a jedna jednotka. Dokopy $8+4+0+1 = 13$, teda
+$1101_2 = 13_{10}$. 
+
+Matematicky zapísané, $325_{10} = 3\cdot 100 + 2\cdot 10 + 5\cdot 1$. Ak chceme
+napísať $325_{10}$ v dvojkovej sústave, musíme použiť namiesto mocnín desiatky
+($1$, $10$, $100$, $1000$, \dots) mocniny dvojky ($1$, $2$, $4$, $8$, $16$,
+\dots). Teda $325 = 1\cdot 256 + 0\cdot 128 + 1\cdot 64 + 0\cdot 32 + 0\cdot 16
++ 0\cdot 8 + 1\cdot 4 + 0\cdot 2 + 1\cdot 1$.  Preto $325_{10} = 101000101_2$.
+
+Opačný prevod sme už zvládli vyššie, napríklad ak nás zaujíma hodnota
+$101111_2$, stačí jednoducho sčítať $1\cdot 1 + 1\cdot 2 + 1\cdot 4 + 1\cdot 8
++ 0\cdot 16 + 1\cdot 32 = 47_{10}$.
+
+\cvicenie Preveďte z desiatkovej sústavy nasledovné čísla $31$, $200$,
+$1024$.
+
+\cvicenie Preveďte z dvojkovej sústavy do desiatkovej čísla $10101$,
+$100000000$, $1100110011$.
+
+\cvicenie Sčítajte v binárnej sústave čísla $110110$ a $1111101$. Následne
+ich preveďte do desiatkovej sústavy a sčítajte v desiatkovej sústave. Výsledok
+preveďte naspäť do dvojkovej a výsledok overte.
+
+\riesenie $31_{10} = 11111_2$. $200_{10} = 11001000$. $1024_{10} =
+10000000000$, lebo $1024 = 2^{10}$.
+
+\riesenie $10101_2 = 21_{10}$. $100000000_2 = 256$. $1100110011_2 =
+819_{10}$
+
+\riesenie V binárnej sústave sčítavme rovnako ako v desiatkovej, napíšeme si
+čísla pod seba, sčitave zľava doprava a pripočítavame prípadné zvyšky.
+\begin{verbatim}
+    110110     =     54
++  1111101     =  + 125
+   -------          ---
+  10110011     =    179
+\end{verbatim}
+
+\medskip
+
+Kladné čísla sú v pamäti reprezentované práve dvojkovej sústave. Keď je čílo
+príliš veľké, jednoducho sa zahodia prvé bity -- ukážeme si to na príklade.
+Premenná typu \verb!unsigned char! má jeden bajt (8 bitov) a teda je schopná
+reprezentovať čísla od 0 po 255. Nie je žiadným prekvapením, že 5 bude
+zapamätané ako $00000101$, či $255$ ako $11111111$. Čo sa stane, keď ku $255$
+pripočítame 1? Dostaneme $11111111 + 1 = 100000000$.  Keďže si môžeme zapamätať
+len 8 bitov, musíme prvú jednotku zahodiť. Dostaneme $00000000$, čo je 0.
+
+Preto pri premennej unsigned char $255+1 = 0$ alebo $100\cdot 100 = 16$.
+
+\medskip
+
+Ale ako je to s premennými ktoré podporujú aj záporné čísla?  Kladné čísla sa
+reprezentujú tak ako predtým, napríklad v v premennej typu \verb!char! $0 =
+00000000$ až $127 = 01111111$.
+
+Čo sa stane, keď od nuly odpočítame 1? $00000000 - 1 = ...11111111111111$
+(nekonečné čislo) ale nás zaujíma len posledných 8 bitov, čo je $11111111$.
+Takže $-1 = 11111111$. Keď ďalej odpočítavame 1 dostávame $-2 = 11111110$, $-3
+= 11111101$ \dots $-128 = 10000000$. 
+
+Super je, že sa nám zachovali logické vlasnosti, napríklad že $-1 + 1 = 0$,
+$-50 + 40 = -10$, $-31 + 100 = 69$\dots bez~toho, aby sme museli pri práci s
+binárnym čislom rozlišovať, či je číslo záporné alebo kladné.  Jednoducho
+sčítame čísla pod sebou a ak sa výsledok nezmestí, tak zahodíme prvé bity.
+
+Napr. $-1 + (-1) = 11111111 + 11111111 = 1011111110 \rightarrow 11111110 = -2$.
+
+Tento spôsob reprezentovania záporných čísel sa nazýva aj dvojkový doplnkový
+kód.
+
+\textit{Vtip: "Ľudí môžeme rozdeliť do 10 skupín -- tých, ktorí rozumejú
+binárnej sústave a tých, ktorí jej nerozumejú."}
+
+\nadpis{Pretypovanie}
+
+Sčítavať, odčítavať, násobiť, priradzovať, porovnávať\dots sa dajú len premenné
+a čísla rovnakých typov.  (Všimnite si, že aj čísla (napríklad číslo 45) majú
+svoje typy.)
+
+Pokiaľ sú pri operácii typy rôzne, treba ich pretypovať a máme štastie, že v
+C++ sa mnohé pretypovanie robí automaticky. Napríklad medzi číslami.  
+\verb!int a = 47; char c = a;! nie je žiaden veľký problém.  (V tajnosti
+prebehne jedno pretypovanie, v príkaze \verb!c = a!, sa a vyhotnotí ako
+\verb!(int)47!, pretypuje sa na \verb!(char)47! a následne sa priradí i
+\verb!c = (char)47!.
+
+Pokiaľ pretypujeme z menších premenných do väčších, číslo sa doplní nulami
+zľava.  \verb!(char)19! $= 00010011 \rightarrow 00000000 00000000 00000000
+00010011 =$ \verb!(int)19!
+
+Z väščích do menších, sa zasa zahadzujú prvé bity -- \textbf{pozor} pri tomto
+pretypovaní sa môže číslo zmeniť.  \verb!(int)200! $= 00000000 00000000
+00000000 11001000 \rightarrow 11001000 =$ \verb!(char)(-56)!  Tento jav sa volá
+\textbf{pretečenie}.
+
+\medskip
+
+Bežné čísla, ktoré napíšete v programe majú typ \verb!int!.  Teda aj pri
+\verb!char a = 20;! nastáva pretypovanie z \verb!int! do \verb!char!.
+
+Keď niekde napíšete číslo $123\,456\,789\,123$ tak vám pravdepodobne kompilátor
+vypíše varovanie, lebo dané číslo je typu \verb!int!, ale nezmestí sa do jeho
+rozsahu. Treba písať \verb!123465789123LL! alebo \verb!123456789123ll!.
+
+\medskip
+
+Pri operáciach ako sčítanie, násobenie\dots na rôznych typoch sa najprv obe
+čísla pretypujú na všeobecnejší typ, až potom sa spočítajú.
+
+Napríklad ak \verb!char a = 20;! a \verb!int b = 20;! tak výsledkom \verb!a * b!
+bude 400.
+
+Treba si dávať \textbf{pozor} na nasledovnú vec.
+
+\cvicenie Skopírujte, skompilujte a spustite nasledovný program.  (Pokiaľ
+používate windows, použite miesto \verb!%lld! \verb!%I64d!)
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){
+    ll a = 1000000*1000000;    
+    printf("d = %lld\n",d);
+}
+\end{lstlisting}
+Čo vypísal? Prečo? Ako by ste ho opravili aby naozj vypísal
+$1\,000\,000\,000\,000$?
+
+\riesenie Vynásobili sme dva \verb!int!y, keďže majú rovnaký typ, nič sa
+nepretypuje.  Keďže výsledok je príliš velký nastáva pretečenie a výsledkom
+násobenia bude \verb!int!  $-727\,379\,968$. Následne sa vykoná priradenie
+\verb!a = -727379968!, ale správna hodnota už je nenávratne preč. Opraviť to
+môžeme tak, že zmeníme \verb!1000000! na \verb!1000000LL!. (Stačí zmeniť
+jedno.)
+
+\medskip
+
+Pretypovanie bežne funguje automaticky, ale vieme ho spôsobovať aj ručne.
+Syntax je \verb!(<typ>)<hodnota>! alebo \verb!<typ>(hodnota)! alebo použijeme
+obe dvojice zátvoriek.
+
+\cvicenie Aké budu hodnoty v $a$, $b$ po nasledovných priradeniach? 
+\begin{lstlisting}
+int a = 1234, b;
+b = (char)a;
+b = char(a);
+b = char(a)*a;
+\end{lstlisting}
+
+\riesenie Hodnota $a$ bude vždy 1234, pretypovanie nemení premenné. 
+$b$ bude mať hodnoty -46, -46 a -56764 (teda $-46\cdot 1234$).
+
+\medskip
+
+\textbf{Poznámka}, \verb!bool! nie je \textit{číselný} typ. Teda \verb!bool(int(4))! nie
+je 0 hoci posledný bit v zápise 4 je 0.  Pre \verb!bool! platí, že
+\verb!bool(0)! je \verb!false! (resp. 0), všetky ostatné čísla sa zmenia na
+\verb!true! (resp. 1).
+
+
+\kapitola{Alternatívny výstup}
+
+V C++ sa dá na výstup vypisovať aj inak ako cez \verb!printf!. Pokiaľ
+includnene knižnicu iostream, môžeme vypisovať pomocou streamu
+\verb!std::cout!. Používa sa veľmi jednoucho hoci vo vnútri je schovanej veľa
+mágie.
+
+\begin{lstlisting}
+#include<iostream>
+int main(){
+    std::cout << "Ahoj svet\n";
+    int a = 4;
+    std::cout << "a = " << a << endl;
+}
+\end{lstlisting}
+
+Nevýhodou streamov je, že sú o máličko pomalšie príkazy z \verb!cstdio!.  Bežne
+to nepostrehnete, ale pokiaľ by ste chceli načítať/vypísať niekoľkostotisíc
+prvkov, odporúčame použiť \verb!cstdio!.
+
+Jednou z výhod, je že sa nemusíte starať o typy a formátovacie značky
+\verb"%lld". Preto vám odporúčame používať streamy, ak programujete na windowse
+a vypisujete \verb!long long!y.
+
+Pokiaľ nechcete stále písať pred každým príkazom \verb!std::!, stačí pridať
+riadok \verb!using namespace std;!
+
+\begin{lstlisting}
+#include<iostream>
+using namespace std;
+int main(){
+    cout << "Ahoj svet\n";
+    int a = 4;
+    cout << "a = " << a << endl;
+}
+\end{lstlisting}
+
+\cvicenie Vezmite nejaký program, kde ste viackrát použili \verb!printf! a
+prepíšte ho na streamy.
+\fakeriesenie
+
+\end{document}
+
+
