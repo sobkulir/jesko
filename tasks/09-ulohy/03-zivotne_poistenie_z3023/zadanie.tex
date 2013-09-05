@@ -1,0 +1,66 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Zbedačený les}
+
+čera sa bol zajac poprechádzať po lesíku. Len tak si hopkal, keď sa zrazu spoza
+brezy vyvalil nákladiak. Zajac sa rozhodol ho nasledovať. Dobehol ho až vtedy, keď už nákladiak
+vykladal kopu sladkostí doprostred davu čakajúcich zvieratiek.
+Tie sa na sladkosti vrhli tak rýchlo, ako im to len papuľky a bruchá dovolili.
+Obaly šušťali, jazyky mľaskali, na papuľkách sa rozmazávala čokoláda\dots\ no, vyzeralo to
+tam dosť negustiózne.
+
+Už dlhé roky to v našich lesoch takto vyzerá. Odkedy sa zvieratká naučili objednávať si donášku
+potravy z fastfoodov a obchodných reťazcov, len žerú a priberajú.
+
+\nadpis{Úloha}
+
+Kráľom lesa je najstaršie zo všetkých zvieratiek. Chceli by ste zistiť, ktoré to je.
+Nepoznáte ale vek jednotlivých zvieratiek.
+(Môžete len predpokladať, že všetci obyvatelia lesa majú navzájom rôzny vek, a teda je kráľ
+jednoznačne určený.)
+
+Našťastie viete, ako zvieratká tučnejú:
+Čím je zvieratko staršie, tým je tučnejšie.
+Všetky zvieratká rovnakého druhu pritom tučnejú rovnako rýchlo. Ak teda stretneme napríklad
+dva zajace, ten tučnejší z nich je zároveň aj starší. Neviete však vôbec porovnávať zvieratká rôznych
+druhov -- napríklad aj chudo vyzerajúci ježko môže byť starší ako tučnučká zebra, ktorá sa práve
+skotúľala dole kopcom a premýšľa, ako sa dostať späť.
+
+Na vstupe dostanete o každom zvieratku dva údaje: akého je druhu a aký má obvod pása (teda číslo, udávajúce, ako tučné je).
+Zistite, koľko rôznych zvieratiek môže byť na základe týchto údajov kráľom lesa.
+
+
+
+\nadpis{Formát vstupu}
+
+V prvom riadku vstupu bude celé číslo $n$ ($1\leq n\leq 10^6$), udávajúce počet zvieratiek.
+Aby sa vám ľahšie spracúvalo údaje o zvieratkách, jednotlivé druhy sme očíslovali prirodzenými
+číslami z rozsahu od 1 po $n$.
+
+Nasleduje pre každé zvieratko jeden riadok obsahujúci dve medzerou oddelené celé čísla:
+najskôr jeho druh $d_i$ ($1\leq d_i\leq n$), potom jeho obvod pása $t_i$ ($1\leq t_i\leq 10^9$).
+Môžete predpokladať, že žiadne dve zvieratká rovnakého druhu nemajú rovnaký obvod pása.
+
+\nadpis{Formát výstupu}
+
+Vypíšte jeden riadok a v ňom počet kandidátov na najstaršie zvieratko.
+
+\nadpis{Príklady}
+
+\vstup
+5
+3 8
+2 1000
+3 47
+2 42
+3 123
+\vystup
+2
+\komentar
+Nevieme, či je staršie zvieratko druhu $2$ s obvodom pása $1000$ alebo zvieratko druhu $3$ s obvodom
+pása $123$. Žiadne zo zvyšných zvieratiek kráľom lesa byť nemôže.
+\koniec
+
+\end{document}
