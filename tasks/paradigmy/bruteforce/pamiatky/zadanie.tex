@@ -1,29 +1,31 @@
 \input ../../../../include/include.tex
 
+%gram. korekcia Maja
+
 \begin{document}
 
 \velkynadpis{Prehliadka pamiatok}
 
 Ježko Pichliač ide na dovolenku do exotickej krajiny -- Aburdistanu. V Aburdistane je $n$ svetovo
-preslávených pamiatok a ježko by ich chcel postupne navštíviť všetky. O každej pamiatke vie, koľko
-radosti z výletu mu dané pamiatka pridá keď ju navštívi. Toto číslo môže byť aj záporné.
+preslávených pamiatok a Ježko by ich chcel postupne navštíviť všetky. O každej pamiatke vie, koľko
+radosti z výletu mu daná pamiatka pridá, keď ju navštívi. Toto číslo môže byť aj záporné.
 
-Ježko si chce teraz naplánovať svoj výlet. Nezáleží mu v akom poradí navštívi pamiatky, chce však
+Ježko si chce teraz naplánovať svoj výlet. Nezáleží mu, v akom poradí navštívi pamiatky, chce však
 každú navštíviť práve raz a chce, aby v žiadnom momente neklesla jeho radosť z výletu pod $0$. Na
 začiatku má samozrejme radosť $0$. Pomôžte mu zistiť, koľkými rôznymi spôsobmi si vie naplánovať
 svoj výlet.
 
 \nadpis{Úloha}
 
-Na vstupe dostanete počet pamiatok $n$ a tiež $n$ čísiel $r_i$ -- množstvo radosti, ktoré nám pridá
+Na vstupe dostanete počet pamiatok $n$ a tiež $n$ čísel $r_i$ -- množstvo radosti, ktoré nám pridá
 návšteva pamiatky $i$. Zistite počet rôznych spôsobov návštevy všetkých pamiatok tak, aby v žiadnom
-momente nebola ježkova radosť záporná.
+momente nebola Ježkova radosť záporná.
 
 \nadpis{Vstup}
 
 Na prvom riadku je číslo $n$ ($1 \leq n \leq 9$) -- počet pamiatok v Aburdistane.
 
-Na druhom riadku je $n$ celých čísiel $r_i$ ($-1000 \leq r_i \leq 1000$) -- množstvo radosti
+Na druhom riadku je $n$ celých čísel $r_i$ ($-1000 \leq r_i \leq 1000$) -- množstvo radosti
 získanej pri návšteve $i$-tej pamiatky.
 
 \nadpis{Výstup}
@@ -40,7 +42,7 @@ Vypíšte jedno celé číslo -- počet rôznych možností.
 \komentar
 Ježko nemôže začať návštevou druhej pamiatky, lebo jeho radosť by hneď klesla pod $0$. Ak začne
 prvou pamiatkou, ako ďalšia musí nasledovať tretia, takže máme jednu možnosť $(1, 3, 2)$. Ak začne
-treťou, obe zvyšné možnosti sú priateľné, teda $(3, 1, 2)$ a $(3, 2, 1)$. Dokopy máme $3$ rôzne
+treťou, obe zvyšné možnosti sú prijateľné, teda $(3, 1, 2)$ a $(3, 2, 1)$. Dokopy máme $3$ rôzne
 výlety.
 \koniec
 
