@@ -183,43 +183,43 @@ prvky po poradí do príslušného výsledného poľa. Ako nám však toto pomô
 $A$. No vieme, že výsledok bude vyzerať nasledovne: najskôr pôjdu zoradené prvky menšie ako $p$,
 potom prvky rovné $p$ a na záver zoradené prvky väčšie ako $p$. To znamená, že sme si našu úlohu
 rozdelili opäť na dve menšie časti, na ktoré sa potrebujeme rekurzívne zavolať. Vidíme, že rozdeliť
-pole podľa pivota $p$ -- zpivotizovať ho, nám trvá čas $O(n)$. A ak by sme si vybrali prvok $p$ vždy
+pole podľa pivota $p$ -- zpivotizovať ho nám trvá čas $O(n)$. A ak by sme si vybrali prvok $p$ vždy
 tak, aby menšie prvky tvorili polovicu všetkých prvkov, mali by sme $\log n$ úrovní, na každej s
 prácou $O(n)$, takže výsledný čas by bol $O(n \log n)$.
 
-To je síce pekné, ale príliš optimistické. Poďme sa pozriť aj na to, ako najdlhšie môže bežať náš
+To je síce pekné, ale príliš optimistické. Poďme sa pozrieť aj na to, ako najdlhšie môže bežať náš
 algoritmus. Môžeme mať smolu a prvok $p$ si vždy vybrať ako najväčší prvok nášho neutriedeného poľa.
 To znamená, že namiesto $\log n$ úrovní, budeme mať úrovní $n$. A na každej bude stále o jedna menej
 prvkov. To znamená, že zložitosť bude $O(n^2)$. To ako vieme, je pre veľké polia nepoužiteľné. Čo s
 tým?
 
-Ak by sme cheli, aby náš program rozdelil pole vždy na polovice, ako prvok $p$ by sme si museli
-zvoliť stredný prvok postupnosti -- medián. Pozitívne, existuje algoritmu, ktorý nájde medián v
+Ak by sme chceli, aby náš program rozdelil pole vždy na polovice, ako prvok $p$ by sme si museli
+zvoliť stredný prvok postupnosti -- medián. Pozitívne je, že existuje algoritmus, ktorý nájde medián v
 postupnosti v čase $O(n)$. Bohužiaľ, tento algoritmus je dosť komplikovaný (môžete si o ňom prečítať
-v samostatnej sekcii) a má privysokú konštantu, aby sa dal používať prakticky. To čo teda spravíme
+v samostatnej sekcii) a má privysokú konštantu, aby sa dal používať prakticky. To, čo teda spravíme
 je, že to necháme na náhodu.
 
-Pozrime sa na to tak intuitívne. Ak vyberiem daný prvok, z ešte neutriedených prvkov, náhodne, je
-predsa oveľa pravdepodobnejšie, že to bude prvok blízko stredu ako že to bude prvok maximálny.
+Pozrime sa na to tak intuitívne. Ak vyberiem daný prvok z ešte neutriedených prvkov, náhodne, je
+predsa oveľa pravdepodobnejšie, že to bude prvok blízko stredu ako to, že to bude prvok maximálny.
 Existuje dôkaz (bohužiaľ trochu komplikovanejší), ktorý ukáže, že v priemernom prípade je časová
 zložitosť \texttt{Quicksortu} naozaj $O(n \log n)$ a je veľmi nepravdepodobné, že to bude viac. A to
 naozaj úplne stačí. Dostaneme jednoduchý a rýchly algoritmus.
 
 Môžete si aj vyskúšať naprogramovať na úlohe \textbf{utried2}. Dávam vám však do pozornosti aj náš
 vzorový program. Ukazuje, ako sa dá \texttt{Quicksort} implementovať bez pomocného poľa, aj keď je
-to trochu trikové, lebo sa netreba zapliesť v $\pm 1$. Určite si ho teda naštudujte.
+to trochu trikové, lebo sa dá zapliesť v $\pm 1$. Určite si ho teda naštudujte.
 
 \nadpis{Triky na rýchlejšie riešenia}
 
 Čo mali spoločné všetky predchádzajúce algoritmy? Rozhodovali sa na základe porovnávania prvkov
 medzi sebou. Patria teda medzi \texttt{triedenia porovnávaním}. Ako si neskôr ukážeme, časová
-zložitosť $O(n \log n)$, ktorú sme dosiahli pomocou \texttt{Mergesortom} alebo \texttt{Quicksortom}
-je najlepšie, čo vieme dosiahnuť. Napriek tomu, v niektorých špecifických prípadoch, vieme spraviť,
+zložitosť $O(n \log n)$, ktorú sme dosiahli pomocou triedenia \texttt{Mergesortom} alebo \texttt{Quicksortom}
+je najlepšie, čo vieme dosiahnuť. Napriek tomu v niektorých špecifických prípadoch vieme spraviť
 iný, rýchlejší algoritmus.
 
-Výhodou triedení porovnávaním je to, že nezáleží aké veľké sú prvky, ktoré triedime. Či sú to čísla
-po $10^9$ alebo $10^{18}$, nič sa nemení, algoritmus funguje tak isto. Poďme sa však pozrieť, čo by
-sme vedeli robiť, ak by sme si obmedzili čísla, ktoré triedime do $10^6$ -- milióna. Jedna z
+Výhodou triedení porovnávaním je to, že nezáleží na tom, aké veľké sú prvky, ktoré triedime. Či sú to čísla
+po $10^9$ alebo $10^{18}$. Nič sa nemení, algoritmus funguje tak isto. Poďme sa však pozrieť, čo by
+sme vedeli robiť, ak by sme si obmedzili čísla, ktoré triedime, na čísla, ktoré sú menšie ako $10^6$ -- milión. Jedna z
 hlavných vecí, ktoré sa zmenia oproti napríklad $10^9$ je to, že si vieme v časovom limite vytvoriť
 pole veľkosti milión a pracovať s ním.
 
@@ -227,10 +227,10 @@ Prichádza teda jedna veľmi jednoduchá myšlienka. Ak si vieme vytvoriť pole 
 každý prvok v našej postupnosti, ktorú chceme utriediť, si vieme porátať, koľkokrát sa v danej
 postupnosti nachádza. Na to nám stačí vytvoriť pole $P[1000000]$ na začiatku naplnené nulami.
 Následne prejdem našou postupnosťou a ak vidím prvok $x$, zväčším o jedna $P[x]$. Po jednom
-prejdení, budem teda pre každé číslo vedieť, koľkokrát sa nachádza v našej postupnosti. Na koniec,
+prejdení budem teda pre každé číslo vedieť, koľkokrát sa nachádza v našej postupnosti. Na koniec,
 už len prejdem poľom od $0$ po $1000000$ a každé číslo vypíšem $P[x]$ krát.
 
-Aká je zložitosť našeho riešenia. Potrebujeme prejsť postupnosťou -- $n$ operácií a potrebujem
+Aká je zložitosť nášho riešenia? Potrebujeme prejsť postupnosťou -- $n$ operácií a potrebujem
 prejsť celým poľom, takže $1000000$ operácií. Samozrejme, o takom veľkom čísle si už nepovieme, že
 je to konštanta, označme si ho ako $r$. Presnejšie, nech $r$ je horná hranica na čísla, ktoré sa
 môžu vyskytovať v našej postupnosti. Výsledná časová zložitosť je teda $O(n+r)$. Táto zložitosť je
@@ -244,8 +244,10 @@ predchádzajúce, môžete si ho vyskúšať na úlohe \textbf{utried3}.
 
 Tieto algoritmy vyzerajú lákavo, keďže sú také rýchle, v praxi sa však veľmi nepoužívajú. Väčšinou
 sa s nimi môžete stretnúť iba v teoretických príkladoch, kde záleží na skutočnej časovej zložitosti.
-V praktických súťažiach väčšinou stačí použiť \texttt{Quicksort}, ktorý má naviac implementáciu v
+V praktických súťažiach väčšinou stačí použiť \texttt{Quicksort}, ktorý je naviac implementovaný v
 C++.
+
+%potialto
 
 \nadpis{Dolná hranica triedení porovnávaním}
 
