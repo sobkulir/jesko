@@ -1,0 +1,85 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Zúfalstvo z postupností}
+
+Marek Ospalý, Lin Jahodová, Miško Zelený a jeho princeznička slečna L. sú na
+dovolenke na horách.
+
+Každý večer si rozložia mapu a rozhodujú sa, na ktorý kopec sa vydajú
+nasledujúci deň. Lenže také vyberanie túry nie je jednoduchá záležitosť, teda
+aspoň nie pre tamtú štvoricu. Fascinujú ich totiž číselné postupnosti a podľa
+nich si aj vyberajú túru. Našťastie majú so sebou instantného Janíčka v
+orákulu a on im vie povedať postupnosť nadmorských výšok po každom metri trasy.
+
+Miško je viac informatikom ako matematikom, preto sa mu páčia aj aritmetické, aj
+geometrické postupnosti. Slečna L. je viac matematičkou ako informatičkou
+(zatiaľ), preto sa jej páčia geometrické postupnosti. Lin
+je opica\footnote {\url{https://plus.google.com/116535840236499706820/posts}} a má
+veľmi úzky okruh obľúbených postupností. Aby sa jej postupnosť páčila, musí byť
+aritmetická a zároveň aj geometrická. Marek o sebe tvrdí, že si názor na postupnosti
+ešte nevytvoril, preto mu nie je dobrá žiadna.\footnote{To je len zámienka.
+V skutočnosti je lenivý a nikam sa mu nechce chodiť.}
+
+\nadpis{Úloha}
+
+Rozpoznávať postupnosti je vcelku nudná činnosť. Našej štvorici výletníkov by sa
+preto zišiel program, ktorý pre Janíčkovu postupnosť nadmorských výšok vypíše
+zoznam účastníkov takejto túry.
+
+Postupnosť je aritmetická, ak sa dá zapísať v tvare $a, a+d, a+2d, \dots,
+a+(n-1)d$ pre nejaké $a, d \in \mathbb{R}$.
+
+Postupnosť je geometrická, ak sa dá zapísať v tvare $a, aq, aq^2, aq^3, \dots,
+aq^{n-1}$ pre nejaké $a, q \in \mathbb{R}$.
+
+\nadpis{Formát vstupu}
+
+Na prvom riadku je číslo $1 < n < 10^{6}$, určujúce počet prvkov postupnosti. Na druhom riadku nasleduje $n$ čísel oddelených medzerami. Prvky sú celé
+čísla, ktoré sa zmestia do 32-bitovej premennej so znamienkom.
+
+\nadpis{Formát výstupu}
+
+Na prvý riadok vypíšte slovo "ano"/"nie" podľa toho, či je postupnosť aritmetická.
+Na druhy riadok vypíšte slovo "ano"/"nie" podľa toho, či je postupnosť geometrická.
+
+\nadpis{Príklady}
+
+\vstup
+6
+-8 1 1000 32 238 -47
+\vystup
+nie
+nie
+\koniec
+\textsl{Postupnosť nie je aritmetická ani geometrická. Taký výlet by sa nikomu nepáčil.}
+
+\vstup
+7
+5 8 11 14 17 20 23
+\vystup
+ano
+nie
+\koniec
+\textsl{Aritmetická postupnosť, za sebou idúce členy sa od seba líšia o 3. Páči sa iba Miškovi.}
+
+\vstup
+3
+8 24 72
+\vystup
+nie
+ano
+\koniec
+\textsl{Geometrická postupnosť, za sebou idúce členy sa líšia trojnásobne. Lin Jahodovej sa nepáči, takže Miško so slečnou L. budú mať romantický výlet :-)}
+
+\vstup
+4
+99 0 0 0
+\vystup
+nie
+ano
+\koniec
+\textsl{Táto postupnosť je geometrická, pretože jej členy môžeme zapísať ako $99, 99\cdot{}0, 99\cdot{}0^{2}, 99\cdot{}0^{3}$. Páči sa Miškovi a slečne L.}
+
+\end{document}
