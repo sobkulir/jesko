@@ -4,6 +4,7 @@
 %vypracuva: Zaba
 %
 %pre inspiraciu si precitajte toto: http://ksp.mff.cuni.cz/tasks/25/cook1.html
+%gram. korekcie Maja
 \input ../../include/include.tex
 
 \begin{document}
@@ -19,19 +20,19 @@ Obsah:
 \end{itemize}
 
 Keď riešime nejaké problémy, môže sa stať, že vymyslím viacero riešení. Ako však povedať, ktoré je
-lepšie a vôbec čo to znamená byť lepším. O tom všetkom sa porozprávame práve v tejto kapitole.
+lepšie a vôbec, čo to znamená byť lepším? O tom všetkom sa porozprávame práve v tejto kapitole.
 
 Dôležitým aspektom je rýchlosť daného algoritmu. To znamená, ako rýchlo sa pre nejaký vstup doráta k
 výsledku. Nechceme predsa čakať na výsledok niekoľko hodín, ak sa dá vyrátať v priebehu sekúnd.
 Poďme sa teda zamýšľať nad takzvanou \texttt{časovou zložitosťou} algoritmov.
 
-Hneď na začiatku sa však stretávame s množstvom problémov. Prvým je to, že nechceme porovnávať,
+Hneď na začiatku sa však stretávame s množstvom problémov. Prvým je to, že nechceme porovnávať
 skutočný čas výpočtu. Ten je totiž príliš ovplyvnený počítačom, na ktorom daný program spúšťame.
 Nečakáme predsa, že na počítači našej babky bude bežať rovnaký algoritmus takisto rýchlo ako na
 počítači v Googli. Musíme sa teda snažiť oddeliť časovú zložitosť algoritmu od výpočtu na skutočnom
-počítači. Bolo by teda fajn, aby sme vedeli odhadnúť  rýchlosť programu z obyčajného pohľadu naň.
+počítači. Bolo by teda fajn, ak sme vedeli odhadnúť rýchlosť programu z obyčajného pohľadu naň.
 
-Našťastie, to však vôbec nie je také ťažké. Skúste si to sami. Tu vidíte tri programy, ktoré oba
+Našťastie to však vôbec nie je také ťažké. Skúste si to sami. Tu vidíte tri programy, ktoré všetky
 rátajú tú istú vec -- súčet prvých $n$ čísiel.
 
 %\listing{program1.cpp}
@@ -47,7 +48,7 @@ jednotkách k výsledku.
 Keď sa pozrieme na druhý a tretí program, vieme veľmi ľahko povedať, koľko sčítaní, ktorý z nich
 potrebuje. Druhý spraví $n$ sčítaní, tretí spraví $n(n-1)/2$ sčítaní. A dá sa predpokladať, že
 sčítanie trvá na konkrétnom počítači vždy rovnako dlho. Zrazu teda vieme bez ohľadu na rýchlosť
-konkrétneho počítaču povedať, ktorý je rýchlejší. Jeden totiž spraví o dosť viac sčítaní ako druhý.
+konkrétneho počítača povedať, ktorý je rýchlejší. Jeden totiž urobí o dosť viac sčítaní ako druhý.
 Operáciu sčítanie potom nazvime \texttt{elementárnou operáciou} -- to znamená, že táto operácia trvá
 počítaču krátky čas, ktorý je naviac nemenný. Aj keď je to prekvapivé, počítaču trvá rovnako dlho
 vyrátať $1+1$ ako $1574123+478413$.
@@ -60,12 +61,12 @@ premennej, načítanie alebo výpis jedného znaku.
 
 Reálne je to bohužiaľ trošku komplikovanejšie, napríklad zvyšok po delení je náročnejší ako bitový
 and. Ale nám stačí takáto abstrakcia. Pri veľkých vstupoch to málokedy hrá hlavnú úlohu a dodáva to
-oveľa lepšiu možnosť sa vyjadrovať. A o tom, ako je to v skutočnosti sa môžeme pobaviť neskôr.
+oveľa lepšiu možnosť sa vyjadrovať. A o tom, ako je to v skutočnosti, sa môžeme pobaviť neskôr.
 
 Vieme teda už počítať elementárne operácie programov. Zrazu je nám úplne jasné, prečo je prvý
 program najrýchlejší. Stačí mu predsa spraviť jednu jedinú operáciu. A aj u zvyšných dvoch je jasné,
 ktorý je lepší. Tu však problémy nekončia. Predstavme si, že máme dva programy, ktoré na vstupe
-dostanú jedno číslo $n$ a niečo s ním rátajú. Prvý spravý $20n$ operácií, druhý $n^2$. Ktorý z nich
+dostanú jedno číslo $n$ a niečo s ním rátajú. Prvý urobí $20n$ operácií, druhý $n^2$. Ktorý z nich
 je rýchlejší? Pre $n<20$ je to program druhý, potom už vždy vyhrá program prvý. Intuitívne je teda
 prvý program lepší, veď na väčšine vstupov je rýchlejší. My si však túto intuíciu poriadne
 definujeme.
@@ -73,10 +74,10 @@ definujeme.
 \nadpis{Asymptotická zložitosť}
 
 Uvedomme si, že počet elementárnych operácií programu sa dá vyjadriť ako
-funkcia od premenných na vstupe. Ak máme na vstupe číslo $n$, bude to funkcia tohoto čísla. A my
-chceme nejak porovnávať tieto funkcie. Dobrá miera toho, je schopnosť rásť. Čím rýchlejšie funkcia
+funkcia od premenných na vstupe. Ak máme na vstupe číslo $n$, bude to funkcia tohto čísla. A my
+chceme nejak porovnávať tieto funkcie. Dobrá miera na porovnávanie je schopnosť rásť. Čím rýchlejšie funkcia
 rastie, tým viac operácií bude treba. Takisto nás poväčšine nezaujímajú malé vstupy, ale také, na
-ktorých zrátanie treba milióny operácií. A samozrejme nechceme byť zbytočne presný. Však $1000000$ a
+ktorých zrátanie treba milióny operácií. A samozrejme, nechceme byť zbytočne presný. Však $1000000$ a
 $1000042$ je skoro to isté. Hore dole $42$ operácií, také niečo môžeme zanedbať.
 
 A na toto všetko je vytvorená takzvaná $O$-notácia a asymptotické určovanie zložitosti.
@@ -87,7 +88,7 @@ Môže to byť však zo začiatku trochu mätúce, pokúsim sa vám to však pod
 %TODO dorobiť obrázky funkcií
 
 Začnime s príkladom. Majme program, ktorý vykoná $f(n) = n^2/2 + 5n + 4$. Prvé pravidlo znie,
-konštanty zanedbáme. To či spravíme operácií $n$ alebo $5n$ je skoro jedno, zdvihne sa to len o
+že konštanty zanedbáme. To, či urobíme operácií $n$ alebo $5n$ je skoro jedno, zdvihne sa to len o
 konštantu, ktorá nezávisí od veľkosti vstupu. Zrazu máme teda $f'(n) = n^2 + n$. Druhé pravidlo zase
 hovorí o tom, že nás zaujíma len najväčší člen funkcie, teda ten, čo najrýchlejšie rastie. V tomto
 prípade $n^2$ rastie oveľa rýchlejšie ako $n$. Tým pádom dostaneme výslednú funkciu $f''(n) = n^2$.
@@ -95,14 +96,14 @@ A to je náš odhad na to, koľko operácii spraví náš program.
 
 Možno sa to zdá hrubé, koľko vecí sme zanedbali, ale ono to vôbec nie je tak. Tých zanedbaných vecí
 je najviac konštantne viac ako to čo nám zostalo. A to nám stačí. Samozrejme takýto spôsob škrtania
-je škaredý a tie dve pravidlá sú len pomôcky. Potrebujeme jasnú definíciu a tou je už spomínaná
+je škaredý a tieto dve pravidlá sú len pomôcky. Potrebujeme jasnú definíciu a tou je už spomínaná
 $O$-notácia.
 
-\textbf{Definícia:} Majme dve funkcie $f$ a $g$. Hovoríme, že $f \in O(g)$ ak existuje $n_0$ a $c>0$
+\textbf{Definícia:} Majme dve funkcie $f$ a $g$. Hovoríme, že $f \in O(g)$, ak existuje $n_0$ a $c>0$
 také, že pre všetky $n \geq n_0$ platí $|f(n)|\leq c|g(n)|$.
 
 \textbf{A slovami:} Hovoríme, že funkcia $f$ patrí do $O(g)$ (všimnite si, že $O(g)$ je množina
-všetkýh funkií, pre ktoré platí daná vlastnosť) ak existujú také konštanty $n_0$ a $c$, že pre dosť veľké $n$ (lebo $n \geq n_0$) je
+všetkých funkcií, pre ktoré platí daná vlastnosť), ak existujú také konštanty $n_0$ a $c$, že pre dosť veľké $n$ (lebo $n \geq n_0$) je
 $c|g(n)|$ (absolútna hodnota) väčšia ako $f(n)$.
 
 Teraz už ľahko určíme, že naozaj naše $f(n) = n^2/2 + 5n +4 = O(n^2)$ (tento zápis síce nie je úplne
@@ -116,17 +117,17 @@ definícii pre $c=n_0=1$.
 
 \nadpis{Najhorší prípad a dolná hranica}
 
-Samozrejme, nikto neočakáva, že hneď pochopíte čo to vlastne znamená. Postupne sa však s
+Samozrejme, nikto neočakáva, že hneď pochopíte, čo to vlastne znamená. Postupne sa však s
 $O$-notáciou budete stretávať neustále. Práve v nej sa totiž neustále vyjadruje časová aj pamäťová
-zložitosť všetkých algoritmov. My si ukážeme pár funkií, s ktorými sa stretnete najčastejšie.
+zložitosť všetkých algoritmov. My si ukážeme pár funkcií, s ktorými sa stretnete najčastejšie.
 
 Ešte sme si však nepovedali, na ktorom vstupe rátame zložitosť. Môže sa totiž stať, že niekde bude
-náš program potrebovať len $O(n)$ operácií a inde zase $O(n^2)$. V tomto prípade samozrejme berieme
+náš program potrebovať len $O(n)$ operácií a inde zase $O(n^2)$. V tomto prípade samozrejme berieme do úvahy
 najhorší možný príklad a zložitosť výpočtu na ňom prehlásime za zložitosť riešenia.
 
 Ďalšia vec je, že my informatici sme tak trochu flákači. Vyjadrovanie sa v $O$-notácii je totiž
 mierne nepresné. Ako sme totiž ukazovali, tak $n^2 = O(n^3)$. Ak máme teda algoritmus so zložitosťou
-$f(n)$, nič nám nebráni povedať, že to je vlastne $O(n^3)$. Nás však zaujíma, takpovediac najmenšia
+$f(n)$, nič nám nebráni povedať, že to je vlastne $O(n^3)$. Nás však zaujíma takpovediac najmenšia
 dolná hranica, v tomto prípade $n^2$. Takúto zložitosť by ste mali udávať aj všade, kde po vás
 požadujú zložitosť.
 
