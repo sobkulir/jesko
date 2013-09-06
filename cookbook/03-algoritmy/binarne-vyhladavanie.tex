@@ -1,7 +1,7 @@
 %Tu si môžete zaznačiť, že pracujete na danej veci. V prípade, že ste napísali len časť a ďalej už
 %nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by však fajn, aby jedu vec robil jeden
 %človek ak celok a zvyšný len kontrolovali
-%vypracuva: 
+%vypracuva:Zaba 
 \input ../../include/include.tex
 
 \begin{document}
@@ -14,6 +14,103 @@ Obsah:
     \item princip binarneho vyhladavania
     \item binarne vyhladavani odpovedi
     \item binarne vyhladavanie bez jednej hranice (+1, +2, +4 \dots)
+    \item ternárne vyhľadávanie
 \end{itemize}
+
+Už sa vám určite stalo, že ste zobrali do ruky učebnicu dejepisu a snažili ste sa nájsť tú správnu stranu, na
+ktorej sú poznámky k zajtrajšej písomke. V takomto prípade určite nie je času nazvyš a treba nájsť
+tú správnu kapitolu čo najrýchlejšie (keby ste nevedeli, ta správna strana je strana $47$).
+
+Samozrejme, môžeme v nej ísť postupne od začiatku, postupne sa pozrieť na stranu $1$, $2$ \dots až
+konečne dorazíme na stranu $47$. Takto však prezrieme úplne veľa stránok, pričom je nám jasné, že
+mnohé z nich by sme mohli preskočiť.
+
+Oveľa pravdepodobnejšie je, že zoberieme našu učebnicu a otvoríme ju na náhodnej strane. Nachádzame
+číslo $34$. Prichádza dôležitá úvaha: keďže sú strany v knihe radené od postupne od $1$ a čísla na
+seba nadväzujú, je nám jasné, že strana $47$ bude niekde za touto stranou. Odrazu sa teda nemusíme
+pozerať na množstvo strán, ktoré idú pred $34$ a ušetrili sme si oproti predchádzajúcemu postupu
+$33$ pozretí.
+
+Teraz by sme už mohli skončiť a stranu $47$ ručne dohľadať, alebo môžeme znova otvoriť knihu na
+náhodnej strane medzi stranou $34$ a koncom knihy. A presne tento prístup sa volá binárne
+vyhľadávanie.
+
+\medskip
+
+Zadefinujme si úlohu trošku všeobecnejšie a trošku programátorskejšie. Majme pole kde je uložených
+$n$ celých čísiel a naviac tieto čísla idú v poradí od najmenšieho po najväčšie. Našou úlohou je
+zistiť, či sa v tomto poli nachádza číslo $x$ a použiť pri tom čo najmenej pozretí do poľa. V
+prípade, že by sme sa pozreli postupne na všetky prvky a porovnávali ich s $x$, dostali by sme
+$O(n)$ pozretí. Našim cieľom bude toto číslo zmenšiť.
+
+Nech dvojica $(z, k)$ je dvojica indexov, ktoré označujú "aktívnu" časť poľa -- interval kde sa ešte
+prvok $x$ môže nachádzať. O všetkom mimo týchto indexov vieme, že sa tam číslo $x$ určite nebude
+nachádzať. Naviac použime polootvorený interval, teda pozícia $z$ je ešte aktívna, ale na pozícii
+$k$ sa už číslo $x$ vyskytovať nemôže. To znamená, že ak sa nám podarí náš interval zredukovať tak,
+že $z+1 = k$ ostane nám jediné aktívne číslo na pozícii $z$. Ak sa toto číslo rovná $x$, $x$ sa v
+poli nachádza v opačnom prípade, žiadne číslo z poľa nie je $x$.
+
+Zvoľme si teraz stred tohto intervalu, teda index $s = \frac{z+k}{2}$. Pozrime sa na číslo na
+$s$-tom mieste. Ak je toto číslo menšie alebo rovné ako $x$ znamená to, že všetky indexy menšie ako
+$s$ musia obsahovať čísla menšie ako $x$, lebo pole je usporiadané od najmenších prvkov. To znamená,
+že sa náš aktívny interval zredukuje na $(s, k)$.
+
+V opačnom prípade, keď je prvok na $s$-tej pozícii väčší ako $x$ tak sa prvok $x$ nemôže nachádzať
+napravo od $s$, lebo tam sú čísla ešte väčšie. Náš aktívny úsek sa zmenší na $(z, s)$. Rozmyslite
+si, že naša polootvorenosť tohto intervalu sa týmto nepokazila.
+
+Koľkokrát sa pri takomto prístupe pozrieme do poľa ak začíname intervalom $(0, n)$? Zakaždým sme prvok $s$ vybrali ako stred
+intervalu $(z, k)$ a zakaždým sme zahodili jednu polovicu tohto intervalu. To znamená, že na
+začiatku sme mali $n$ aktívnych prvkov, potom $\frac{n}{2}$, $\frac{n}{4}$, $\frac{n}{8}$ \dots
+Ak by bolo $n$ mocnina dvojky, teda $n = 2^k$, tak by sme mohli tento interval deliť napoli najviac
+$k$ krát a potom by sme dostali len jeden samostaný prvok a teda by sme vedeli odpoveď. No a správna
+funkcia, ktorá nám z číslo $2^k$ spraví číslo $k$ je logaritmus, takže sa do poľa pozrieme rádovo
+$O(\log n)$ krát.
+
+Tu je kratučký program, ktorý robí práve vyššie spomínanú vec.
+
+%\listing{binarysearch.cpp}
+
+Je to možno na nevieru, ale aj takáto jednoduchá myšlienka sa dá skryť do mnohých úloh a stáva sa
+mocnou zbraňou každého programátora. Však si to môžete hneď aj vyskúšať na týchto úlohách:
+
+\nadpis{Binárne vyhľadávanie výsledku}
+
+Tu však nekončíme s naším rozoberaním binárneho vyhľadávania. To sa totiž pri riešení úloh používa
+aj ináč ako na hľadanie prvkov v poli, alebo na hľadanie vecí v dopredu známych množinách prvkov.
+Niekedy sa totiž môže stať, že vyrátať nejakú odpoveď je veľmi ťažké, ale overiť či je nejaká
+odpoveď prípustná je oveľa ľahšie.
+
+Zoberme si príklad \textbf{rozdavanie}. Máme $p$ cukríkov a všetky ich chceme rozdeliť medzi $n$
+detí. O každom z nich vieme, koľko najviac cukríkov smie dostať (číslo $a_i$) a určite mu nedáme
+viac. Chceme však byť aspoň trochu spravodlivý a rozdeliť cukríky čo najrovnomernejšie. Hľadáme teda
+čo najmenšie číslo $x$, že rozdáme všetky cukríky a žiadne dieťa nedostane viac ako $x$ cukríkov.
+
+Zistiť hodnotu $x$ priamo je obtiažne. Zvoľme si však pevne nech $x = 42$. Chceme overiť, či $x$ je
+vyhovujúci počet cukríkov alebo nie. Zistime teda koľko cukríkov rozdáme, keď máme takéto $x$.
+Pozrieme sa na každé dieťa. Ak si dieťa zaslúži menej ako $42$ cukríkov dáme mu všetky čo si
+zaslúži, inak mu dáme práve $42$ cukríkov, aby žiadne nedostalo viac. Nech $r$ je počet cukríkov,
+ktoré sme takto rozdali. Ak $r < p$ tak číslo $x$ je príliš malé, lebo nerozdáme všetky cukríky. V
+opačnom prípade rozdáme všetky cukríky, môže sa však stať, že existuje aj menšie $x$, ktoré
+vyhovuje. Avšak $42$ je určite dobrý počet cukríkov.
+
+Vieme teraz na to napasovať binárne vyhľadávanie. Samozrejme, že áno :) Budeme hľadať najmenšie $x$.
+Dôležitá vlastnosť, ktorú musí mať číslo $x$ je monotónnosť. To znamená, že zo začiatku sú všetky
+$x$ nevhodné a potom príde zlom a všetky väčšie čísla už vhodné budú. Ak nájdeme daný zlom, tak
+číslo na ňom je hľadaná odpoveď, lebo je najmenšie z vhodných čísiel.
+
+Keď sa zamyslíme, tak naša odpoveď túto vlastnosť má. $x = 0$ zjavne odpoveď nebude, lebo nepoužije
+žiaden cukrík. A ak nejaké $x$ je správna odpoveď, tak aj všetky ostatné sedieť budú, lebo použijem
+aspoň toľko cukríkov.
+
+Interval, na ktorom budem hľadať odpoveď bude $(0, maxa)$, kde $maxa$ je najväčšie číslo $a_i$.
+Uvedomte si, že väčšia byť odpoveď nemôže byť, lebo viac cukríkov nerozdám. Na tomto intervale
+budeme binárne vyhľadávať odpoveď, overíme ju vždy spomínaným spôsobom a teda porátaním čísla $r$.
+Na konci nám vyjde jedno číslo -- správna odpoveď.
+
+\medskip
+
+Teraz už vieš o binárnom vyhľadávaní skoro všetko :) Ostáva si ho už len usilovne precvičiť aj na
+týchto úlohách.
 
 \end{document}
