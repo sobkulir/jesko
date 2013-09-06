@@ -1,0 +1,70 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Žiariaci gitaristi}
+
+Kto chce byť naozaj dobrý v hre na gitare, ten rýchlo zistí, že príprava a
+premyslenosť hrania sú veľmi dôležité.
+Jednou z prvých
+vecí, ktoré vás na konzervatóriu naučia, je nerobiť zbytočné pohyby. Načo púšťať
+% Prvú vec, čo vás na konzervatóriu naučia, je sa pri hraní správne ksichtiť. [tommy]
+prst, keď o chvíľu hrá znovu? Načo držať strunu, keď na ňu vôbec nehrám? Tretí
+príklad si domyslite sami.
+
+Toto všetko vedia aj na Černobyľskom konzervatóriu. A vedzte, že tam vychovávajú
+tých najlepších gitaristov. Majú totiž jednu výhodu -- prsty im rastú rýchlejšie ako
+ich stíhajú používať, a preto im nerobí problém chytiť aj tie najkrkolomnejšie
+akordy. Taký černobyľský gitarista, verte-neverte, má z praktického hľadiska
+nekonečný počet prstov.
+
+\nadpis{Úloha}
+
+Vašou úlohou je pre zadanú postupnosť tónov vypočítať, koľko najmenej pohybov
+prstov musí žiak vykonať, aby skladbu zahral. Za jeden pohyb počítame
+stlačenie alebo uvoľnenie struny na niektorom pražci (teda stlačenie a následné
+uvoľnenie sú dva pohyby).
+
+Tóny sú presne popísané číslom struny a pražca, na ktorom treba danú strunu
+stlačiť.(
+Mnohí z vás asi vedia, že ten istý tón možno v skutočnosti vylúdiť na viacerých
+strunách. Černobyľskí učitelia sú ale mimoriadne tvrdohlaví a prísni, preto ich
+študenti ani len neskúšajú použiť inú ako zadanú strunu).
+Ak je jedna struna stlačená na viacerých pražcoch naraz, po brnknutí na strunu
+zaznie len najvyšší z tónov (ten na pražci s najvyšším číslom).
+
+Na začiatku hrania gitarista nestláča ani jednu strunu. Po skončení môže stláčať
+nejaké struny.
+
+\vspace{-0.5em}
+\nadpis{Formát vstupu}
+
+V prvom riadku je číslo $n$ ($1 \leq n \leq 1\,000\,000$), ktoré udáva počet
+tónov v skladbe. Nasleduje $n$ riadkov, v $i$-tom riadku sú dve čísla $a_i \; b_i$
+($1 \leq a_i \leq 6$, $1 \leq b_i \leq 10^9$),
+ktoré hovoria, že treba stlačiť strunu $a_i$ na $b_i$-tom pražci.
+
+\vspace{-0.5em}
+\nadpis{Formát výstupu}
+
+Vypíšte jedno číslo -- najmenší počet pohybov, ktoré je nutné vykonať na
+zahranie skladby.
+
+\nadpis{Príklady}
+
+\vstup
+6
+1 3
+1 4
+1 3
+2 6
+2 6
+1 2
+\vystup
+6
+\komentar
+Stlačíme 1/3, potom 1/4, potom pustíme 1/4, pustíme 1/3, stlačíme 2/6 a stlačíme
+1/2.
+\koniec
+
+\end{document}
