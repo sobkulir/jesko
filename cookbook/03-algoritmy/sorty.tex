@@ -57,10 +57,10 @@ Aby som vás týmto úplne neunudil, vyriešte úlohu \textbf{vystava}.
 
 Prečo práve takúto úlohu? Dostať najmenší prvok na začiatok poľa a nič iné nemeniť? Vedie nás to
 totiž k nášmu prvému triediacemu algoritmu -- \texttt{Minsort}. Jeho myšlienka je veľmi jednoduchá.
-Zoberme si pole $A$ celých čísiel a chceme ho usporiadať od najmenšieho po najväčší prvok. Ktoré
+Zoberme si pole $A$ celých čísel a chceme ho usporiadať od najmenšieho po najväčší prvok. Ktoré
 číslo sa bude nachádzať na začiatku takto utriedenej postupnosti? Samozrejme, že to najmenšie. Ak by
 to tak nebolo, potom by niektorá časť poľa predsa nebola utriedená. Vieme teda, čo je na prvej
-pozícii výsledného poľa. Zvyšných $n-1$ čísiel, ktoré sú teraz na pozíciách $2$ až $n$ je však stále
+pozícii výsledného poľa. Zvyšných $n-1$ čísel, ktoré sú teraz na pozíciách $2$ až $n$ je však stále
 neusporiadaných.
 
 Tu sa však dá použiť znova tá istá myšlienka. Najmenšie číslo, ktoré je teraz na pozícii $1$ necháme
@@ -247,25 +247,23 @@ sa s nimi môžete stretnúť iba v teoretických príkladoch, kde záleží na 
 V praktických súťažiach väčšinou stačí použiť \texttt{Quicksort}, ktorý je naviac implementovaný v
 C++.
 
-%potialto
-
 \nadpis{Dolná hranica triedení porovnávaním}
 
 Čo robia triedenia porovnávaním? Porovnávajú prvky medzi sebou a podľa toho ich vymieňajú. Môžete si
 všimnúť, že \texttt{Mergesort} aj \texttt{Quicksort} mali $O(n\log n)$ porovnaní. Otázkou však je,
-či je toto najlepšie možné riešenie, či sa to nedá zlepšiť. Hľadáme teda, dolnú hranicu na počet
+či je toto najlepšie možné riešenie, či sa to nedá zlepšiť. Hľadáme teda dolnú hranicu na počet
 porovnaní, ktoré potrebuje ľubovoľný algoritmus.
 
 Predstavme si, že algoritmy trochu upravíme. Najskôr spravia všetky porovnania a až potom prvky
 povymieňajú. Môžete si rozmyslieť, že takto sa na nich nič nezmení. Taktiež množina výmen je
-jednoznačne určená porovnaniami, ktoré algoritmus urobí. Taktiež sa zamýšľajme len na postupnosťami,
-kde prvky tvoria permutáciu čísiel $1$ až $n$. Uvedomte si, že pre algoritmus je to absolútne
-nerozlíšené a nám to pomôže v argumentácii.
+jednoznačne určená porovnaniami, ktoré algoritmus urobí. Taktiež sa zamýšľajme len nad postupnosťami,
+kde prvky tvoria permutáciu čísel $1$ až $n$. Uvedomte si, že pre algoritmus je to absolútne
+nerozlíšiteľné a nám to pomôže v argumentácii.
 
-Výmen, ktoré algoritmus reálne potrebuje na to, aby pole utriedil je relatívne malý, vždy mu stačí
-$O(n)$ výmen. Problém však je, že tou dobou si už algoritmus musí byť istý, ktorú permutáciu má pred
+Počet výmen, ktoré algoritmus reálne potrebuje na to, aby pole utriedil, je relatívne malý, vždy mu stačí
+$O(n)$ výmen. Problém však je, že vtedy si už algoritmus musí byť istý, ktorú permutáciu má pred
 sebou. Nemôžu mu zostať dve, lebo by sa mohol pomýliť. Nakreslime si teda takzvaný rozhodovací
-strom. Vrchol tohoto stromu bude tvoriť porovnanie, ktoré algoritmus urobí. Z každého vrchola pôjdu
+strom. Vrchol tohto stromu bude tvoriť porovnanie, ktoré algoritmus urobí. Z každého vrchola pôjdu
 dve hrany, podľa odpovede, ktorú dostane a listy stromu budú možné permutácie, ktoré mohol dostať.
 Takýto strom má teda $n!$ listov.
 
@@ -273,8 +271,8 @@ Každému algoritmu zodpovedá jeden takýto rozhodovací strom. Našou úlohou 
 obsahuje cestu dĺžky aspoň $O(n\log n)$. Tým pádom existuje vstup, na ktorom bude musieť spraviť
 aspoň toľko porovnaní a dokážeme, že potrebujeme zložitosť $\Omega (n\log n)$.
 
-Poďme sa pozrieť na to, koľko úrovní (hĺbok) musí mať náš rozhodovací strom. Na prvej úrovni je
-jeden vrchol. Na druhej úrovni je ich najviac dva, na tretej najviac štyri atď. To znamená, že $n!$
+Poďme sa pozrieť na to, koľko úrovní (akú hĺbku) musí mať náš rozhodovací strom. Na prvej úrovni je
+jeden vrchol. Na druhej úrovni sú najviac dva, na tretej najviac štyri atď. To znamená, že $n!$
 vrcholov a teda aj listov sa môže prvýkrát objaviť v hĺbke $\log n!$. Tým pádom dolná hranica na
 počet porovnaní je $\log n!$. Poďme si toto číslo odhadnúť.
 
@@ -285,12 +283,12 @@ Po zlogaritmovaní: $n\log n \geq \log n! \geq \frac{n}{2} \log \frac{n}{2}$. A 
 dostanem $O(n\log n) \geq O(\log n!) \geq O(n\log n)$, teda $O(\log n!) = O(n \log n)$.
 
 Smutný a zároveň veselý výsledok. Smutný je, lebo je nám jasné, že nevieme triediť rýchlejšie, čo je
-však oveľa lepšie je to, že máme optimálne riešenie tohoto problému. A to je obrovský úspech, na
+však oveľa lepšie, máme optimálne riešenie tohoto problému. A to je obrovský úspech, na
 ktorý môžeme ako informatici byť právom hrdí. A teraz už aj vy viete všetko o triedení.
 
 \medskip
 
-Teraz sa môžete vrátiť a doriešiť si príklady, ktoré ste počas čítania preskočili, alebo môžete
+Teraz sa môžete vrátiť a doriešiť si príklady, ktoré ste počas čítania preskočili alebo môžete
 vyskúšať zriešiť niektorý z nasledovných príkladov: \textbf{zavazia}, \textbf{lupez}, \textbf{zurka}
 \textbf{program}, \textbf{darcek}, \textbf{stavebnica} a \textbf{nakup}.
 Ich spoločnou témou je síce triedenie, je však podané netradičnejšie a skryte.
