@@ -1,0 +1,28 @@
+aux='.sample'
+x='-1'
+
+for i in `seq 0 15`
+do
+
+  if
+    test ${i} -lt 10
+  then
+    i='0'${i}
+  fi
+
+  ./solution < ${i}${aux}.in > tmpoutput
+  ./checker ${i}${aux}.in tmpoutput && x=`expr ${x} + 1`
+
+  if
+    test ${x} -lt ${i}
+  then
+    echo WRONG ANSWER AT TESTCASE ${i}
+    exit
+  fi
+
+  aux=''
+done
+
+echo ALL OK
+
+rm tmpoutput
