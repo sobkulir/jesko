@@ -1,0 +1,55 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Zázračná opička}
+
+Marek sa rozhodol, že svoju zázračnú opičku\footnote{napríklad dokáže skákať na ľubovoľne veľké
+vzdialenosti} naučí nový trik. Najprv rozložil niekoľko stoličiek do kruhu
+a na jednu zo stoličiek posadil opičku. Potom začal tlieskať.
+
+Pri každom tlesknutí opička skočí o niekoľko miest proti smeru hodinových ručičiek. Pri prvom tlesknutí skočí na susednú
+stoličku. Pri druhom skočí z tej, na ktorej práve sedí, o dve stoličky ďalej. Pri treťom tlesknutí
+skočí o tri stoličky, \dots{} Takto to pokračuje
+donekonečna: pri každom ďalšom tlesknutí spraví opička o 1 dlhší skok ako pred tým.
+
+Mareka by teraz zaujímalo, na koľko rôznych stoličiek opička vôbec niekedy doskočí.
+
+\nadpis{Úloha}
+
+V kruhu je $n$ stoličiek a na jednej z nich sedí opička. Opička následne spraví
+nekonečne veľa skokov v tom istom smere, pričom $k$-ty skok je dlhý $k$-stoličiek.
+
+Teda ak si stoličky očíslujeme 0 až $n-1$ proti smeru ručičiek, tak platí:
+Ak pred $k$-tym skokom bola opička na $i$-tej stoličke, tak po tomto skoku bude
+na stoličke číslo ($(k+i) \bmod n$), kde $a\bmod b$ je zvyšok, ktorý dáva $a$ po delení $b$.
+
+Spočítajte, koľko je takých stoličiek, že na ne opička niekedy skočí.
+
+\nadpis{Formát vstupu}
+
+Na vstupe je jedno celé číslo $n$ udávajúce počet stoličiek. $1\leq n\leq 1\,000\,000$.
+
+\nadpis{Formát výstupu}
+
+Vypíšte jeden riadok a v ňom jedno číslo: na koľko rôznych stoličiek opička niekedy skočí.
+
+
+\nadpis{Príklady}
+
+\vstup
+3
+\vystup
+2
+\koniec
+
+{\sl Začne na stoličke 0, skočí na stoličku 1, odtiaľ na stoličku 0, odtiaľ znova na stoličku 0
+(skokom o 3 miesta), odtiaľ na stoličku 1, \dots\ Dá sa dokázať, že na stoličku 2 neskočí nikdy.}
+
+\vstup
+4
+\vystup
+4
+\koniec
+
+\end{document}
