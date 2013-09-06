@@ -1,16 +1,17 @@
 %Tu si môžete zaznačiť, že pracujete na danej veci. V prípade, že ste napísali len časť a ďalej už
 %nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by však fajn, aby jedu vec robil jeden
-%človek ak celok a zvyšný len kontrolovali
+%človek ak celok a zvyšní len kontrolovali
 %vypracuva: Zaba
+%gram. opravy Maja
 \input ../../include/include.tex
 
 \begin{document}
 
 \velkynadpis{Triedenie}
 
-\textit{Ako správne používať tento študijný text: Milý čitateľ. Chystáš sa prečítať si kuchárku o
+\textit{Ako správne používať tento študijný text: Milý čitateľ, chystáš sa prečítať si kuchárku o
 triedení. Počas čítania narazíš na niekoľko problémov, ktoré ti odporúčame vyriešiť. Má to dopomôcť
-k tomu, aby si lepšie pochopil o čom sa rozprávame. Samozrejme nikto ti nezakazuje čítať ďalej,
+k tomu, aby si lepšie pochopil, o čom sa rozprávame. Samozrejme, nikto ti nezakazuje čítať ďalej,
 vystavuješ sa tým však riziku, že si prezradíš riešenie.}
 
 Obsah:
@@ -25,27 +26,27 @@ Obsah:
 \medskip
 
 Ako napovedá názov textu, budeme sa rozprávať o triedení. Schopnosť zoradiť veci do poradia je totiž
-veľmi dôležitá a využívaná. Však stačí, že chcete zoradiť futbalové družstvá podľa počtu bodov čo
-získali. Alebo hráte karty a chcete ich mať na ruke pekne poporadí od najmenšej po najväčšiu. Pri
+veľmi dôležitá a využívaná. Však stačí, že chcete zoradiť futbalové družstvá podľa počtu bodov, ktoré
+získali. Alebo hráte karty a chcete ich mať na ruke pekne po poradí od najmenšej po najväčšiu. Pri
 tomto všetkom potrebujeme usporiadať veci podľa určitej vlastnosti a od nás informatikov sa čaká, že
-to budeme vedieť robiť rýchlo a efektívne a to aj pre viac ako $14$ kariet na ruke, alebo $30$ tímov
+to budeme vedieť robiť rýchlo a efektívne a to aj pre viac ako $14$ kariet na ruke alebo $30$ tímov
 vo futbalovom rebríčku.
 
 \medskip
 
-Na oboznámenie sa s utriedenými postupnosťami, skúste vyriešiť úlohu \textbf{poriadok}.
+Na oboznámenie sa s utriedenými postupnosťami skúste vyriešiť úlohu \textbf{poriadok}.
 
 \nadpis{Pomalšie triedenia}
 
-Začnime s ľahšími (na nakódenie aj pochopenie), ale pomalšími algoritmami, riešiacimi problém
+Začnime s ľahšími (na nakódenie aj pochopenie), ale pomalšími algoritmami riešiacimi problém
 triedenia. Ten môžeme chápať nasledovne: V poli $A$ máme $n$ prvkov. Chceme preusporiadať pole $A$
-tak, aby v ňom prvky boli od najmenšieho po najväčší.
+tak, aby v ňom prvky boli naukladané od najmenšieho po najväčší.
 
-Dôležité je si určiť, čo znamená najmenší prvok a vôbec operátor \texttt{menší}. Keď porovnávame
+Dôležité je určiť si, čo znamená najmenší prvok a vôbec operátor \texttt{menší}. Keď porovnávame
 čísla, je to jasné. Používame normálne $<$, teda $2<8$, $47<212$ \dots Nie vždy však pracujeme len s
-číslami. Môžeme dostať napríklad písmená. Tie môžeme porovnávať podľa poradia v abecede. Samozrejme
+číslami. Môžeme dostať napríklad písmená. Tie môžeme porovnávať podľa poradia v abecede. Samozrejme,
 to nie je všetko, čo môžeme robiť. Našu operáciu \texttt{menší} si môžeme zvoliť podľa ľubovôle,
-stačí aby nám dávala zmysel a po celý čas sme sa jej držali. V ďalšom texte však budeme
+stačí, aby nám dávala zmysel a po celý čas sme sa jej držali. V ďalšom texte však budeme
 predpokladať, že pracujeme s celými číslami a používame normálne $<$.
 
 \medskip
@@ -55,7 +56,7 @@ Aby som vás týmto úplne neunudil, vyriešte úlohu \textbf{vystava}.
 \medskip
 
 Prečo práve takúto úlohu? Dostať najmenší prvok na začiatok poľa a nič iné nemeniť? Vedie nás to
-totiž k našému prvému triediacemu algoritmu -- \texttt{Minsort}. Jeho myšlienka je veľmi jednoduchá.
+totiž k nášmu prvému triediacemu algoritmu -- \texttt{Minsort}. Jeho myšlienka je veľmi jednoduchá.
 Zoberme si pole $A$ celých čísiel a chceme ho usporiadať od najmenšieho po najväčší prvok. Ktoré
 číslo sa bude nachádzať na začiatku takto utriedenej postupnosti? Samozrejme, že to najmenšie. Ak by
 to tak nebolo, potom by niektorá časť poľa predsa nebola utriedená. Vieme teda, čo je na prvej
@@ -64,11 +65,11 @@ neusporiadaných.
 
 Tu sa však dá použiť znova tá istá myšlienka. Najmenšie číslo, ktoré je teraz na pozícii $1$ necháme
 tak, to už je umiestnené dobre. Skúsime nájsť číslo na pozíciu $2$. A to bude samozrejme najmenšie
-číslo z čísiel zvyšných, teda tých, čo sú na pozíciách $2$ až $n$. A takto postupujeme ďalej a
-ďalej. Postupne priraďujeme čísla na prvú, druhú, tretiu až $n$-tú pozíciu a vždy ho nájdeme ako
-minimum z čísiel zvyšných. Znamená to, že $n$ krát urobíte to, čo ste robili v úlohe
+číslo z čísel zvyšných, teda tých, čo sú na pozíciach $2$ až $n$. A takto postupujeme ďalej a
+ďalej. Postupne priraďujeme čísla na prvú, druhú, tretiu až $n$-tú pozíciu a vždy ich nájdeme ako
+minimum z čísel zvyšných. Znamená to, že $n$ krát urobíte to, čo ste robili v úlohe
 \textbf{vystava}, akurát na stále menšom poli. A to už predsa nie je problém.
-Výsledná časová zložiťosť však bude $O(n^2)$. Nie zlé, ale stále nie najlepšie.
+Výsledná časová zložitosť však bude $O(n^2)$. Nie zlé, ale stále nie najlepšie.
 
 \medskip
 
@@ -77,13 +78,13 @@ teda hneď vyskúšať na úlohe \textbf{utried1}.
 
 \medskip
 
-Asi vás veľmi neprekvapivý, že na úlohu sa dá pozrieť aj opačne. Aké číslo je na poslednom mieste
+Asi vás veľmi neprekvapí, že na úlohu sa dá pozrieť aj opačne. Aké číslo je na poslednom mieste
 zoradeného poľa. Samozrejme, že je to maximum, čo dá vznik algoritmu \texttt{Maxsort}.
 
 \bigskip
 
 Zostaňme ešte chvíľu pri triedeniach so zložitosťou $O(n^2)$. Na začiatku sme spomínali ukladanie
-kariet. Tento proces je všetkým známi. Postupne, jednu po jedne, beriete karty z vašej kôpky a
+kariet. Tento proces je všetkým známy. Postupne, jednu po jednej, beriete karty z vašej kôpky a
 nachádzate im príslušné miesto na ruke. Ako však nájdete miesto, kam daná karta patrí? Začnete na
 konci. Porovnáte novú kartu s poslednou kartou v ruke. Ak je nová karta väčšia, rovno ju dáte na
 koniec, lebo viete, že všetky ostatné karty na ruke sú od nej tiež menšie. Ak je však menšia ako
@@ -94,13 +95,13 @@ alebo ste dosiahli úplný začiatok. Na toto miesto kartu vsuniete.
 Tento istý prístup sa dá simulovať aj programom. Postupne beriete čísla a máte pole, kde si ukladáte
 výsledok. Postupne idete od konca poľa a sledujete, či vaše nové číslo nie je väčšie. Takto mu
 nájdete správne miesto. Problém však je, že neviete toto číslo strčiť do stredu poľa tak ako kartu.
-Toto môžete vyriešiť tak, že vždy keď zistíte, že nové číslo je menšie ako číslo skúmané, posuniete
+Toto môžete vyriešiť tak, že vždy, keď zistíte, že nové číslo je menšie ako číslo skúmané, posuniete
 toto číslo o jedna dozadu v poli. Takto si spravíte priestor pre nové číslo, ktoré tam potom viete
 pohodlne vložiť. Tento algoritmus má tiež zložitosť $O(n^2)$ a volá sa \texttt{Insertsort}. Kvôli 
 problematickému vsúvaniu čísiel sa nedá viac vylepšiť. Jeho naprogramovanie si tiež môžete vyskúšať
 na úlohe \textbf{utried1}, dajte si však pozor, aby ste skontrolovali, či nie ste už na začiatku poľa.
 
-Toto samozrejme nie je posledný zo série triediacich algoritmov so zložitsťou $O(n^2)$. Existuje ich
+Toto samozrejme nie je posledný zo série triediacich algoritmov so zložitosťou $O(n^2)$. Existuje ich
 ešte o dosť viac, od šialených až po tie rozumnejšie. Nie sú však až tak dôležité, vrhnime sa preto
 na algoritmy rýchlejšie.
 
@@ -108,10 +109,10 @@ na algoritmy rýchlejšie.
 
 V tejto časti sa budeme snažiť čas výpočtu znížiť na $O(n\log n)$. K tomu budeme používať rekurziu,
 ktorá bude rozdeľovať naše pole na menšie a menšie kusy, tie samostatne utriedi a nakoniec z nich
-vyskladá riešenie.
+poskladá riešenie.
 
 Prvým z algoritmov bude \texttt{Mergesort}, teda triedenie spájaním. Tento algoritmus sa pýta, či ak
-rozdelím pole na dve polky, každú z nich samostatne utriedim, či ich viem potom spojiť do jedného
+rozdelím pole na dve polovice, každú z nich samostatne utriedim, či ich viem potom spojiť do jedného
 výsledného utriedeného poľa.
 
 \medskip
@@ -121,13 +122,16 @@ Pred pokračovaním čítania, kde bude postup riešenia vysvetlený, môžete s
 
 \medskip
 
-Predpokladajme, že máme dve utriedené polia čísiel $A$ a $B$ a chceme ich teraz spojiť do jedného
-usporiadaného poľa. Ktorý prvok môže byť na začiatku výsledného poľa? Chceme tam najmenší prvok. A
+Predpokladajme, že máme dve utriedené polia čísel $A$ a $B$ a chceme ich teraz spojiť do jedného
+usporiadaného poľa. Ktorý prvok môže byť na začiatku výsledného poľa? Chceme tam mať najmenší prvok. A
 vieme, že na začiatku $A$ je najmenší prvok aj na začiatku $B$ je najmenší prvok, lebo sú utriedené.
-To ale znamená, že menšie z týchto dvoch čísiel je najmenšie aj celkovo. Vieme teda prvý prvok
+To ale znamená, že menšie z týchto dvoch čísel je najmenšie aj celkovo. Vieme teda prvý prvok
 výsledku. Nech je to prvé číslo z $A$. Vyhodíme ho teda zo začiatku $A$ a dostávam tú istú situáciu.
 Znova, ktorýkoľvek z prvkov na začiatku polí $A$ a $B$ môže byť aktuálne najmenší a teda ísť na
-druhú pozíciu. Opakovaním tohoto postupu dostanem výsledného poľa.
+druhú pozíciu. Opakovaním tohoto postupu dostanem výsledné pole.
+
+%Maja: samotne vyhadzovanie prvkov z pola problemy nerobi a podla mna deti si neuvedomia, ze by potom 
+%zvysne prvky mali presuvat dopredu, ci? neviem, mne to neprislo zjavne, zalezi ako deti chapu polia.
 
 Čo sa týka konkrétnej implementácie, samozrejme nechceme prvky z poľa vyhadzovať, lebo to zaberá
 príliš veľa času. Radšej si zoberieme dve premenné $a$ a $b$, ktoré budú ukazovať na pomyselný
@@ -135,7 +139,7 @@ začiatok oboch polí. Ak teda "vyhodíme" prvok zo začiatku $A$, znamená to, 
 premennú $a$. Tiež si dajte pozor, aby ste kontrolovali, či ste niektoré pole nevyčerpali celé, aby
 ste nevypadli mimo pamäť.
 
-S touto jednoduchou úvahou je už výsledný algritmus jednoduchý. Ak mám pole veľkosti $1$ alebo $2$,
+S touto jednoduchou úvahou je už výsledný algoritmus jednoduchý. Ak mám pole veľkosti $1$ alebo $2$,
 toto pole viem jednoducho utriediť najviac jednou výmenou. Ak je naše pole väčšie, rozdelím ho na
 dve polovice a na tie rekurzívne zavolám ten istý algoritmus. To znamená, že ich dostanem obe
 utriedené a potrebujem ich spojiť. A na to použijem hore vysvetlené spájanie (merge). Na konci
@@ -144,14 +148,14 @@ dostanem utriedené celé pole.
 Treba si všimnúť, že algoritmus potrebuje naviac jedno pomocné pole, kam bude mergovať výsledok. Dá
 sa to síce aj bez neho, ale nie je to príjemné a pole naviac nám nijak neuškodí.
 
-Otázkou zostáva, či je to naozaj také rýchle ako som tvrdil. Aké rýchle je naše spájanie. No
-jednoducho lineárne od počtu prvkov, ktoré spájam. Predstavme si teraz čo robí náš algoritmus.
+Otázkou zostáva, či je to naozaj také rýchle, ako som tvrdil. Aké rýchle je naše spájanie? No
+jednoducho lineárne od počtu prvkov, ktoré spájam. Predstavme si teraz, čo robí náš algoritmus.
 Najskôr rozdelí pole na dve polovice (to je prvá úroveň). Tie rozdelí na dokopy štyri štvrtiny
-(druhá úroveň) atď. až kým nedosiahne polia veľkosti $1$. Keďže veľkosti časťí na úrovniach sa stále
+(druhá úroveň) atď. až kým nedosiahne polia veľkosti $1$. Keďže veľkosti častí na úrovniach sa stále
 delia na polovicu, znamená to, že mám približne $\log n$ úrovní. Otázkou zostáva, koľko práce
 vykonám na každej úrovni. Na to si stačí všimnúť, že každý prvok pôvodného poľa je na každej úrovni
 zastúpený práve raz, teda na každej úrovni je $n$ prvkov. No a na každej úrovni použijem lineárny
-merge. To znamená, že spravím $O(n)$ operácií. Na $\log n$ úrovniach spravím $O(n)$ operácií, teda
+merge. To znamená, že spravím $O(n)$ operácií. Na $\log n$ úrovniach spravím $O(n)$ operácii, teda
 výsledný čas je $O(n \log n)$.
 
 \medskip
@@ -161,13 +165,15 @@ Svoju novonadobudnutú znalosť si hneď môžete vyskúšať na úlohe \textbf{
 \medskip
 
 To však nie je všetko. \texttt{Mergesort} totiž nie je jediný a dokonca ani najpoužívanejší
-triediaci algoritmus v čase $O(n \log n)$. To čo sa používa oveľa viac je takzvaný
+triediaci algoritmus v čase $O(n \log n)$. To, čo sa používa oveľa viac, je takzvaný
 \texttt{Quicksort}. Tento algoritmus sa dá totiž oveľa ľahšie naprogramovať bez pamäte naviac a
 taktiež má veľmi malý počet cache-missov. Poďme sa teda pozrieť na to, čo robí. Predtým však môžete
 skúsiť vyriešiť úlohu \textbf{jablcka}.
 
+%Maja: cache-miss, really? 
+
 Ako správne predpokládate, ani táto úloha sem nie je zaradená úplne náhodne a má s
-\texttt{Quicksortom} priami súvis. Úloha znie tak, že máme pole celých čísiel $A$ a číslo $p$. Toto
+\texttt{Quicksortom} priamy súvis. Úloha znie tak, že máme pole celých čísel $A$ a číslo $p$. Toto
 číslo nazývame pivot. Našou úlohou je rozdeliť pole na tri menšie polia, čísla menšie ako $p$, čísla
 rovnaké ako $p$ a čísla väčšie ako $p$. Naviac nás vôbec nezaujíma vzájomné poradie prvkov v týchto
 poliach.
