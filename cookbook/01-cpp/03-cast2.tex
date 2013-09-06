@@ -2,22 +2,23 @@
 %len časť a ďalej už nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by
 %však fajn, aby jedu vec robil jeden človek ak celok a zvyšný len kontrolovali
 %vypracuva: Jano
+%gram. opravy Maja
 \input ../../include/include.tex
 
 \begin{document}
 
 \velkynadpis{Pokračovanie C++}
 
-\textit{Ako správne používať tento študijný text: Milý čitateľ. Chystáš sa
+\textit{Ako správne používať tento študijný text: Milý čitateľ, chystáš sa
 prečítať si kuchárku o základoch programovacieho jazyka C++. Najdôležitejšie
-pri učení nového programovacieho jazyka je poriadne si ho precvičiť. Preto
+pri učení sa nového programovacieho jazyka je poriadne si ho precvičiť. Preto
 počas čítania narazíš na niekoľko úloh, ktoré ti odporúčame vyriešiť a
-naprogramovať. Má to dopomôcť k tomu, aby si všetko lepšie zapamätal a dostal
+naprogramovať.  Má to dopomôcť k tomu, aby si si všetko lepšie zapamätal a dostal
 do krvi.}
 
-\textit{Tento text je písaný aj pre ľudí, ktorí nikdy program nevideli. Pokiaľ
-už máš nejaké základy z programovania, môžeš kludne preskakovať tie časti,
-ktoré ovládaš}
+\textit{Tento text je napísaný aj pre ľudí, ktorí nikdy program nevideli. Pokiaľ
+už máš nejaké základy z programovania, môžeš pokojne preskakovať tie časti,
+ktoré ovládaš.}
 
 Obsah:
 \begin{itemize}
@@ -34,11 +35,11 @@ Obsah:
 
 
 \kapitola{Funkcie}
-\textit{Ako neprogramovať jednu vec viac kráť}
+\textit{Ako neprogramovať jednu vec viackráť}
 
-Doteraz, keď sme v programovaní chceli niečo zopakovať viac krát, tak
-sme použili cyklus. Niekedy však potrebujeme danú vec robiť na všeliakých rôznych miestach.
-Napríklad vypisovať čísla 1 až 10, v rôznych častiach programu.
+Doteraz, keď sme v programovaní chceli niečo zopakovať viackrát, tak
+sme použili cyklus. Niekedy však potrebujeme danú vec robiť na rôznych miestach.
+Napríklad vypisovať čísla 1 až 10 v rôznych častiach programu.
 
 \lstlang{cpp}\begin{lstlisting}
 int main(){
@@ -68,23 +69,23 @@ int main(){
 Čo je na vyššie uvedenom programe zle?
 
 Veľakrát používa rovnaký kód. A to máme ešte štastie, že opakujeme len trikrát 
-a opakujúci kód je dlhý len tri riadky. Aj tak, keď si zmyslíme, že nechceme vypisovať 10 čísel
-ale 11. Treba to všade prepísať, fuj.
+a opakujúci sa kód je dlhý len tri riadky. Aj tak, keď si zmyslíme, že nechceme vypisovať 10 čísel
+ale 11, tak to treba všade prepísať. Fuj.
 
 Teraz si predstavme, že robíme niečo podstatne zložitejšie a 
-na 200 miestach by sme mali rovnaký 10 riadkový blok. Keby sme tam chceli zmeniť, tak sa zbláznime.
+na 200 miestach by sme mali rovnaký 10 riadkový blok. Keby sme tam chceli niečo zmeniť, tak sa zbláznime.
 A určite pri nejakom prepise spravíme chybu. A nemáme šancu tú chybu nájsť.
 
-Proste copy-pastovanie kódu je zlo, a chceme sa tomu vyhnúť, 
+Proste copy-pastovanie kódu je zlo a chceme sa mu vyhnúť, 
 lebo tvorí neprehľadné a chybné programy. Ale ako sa mu vyhneme?
 
 \medskip
 
-Celkom dobrý spôsob je zabaliť kus kódu do funckie -- nejako si ten kus kódu nazvať.
+Celkom dobrý spôsob je zabaliť kus kódu do funkcie -- nejako si ten kus kódu nazvať.
 Funkciu môžeme chápať ako samostatný program. Proste postupnosť príkazov, ktorá niečo robí.
 Konieckoncov všetky naše doterajšie programy boli len funkcia \verb!int main()!.
 
-Funkciu vyrobíme, tým, že ju zadeklarujeme v tvare \verb!<typ> <meno>(<argumenty>){<príkazy>}!
+Funkciu vyrobíme tým, že ju zadeklarujeme v tvare \verb!<typ> <meno>(<argumenty>){<príkazy>}!
 Spúšťame (voláme, po anglicky call) funkcie \verb!<meno>(<hodnoty-argumentov>)!
 
 Podivný program zhora vieme prepísať napríklad takto:
@@ -114,18 +115,18 @@ int main(){
 }
 \end{lstlisting}
 
-Dostali sme oveľa prehľadnejší kód, a ak chceme napríklad zmeniť počet vypisovaných čísel,
+Dostali sme oveľa prehľadnejší kód a ak chceme napríklad zmeniť počet vypisovaných čísel,
 stačí to spraviť na jednom mieste.
 
 \medskip 
 
 Čo je to void a vôbec ten typ?
 
-Funkcia môže vraciať nejakú hodnotu, a \textit{ten} typ je typ hodnoty akú funkcia vracia.
-void znamená, že funkcia nevracia nič. Funkcia ktorá niečo vracia, môže byť 
-napríklad funkcia \verb!osem()! z nasledujúceho príkladu. Isto ste všimnete, že
+Funkcia môže vracať nejakú hodnotu a \textit{ten} typ je typ hodnoty, akú funkcia vracia.
+Void znamená, že funkcia nevracia nič. Funkcia, ktorá niečo vracia, môže byť 
+napríklad funkcia \verb!osem()! z nasledujúceho príkladu. Isto si všimnete, že
 na vrátenie hodnoty slúži príkaz \verb!return!. Príkaz \verb!return! zároveň skončí
-vykonávanie funkcie, preto všetko, čo je za nimi sa už nevykoná. 
+vykonávanie funkcie, preto všetko, čo je za ním, sa už nevykoná. 
 
 \lstlang{cpp}\begin{lstlisting}
 int osem(){
@@ -161,7 +162,7 @@ int main(){
 Zatiaľ tie funkcie nie sú veľmi úžasné, lebo robia stále to isté (asi ako programy bez vstupu).
 A stále nevieme, čo sú to tie argumenty.
 
-Tak si vysvetlíme dve veci zároveň. Argumenty sú akoby vstup pre vunkciu.
+Tak si vysvetlíme dve veci zároveň. Argumenty sú akoby vstup pre funkciu.
 Už sme sa s tým stretli, keď sme napríklad funkcii printf() do zátvoriek zadávali, čo má vypísať.
 Analogicky namiesto funkcie \verb!vypis_desat_cisel()! môžeme použiť všeobecnejšiu funkciu
 
