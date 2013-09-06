@@ -1,0 +1,21 @@
+Zámena
+@@@@@
+Napíš program, ktorý načíta 2 medzerou oddelené celé čísla zo vstupu a vypíše ich v opačnom poradí na jediný riadok výstupu.
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int x,y;
+	cin >> x >> y;
+	cout << y << " " << x << endl;
+	return 0;
+}
+@@@@@
+42 47
+@@@@@
+0 0
+@@@@@
+-50 50
+@@@@@

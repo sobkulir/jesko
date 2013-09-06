@@ -1,0 +1,25 @@
+Číslo
+@@@@@
+Napíš program, ktorý načíta celé číslo zo vstupu a vypíše ho na jediný riadok výstupu.
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int x;
+	cin >> x;
+	cout << x << endl;
+	return 0;
+}
+@@@@@
+47
+@@@@@
+42
+@@@@@
+-10
+@@@@@
+10005
+@@@@@
+0
+@@@@@

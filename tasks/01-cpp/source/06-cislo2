@@ -1,0 +1,33 @@
+Akéže je znamienko?
+@@@@@
+Na vstupe je jedno celé číslo. Na jeden riadok výstupu vypíšte, či je \texttt{kladne}, \texttt{nulove} alebo \texttt{zaporne}.
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int x,y;
+	cin >> x >> y;
+	if(x == 0){
+		cout << "nulove" << endl;
+	}
+	if(x > 0){
+		cout << "kladne" << endl;
+	}
+	if(x < 0){
+		cout << "zaporne" << endl;
+	}
+	return 0;
+}
+@@@@@
+-42
+@@@@@
+-47
+@@@@@
+0
+@@@@@
+3
+@@@@@
+100
+@@@@@

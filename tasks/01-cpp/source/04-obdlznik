@@ -1,0 +1,21 @@
+Obdĺžnik
+@@@@@
+Napíš program, ktorý načíta 2 medzerou oddelené celé čísla - strany obdĺžnika zo vstupu a vypíše obvod a obsah tohto obdĺždnika, každý na samostatný riadok výstupu.
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int x,y;
+	cin >> x >> y;
+	cout << 2*(x+y) << endl << x*y << endl;
+	return 0;
+}
+@@@@@
+3 4
+@@@@@
+47 42
+@@@@@
+4 4
+@@@@@

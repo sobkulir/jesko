@@ -1,0 +1,41 @@
+Najmenší
+@@@@@
+Na vstupe sú 3 rôzne celé čísla oddelené medzerou. Na jediný riadok výstupu vypíšte najmenšie z nich.
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int x,y,z;
+	cin >> x >> y >> z;
+	if(x < y){
+		if(x < z){
+			cout << x << endl;
+		} else {
+			cout << z << endl;
+		}
+	} else {
+		if(y < z){
+			cout << y << endl;
+		} else {
+			cout << z << endl;
+		}
+	}
+	return 0;
+}
+@@@@@
+42 9 47
+@@@@@
+0 1 2
+@@@@@
+0 200 100
+@@@@@
+10 0 20
+@@@@@
+1 2 0
+@@@@@
+20 0 10
+@@@@@
+200 100 0
+@@@@@
