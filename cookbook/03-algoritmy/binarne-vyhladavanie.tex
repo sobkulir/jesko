@@ -81,40 +81,40 @@ mocnou zbraňou každého programátora. Môžete si to hneď aj vyskúšať na 
 \nadpis{Binárne vyhľadávanie výsledku}
 
 Tu však nekončíme s naším rozoberaním binárneho vyhľadávania. To sa totiž pri riešení úloh používa
-aj ináč ako na hľadanie prvkov v poli, alebo na hľadanie vecí v dopredu známych množinách prvkov.
-Niekedy sa totiž môže stať, že vyrátať nejakú odpoveď je veľmi ťažké, ale overiť či je nejaká
-odpoveď prípustná je oveľa ľahšie.
+aj inak ako na hľadanie prvkov v poli alebo na hľadanie vecí v dopredu známych množinách prvkov.
+Niekedy sa totiž môže stať, že vyrátať nejakú odpoveď je veľmi ťažké, ale overiť si, či je nejaká
+odpoveď prípustná, je oveľa ľahšie.
 
 Zoberme si príklad \textbf{rozdavanie}. Máme $p$ cukríkov a všetky ich chceme rozdeliť medzi $n$
 detí. O každom z nich vieme, koľko najviac cukríkov smie dostať (číslo $a_i$) a určite mu nedáme
-viac. Chceme však byť aspoň trochu spravodlivý a rozdeliť cukríky čo najrovnomernejšie. Hľadáme teda
-čo najmenšie číslo $x$, že rozdáme všetky cukríky a žiadne dieťa nedostane viac ako $x$ cukríkov.
+viac. Chceme však byť aspoň trochu spravodliví a rozdeliť cukríky čo najrovnomernejšie. Hľadáme teda
+čo najmenšie číslo $x$ také, že rozdáme všetky cukríky a žiadne dieťa nedostane viac ako $x$ cukríkov.
 
-Zistiť hodnotu $x$ priamo je obtiažne. Zvoľme si však pevne nech $x = 42$. Chceme overiť, či $x$ je
-vyhovujúci počet cukríkov alebo nie. Zistime teda koľko cukríkov rozdáme, keď máme takéto $x$.
-Pozrieme sa na každé dieťa. Ak si dieťa zaslúži menej ako $42$ cukríkov dáme mu všetky čo si
-zaslúži, inak mu dáme práve $42$ cukríkov, aby žiadne nedostalo viac. Nech $r$ je počet cukríkov,
-ktoré sme takto rozdali. Ak $r < p$ tak číslo $x$ je príliš malé, lebo nerozdáme všetky cukríky. V
+Zistiť hodnotu $x$ priamo je obtiažne. Zvoľme si však pevne, že $x = 42$. Chceme overiť, či $x$ je
+vyhovujúci počet cukríkov alebo nie. Zistíme teda, koľko cukríkov rozdáme, keď máme takéto $x$.
+Pozrieme sa na každé dieťa. Ak si dieťa zaslúži menej ako $42$ cukríkov, dáme mu všetky, ktoré si
+zaslúži, inak mu dáme práve $42$ cukríkov, takže žiadne dieťa nedostane viac. Nech $r$ je počet cukríkov,
+ktoré sme takto rozdali. Ak $r < p$, tak číslo $x$ je príliš malé, lebo nerozdáme všetky cukríky. V
 opačnom prípade rozdáme všetky cukríky, môže sa však stať, že existuje aj menšie $x$, ktoré
 vyhovuje. Avšak $42$ je určite dobrý počet cukríkov.
 
-Vieme teraz na to napasovať binárne vyhľadávanie. Samozrejme, že áno :) Budeme hľadať najmenšie $x$.
-Dôležitá vlastnosť, ktorú musí mať číslo $x$ je monotónnosť. To znamená, že zo začiatku sú všetky
-$x$ nevhodné a potom príde zlom a všetky väčšie čísla už vhodné budú. Ak nájdeme daný zlom, tak
-číslo na ňom je hľadaná odpoveď, lebo je najmenšie z vhodných čísiel.
+Vieme teraz na to napasovať binárne vyhľadávanie? Samozrejme, že áno :). Budeme hľadať najmenšie $x$.
+Dôležitá vlastnosť, ktorú musí mať číslo $x$, je monotónnosť. To znamená, že zo začiatku sú všetky
+$x$ nevhodné a potom príde zlom a všetky väčšie čísla už vhodné sú. Ak nájdeme daný zlom, tak
+číslo na ňom je hľadaná odpoveď, lebo je to najmenšie z vhodných čísel.
 
-Keď sa zamyslíme, tak naša odpoveď túto vlastnosť má. $x = 0$ zjavne odpoveď nebude, lebo nepoužije
-žiaden cukrík. A ak nejaké $x$ je správna odpoveď, tak aj všetky ostatné sedieť budú, lebo použijem
+Keď sa zamyslíme, tak naša odpoveď túto vlastnosť má. $x = 0$ zjavne odpoveď nebude, lebo nepoužijeme
+žiaden cukrík. A ak nejaké $x$ je správna odpoveď, tak aj všetky ostatné sedieť budú, lebo použijeme
 aspoň toľko cukríkov.
 
 Interval, na ktorom budem hľadať odpoveď bude $(0, maxa)$, kde $maxa$ je najväčšie číslo $a_i$.
-Uvedomte si, že väčšia byť odpoveď nemôže byť, lebo viac cukríkov nerozdám. Na tomto intervale
+Uvedomte si, že väčšia byť odpoveď nemôže, lebo viac cukríkov nerozdám. Na tomto intervale
 budeme binárne vyhľadávať odpoveď, overíme ju vždy spomínaným spôsobom a teda porátaním čísla $r$.
 Na konci nám vyjde jedno číslo -- správna odpoveď.
 
 \medskip
 
-Teraz už vieš o binárnom vyhľadávaní skoro všetko :) Ostáva si ho už len usilovne precvičiť aj na
+Teraz už vieš o binárnom vyhľadávaní skoro všetko :). Ostáva si ho už len usilovne precvičiť aj na
 týchto úlohách: \textbf{najdi2}, \textbf{obrazky}, \textbf{susenie} či \textbf{faktorial}.
 
 \end{document}
