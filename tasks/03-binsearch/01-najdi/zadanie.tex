@@ -1,0 +1,39 @@
+\input ../../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Nájdi číslo}
+
+Na vstupe máte usporiadanú (od najmenšieho po najväčšie) postupnosť $n$ prvkov. Ďalej nasleduje $q$
+otázok, každá sa pýta, na ktorej pozícii sa v tomto poli nachádza číslo $x$. Vypíšte túto pozíciu
+alebo $-1$ ak sa tam číslo nenachádza.
+
+\nadpis{Vstup}
+
+Na prvom riadku je číslo $n$ ($1 \leq n \leq 10^5$) -- počet čísiel v postupnosti.
+Na druhom riadku je $n$ rôznych celých čísiel z rozsahu $1$ až $10^9$, určujúce postupnosť.
+
+Nasleduje číslo $q$ ($1 \leq q \leq 10^5$) -- počet otázok. Posledných $q$ riadkov určuje jednotlivé
+otázky. Všetky otázky sú opäť v rozsahu $1$ až $10^9$.
+
+\nadpis{Výstup}
+
+Na každú otázku vypíšte na samostatný riadok odpoveď -- pozíciu kde sa dané číslo nachádza vo
+vstupnom poli alebo $-1$ ak sa nenachádza. Pozície sú číslované od $0$ po $n-1$.
+
+\nadpis{Príklady}
+
+\vstup
+5
+1 2 8 9 15
+3
+2
+5
+15
+\vystup
+1
+-1
+4
+\koniec
+
+\end{document}
