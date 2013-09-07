@@ -1,0 +1,59 @@
+\input ../../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Výber oblečenia}
+
+Vyberať si oblečenie vôbec nie je jednoduché. Spýtajte sa ľubovoľného dievčaťa. Predsa hráškovo
+ružová sa nehodí k hrozienkovo zlatej a tyrkysová nemôže ísť dokopy so slonovinovo-maslovou čiernou
+\footnote{Nebojte sa, žiadna z predchádzajúcich farieb neexistuje, aj keď vám dievčatá budú tvrdiť
+opak}. A takisto kárované nohavice nemôžu ísť dokopy s pásikavým tričkom. A to je len začiatok.
+
+Pipka Natálka to však našťastie má zmáknuté a presne vie, ktoré veci sa k sebe hodia. Stojí teda v
+obchode a prezerá si všetkých $n$ kusov oblečenia čo tam majú a rozmýšľa, ktoré tri si vyberie a
+kúpi. Chce byť však šporovlivá a utratiť čo najmenej peňazí, ale zároveň sa každá z tých vecí musí
+hodiť k zvyšným dvom. Pomôžte jej to zistiť.
+
+\nadpis{Úloha}
+
+Na vstupe dostanete ceny $n$ vecí v obchode a takisto $m$ párov oblečení, ktoré sa k sebe hodia.
+Uvedomte si, že ak sa vec $a$ hodí k $b$, tak sa aj $b$ hodí k $a$. Zistite, koľko najmenej peňazí
+potrebuje, ak si chce kúpiť práve tri veci, ktoré sa k sebe navzájom hodia.
+
+\nadpis{Vstup}
+
+Na prvom riadku sú dve celé čísla $n$ a $m$ ($3 \leq n \leq 100$, $0 \leq m \leq \frac{n(n-1)}{2}$)
+-- počet oblečenia v obchode a počet párov, ktoré sa k sebe hodia.
+
+Na druhom riadku je $n$ celých čísiel $a_i$ ($1 \leq a_i \leq 10^6$) -- ceny jednotlivých oblečení.
+
+Posledných $m$ riadkov obsahuje dvojicu $x_i, y_i$ -- pár oblečenia, ktorý sa k sebe hodí. Oblečenia
+sú číslované od $1$ po $n$.
+
+\nadpis{Výstup}
+
+Vypíšte najmenšiu sumu takú, že sa za ňu dajú kúpiť tri kusy oblečenia, ktoré sa k sebe hodia, alebo
+vypíšte $-1$ ak takú trojicu vecí nájsť neviem.
+
+\nadpis{Príklady}
+
+\vstup
+3 3
+1 2 3
+1 2
+2 3
+3 1
+\vystup
+6
+\koniec
+
+\vstup
+3 2
+2 3 4
+2 3
+2 1
+\vystup
+-1
+\koniec
+
+\end{document}
