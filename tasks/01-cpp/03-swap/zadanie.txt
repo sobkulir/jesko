@@ -1,0 +1,1 @@
+Napíš program, ktorý načíta 2 medzerou oddelené celé čísla zo vstupu a vypíše ich v opačnom poradí na jediný riadok výstupu.
