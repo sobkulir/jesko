@@ -2,6 +2,10 @@
 %nechcete, alebo ste hotoví tak sa odtiaľ odpíšte. Bolo by však fajn, aby jedu vec robil jeden
 %človek ak celok a zvyšný len kontrolovali
 %vypracuva:Zaba 
+
+%gram. oprava Maja
+
+
 \input ../../include/include.tex
 
 \begin{document}
@@ -11,28 +15,28 @@
 Obsah:
 \begin{itemize}
     \item cieľ tejto časti
-    \item princip binarneho vyhladavania
-    \item binarne vyhladavani odpovedi
-    \item binarne vyhladavanie bez jednej hranice (+1, +2, +4 \dots)
+    \item princíp binárneho vyhľadávania
+    \item binárne vyhľadávanie odpovedí
+    \item binárne vyhľadávanie bez jednej hranice (+1, +2, +4 \dots)
     \item ternárne vyhľadávanie
 \end{itemize}
 
 Už sa vám určite stalo, že ste zobrali do ruky učebnicu dejepisu a snažili ste sa nájsť tú správnu stranu, na
-ktorej sú poznámky k zajtrajšej písomke. V takomto prípade určite nie je času nazvyš a treba nájsť
-tú správnu kapitolu čo najrýchlejšie (keby ste nevedeli, ta správna strana je strana $47$).
+ktorej sú poznámky k zajtrajšej písomke. V takomto prípade určite nie je času nazvýš a treba nájsť
+tú správnu stranu čo najrýchlejšie (keby ste nevedeli, tá správna je strana $47$).
 
-Samozrejme, môžeme v nej ísť postupne od začiatku, postupne sa pozrieť na stranu $1$, $2$ \dots až
-konečne dorazíme na stranu $47$. Takto však prezrieme úplne veľa stránok, pričom je nám jasné, že
+Samozrejme, môžeme v nej ísť od začiatku, postupne sa pozrieť na stranu $1$, $2$ \dots až
+konečne dorazíme na stranu $47$. Takto však prezrieme veľmi veľa stránok, pričom je nám jasné, že
 mnohé z nich by sme mohli preskočiť.
 
 Oveľa pravdepodobnejšie je, že zoberieme našu učebnicu a otvoríme ju na náhodnej strane. Nachádzame
-číslo $34$. Prichádza dôležitá úvaha: keďže sú strany v knihe radené od postupne od $1$ a čísla na
+číslo $34$. Prichádza dôležitá úvaha: keďže sú strany v knihe radené postupne od $1$ a čísla na
 seba nadväzujú, je nám jasné, že strana $47$ bude niekde za touto stranou. Odrazu sa teda nemusíme
 pozerať na množstvo strán, ktoré idú pred $34$ a ušetrili sme si oproti predchádzajúcemu postupu
 $33$ pozretí.
 
-Teraz by sme už mohli skončiť a stranu $47$ ručne dohľadať, alebo môžeme znova otvoriť knihu na
-náhodnej strane medzi stranou $34$ a koncom knihy. A presne tento prístup sa volá binárne
+Teraz by sme už mohli skončiť a stranu $47$ ručne dohľadať alebo môžeme znova otvoriť knihu na
+náhodnej strane medzi stranou $34$ a koncom knihy. A presne tento postup sa volá binárne
 vyhľadávanie.
 
 \medskip
