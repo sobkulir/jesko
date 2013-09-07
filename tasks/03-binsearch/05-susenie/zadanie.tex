@@ -1,0 +1,68 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Sušenie oblečenia}
+
+Práve ste sa vrátili z výletu s množstvom špinavého oblečenia. Hneď ste ho všetko nahádzali do
+pračky a oprali. Teraz však prichádza problém. Za chvíľu odchádzate na ďalší výlet a musíte teda čo
+najrýchlejšie usušiť všetky mokré veci.
+
+Sušenie funguje nasledovne. Každej veci sa dá priradiť jej aktuálna vlhkosť $v_i$. Ak bude vlhkosť
+nulová, vec sa pokladá za vysušenú a ďalej neschne (lebo nemá z čoho). Ak je nejaká vlhká vec
+na vzduchu, každú minútu stratí jednu vlhkosť. Našťastie však máte jeden radiátor, na ktorý sa
+zmestí práve jeden kus oblečenia. Ak je vec položená na radiátore, každú minútu stratí $k$ vlhkosti.
+Ak by v nejakom momente mala vlhkosť menšiu ako $k$ tak uschne úplne.
+
+Veci na radiátore viete každú minútu vymeniť a nezožerie vám to žiaden čas. Zistite, ako
+najrýchlejšie viete usišiť všetky mokré veci ak budete používať radiátor optimálne.
+
+\nadpis{Úloha}
+
+Na vstupe dostanete popis vlhkostí všetkých vecí a parameter $k$ radiátora. Zistite najmenší čas
+potrebný na úplné usušenie všetkých vecí.
+
+\nadpis{Vstup}
+
+Na prvom riadku je číslo $n$ ($1 \leq n \leq 10^5$) -- počet mokrých vecí.
+
+Na druhom riadku je $n$ celých čísiel $v_i$ ($1 \leq v_i \leq 10^9$) -- vlhkosti jednotlivých vecí.
+
+Posledný riadok obsahuje číslo $k$ ($1 \leq k \leq 10^9$) -- množstvo vlhkosti, ktoré vec stratí
+počas jednej minúty na radiátore.
+
+\nadpis{Výstup}
+
+Jedno celé číslo -- najmenší počet minút, za ktoré vieme usušiť všetky kusy oblečenia.
+
+\medskip
+
+\textbf{Upozornenie:} Dávajte si pozor, na úspešné riešenie je treba správne použiť $64$ bitovú
+premennú -- \texttt{long long}.
+
+\nadpis{Príklady}
+
+\vstup
+3
+2 3 9
+5
+\vystup
+3
+\komentar
+Veci s vlhkosťou $2$ a $3$ necháme uschnúť normálne, vec s vlhkosťou $9$ dáme na radiátor. Všimnite
+si, že za $2$ minúty všetko usušiť neviem.
+\koniec
+
+\vstup
+3
+2 3 6
+5
+\vystup
+2
+\komentar
+Prvú minútu dáme na radiátor vec s vlhkosťou $3$. Po tejto minúte budú mať veci vlhkosti $1$, $0$ a
+$5$. Druhú minútu položíme na radiátor tretiu vec, ktorá tým pádom vyschne a prvá vec vyschne za
+druhú minútu sama od seba.
+\koniec
+
+\end{document}
