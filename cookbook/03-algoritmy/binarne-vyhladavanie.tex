@@ -41,42 +41,42 @@ vyhľadávanie.
 
 \medskip
 
-Zadefinujme si úlohu trošku všeobecnejšie a trošku programátorskejšie. Majme pole kde je uložených
-$n$ celých čísiel a naviac tieto čísla idú v poradí od najmenšieho po najväčšie. Našou úlohou je
-zistiť, či sa v tomto poli nachádza číslo $x$ a použiť pri tom čo najmenej pozretí do poľa. V
-prípade, že by sme sa pozreli postupne na všetky prvky a porovnávali ich s $x$, dostali by sme
-$O(n)$ pozretí. Našim cieľom bude toto číslo zmenšiť.
+Zadefinujme si úlohu trošku všeobecnejšie a trošku programátorskejšie. Majme pole, kde je uložených
+$n$ celých čísel a naviac tieto čísla idú v poradí od najmenšieho po najväčšie. Našou úlohou je
+zistiť, či sa v tomto poli nachádza číslo $x$ a pozerať pritom čo najmenej do poľa. V
+prípade, že by sme sa pozreli postupne na všetky prvky a porovnávali ich s $x$, urobili by sme
+$O(n)$ pohľadov do poľa. Našim cieľom bude toto číslo zmenšiť.
 
-Nech dvojica $(z, k)$ je dvojica indexov, ktoré označujú "aktívnu" časť poľa -- interval kde sa ešte
+Nech dvojica $(z, k)$ je dvojica indexov, ktoré označujú "aktívnu" časť poľa -- interval, kde sa ešte
 prvok $x$ môže nachádzať. O všetkom mimo týchto indexov vieme, že sa tam číslo $x$ určite nebude
-nachádzať. Naviac použime polootvorený interval, teda pozícia $z$ je ešte aktívna, ale na pozícii
+nachádzať. Naviac použijeme polootvorený interval, teda pozícia $z$ je ešte aktívna, ale na pozícii
 $k$ sa už číslo $x$ vyskytovať nemôže. To znamená, že ak sa nám podarí náš interval zredukovať tak,
 že $z+1 = k$ ostane nám jediné aktívne číslo na pozícii $z$. Ak sa toto číslo rovná $x$, $x$ sa v
-poli nachádza v opačnom prípade, žiadne číslo z poľa nie je $x$.
+poli nachádza, v opačnom prípade žiadne číslo z poľa nie je $x$.
 
 Zvoľme si teraz stred tohto intervalu, teda index $s = \frac{z+k}{2}$. Pozrime sa na číslo na
-$s$-tom mieste. Ak je toto číslo menšie alebo rovné ako $x$ znamená to, že všetky indexy menšie ako
+$s$-tom mieste. Ak je toto číslo menšie alebo rovné ako $x$, znamená to, že všetky indexy menšie ako
 $s$ musia obsahovať čísla menšie ako $x$, lebo pole je usporiadané od najmenších prvkov. To znamená,
 že sa náš aktívny interval zredukuje na $(s, k)$.
 
-V opačnom prípade, keď je prvok na $s$-tej pozícii väčší ako $x$ tak sa prvok $x$ nemôže nachádzať
+V opačnom prípade, keď je prvok na $s$-tej pozícii väčší ako $x$, tak sa prvok $x$ nemôže nachádzať
 napravo od $s$, lebo tam sú čísla ešte väčšie. Náš aktívny úsek sa zmenší na $(z, s)$. Rozmyslite
 si, že naša polootvorenosť tohto intervalu sa týmto nepokazila.
 
-Koľkokrát sa pri takomto prístupe pozrieme do poľa ak začíname intervalom $(0, n)$? Zakaždým sme prvok $s$ vybrali ako stred
+Koľkokrát sa pri takomto prístupe pozrieme do poľa, ak začíname intervalom $(0, n)$? Zakaždým sme prvok $s$ vybrali ako stred
 intervalu $(z, k)$ a zakaždým sme zahodili jednu polovicu tohto intervalu. To znamená, že na
 začiatku sme mali $n$ aktívnych prvkov, potom $\frac{n}{2}$, $\frac{n}{4}$, $\frac{n}{8}$ \dots
-Ak by bolo $n$ mocnina dvojky, teda $n = 2^k$, tak by sme mohli tento interval deliť napoli najviac
+Ak by bolo $n$ mocnina dvojky, teda $n = 2^k$, tak by sme mohli tento interval deliť na dve polovice najviac
 $k$ krát a potom by sme dostali len jeden samostaný prvok a teda by sme vedeli odpoveď. No a správna
-funkcia, ktorá nám z číslo $2^k$ spraví číslo $k$ je logaritmus, takže sa do poľa pozrieme rádovo
+funkcia, ktorá nám z čísla $2^k$ spraví číslo $k$ je logaritmus, takže sa do poľa pozrieme rádovo
 $O(\log n)$ krát.
 
 Tu je kratučký program, ktorý robí práve vyššie spomínanú vec.
 
 \listing{binarysearch.cpp}
 
-Je to možno na nevieru, ale aj takáto jednoduchá myšlienka sa dá skryť do mnohých úloh a stáva sa
-mocnou zbraňou každého programátora. Však si to môžete hneď aj vyskúšať na úlohe \textbf{najdi}
+Možno tomu neveríte, ale aj takáto jednoduchá myšlienka sa dá skryť do mnohých úloh a stáva sa
+mocnou zbraňou každého programátora. Môžete si to hneď aj vyskúšať na úlohe \textbf{najdi}
 
 \nadpis{Binárne vyhľadávanie výsledku}
 
