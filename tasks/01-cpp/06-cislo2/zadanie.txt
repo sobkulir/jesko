@@ -1,0 +1,1 @@
+Na vstupe je jedno celé číslo. Na jeden riadok výstupu vypíšte, či je \texttt{kladne}, \texttt{nulove} alebo \texttt{zaporne}.

@@ -40,12 +40,12 @@ done
 
 echo generate_task: generating statement ...
 
-echo "\input ../../../include/include.tex >> zadanie.tex" > zadanie.tex
+echo "\input ../../../include/include.tex" > zadanie.tex
 echo ""  >> zadanie.tex
 echo "\begin{document}" >> zadanie.tex
 echo ""  >> zadanie.tex
-echo "\nadpis{" >> zadanie.tex
-cat meno.txt >> zadanie.tex
+echo -n "\nadpis{" >> zadanie.tex
+echo -n `cat meno.txt` >> zadanie.tex
 echo "}"  >> zadanie.tex
 echo ""  >> zadanie.tex
 cat zadanie.txt >> zadanie.tex
