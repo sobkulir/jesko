@@ -1,0 +1,47 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Faktoriál}
+
+Na vstupe dostanete jedno celé číslo $k$. Nájdite najmenšie $x$ také, že $x!$ má v desiatkovom
+zápise na konci aspoň $k$ núl.
+
+\nadpis{Vstup}
+
+Jedno celé číslo $k$ ($1 \leq k \leq 10^7$).
+
+\nadpis{Výstup}
+
+Jedno celé číslo $x$ -- najmenšie číslo, ktorého faktoriál má na konci aspoň $k$ núl.
+
+Môžete predpokladať, že $x$ sa vám v pohode zmestí do $32$ bitovej premennej so znamienkom -- teda
+normálny \texttt{int}.
+
+\nadpis{Príklady}
+
+\vstup
+1
+\vystup
+5
+\komentar
+Prvých niekoľko faktoriálov: $1$, $2$, $6$, $24$, $120$. Prvý faktoriál, ktorý má na konci $0$ je
+$5!$ odpoveď je teda $5$.
+\koniec
+
+\vstup
+5
+\vystup
+25
+\koniec
+
+\vstup
+6
+\vystup
+25
+\komentar
+Všimnite si, že posledné dva vstupy dávajú rovnaký výstup. Je to preto, že čísla menšie ako $25$
+majú na konci najviac $4$ nuly, ale číslo $25!$ ich má na konci rovno $6$.
+\koniec
+
+\end{document}
