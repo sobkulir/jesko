@@ -1,0 +1,62 @@
+\input ../../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Trpaslíci}
+
+Občas sa stane, že sa na ceste z bane nejaký trpaslík stratí a domov ich príde menej ako $7$. Pre
+Snehulienku je však ťažké zistiť, kto sa vlastne stratil, lebo všetci vyzerajú rovnako -- špicatý
+klobúk je vlastne jediné čo Snehulienka z tej výšky vidí.
+
+Našťastie, nie všetci trpaslíci majú rovnakú váhu. Ak sa jej teda domov vráti menej ako $7$
+trpaslíkov postaví ich všetkých spolu na váhu a častokrát už len z tohto vie kto sa stratil. Viete
+to aj vy?
+
+\nadpis{Úloha}
+
+Dostanete hodnoty, koľko váži ktorý z trpaslíkov. Taktiež sa dozviete, koľkí sa vrátili domov a aká
+bola ich spoločná váha. O každom trpaslíkovi zistite, či je doma, chýba alebo sa nedá povedať kde
+je.
+
+\nadpis{Vstup}
+
+Na prvom riadku je sedem celých čísiel menších ako $200$ -- váhy jednotlivých trpaslíkov.
+
+Na druhom riadku sú dve čísla $n$ ($0 \leq n < 7$) a $h$. $n$ určuje počet trpaslíkov, ktorý sa
+vrátili domov a $h$ ich spoločnú váhu. Môžete predpokladať, že $h$ naozaj vzniklo ako súčet
+niektorých $n$ čísiel z prvého riadku.
+
+\nadpis{Výstup}
+
+Vypíšte $7$ riadkov, na každom bude číslo trpaslíka a jeden z jeho možných stavov: \texttt{doma},
+\texttt{chyba}, \texttt{nevedno}. Dodržte formát ako vo vzorových príkladoch.
+
+\nadpis{Príklady}
+
+\vstup
+10 11 12 13 14 16 15
+6 75
+\vystup
+1 doma
+2 doma
+3 doma
+4 doma
+5 doma
+6 chyba
+7 doma
+\koniec
+
+\vstup
+10 11 12 13 14 16 16
+6 76
+\vystup
+1 doma
+2 doma
+3 doma
+4 doma
+5 doma
+6 nevedno
+7 nevedno
+\koniec
+
+\end{document}
