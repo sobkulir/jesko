@@ -3,11 +3,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%% ROZMERY STRANKY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% zvisle rozmery, zakomentovane su default %%%%%
-\voffset 1.5cm \advance\voffset -1truein   % advance, lebo TeX priratava 1in
+\voffset 0.5cm \advance\voffset -1truein   % advance, lebo TeX priratava 1in
                                            % \topmargin 0pt % nad headerom
 \headheight 49pt                           
                                            % \headsep 25pt % medzi headerom a textom
-\textheight 22cm                           % cele body
+\textheight 24cm                           % cele body
                                            % \footskip 30pt % spodok body az spodok footera
 %%%%% vodorovne rozmery, zakomentovane su default %%%%%
 \hoffset 2cm \advance\hoffset -1truein     % advance, lebo TeX priratava 1in
@@ -19,11 +19,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%% HEADERS, FOOTERS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \lhead{\Large\scshape Ješko 2013}
-\chead{}%\includegraphics[height=1.5cm]{mop-logo}}
+\chead{}%\includegraphics[height=1.5cm]{jesko.png}}
 \rhead{\large\sf Bratislava \\ 9. 9. 2013 -- 13. 9. 2013}
 \lfoot{}
-\cfoot{strana {\bfseries\thepage} z {\bfseries\pageref{LastPage}}}
-\rfoot{\ifx\men@ulohy\undefined\relax\else úloha: \men@ulohy\fi}
+\cfoot{}
+\rfoot{}
+%\cfoot{strana {\bfseries\thepage} z {\bfseries\pageref{LastPage}}}
+%\rfoot{\ifx\men@ulohy\undefined\relax\else úloha: \men@ulohy\fi}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 
