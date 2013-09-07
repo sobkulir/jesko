@@ -189,16 +189,15 @@ int main(){printf("jesko\n");}
 \riesenie Použijeme príkaz \verb!printf("\"jesko\"\n");!
 
 \kapitola{Premenné}
-%Maja:Nie je lepsie poriadne napisat, ze nazov premennej je ako label na krabicke? 
-%Premenna s menom krabicka mi pride matuca.
 Bez toho, aby sme si mohli údaje zapamätávať sa programovať nedá. Na zapamätanie
 nejakých hodnôt nám slúžia premenné. \textbf{Premennú} si môžeme predstaviť ako
-krabičku, do ktorej vieme všeličo strčiť. Krabičky majú svoje mená a aj svoj
+krabičku, do ktorej vieme všeličo strčiť. Krabičky majú svoje meno a aj svoj
 typ. 
 
+Premennú s menom si môžeme predstaviť ako krabičku s nálepkou.
 \emph{Meno} krabičky/premennej slúži na to, aby sme s nimi vedeli pracovať.
 Napríklad "ulož číslo do tamtej premennej" počítač nepochopí, on by rád počul
-"ulož číslo do premennej s menom 'krabicka'". 
+"ulož číslo do premennej s menom \verb'a'". 
 
 \emph{Typ} premennej zase určuje, čo do nej môžeme vkladať. Do premennej typu
 \verb!int! (odvodené od anglického slova integer) môžeme ukladať celé číslo, do
@@ -254,7 +253,7 @@ premenné na obrazovku. Bude na to slúžiť príkaz \verb!printf()!, ale teraz 
 použitý zložitejšie. Funkcii \verb!printf()! totiž môžeme do zátvoriek napísať
 viac argumentov ako jeden. Prvý argument totiž nemusí byť obyčajný reťazec,
 ale môže byť špeciálny formátovací reťazec. Od obyčajného sa líši tým, že
-obsahuje podivné značky ako \verb!\%d! \verb!\%lf! \verb!\%4d! a mnohé ďalšie.
+obsahuje podivné značky ako \verb!%d! \verb!%lf! \verb!%4d! a mnohé ďalšie.
 Tieto značky sú pri spracovaní funkciou nahradené hodnotami, ktoré určíme v
 ďalších argumentoch tejto funkcie.
 
@@ -262,14 +261,14 @@ Vyskúšajte si skompilovať a spustiť nasledovný program.
 \lstlang{cpp}\begin{lstlisting}
 #include<cstdio>
 int main(){
-    printf("\%d + \%d = \%d\n",4,7,4+7);
+    printf("%d + %d = %d\n",4,7,4+7);
 }
 \end{lstlisting}
 Mal by vypísať reťazec \verb!4 + 7 = 11!. Totiž funkcii \verb!printf! sme dali
-4 argumenty (argumenty oddeľujeme čiarkou) reťazec \verb!"\%d + \%d = \%d\n"! a
+4 argumenty (argumenty oddeľujeme čiarkou) reťazec \verb!"%d + %d = %d\n"! a
 tri výrazy $4$, $7$ a $4+7$ s hodnotami $4$, $7$ a $11$.  Funkcia najprv
 zoberie prvý argument, ktorý musí byť reťazec, nájde tam všetky výskyty
-\verb!\%<nieco>! a nahradí ich hodnotami ďalších argumentov.  \verb!\%d! znamená,
+\verb!%<nieco>! a nahradí ich hodnotami ďalších argumentov.  \verb!%d! znamená,
 že argument bude celé číslo, ktoré chceme vypísať v desiatkovej sústave. O
 iných značkách si povieme viac neskôr, slúžia buď na vypisovanie iných typov
 objektov (reálne čísla, znaky, reťazce\dots) alebo rôzny spôsob ich vypísania
@@ -281,7 +280,7 @@ Keďže premenné sú tiež výrazy, tak môžeme vypisovať ich hodnoty takto:
 int main(){
     int a;
     a = 17;
-    printf("premenna a ma hodnotu \%d\n",a);
+    printf("premenna a ma hodnotu %d\n",a);
 }
 \end{lstlisting}
 Alebo bez zbytočných blábolov:
@@ -289,7 +288,7 @@ Alebo bez zbytočných blábolov:
 #include<cstdio>
 int main(){
     int a = 7;
-    printf("\%d\n",a);
+    printf("%d\n",a);
 }
 \end{lstlisting}
 Všimnite si riadok \verb!int a = 7;!. Ide o skrátený zápis dvoch príkazov
@@ -313,7 +312,7 @@ prípade premennej typu \verb!int! sú to hodnoty od $-2^{31}$ po $2^{31}-1$
 (záporných čísel je presne polovica, kladných čísel je o 1 menej, kvôli číslu
 0).
 
-\cvicenie Vyskúšajte si spustiť príkaz \verb!printf("\%d\n", 2147483647 + 1);!.
+\cvicenie Vyskúšajte si spustiť príkaz \verb!printf("%d\n", 2147483647 + 1);!.
 \fakeriesenie
 
 \medskip
@@ -324,8 +323,8 @@ resp. $-2^7..2^7-1$. Premenná typu \verb!bool! má len dve hodnoty
 \verb!false! resp. 0 (nepravda) alebo \verb!true! resp. 1 (pravda).
 
 Väčší rozsah majú zasa premenné \verb!long long!, od $-2^{63}..2^{63}$. Pri ich
-vypisovaní však treba dávať pozor, namiesto \verb!"\%d"! treba písať
-\verb!"\%lld"! na Linuxe alebo \verb!"\%I64d"! na Windowse.
+vypisovaní však treba dávať pozor, namiesto \verb!"%d"! treba písať
+\verb!"%lld"! na Linuxe alebo \verb!"%I64d"! na Windowse.
 
 Existujú aj typy premenných, ktoré neukladajú záporné čísla. Napríklad
 \verb!unsigned int! má rozsah $0..2^{32}-1$.  Pri ich používaní treba byť
@@ -336,7 +335,7 @@ v bezznamienkovej premennej môže byť 4294967295.)
 
 Každá hodnota je v pamäti počítača reprezentovaná ako postupnosť núl a
 jednotiek -- bitov. Osem bitov je jeden bajt. Napríklad \verb!int! má veľkosť 4
-bajty, čiže 32 bitov. \verb!Char! má zase len jeden bajt -- 8 bitov. Keď máme v
+bajty, čiže 32 bitov. \verb!char! má zase len jeden bajt -- 8 bitov. Keď máme v
 premennej typu \verb!char! uložené číslo 47, tak v pamäti počítača to vyzerá
 ako 00101111. Rovnaké číslo v premennej typu \verb!int! vyzerá 00000000
 00000000 00000000 00101111. 
@@ -473,12 +472,12 @@ bude 400.
 Treba si dávať \textbf{pozor} na nasledovnú vec.
 
 \cvicenie Skopírujte, skompilujte a spustite nasledovný program.  (Pokiaľ
-používate windows, použite miesto \verb!\%lld! \verb!\%I64d!)
+používate windows, použite miesto \verb!%lld! \verb!%I64d!)
 \lstlang{cpp}\begin{lstlisting}
 #include<cstdio>
 int main(){
     ll a = 1000000*1000000;    
-    printf("d = \%lld\n",d);
+    printf("d = %lld\n",d);
 }
 \end{lstlisting}
 Čo vypísal? Prečo? Ako by ste ho opravili, aby naozaj vypísal
@@ -537,7 +536,7 @@ to nepostrehnete, ale pokiaľ by ste chceli načítať/vypísať niekoľkostotis
 prvkov, odporúčame použiť \verb!cstdio!.
 
 Jednou z výhod je, že sa nemusíte starať o typy a formátovacie značky
-\verb"\%lld". Preto vám odporúčame používať streamy, ak programujete na Windowse
+\verb"%lld". Preto vám odporúčame používať streamy, ak programujete na Windowse
 a vypisujete \verb!long long!y.
 
 Pokiaľ nechcete stále písať pred každým príkazom \verb!std::!, stačí pridať

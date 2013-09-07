@@ -215,25 +215,25 @@ Samozrejme, premennú i môžeme využiť aj v tele cyklu. Nasledovný program v
 čísla 0 až 7, každé na zvlášť riadku.
 \lstlang{cpp}\begin{lstlisting}
 for(int i = 0; i<8; ++i)
-    printf("\%d\n", i);
+    printf("%d\n", i);
 \end{lstlisting}
 
 \cvicenie Napíšte program, ktorý vypíše prvých 50 nepárnych čísel (1, 3,
-5 \dots) Zvyšok po delení dvoma (paritu) vieme zistiť napríklad operátorom \verb!\%!.
-\verb!a \% b! vráti zvyšok \verb!a! po delení \verb!b!. Napríklad \verb!47 \% 10 == 7!, \verb!10 \% 2 == 0!.
-Pozor treba dávať na záporné čísla, \verb!-13 \% 5 == -3!.
+5 \dots) Zvyšok po delení dvoma (paritu) vieme zistiť napríklad operátorom \verb!%!.
+\verb!a % b! vráti zvyšok \verb!a! po delení \verb!b!. Napríklad \verb!47 % 10 == 7!, \verb!10 % 2 == 0!.
+Pozor treba dávať na záporné čísla, \verb!-13 % 5 == -3!.
 
 \riesenie Predvedieme si tri spôsoby. 
 \lstlang{cpp}\begin{lstlisting}
 for(int i = 0; i<100; ++i)
-    if (i\%2 == 1)
-        printf("\%d\n", i);
+    if (i%2 == 1)
+        printf("%d\n", i);
 
 for(int i = 0; i<50; ++i)
-    printf("\%d\n", 2*i + 1);
+    printf("%d\n", 2*i + 1);
 
 for(int i = 1; i<100; i+=2)
-    printf("\%d\n", i);
+    printf("%d\n", i);
 \end{lstlisting}
 
 Pri cykloch si treba dávať pozor, keďže sa môžu zacykliť a potom váš program
@@ -309,11 +309,11 @@ Takže potrebujeme vedieť načítavať vstup.
 Na načítavanie sa dá použiť funkcia \verb!scanf()!, ktorá sa syntaxou veľmi
 podobá \verb!printf()!. Prvý parameter je opäť formátovací reťazec, ale ďalšie
 už nie sú výrazy, ale smerníky na premenné. Teda ak chceme načítať jedno číslo
-do premennej a, napíšeme \verb!scanf("\%d", &a);!
+do premennej a, napíšeme \verb!scanf("%d", &a);!
 
 Prečo tam je \verb!&a! miesto \verb!a!? Dôvod je veľmi jednoduchý, \verb!a! je
 výraz, ktorého hodnota je hodnota \verb!a!, napríklad číslo 7. A zavolaním
-\verb!scanf("\%d", 7);! ťažko budeme vedieť, kam máme uložiť načítanú hodnotu.
+\verb!scanf("%d", 7);! ťažko budeme vedieť, kam máme uložiť načítanú hodnotu.
 (Vieme ukladať len do premenných, nie do hodnôt). Keď však napíšeme \verb!&a!,
 tak výsledkom výrazu nebude hodnota \verb!a!, ale miesto, kde je \verb!a!
 uložené v pamäti počítača.  Funkcia teda načíta číslo a uloží ho na to miesto v
@@ -324,8 +324,8 @@ Vyskúšajte si skompilovať a spustiť tento program:
 #include<cstdio>
 int main(){
     int a, b;
-    scanf("\%d \%d", &a, &b);
-    printf("\%d\n", a+b);
+    scanf("%d %d", &a, &b);
+    printf("%d\n", a+b);
 }
 \end{lstlisting}
 
@@ -374,7 +374,7 @@ int main(){
         a[i] = a[i-1] + a[i-2];
     }
     for(int i = 0; i<30; ++i)
-        printf("\%d ", a[i]);
+        printf("%d ", a[i]);
     printf("\n");
 }
 \end{lstlisting}
@@ -421,30 +421,8 @@ pozor na pamäť \verb!int A[100][100][100][10][10];! zaberá cca 400MB.
 
 \kapitola{Zoznámte sa s testovačom}
 
-Teraz už by ste mali vedieť dosť na to, aby ste vyrišili tieto úlohy:
+Teraz už by ste mali vedieť dosť na to, aby ste vyriešili tieto úlohy: TODO %TODO
 
-
-%\cvicenie 
-
-%\riesenie 
-
-%\lstlang{cpp}\begin{lstlisting}
-%\end{lstlisting}
-
-
-
-
-%\cvicenie 
-
-%\riesenie 
-
-%\lstlang{cpp}\begin{lstlisting}
-%#include<cstdio>
-%int main(){
-%    ll a = 1000000*1000000;    
-%    printf("d = %lld\n",d);
-%}
-%\end{lstlisting}
 
 \end{document}
 
