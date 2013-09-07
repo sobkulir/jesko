@@ -1,0 +1,56 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Zbláznil sa fyzikár\dots}
+
+Váš učiteľ fyziky sa rozhodol vyskúšať nové pedagogické metódy. Už sa na
+hodinách skoro nič neučíte, len stále experimentujete a niečo meriate. To mu
+nemožno až tak zazlievať, aspoň vidíte fyzikálne deje v praxi. No napriek tomu
+všetci spolužiaci frflú, že sa azda pomiatol, veď zadáva jednu domácu úlohu za
+druhou.
+
+Posledný mesiac ste strávili neustálym spisovaním protokolov z laboratórnych
+cvičení. Bolo toho tak veľa, že sa to jednoducho nedalo stíhať -- mnoho z nich
+ste dopisovali narýchlo, tesne pred hodinou. A tak nečudo, že fyzikár nebol s
+kvalitou spokojný. Údaje nepresné, výpočty chýbajú, tabuľky len krivo rukou
+načmárané, namiesto aby boli poriadne narysované.
+
+Verdikt: prepracovať! No ešte to tak chýbalo! Čo teraz? Nechce sa vám predsa
+všetko robiť odznova. Fajn, obsah môžete odpísať od svedomitejších spolužiakov,
+ale tie tabuľky\dots tie bude treba narysovať, jednu za druhou. Desiatky
+tabuliek\dots nezáživná, zdĺhavá, mechanická práca\dots priam práca pre robota,
+nie človeka.  Teda, robota alebo\dots počítač! Pri tejto spásonosnej myšlienke
+sa vám uľavilo.  Ešteže viete programovať!
+
+\uloha
+Napíšte program, ktorý na vstupe dostane dve prirodzené čísla $R$ a $S$ a
+vykreslí tabuľku s $R$ riadkami a $S$ stĺpcami. Na vodorovné línie použite znak
+'{\tt -}' (mínus, resp. pomlčka), na zvislé línie znak '{\tt |}' (tzv. rúra) a
+na ich priesečníky znak '{\tt +}' (plus). Každé políčko tabuľky je tvorené
+jedinou medzerou tesne ohraničenou vertikálnymi a horizontálnymi líniami.
+
+\napdis{Formát vstupu}
+
+V prvom riadku budú dve celé čísla $R$ a $S$ ($1 <= R, S <= 100$), oddelené 
+medzerou.
+
+
+\napdis{Formát výstupu}
+
+Na výstup vypíšte požadovanú tabuľku.
+
+\priklad
+\vstup\tt\obeylines
+2 3
+
+\vystup\tt\obeylines
++-+-+-+
+| | | |
++-+-+-+
+| | | |
++-+-+-+
+
+\koniec
+
+\end{document}
