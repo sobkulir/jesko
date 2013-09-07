@@ -1,0 +1,65 @@
+\input ../../../include/include.tex
+
+\begin{document}
+
+\velkynadpis{Obrázkový hlavolam}
+
+Ježko Pichliač dostal na narodeniny zvláštny obrázkový hlavolam. Skladá sa z prázdnej mriežky
+$n\times n$ a $k$ sád obrázkov. Každá sada obsahuje nejaký počet rovnakých obrázkov, navzájom medzi
+sadami sú však obrázky rôzne a dokopy ich je presne $n^2$.
+
+Pichliačovou úlohou je vložiť obrázky do mriežky tak, aby vytvoril čo najviac rovnakých riadkov. Ak
+má napríklad mriežku veľkosti $3$ a má $4$ hviezdičky, $2$ pluská, $2$ bodky a $1$ rovná sa, jeho
+mriežka môže vyzerať takto:
+
+\begin{verbatim}
+* * +
+. * *
++ = .
+\end{verbatim}
+
+V tomto prípade má však len jeden rovnaký riadok, lebo všetky vyzerajú rôzne. Ak by obrázky však
+preusporiadal nasledovným spôsobom, dostal by $2$ rovnaké riadky, čo je zároveň aj najlepšie čo vie
+dosiahnuť.
+
+\begin{verbatim}
+* * .
+* * .
++ + =
+\end{verbatim}
+
+Pomôžte mu zistiť, koľko najviac rovnakých riadkov vie mať s danou sadou obrázkov.
+
+\nadpis{Úloha}
+
+Na vstupe dostanete veľkosť mriežky, počet rôznych sád obrázkov a veľkosti jednotlivých sád. Zistite
+koľko najviac rovnakých riadkov vie ješko z týchto obrázov vyskladať.
+
+\nadpis{Vstup}
+
+Na prvom riadku je číslo $n$ a $k$ ($1\leq n \leq 40000$, $1 \leq k \leq 50000$) -- veľkosť mriežky
+a počet sád obrázkov.
+
+Nasleduje $k$ riadkov, každý obsahuje jedno celé číslo medzi $1$ a $n^2$ určujúce počet obrázkov v
+príslušnej sade. Súčet týchto čísiel je presne $n^2$.
+
+\nadpis{Výstup}
+
+Vypíšte jedno celé číslo -- najväčší možný počet rovnakých riadkov, ktoré vieme vytvoriť ukladaním
+obrázkov do mriežky.
+
+\nadpis{Príklady}
+
+\vstup
+3 4
+4
+2
+1
+2
+\vystup
+2
+\komentar
+Toto je príklad zo zadania.
+\koniec
+
+\end{document}
