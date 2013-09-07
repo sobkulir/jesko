@@ -2,65 +2,70 @@
 
 \begin{document}
 
-\velkynadpis{Zbedačený les}
+\velkynadpis{Životné poistenie}
 
-čera sa bol zajac poprechádzať po lesíku. Len tak si hopkal, keď sa zrazu spoza
-brezy vyvalil nákladiak. Zajac sa rozhodol ho nasledovať. Dobehol ho až vtedy, keď už nákladiak
-vykladal kopu sladkostí doprostred davu čakajúcich zvieratiek.
-Tie sa na sladkosti vrhli tak rýchlo, ako im to len papuľky a bruchá dovolili.
-Obaly šušťali, jazyky mľaskali, na papuľkách sa rozmazávala čokoláda\dots\ no, vyzeralo to
-tam dosť negustiózne.
+Akiste ste už počuli, že policajti sú v najvyššom ohrození života práve deň pred
+odchodom do dôchodku. Mnohí si preto pobalia veci a rozlúčia sa s kolegami o deň
+či dva skôr. No inšpektor Kloten vie svoje -- takýto triviálny manéver nedokáže
+oklamať zlomyseľný osud.
 
-Už dlhé roky to v našich lesoch takto vyzerá. Odkedy sa zvieratká naučili objednávať si donášku
-potravy z fastfoodov a obchodných reťazcov, len žerú a priberajú.
+Kloten si všimol, že najdôležitejšie je zďaleka sa vyhýbať situáciám, ktoré by
+mohol osud považovať za ironické a pobaviť sa na nich. Jeho riešenie je preto to
+najnudnejšie možné -- spoľahol sa na životné poistenie. Inšpektor uzavrel
+niekoľko zmlúv tak, aby bol poistený počas každého z $n$ dní zostávajúcich do
+jeho dôchodku. Dokonca väčšinou bude poistený viacerými zmluvami naraz.
+
+Teraz mu však v hlave skrsla hrozivá myšlienka: Čo ak sa niekedy stane, že
+v jeden deň bude poistený trebárs štrnástimi zmluvami naraz, a zrazu nasledujúci deň
+už len tromi?
+% misof: tu povodne bolo "je počas niektorého dňa poistený výrazne menším počtom zmlúv ako v okolité dni?" co je menej presne
+Nebola by to irónia osudu, keby sa mu stala smrteľná nehoda práve v taký deň?%
+
 
 \nadpis{Úloha}
 
-Kráľom lesa je najstaršie zo všetkých zvieratiek. Chceli by ste zistiť, ktoré to je.
-Nepoznáte ale vek jednotlivých zvieratiek.
-(Môžete len predpokladať, že všetci obyvatelia lesa majú navzájom rôzny vek, a teda je kráľ
-jednoznačne určený.)
-
-Našťastie viete, ako zvieratká tučnejú:
-Čím je zvieratko staršie, tým je tučnejšie.
-Všetky zvieratká rovnakého druhu pritom tučnejú rovnako rýchlo. Ak teda stretneme napríklad
-dva zajace, ten tučnejší z nich je zároveň aj starší. Neviete však vôbec porovnávať zvieratká rôznych
-druhov -- napríklad aj chudo vyzerajúci ježko môže byť starší ako tučnučká zebra, ktorá sa práve
-skotúľala dole kopcom a premýšľa, ako sa dostať späť.
-
-Na vstupe dostanete o každom zvieratku dva údaje: akého je druhu a aký má obvod pása (teda číslo, udávajúce, ako tučné je).
-Zistite, koľko rôznych zvieratiek môže byť na základe týchto údajov kráľom lesa.
-
-
+Do dôchodku zostáva $n$ dní. Počas $i$-teho z nich už je inšpektor Kloten poistený
+$a_i$ zmluvami. Môže uzavrieť ľubovoľný počet ďalších zmlúv -- pre každú novú
+zmluvu si môže ľubovoľne určiť interval dní $[x, y]$, počas ktorých má byť platná ($1 \leq x \leq y
+\leq n$). Kloten chce zariadiť, aby počet platných zmlúv (starých a nových dokopy)
+nikdy zo dňa na deň neklesol. Tento cieľ by rád dosiahol použitím čo
+najmenšieho počtu nových zmlúv. (Pozor, inšpektorovi nezáleží na dĺžke nových
+zmlúv, len na ich počte. Vybavovať novú zmluvu je totiž hrozná otrava).
 
 \nadpis{Formát vstupu}
 
-V prvom riadku vstupu bude celé číslo $n$ ($1\leq n\leq 10^6$), udávajúce počet zvieratiek.
-Aby sa vám ľahšie spracúvalo údaje o zvieratkách, jednotlivé druhy sme očíslovali prirodzenými
-číslami z rozsahu od 1 po $n$.
-
-Nasleduje pre každé zvieratko jeden riadok obsahujúci dve medzerou oddelené celé čísla:
-najskôr jeho druh $d_i$ ($1\leq d_i\leq n$), potom jeho obvod pása $t_i$ ($1\leq t_i\leq 10^9$).
-Môžete predpokladať, že žiadne dve zvieratká rovnakého druhu nemajú rovnaký obvod pása.
+Prvý riadok vstupu obsahuje číslo $n$ ($1 \leq n \leq 100\,000$). Druhý riadok
+obsahuje čísla $a_1, a_2, \dots, a_n$ oddelené medzerami ($1 \leq a_i \leq
+10^9$).
 
 \nadpis{Formát výstupu}
 
-Vypíšte jeden riadok a v ňom počet kandidátov na najstaršie zvieratko.
+Na výstup vypíšte jeden riadok obsahujúci minimálny počet nových zmlúv, ktoré
+musí Kloten uzavrieť.
+
 
 \nadpis{Príklady}
 
 \vstup
-5
-3 8
-2 1000
-3 47
-2 42
-3 123
+4
+1 2 2 5
+\vystup
+0
+\koniec
+
+\vstup
+4
+3 1 2 4
 \vystup
 2
-\komentar
-Nevieme, či je staršie zvieratko druhu $2$ s obvodom pása $1000$ alebo zvieratko druhu $3$ s obvodom
-pása $123$. Žiadne zo zvyšných zvieratiek kráľom lesa byť nemôže.
 \koniec
+
+{\sl
+Stačia dve nové zmluvy.
+Jedno možné riešenie je uzavrieť jednu zmluvu len na druhý deň (teda interval [2,2]) a druhú zmluvu
+na druhý a tretí deň (teda interval [2,3]).
+Takto dostaneme neklesajúcu postupnosť: 3, 3, 3, 4.
+}
+
 
 \end{document}
