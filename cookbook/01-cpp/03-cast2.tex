@@ -212,17 +212,64 @@ int main(){
 
 \medskip
 
-Veľmi užitočná vlasnosť funkcií je rekurzívne volanie, 
-teda, že funkcia sa može volať opakovne sama seba. Toto vieme využiť napríklad
-aj na počítanie všeliakých zaujímavých vecí. 
+Veľmi užitočná vlasnosť funkcií je rekurzívne volanie, teda, že funkcia sa može
+volať opakovne sama seba. Toto vieme využiť napríklad aj na počítanie
+všeliakých zaujímavých vecí bez toho aby sme museli nejak významne
+premýšľať.
 
-Fibbonacciho postupnosť, $\{F_n\}$,  je veľmi zaujímavá číselná postupnosť, definovaná takto:
-$F_0 = 0$, $F_1 = 1$, $i>1 \rightarrow F_i = F_{i-1} + F_{i-2}$. Bez toho aby sme tejto postupnosti hlbšie
-porozumeli, môžeme 
-
+Fibonacciho postupnosť, $\{F_n\}$,  je veľmi zaujímavá číselná postupnosť,
+definovaná takto: $F_0 = 0$, $F_1 = 1$, $i>1 \rightarrow F_i = F_{i-1} +
+F_{i-2}$.  Bez toho aby sme tejto postupnosti hlbšie porozumeli, môžeme ju
+zapísať ako funkciu.
 
 \lstlang{cpp}\begin{lstlisting}
+int F(int n){
+    if (n < 2)
+        return n;
+    return F(n-1) + F(n-2);
+}
 \end{lstlisting}
+
+Zjavne \verb!F(n)!$ = F_n$. Nie je to super? Jediný problém tejto funkcie je,
+že nie je veľmi rýchla, na vašich počítačoch sa rozumne rýchlo zvládajú čísla
+pre $n \leq 40$. Neskôr sa naučíme, ako sa tomuto neduhu pri funkciách vyhnúť.
+
+\medskip
+
+Funkcia sa môžu volať aj navzájom, \textbf{nie} však takto:
+\lstlang{cpp}\begin{lstlisting}
+void a(){
+    b(); // ! chyba ! funkcia b nie je deklarovana.
+}
+void b(){
+    a();
+}
+\end{lstlisting}
+
+Volať funkciu môžeme až po deklarácií, ale naštastie môžeme deklarovať
+funkciu pred definovaním (napísaním tela) takto:
+
+\lstlang{cpp}\begin{lstlisting}
+void b();
+
+void a(){
+    b();
+}
+void b(){
+    a();
+}
+\end{lstlisting}
+
+Samozrejme funkcie a,b nemajú veľký úžitok, lebo po zavolaní jednej z funkcií
+sa program zacyklí až sa časom minie pamäť v ktorej sú zapísané zavolané
+funkcie a program spadne.
+
+\cvicenie Napíšte funkciu, ktorá počíta $n!$ ($n$ faktoriál, $n! = 1\cdot
+2\cdot\dots\cdot (n-1)\cdot n$) bez použitia cyklov.
+
+
+%\lstlang{cpp}\begin{lstlisting}
+%\end{lstlisting}
 
 
 

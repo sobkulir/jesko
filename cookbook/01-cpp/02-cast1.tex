@@ -20,12 +20,19 @@ do krvi.}
 už máš nejaké základy z programovania, môžeš pokojne preskakovať tie časti,
 ktoré ovládaš.}
 
-Obsah:
+\nadpis{Obsah:}
 \begin{itemize}
+    \vspace{-8pt}
+    \item komentáre
+    \vspace{-5pt}
     \item podmienky
+    \vspace{-5pt}
     \item cykly 
+    \vspace{-5pt}
     \item načítavanie vstupu
+    \vspace{-5pt}
     \item polia
+    \vspace{-5pt}
     \item testovač
 \end{itemize}
 
@@ -90,7 +97,9 @@ if (x > 0)
         printf("x je jedna\n");
 \end{lstlisting}
 
-Pokiaľ chceme vykonať viac príkazov, stačí miesto \verb!<príkaz>! napísať \verb!{ <príkaz-1>; <príkaz-2>; ...  <príkaz-n>; }!
+Pokiaľ chceme vykonať viac príkazov, stačí miesto \verb!<príkaz>! napísať
+\verb!{! \verb!<príkaz-1>;! \verb!<príkaz-2>;! \verb!...!  \verb!<príkaz-n>;!
+\verb!}! takto:
 \lstlang{cpp}\begin{lstlisting}
 int x = 1;
 if (x != 7){
@@ -135,12 +144,15 @@ to teda ani vyhodnocovať nebude.  Preto zatiaľ čo \verb!(true && a = 5)! a
 \verb!(false || a = 5)!  zmenia hodnotu \verb!a! na 5, \verb!(false && a = 5)! a
 \verb!(true || a = 5)! ju nechajú na pokoji (príkaz a = 5 sa nevykoná).
 
+\medskip
+
 Tiež si netreba mýliť \verb!&&! s \verb!&!(bitwise and) a \verb!||! s
 \verb!|!(bitwise or). Dvojité verzie pracujú s bool-mi, teda najprv sa pokúsia
 pretypovať operandy na booly a potom vyrobia nový bool. \verb!(10 || 6)! je true.
-Jednotité verzie rozbijú číslo na bity, s každým bitom spravia operáciu zvlášť
+Jednoité verzie rozbijú číslo na bity, s každým bitom spravia operáciu zvlášť
 (0 = false, 1 = true) a výsledné bity poskladajú naspať do čísla. 
-\verb!(10 | 6) = (1010_2 | 110_2) = 1110_2 = 14!.  Bitová verzia \verb'!' je \verb'~'.
+$(10 | 6) = (1010_2 | 110_2) = 1110_2 = 14$.  Bitová verzia 
+\verb'!' je \verb'~'.
 
 Treba si dávať pozor na prioritu (precedenciu) operátorov (tak ako násobenie má
 prednosť pri sčítaní, aj ostatné operátory majú medzi sebou nejakú hierarchiu).
@@ -150,12 +162,22 @@ zľava doprava. Kompletný prehľad nájdete napríklad na
 je, že ak si nie ste istí, tak zátvorkujte, inak sa to správa relatívne
 rozumne.
 
+\medskip
+
+Vyriešte v testovači úlohy \textbf{rovnake}, \textbf{cislo2}, \textbf{minimum3}
+a \textbf{median3}.
+
 \cvicenie Akú pravdivostnú hodnotu má výraz 
 \verb'( (!7 == false) && (0 | (a = 5)) <= 4 )'?
+
+\cvicenie Akú hodnotu má \verb!((23 | 32) & 30)!? 
 
 \riesenie \verb'( (!7 == false) && (0 | (a = 5)) <= 4 )' $\rightarrow$
 \verb'( ( false == false) && (0 | 5) <= 4 )' $\rightarrow$
 \verb'( ( true ) && (5) <= 4 )' $\rightarrow$ \verb'( true && false )' $\rightarrow$ \verb'false'
+
+\riesenie $((23 | 32) \& 30) = ((10111_2 | 100000_2) \& 11110_2) = (110111_2 \&
+11110_2) = 10110_2 = 22$
 
 \kapitola{Cykly alebo opakovanie}
 
@@ -201,11 +223,11 @@ dokonca \verb!i++!, či \verb!++i!.
 
 Vyššie uvedená konštrukcia -- nainicializujeme premennú, pokým premenná nie je
 nejaká, robíme niečo je natoľko častá, že jej programátori vymysleli nový
-názov. \verb!for(<príkaz1>; <podmienka>; <príkaz2>) <príkaz-telo-cyklu>! najprv
-vykoná \verb!<príkaz1>!, následne kým platí podmienka vykonáva
+názov. \verb!for(<príkaz1>; <podmienka>; <príkaz2>)!\\ \verb!<príkaz-telo-cyklu>!
+najprv vykoná \verb!<príkaz1>!, následne kým platí podmienka vykonáva
 \verb!<príkaz-telo-cyklu>! a \verb!<príkaz2>!.
 
-Vyššie uvedený program teda vieme prepísať na
+Vyššie uvedený program s \verb!while!om teda vieme prepísať na
 \lstlang{cpp}\begin{lstlisting}
 for(int i = 0; i<10; ++i)
     printf("ahoj\n");
@@ -243,8 +265,8 @@ napr. \verb!while(true);! \verb!for(int i = 10; i>0; ++i);! ale aj
 
 \medskip
 
-Cykly a podmienky sa samozrejme dajú do seba ľubovoľne veľakrát vkladať, napríklad ako v nasledujúcom
-nezmyselnom programe.
+Cykly a podmienky sa samozrejme dajú do seba ľubovoľne veľakrát vkladať,
+napríklad ako v nasledujúcom nezmyselnom programe.
 
 \lstlang{cpp}\begin{lstlisting}
 int a = 7;
@@ -261,9 +283,9 @@ while(a<70) {
 
 \medskip
 
-Keď už teda ľahkovážne pcháme všelikam zátvorky {}, zíde sa nám vedieť jedna vec o premenných
--- majú obmedzenú platnosť. Každá premenná existuje len v rámci ${}$ v ktorých bola vyrobená. 
-Potom proste zanikne.
+Keď už teda ľahkovážne pcháme všelikam zátvorky \verb!{}!, zíde sa nám vedieť
+jedna vec o premenných -- majú obmedzenú platnosť. Každá premenná existuje len
+v rámci \verb!{}! v ktorých bola vyrobená.  Potom proste zanikne.
 
 \lstlang{cpp}\begin{lstlisting}
 
@@ -295,56 +317,9 @@ int main(){
     }
     i = 7; // !! zasa chyba !! premenna i existovala len v ramci for-cyklu
 }
-
 \end{lstlisting}
 
-\kapitola{Načítavanie vstupu}
 
-Doteraz všetky programy boli relatívne nanič, pretože pri každom spustení
-vypisovali to isté.  Namiesto programov typu "vypíš prvých 10 nepárnych čísel"
-by sme radi mali "načítaj číslo $n$ a vypíš prvých $n$ nepárnych čísel".
-
-Takže potrebujeme vedieť načítavať vstup.
-
-Na načítavanie sa dá použiť funkcia \verb!scanf()!, ktorá sa syntaxou veľmi
-podobá \verb!printf()!. Prvý parameter je opäť formátovací reťazec, ale ďalšie
-už nie sú výrazy, ale smerníky na premenné. Teda ak chceme načítať jedno číslo
-do premennej a, napíšeme \verb!scanf("%d", &a);!
-
-Prečo tam je \verb!&a! miesto \verb!a!? Dôvod je veľmi jednoduchý, \verb!a! je
-výraz, ktorého hodnota je hodnota \verb!a!, napríklad číslo 7. A zavolaním
-\verb!scanf("%d", 7);! ťažko budeme vedieť, kam máme uložiť načítanú hodnotu.
-(Vieme ukladať len do premenných, nie do hodnôt). Keď však napíšeme \verb!&a!,
-tak výsledkom výrazu nebude hodnota \verb!a!, ale miesto, kde je \verb!a!
-uložené v pamäti počítača.  Funkcia teda načíta číslo a uloží ho na to miesto v
-pamäti, kde bola predtým hodnota \verb!a!.
-
-Vyskúšajte si skompilovať a spustiť tento program:
-\lstlang{cpp}\begin{lstlisting}
-#include<cstdio>
-int main(){
-    int a, b;
-    scanf("%d %d", &a, &b);
-    printf("%d\n", a+b);
-}
-\end{lstlisting}
-
-Po spustení program čaká, kým mu napíšete dve čísla napr. \verb"105 21". Po
-zadaní čísel musíte stlačiť enter, inak sa k programu nedostanú. 
-
-Pokiaľ sa vám \verb!scanf! nepáči, dajú sa použiť streamy.
-\lstlang{cpp}\begin{lstlisting}
-#include<iostream>
-using namespace std;
-int main(){
-    int a, b;
-    cin >> a >> b;
-    cout << a + b << endl;
-}
-\end{lstlisting}
-
-Časom sa naučíme načítavať aj iné veci ako čísla, aby sme to však zvládali, tak
-musíme tie iné veci spoznať.
 
 \kapitola{Polia}
 
