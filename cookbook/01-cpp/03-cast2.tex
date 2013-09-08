@@ -103,7 +103,6 @@ void vypis_desat_cisel(){
 }
 
 // s funkciou main uz sme sa stretli
-
 int main(){
     // zavolame funkciu
     vypis_desat_cisel()
@@ -123,14 +122,14 @@ vypisovaných čísel, stačí to spraviť na jednom mieste.
 
 \medskip 
 
-Čo je to void a vôbec ten typ?
+Čo je to \verb!void! a vôbec ten typ?
 
 Funkcia môže vracať nejakú hodnotu a \textit{ten} typ je typ hodnoty, akú
-funkcia vracia.  Void znamená, že funkcia nevracia nič. Funkcia, ktorá niečo
-vracia, môže byť napríklad funkcia \verb!osem()! z nasledujúceho príkladu. Isto
-si všimnete, že na vrátenie hodnoty slúži príkaz \verb!return!. Príkaz
-\verb!return! zároveň skončí vykonávanie funkcie, preto všetko, čo je za ním,
-sa už nevykoná. 
+funkcia vracia.  \verb!void! znamená, že funkcia nevracia nič. Funkcia, ktorá
+niečo vracia, môže byť napríklad funkcia \verb!osem()! z nasledujúceho
+príkladu. Isto si všimnete, že na vrátenie hodnoty slúži príkaz \verb!return!.
+Príkaz \verb!return! zároveň skončí vykonávanie funkcie, preto všetko, čo je za
+ním, sa už nevykoná. 
 
 \lstlang{cpp}\begin{lstlisting}
 int osem(){
@@ -167,9 +166,9 @@ Zatiaľ tie funkcie nie sú veľmi úžasné, lebo robia stále to isté (asi ak
 programy bez vstupu).  A stále nevieme, čo sú to tie argumenty.
 
 Tak poďme obe veci vyriešiť zároveň. Argumenty sú akoby vstup pre funkciu.  Už
-sme sa s tým stretli, keď sme napríklad funkcii printf() do zátvoriek zadávali,
-čo má vypísať.  Analogicky namiesto funkcie \verb!vypis_desat_cisel()! môžeme
-použiť všeobecnejšiu funkciu
+sme sa s tým stretli, keď sme napríklad funkcii \verb!printf()! do zátvoriek
+zadávali, čo má vypísať.  Analogicky namiesto funkcie
+\verb!vypis_desat_cisel()! môžeme použiť všeobecnejšiu funkciu:
 
 \lstlang{cpp}\begin{lstlisting}
 void vypis_cisla(int pocet){
@@ -189,10 +188,10 @@ int main(){
 }
 \end{lstlisting}
 
-Funkcia môže mať ľubovoľný počet argumetov, pri deklarácii(vyrávbaní) funkcie
-ich jednoducho vymenujeme medzi zátvorky \verb!()! v rovnakom tvare ako pri
-deklarácii premenných, odeelené čiarkami. Následne ich môžeme používať ďalej vo
-funkcii ako nové premenné (t.j. ich môžeme napríklad aj meniť).
+Funkcia môže mať ľubovoľný počet argumetov, pri deklarácii(vyrábaní) funkcie
+ich jednoducho vymenujeme medzi zátvorky \verb!()! v rovnakom tvare, ako pri
+deklarácii premenných, oddelené čiarkami. Následne ich môžeme používať ďalej vo
+funkcii, ako nové premenné (t.j. ich môžeme napríklad aj meniť).
 
 Pri volaní funkcie píšeme medzi zátvorky hodnoty alebo výrazy, samozrejme musí
 sa zachovať typ.
@@ -220,7 +219,7 @@ všeliakých zaujímavých vecí bez toho aby sme museli nejak významne
 premýšľať.
 
 Fibonacciho postupnosť, $\{F_n\}$,  je veľmi zaujímavá číselná postupnosť,
-definovaná takto: $F_0 = 0$, $F_1 = 1$, $i>1 \rightarrow F_i = F_{i-1} +
+definovaná takto: $F_0 = 0$, $F_1 = 1$, ak $i>1$ potom$F_i = F_{i-1} +
 F_{i-2}$.  Bez toho aby sme tejto postupnosti hlbšie porozumeli, môžeme ju
 zapísať ako funkciu.
 
@@ -262,12 +261,20 @@ void b(){
 }
 \end{lstlisting}
 
-Samozrejme funkcie a,b nemajú veľký úžitok, lebo po zavolaní jednej z funkcií
-sa program zacyklí až sa časom minie pamäť v ktorej sú zapísané zavolané
-funkcie a program spadne.
+Samozrejme tieto funkcie \verb!a!, \verb!b! nemajú veľký úžitok, lebo po
+zavolaní jednej z funkcií sa program zacyklí až sa časom minie pamäť do ktorej
+sa zapísujú zavolané funkcie a program spadne.
 
-\cvicenie Napíšte funkciu, ktorá počíta $n!$ ($n$ faktoriál, $n! = 1\cdot
-2\cdot\dots\cdot (n-1)\cdot n$) bez použitia cyklov.
+\cvicenie Napíšte funkciu, ktorá počíta $n! = 1\cdot 2\cdot\dots\cdot
+(n-1)\cdot n$ bez použitia cyklov.
+
+\riesenie 
+\lstlang{cpp}\begin{lstlisting}
+int faktorial(int n){
+    if (n < 2) return 1;
+    return n*faktorial(n-1);
+}
+\end{lstlisting}
 
 \kapitola{Znaky}
 
@@ -280,8 +287,8 @@ si už spomínali, napríklad \verb!'\n'! alebo \verb!'\''!.
 číselná premenná s rozsahom -128 až 127. Každé z týchto čísel má priradený
 nejaký znak podľa ASCII \url{http://sk.wikipedia.org/wiki/ASCII}. 
 
-Napríklad \verb!'A'! má číslo 64, ale takéto veci si nemusíme pamätať,
-keďže so znakmi sa dajú robiť matematické operácie ako s číslami. 
+Napríklad 64 je \verb!'A'!, ale takéto veci si nemusíme pamätať,
+lebo so znakmi sa dajú robiť matematické operácie ako s číslami. 
 Napríklad \verb!'a'+1 == 'b'!.
 
 Ak chceme znak vypísať ako znak, tak použijeme značku \verb!%c!. 
@@ -316,12 +323,12 @@ V prípade, že by sme v prvom programe napísali miesto \verb!scanf("%c", &a);!
 \medskip
 
 Pole znakov, teda \verb!char meno[]!, môžeme nazývať reťazec. 
-Napríklad \verb!"jesko"! je reťazec ale zároveň je to pole
+Napríklad \verb!"jesko"! je reťazec a zároveň je to pole
 \verb!{'j', 'e', 's', 'k', 'o', '\0'}!. \verb!'\0'! je znak s hodnotou 0
 a v C++ sa ním ukončujú všetky reťazce. 
 
 Všetky funkcie, ktoré robia niečo s reťazcami, končia čítanie reťazca
-na nulových znakoch. Preto aj \verb!printf("a\0hoj");! vypíše len \verb!"a"!. 
+na nulových znakoch. Preto aj príkaz \verb!printf("a\0hoj");! vypíše len \verb!"a"!. 
 
 Jeden zo spôsobov ako vyrábať nami definované reťazce je napr.
 \verb!char retazec[] = "lubovolny text";!
@@ -331,8 +338,10 @@ Jeden zo spôsobov ako vyrábať nami definované reťazce je napr.
 
 \riesenie \verb!str[3] = 0;! alebo \verb!str[3] = '\0';!.
 
-Načítavať a vypisovať reťazce vieme pomocou značky \verb!%s! ale pri načítavaní
-ž nepíšeme \verb!&!.
+\medskip
+
+Načítavať a vypisovať reťazce vieme pomocou značky \verb!%s! s tým rozdielom,
+že pri načítavaní nepíšeme \verb!&!.
 
 \lstlang{cpp}\begin{lstlisting}
 #include<cstdio>
@@ -354,7 +363,7 @@ int main(){
 }
 \end{lstlisting}
 
-Ako si iste všimneme po spustení, reťazce sa načítavajú "po slovách",
+Ako si iste všimneme po spustení programov, reťazce sa načítavajú "po slovách",
 vždy len po najbližší biely znak (medzera, koniec riadku, tabulátor).
 
 \medskip
@@ -392,9 +401,57 @@ int main(){
 \medskip
 
 Pri práci s reálnymi číslami si musíme dávať obrovský pozor na presnosť.
-Napríklad ( 
+Napríklad $(5.1 - 3.1 - 2.0 == 0.0)$ vráti $false$. Počas výpočtov totiž
+dochádza k drobným zaokúhľovaniam.
 
+Ilustrovať si to vieme nasledovným príkladom: majme kalkulačku, ktorá počíta v
+desiatkovej sústave a má presnosť 3 desatinné miesta.  V matematike $1 - 1/3 -
+1/3 - 1/3 = 0$, ale v kalkulačke $1.000 - 0.333 - 0.333 - 0.333 = 0.001 \neq
+0.000$. 
 
+V skutočnosti však double nemá presnosť na nejaký počet desatinných miest, ale
+na nejaký počet cifier. Keby naša kalkulačka mala presnosť na 4 cifry, tak
+543210 by sa zaokrúhlilo na 543200. Takže keď používame doubley, tak nastávajú
+nepresnosti aj v celých číslach.
+
+Podobne napríklad vďaka tomu vieme nájst nenulové $a,b$ také, že $a + b = a$.
+Napríklad $1000 + 0.01 = 1000$. Takisto výsledok $a + b + c$ môže závisieť od
+poradia sčiťovania. $(1000 + 0.4) + 0.4 = 1000 + 0.4 = 1000$, ale $1000 + (0.4
++ 0.4) = 1000 + 0.8 = 1001$.
+
+\medskip
+
+\verb!double! ukladá 52 binárnych cifier, teda približne 15 desiatkových.  Pri
+väčšom počte operácií presnosť výsledku klesá.
+
+Najväčšie číslo, aké je \verb!double! schopný reprezentovať je približne
+$10^{300}$.
+
+\medskip
+
+Dôležité je nepoužívať \verb!a == b! ale miesto toho napríklad
+\verb!abs(a-b)<1e-8!.  \verb!1e-8! je zhruba $0.1^8 = 0.00000001$. \verb!abs!
+je funkcia, ktorá vracia absolútnu hodnotu (odstráni znamienko) a nachádza sa v
+knižnici \verb!cmath!.
+
+\kapitola{Matematika}
+
+V knižnici \verb!cmath! sa nachádza aj zopár ďalších zaujímavých funkcií. 
+Napríklad \verb!sqrt(x)! $= \sqrt{x}$, \verb!exp(x)! $= e^x$, \verb!log(x)! je prirodzený
+logaritmus $x$, pozná aj goniometrické funkcie \verb!sin(x)!, \verb!cos(x)! a mnoho ďalších,
+ktoré nájdete na \url{http://www.cplusplus.com/reference/cmath/}. 
+Všetky pracujú s reálnymi číslami.
+
+\lstlang{cpp}\begin{lstlisting}
+#inclide<cstdio>
+#include<cmath>
+
+int main(){
+    double d;
+    scanf("%lf", &d);
+    printf("%lf\n", sqrt(d));
+}
+\end{lstlisting}
 
 %\lstlang{cpp}\begin{lstlisting}
 %\end{lstlisting}
