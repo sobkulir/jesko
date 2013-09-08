@@ -20,13 +20,24 @@ do krvi.}
 už máš nejaké základy z programovania, môžeš pokojne preskakovať tie časti,
 ktoré ovládaš.}
 
-Obsah:
+\nadpis{Obsah:}
 \begin{itemize}
+    \vspace{-8pt}
     \item čo je to program?
+    \vspace{-5pt}
     \item kompilácia - Linux
+    \vspace{-5pt}
     \item kompilácia - Windows %TODO
+    \vspace{-5pt}
     \item náš prvý program
+    \vspace{-5pt}
     \item premenné
+    \vspace{-5pt}
+    \item alternatívny výstup
+    \vspace{-5pt}
+    \item načítavanie vstupu
+    \vspace{-5pt}
+    \item zoznámenie sa s testovačom
 \end{itemize}
 
 \medskip
@@ -40,7 +51,7 @@ už vieš, môžeš túto sekciu preskočiť, inak si ju radšej prečítaj.}
 uvarenie čaju môže byť nasledovný:
 
 \texttt{Zoberieme pohár, vrecúško čaju a rýchlovarnú kanvicu. Naplníme kanvicu
-vodou, zapojíme do zásuvky a zapneme. Kým voda nevrie, čakáme.  Do pohára
+vodou, zapojíme do\\ zásuvky a zapneme. Kým voda nevrie, čakáme.  Do pohára
 vložíme vrecúško čaju a zalejeme vriacou vodou. Kanvicu vypneme a vypojíme zo
 zásuvky. Počkáme 8 minút a potom vyberieme vrecúško.}
 
@@ -517,7 +528,6 @@ je 0 hoci posledný bit v zápise 4 je 0.  Pre \verb!bool! platí, že
 \verb!bool(0)! je \verb!false! (resp. 0), všetky ostatné čísla sa zmenia na
 \verb!true! (resp. 1).
 
-
 \kapitola{Alternatívny výstup}
 
 V C++ sa dá na výstup vypisovať aj inak ako cez \verb!printf!. Pokiaľ
@@ -558,6 +568,83 @@ int main(){
 \cvicenie Vezmite nejaký program, kde ste viackrát použili \verb!printf! a
 prepíšte ho na streamy.
 \fakeriesenie
+
+\kapitola{Načítavanie vstupu}
+
+Doteraz všetky programy boli relatívne nanič, pretože pri každom spustení
+vypisovali to isté.  Namiesto programov typu "vypíš prvých 10 nepárnych čísel"
+by sme radi mali "načítaj číslo $n$ a vypíš prvých $n$ nepárnych čísel".
+
+Takže potrebujeme vedieť načítavať vstup.
+
+Na načítavanie sa dá použiť funkcia \verb!scanf()!, ktorá sa syntaxou veľmi
+podobá \verb!printf()!. Prvý parameter je opäť formátovací reťazec, ale ďalšie
+už nie sú výrazy, ale smerníky na premenné. Teda ak chceme načítať jedno číslo
+do premennej a, napíšeme \verb!scanf("%d", &a);!
+
+Prečo tam je \verb!&a! miesto \verb!a!? Dôvod je veľmi jednoduchý, \verb!a! je
+výraz, ktorého hodnota je hodnota \verb!a!, napríklad číslo 7. A zavolaním
+\verb!scanf("%d", 7);! ťažko budeme vedieť, kam máme uložiť načítanú hodnotu.
+(Vieme ukladať len do premenných, nie do hodnôt). Keď však napíšeme \verb!&a!,
+tak výsledkom výrazu nebude hodnota \verb!a!, ale miesto, kde je \verb!a!
+uložené v pamäti počítača.  Funkcia teda načíta číslo a uloží ho na to miesto v
+pamäti, kde bola predtým hodnota \verb!a!.
+
+Vyskúšajte si skompilovať a spustiť tento program:
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+int main(){
+    int a, b;
+    scanf("%d %d", &a, &b);
+    printf("%d\n", a+b);
+}
+\end{lstlisting}
+
+Po spustení program čaká, kým mu napíšete dve čísla napr. \verb"105 21". Po
+zadaní čísel musíte stlačiť enter, inak sa k programu nedostanú. 
+
+Pokiaľ sa vám \verb!scanf! nepáči, dajú sa použiť streamy.
+\lstlang{cpp}\begin{lstlisting}
+#include<iostream>
+using namespace std;
+int main(){
+    int a, b;
+    cin >> a >> b;
+    cout << a + b << endl;
+}
+\end{lstlisting}
+
+Časom sa naučíme načítavať aj iné veci ako čísla.
+
+\kapitola{Zoznámenie sa s testovačom}
+
+Bez poriadneho precvičovania sa človek programovať nenaučí, preto máme pre vás
+pripravené množstvo úloh. 
+
+\nadpis{Ako riešiť úlohy?} %TODO pridat linky
+\begin{enumerate}
+    \vspace{-8pt}
+    \item prečítame si zadanie
+    \vspace{-5pt}
+    \item napíšeme program, ktorý rieši úlohu
+    \vspace{-5pt}
+    \item vyskúšame si program u nás na počítači (či ho kompilátor
+    skompiluje, či dáva správne výstupy aspoň na ukážkových vstupoch)
+    \vspace{-5pt}
+    \item submitneme (odovzdáme) \textbf{zdrojový kód} cez internet na stránke testovača
+    \vspace{-5pt}
+    \item počkáme, kým testovač otestuje náš program
+    \vspace{-5pt}
+    \item ak je celková odpoveť OK, tešíme sa a ideme riešiť ďalší príklad
+    \vspace{-5pt}
+    \item inak opravíme chybu a pokračujeme bodom 3
+\end{enumerate}
+
+\medskip
+
+Vyriešte prvé štryri úlohy v prvej sade: \textbf{hello}, \textbf{cislo}, 
+\textbf{swap}, \textbf{obdlznik}.
+
 
 \end{document}
 
