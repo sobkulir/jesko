@@ -1,0 +1,1 @@
+Na vstupe dostanete číslo $n \leq 100$, $n$ čísel a číslo $x$. Vašou úlohou je vypísať súčet všetkých čísel, ktoré su menšie ako $x$.

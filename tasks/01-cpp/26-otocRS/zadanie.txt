@@ -1,0 +1,1 @@
+Na vstupe dostanete číslo $n \leq 100$, číslo $m \leq 100$ a štvorec čísel veľkosti $n*n$. Vašou úlohou je otočiť štvorec o 90 stupňov v proti smeru hodinových ručičiek.

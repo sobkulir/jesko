@@ -1,0 +1,1 @@
+Na vstupe dostanete číslo $n \leq 100$ a $n$ čísel. Vašou úlohou je napísať, koľkokrát sa na vstupe vyskytuje najmenšie číslo.

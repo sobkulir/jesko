@@ -1,0 +1,1 @@
+Na vstupe dostanete číslo $n \leq 100$,  $n$ čísel. Vašou úlohou je vytvoríť súčtovú pyramídu z poľa. Vždy sčítate dve čísla v poli, ktoré sú vedľa seba a vypíšete ich. Takto budete pokračovať, až kým vám nezostane 1 číslo.  

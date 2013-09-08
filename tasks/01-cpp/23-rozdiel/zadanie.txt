@@ -1,0 +1,1 @@
+Na vstupe dostanete číslo $n \leq 100$, a kladné číslo $x$ a $n$ čísel. Vašou úlohou je zistiť, či rozdiel medzi nejakými dvomi číslami na vstupe je rovný $x$.
