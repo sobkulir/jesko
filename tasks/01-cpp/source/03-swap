@@ -1,6 +1,6 @@
 Zámena
 @@@@@
-Napíš program, ktorý načíta 2 medzerou oddelené celé čísla zo vstupu a vypíše ich v opačnom poradí na jediný riadok výstupu.
+Napíš program, ktorý načíta dve medzerou oddelené celé čísla zo vstupu a vypíše ich v opačnom poradí na jediný riadok výstupu.
 @@@@@
 #include<iostream>
 
@@ -10,7 +10,6 @@ int main(){
 	int x,y;
 	cin >> x >> y;
 	cout << y << " " << x << endl;
-	return 0;
 }
 @@@@@
 42 47
@@ -18,4 +17,6 @@ int main(){
 0 0
 @@@@@
 -50 50
+@@@@@
+123 4321
 @@@@@

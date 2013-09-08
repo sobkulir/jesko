@@ -14,5 +14,4 @@ int main(){
 	if(x < 0){
 		cout << "zaporne" << endl;
 	}
-	return 0;
 }

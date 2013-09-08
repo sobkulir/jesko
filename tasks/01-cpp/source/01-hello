@@ -7,9 +7,9 @@ Napíš program, ktorý ignoruje vstup a na jediný riadok výstupu vypíše \te
 using namespace std;
 
 int main(){
-	cout << "Ahoj JeSko" << endl;
-	return 0;
+    cout << "Ahoj JeSko" << endl;
 }
 @@@@@
 Vstup ignoruj
+@@@@@
 @@@@@

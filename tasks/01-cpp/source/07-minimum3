@@ -1,6 +1,7 @@
 Najmenší
 @@@@@
-Na vstupe sú 3 rôzne celé čísla oddelené medzerou. Na jediný riadok výstupu vypíšte najmenšie z nich.
+Na vstupe sú tri rôzne celé čísla oddelené medzerou. Na jediný riadok výstupu vypíšte najmenšie z
+nich.
 @@@@@
 #include<iostream>
 
@@ -22,7 +23,6 @@ int main(){
 			cout << z << endl;
 		}
 	}
-	return 0;
 }
 @@@@@
 42 9 47

@@ -1,1 +1,2 @@
-Na vstupe dostanete v prvom riadku zadaný počet čísel n a v druhom riadku n kladných celých čísel oddelených medzerou. Vypíšte ich maximum.
+Na vstupe dostanete v prvom riadku zadaný počet čísel $n$ a v druhom riadku $n$ kladných celých
+čísel oddelených medzerou. Vypíšte ich maximum.

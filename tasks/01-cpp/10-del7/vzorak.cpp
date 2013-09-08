@@ -10,5 +10,4 @@ int main(){
 	} else {
 		cout << "nie" << endl;
 	}
-	return 0;
 }

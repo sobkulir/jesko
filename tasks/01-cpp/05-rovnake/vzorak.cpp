@@ -8,5 +8,4 @@ int main(){
 	if(x == y){
 		cout << "Hura" << endl;
 	}
-	return 0;
 }
