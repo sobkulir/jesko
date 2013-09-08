@@ -1,6 +1,6 @@
 Zväčši
 @@@@@
-Na vstupe bude v prvom riadku číslo $n$, $1\leq n\leq 100$, v druhom $n$ čísel oddelených medzerou a v treťom číslo $x$.
+Na vstupe bude v prvom riadku číslo $n$ ($1\leq n\leq 100$), v druhom $n$ čísel oddelených medzerou a v treťom číslo $x$.
 Na výstup vypíš pôvodných $n$ čísel, ale každé zväčšené o $x$.
 @@@@@
 #include<iostream>
@@ -10,7 +10,7 @@ using namespace std;
 int main(){
 	int n,x;
 	cin >> n;
-	int a[n];
+	int a[107];
 	for (int i = 0; i<n; ++i) {
 		cin >> a[i];
 	}

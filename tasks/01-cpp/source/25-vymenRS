@@ -1,6 +1,8 @@
 Výmena
 @@@@@
-Na vstupe dostanete číslo $n \leq 100$, číslo $m \leq 100$ a obdĺžnik čísel veľkosti $n*m$. Vašou úlohou je vymeniť riadky a stĺpce. Teda napríklad číslo, ktoré bolo v 3. stĺpci a 4. riadku. bude teraz v 4. stĺpci a 3. riadku. 
+Na vstupe dostanete čísla $n$, $m$ a obdĺžnik čísel veľkosti $n\times m$ ($1\leq n,m \leq 100$).
+Vašou úlohou je vymeniť riadky a stĺpce. Teda napríklad číslo, ktoré bolo v 3. stĺpci a 4. riadku.
+bude teraz v 4. stĺpci a 3. riadku.
 @@@@@
 #include<iostream>
 
@@ -21,7 +23,6 @@ int main(){
 		}
 		cout << "\n";
 	}
-	return 0;
 }
 @@@@@
 3 5

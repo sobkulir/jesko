@@ -1,6 +1,7 @@
 Počet najmenších
 @@@@@
-Na vstupe dostanete číslo $n \leq 100$ a $n$ čísel. Vašou úlohou je napísať, koľkokrát sa na vstupe vyskytuje najmenšie číslo.
+Na vstupe dostanete číslo $n$ ($1\leq n\leq 100$) a $n$ čísel. Vašou úlohou je napísať, koľkokrát sa
+na vstupe vyskytuje najmenšie číslo.
 @@@@@
 #include<iostream>
 
@@ -26,7 +27,6 @@ int main(){
 		}
 	}
 	cout << poc;
-	return 0;
 }
 @@@@@
 7
