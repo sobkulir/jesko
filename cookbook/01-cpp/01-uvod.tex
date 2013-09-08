@@ -91,16 +91,20 @@ strojového kódu (jednotiek a núl), ktorý dokáže počítač spustiť.
 
 Teraz sa ideme naučiť skompilovať program na Linuxe, vyskúšajte si to:
 \begin{itemize}
-    \item Uistíme sa, že máme nainštalovaný kompilátor (napríklad napíšeme \verb!g++ -v! malo by nám to 
+    \item Uistíme sa, že máme nainštalovaný kompilátor 
+    (napríklad napíšeme \verb!g++ -v! malo by nám to 
     vypísať okrem balastu aj verziu kompilátora)
     \item Napíšeme program a uložíme ho do súboru \verb!hocico.cpp!
-    \item Otvoríme konzolu a vojdeme do priečinka, kde sa nachádza súbor \verb!hocico.cpp!
+    \item Otvoríme konzolu a vojdeme do priečinka, 
+    kde sa nachádza súbor \verb!hocico.cpp!
     \item Skompilujeme jedným z nasledovných príkazov:
     \begin{itemize}
-        \item \verb!g++ hocico.cpp! skompiluje program a výsledok uloží do \verb!a.out!
-        \item \verb!g++ hocico.cpp -o hocico! skompiluje program a výsledok uloží do \verb!hocico!
-        \item \verb!make hocico! za bežných okolností zavolá \verb!g++ hocico.cpp -o hocico!, ale dá
-        sa nastaviť aj iné správanie
+        \item \verb!g++ hocico.cpp! skompiluje program 
+        a výsledok uloží do \verb!a.out!
+        \item \verb!g++ hocico.cpp -o hocico! skompiluje program 
+        a výsledok uloží do \verb!hocico!
+        \item \verb!make hocico! za bežných okolností zavolá 
+        \verb!g++ hocico.cpp -o hocico!, ale dá sa nastaviť aj iné správanie
     \end{itemize}
     \item Ak kompilátor vypísal chybu, skúsime ju opraviť a skompilujeme
     program znova (nezabudnúť uložiť súbor) 
@@ -125,43 +129,42 @@ int main(){
 }
 \end{lstlisting}
 
-V každom programe C++ sa musí nachádzať funkcia int main(). Táto funkcia sa
-totiž začne vykonávať pri štarte programu, teda začnú sa vykonávať príkazy v
-jej tele.  Jej telo je obalené kučeravými zátvorkami \verb'{' a \verb'}'. A
-príkaz vo vnútri je len jeden, konkrétne funkcia \verb!printf("jesko\n");! (Za
-každým príkazom musí nasledovať bodkočiarka.)
+Samotný program v C++ píšeme medzi \verb!int main(){! a \verb!}!.  To, čo je
+tam napísané, sa začne vykonávať pri spustení skompilovaného kódu.
+\verb!main()! je v skutočnosti funkcia, a medzi kučeravými zátvorkami \verb'{'
+a \verb'}' je jej telo.  O funkciách si povieme viac neskôr, teraz nám stačí
+vedieť, že funkcia je v podstate pomenovaný program (postupnosť príkazov). 
+
+V tele funkcie \verb!main()! z príkladu je len jeden príkaz, konkrétne volanie
+funkcie \verb!printf("jesko\n")!. Za každým príkazom musí nasledovať
+bodkočiarka.
+
+Do zátvoriek funkcií zasa píšeme \emph{argumenty}, ktoré upresňujú čo má
+funkcia robiť. Napríklad funkcia \verb!printf! vypisuje text na výstup a do
+zátvoriek jej píšeme, čo má vypisovať.
 
 \medskip
 
-Pokiaľ nevieme, čo sú to funkcie, môžeme si ich predstavovať ako samostatné
-programy. Napríklad pokiaľ funkcia \verb!kup_mlieko()! by bola program na
-kúpenie mlieka, tak algoritmus \verb!kup_mlieko();! \verb!kup_mlieko();!
-\verb!kup_mlieko();! by kúpil tri mlieka.
+Telo funkcie \verb!printf! nevidíme, lebo je napísané v tvz. knižnici
+\verb!cstdio!.  \emph{Knižnica} je súbor, v ktorom sú definované funkcie ale aj
+všeliaké iné veci.  Takéto knižnice nám veľmi zjedodušujú prácu, pretože mnohé
+veci si potom nemusíme programovať sami. 
 
-Funkcie môžu mať aj argumenty/parametre, ktoré sa píšu do vnútra zátvoriek a
-ovplyvňujú dianie funkcií. Môžete hádať, čo by urobil nasledovný algoritmus:
-\verb!kup(mlieko);! \verb!kup(chlieb, tesco);! \verb!kup(rozky, kaufland);!.
+Ak chceme veci z knižnice používať, treba ju \verb!include!nuť. Na to
+slúži riadok \verb!#include<cstdio>!, ktorý vidíme v príklade.
 
-Viac o funkciách sa naučíme neskôr, naučíme sa ich aj vytvárať.
-
-\medskip
-
-Vráťme sa k funkcii s názvom \verb!printf!. Túto funkciu normálne kompilátor
-nepozná.  Preto je na začiatku programu riadok \verb!#include<cstdio>!.
-
-\verb!cstdio! (c++ standard input output) je názov knižnice, v ktorej je
+\verb!cstdio! (c++ standard input output) je teda názov knižnice, v ktorej je
 definovaných mnoho užitočných funkcií súvisiacich s načítavaním vstupu a
-vypisovaním výstupu. Keď na začiatok programu dáme správny riadok, tak sa z
-knižnice kompilátor naučí všetky pojmy.
+vypisovaním výstupu. 
 
-Funkcia \verb!printf!, ktorá je v knižnici \verb!cstdio!, slúži na vypisovanie
-výstupu.  A pokiaľ jej do zátvorky vložíme nejaký reťazec znakov v
-úvodzovkách, tak ich vypíše na obrazovku.  V našom príklade má reťazec 6 znakov
-\verb!'j'!, \verb!'e'!, \verb!'s'!, \verb!'k'!, \verb!'o'! a \verb!'\n'!.
-Prvých 5 sú obyčajné písmená, posledný je znak konca riadku. (Niektoré znaky
-(napríklad koniec riadku, alebo \verb!"!) nemôžeme do reťazca napísať priamo,
-takže ich píšeme pomocou znaku \verb!'\'!. Viac nájdete napríklad na
-\url{http://en.cppreference.com/w/cpp/language/escape})
+Ako sme si už spomínali, funkcia \verb!printf!, ktorá je v knižnici
+\verb!cstdio!, slúži na vypisovanie výstupu.  A pokiaľ jej do zátvorky vložíme
+nejaký reťazec znakov v úvodzovkách, tak ich vypíše na obrazovku.  V našom
+príklade má reťazec 6 znakov \verb!'j'!, \verb!'e'!, \verb!'s'!, \verb!'k'!,
+\verb!'o'! a \verb!'\n'!.  Prvých 5 sú obyčajné písmená, posledný je znak konca
+riadku. (Niektoré znaky (napríklad koniec riadku, alebo \verb!"!) nemôžeme do
+reťazca napísať priamo, takže ich píšeme pomocou znaku \verb!'\'!. Viac nájdete
+napríklad na \url{http://en.cppreference.com/w/cpp/language/escape})
 
 \medskip
 

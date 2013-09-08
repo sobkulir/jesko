@@ -22,7 +22,6 @@ ktoré ovládaš.}
 
 Obsah:
 \begin{itemize}
-    \item komentáre
     \item funkcie
     \item znaky
     \item reálne čísla
@@ -68,22 +67,24 @@ int main(){
 
 Čo je na vyššie uvedenom programe zle?
 
-Veľakrát používa rovnaký kód. A to máme ešte štastie, že opakujeme len trikrát 
-a opakujúci sa kód je dlhý len tri riadky. Aj tak, keď si zmyslíme, že nechceme vypisovať 10 čísel
-ale 11, tak to treba všade prepísať. Fuj.
+Veľakrát používa rovnaký kód. A to máme ešte štastie, že opakujeme len trikrát
+a opakujúci sa kód je dlhý len tri riadky. Aj tak, keď si zmyslíme, že nechceme
+vypisovať 10 čísel ale 11, tak to treba všade prepísať. Fuj.
 
-Teraz si predstavme, že robíme niečo podstatne zložitejšie a 
-na 200 miestach by sme mali rovnaký 10 riadkový blok. Keby sme tam chceli niečo zmeniť, tak sa zbláznime.
-A určite pri nejakom prepise spravíme chybu. A nemáme šancu tú chybu nájsť.
+Teraz si predstavme, že robíme niečo podstatne zložitejšie a na 200 miestach by
+sme mali rovnaký 10 riadkový blok. Keby sme tam chceli niečo zmeniť, tak sa
+zbláznime.  A určite pri nejakom prepise spravíme chybu. A nemáme šancu tú
+chybu nájsť.
 
-Proste copy-pastovanie kódu je zlo a chceme sa mu vyhnúť, 
-lebo tvorí neprehľadné a chybné programy. Ale ako sa mu vyhneme?
+Proste copy-pastovanie kódu je zlo a chceme sa mu vyhnúť, lebo tvorí
+neprehľadné a chybné programy. Ale ako sa mu vyhneme?
 
 \medskip
 
-Celkom dobrý spôsob je zabaliť kus kódu do funkcie -- nejako si ten kus kódu nazvať.
-Funkciu môžeme chápať ako samostatný program. Proste postupnosť príkazov, ktorá niečo robí.
-Konieckoncov všetky naše doterajšie programy boli len funkcia \verb!int main()!.
+Celkom dobrý spôsob je zabaliť kus kódu do funkcie -- nejako si ten kus kódu
+nazvať.  Funkciu môžeme chápať ako samostatný program. Proste postupnosť
+príkazov, ktorá niečo robí.  Konieckoncov všetky naše doterajšie programy boli
+len funkcia \verb!int main()!.
 
 Funkciu vyrobíme tým, že ju zadeklarujeme v tvare \verb!<typ> <meno>(<argumenty>){<príkazy>}!
 Spúšťame (voláme, po anglicky call) funkcie \verb!<meno>(<hodnoty-argumentov>)!
@@ -115,18 +116,19 @@ int main(){
 }
 \end{lstlisting}
 
-Dostali sme oveľa prehľadnejší kód a ak chceme napríklad zmeniť počet vypisovaných čísel,
-stačí to spraviť na jednom mieste.
+Dostali sme oveľa prehľadnejší kód a ak chceme napríklad zmeniť počet
+vypisovaných čísel, stačí to spraviť na jednom mieste.
 
 \medskip 
 
 Čo je to void a vôbec ten typ?
 
-Funkcia môže vracať nejakú hodnotu a \textit{ten} typ je typ hodnoty, akú funkcia vracia.
-Void znamená, že funkcia nevracia nič. Funkcia, ktorá niečo vracia, môže byť 
-napríklad funkcia \verb!osem()! z nasledujúceho príkladu. Isto si všimnete, že
-na vrátenie hodnoty slúži príkaz \verb!return!. Príkaz \verb!return! zároveň skončí
-vykonávanie funkcie, preto všetko, čo je za ním, sa už nevykoná. 
+Funkcia môže vracať nejakú hodnotu a \textit{ten} typ je typ hodnoty, akú
+funkcia vracia.  Void znamená, že funkcia nevracia nič. Funkcia, ktorá niečo
+vracia, môže byť napríklad funkcia \verb!osem()! z nasledujúceho príkladu. Isto
+si všimnete, že na vrátenie hodnoty slúži príkaz \verb!return!. Príkaz
+\verb!return! zároveň skončí vykonávanie funkcie, preto všetko, čo je za ním,
+sa už nevykoná. 
 
 \lstlang{cpp}\begin{lstlisting}
 int osem(){
@@ -159,12 +161,13 @@ int main(){
 
 \medskip
     
-Zatiaľ tie funkcie nie sú veľmi úžasné, lebo robia stále to isté (asi ako programy bez vstupu).
-A stále nevieme, čo sú to tie argumenty.
+Zatiaľ tie funkcie nie sú veľmi úžasné, lebo robia stále to isté (asi ako
+programy bez vstupu).  A stále nevieme, čo sú to tie argumenty.
 
-Tak si vysvetlíme dve veci zároveň. Argumenty sú akoby vstup pre funkciu.
-Už sme sa s tým stretli, keď sme napríklad funkcii printf() do zátvoriek zadávali, čo má vypísať.
-Analogicky namiesto funkcie \verb!vypis_desat_cisel()! môžeme použiť všeobecnejšiu funkciu
+Tak poďme obe veci vyriešiť zároveň. Argumenty sú akoby vstup pre funkciu.  Už
+sme sa s tým stretli, keď sme napríklad funkcii printf() do zátvoriek zadávali,
+čo má vypísať.  Analogicky namiesto funkcie \verb!vypis_desat_cisel()! môžeme
+použiť všeobecnejšiu funkciu
 
 \lstlang{cpp}\begin{lstlisting}
 void vypis_cisla(int pocet){
@@ -177,14 +180,49 @@ int main(){
     vypis_cisla(10);
 
     // takto vieme pouzivat funkciu na rozne pocty vypisovanych cisel
-    vypis_cisla(17);
+    vypis_cisla(10 + 7);
     int n;
     scanf("%d", n);
     vypis_cisla(n);
 }
 \end{lstlisting}
 
+Funkcia môže mať ľubovoľný počet argumetov, pri deklarácii(vyrávbaní) funkcie
+ich jednoducho vymenujeme medzi zátvorky \verb!()! v rovnakom tvare ako pri
+deklarácii premenných, odeelené čiarkami. Následne ich môžeme používať ďalej vo
+funkcii ako nové premenné (t.j. ich môžeme napríklad aj meniť).
 
+Pri volaní funkcie píšeme medzi zátvorky hodnoty alebo výrazy, samozrejme musí
+sa zachovať typ.
+
+\lstlang{cpp}\begin{lstlisting}
+int scitaj(int a, int b, int c){
+    // prehodíme hodnoty premennych, len tak pre srandu
+    int pomocna = a;
+    a = b;
+    b = c;
+    c = pomocna;
+    return a+b+c;
+}
+int main(){
+    int a = 5;
+    printf("%d\n", scitaj(1+7, 4*a, a)
+}
+\end{lstlisting}
+
+\medskip
+
+Veľmi užitočná vlasnosť funkcií je rekurzívne volanie, 
+teda, že funkcia sa može volať opakovne sama seba. Toto vieme využiť napríklad
+aj na počítanie všeliakých zaujímavých vecí. 
+
+Fibbonacciho postupnosť, $\{F_n\}$,  je veľmi zaujímavá číselná postupnosť, definovaná takto:
+$F_0 = 0$, $F_1 = 1$, $i>1 \rightarrow F_i = F_{i-1} + F_{i-2}$. Bez toho aby sme tejto postupnosti hlbšie
+porozumeli, môžeme 
+
+
+\lstlang{cpp}\begin{lstlisting}
+\end{lstlisting}
 
 
 

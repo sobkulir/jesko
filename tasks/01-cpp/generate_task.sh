@@ -44,7 +44,7 @@ echo "\input ../../../include/include.tex" > zadanie.tex
 echo ""  >> zadanie.tex
 echo "\begin{document}" >> zadanie.tex
 echo ""  >> zadanie.tex
-echo -n "\nadpis{" >> zadanie.tex
+echo -n "\velkynadpis{" >> zadanie.tex
 echo -n `cat meno.txt` >> zadanie.tex
 echo "}"  >> zadanie.tex
 echo ""  >> zadanie.tex
