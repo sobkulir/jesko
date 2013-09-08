@@ -1,0 +1,131 @@
+Tlačítka
+@@@@@
+Táto úloha má dlhé zadanie. To však neznamená, že je ťažká.
+
+Janko si letí vesmírnou loďou. Jej ovládanie je celkom jednoduché - pomocou 4 tlačítok A,B,C a D. K lodi dostal manuál, kde je popísaných niekoľko základných akcií:
+
+\begin{itemize}
+	\item Akcia 1
+	\begin{itemize}
+		\item stlač tlačítko A
+		\item stlač tlačítko B
+		\item stlač tlačítko D
+	\end{itemize}
+
+	\item Akcia 2
+	\begin{itemize}
+		\item stlač tlačítko A
+		\item stlač tlačítko C
+		\item stlač tlačítko D
+	\end{itemize}
+
+	\item Akcia 3
+	\begin{itemize}
+		\item stlač tlačítko A
+		\item 5-krát stlač tlačítko C
+		\item stlač tlačítko D
+	\end{itemize}
+
+	\item Akcia 4
+	\begin{itemize}
+		\item stlač tlačítko A
+		\item vykonaj akciu 2
+		\item stlač tlačítko D
+	\end{itemize}
+
+	\item Akcia 5
+	\begin{itemize}
+		\item stlač tlačítko A
+		\item vykonaj akciu 3
+		\item stlač tlačítko C
+		\item 5-krát vykonaj akciu 1
+		\item stlač tlačítko D
+	\end{itemize}
+
+	\item Akcia 6
+	\begin{itemize}
+		\item stlač tlačítko A
+		\item vykonaj akciu 5
+		\item stlač tlačítko C
+		\item 5-krát tlačítko B
+		\item 5-krát vykonaj akciu 4
+		\item stlač tlačítko D
+	\end{itemize}
+
+\end{itemize}
+
+Janko je z toho jeleň. Najradšej by bol, ak by dostal iba zoznam tlačítok, ktoré má stlačiť. Pomôžete mu?
+
+Na vstupe dostanete jedno číslo od $1$ do $6$ - číslo akcie. Vypíšte jeden riadok a v ňom postupnosť tlačítiek, ktoré má janko stlačiť. (Veľkým písmom bez medzier).
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+void a1(){
+	cout << "A";
+	cout << "B";
+	cout << "D";
+}
+
+void a2(){
+	cout << "A";
+	cout << "C";
+	cout << "D";
+}
+
+void a3(){
+	cout << "A";
+	for(int i = 0; i < 5; i++) cout << "C";
+	cout << "D";
+}
+
+void a4(){
+	cout << "A";
+	a2();
+	cout << "D";
+}
+
+void a5(){
+	cout << "A";
+	a3();
+	cout << "C";
+	for(int i = 0; i < 5; i++)  a1();
+	cout << "D";
+}
+
+void a6(){
+	cout << "A";
+	a5();
+	cout << "C";
+	for(int i = 0; i < 5; i++)  cout << "B";
+	for(int i = 0; i < 5; i++)  a4();
+	cout << "D";
+}
+
+
+int main(){
+	int n;
+	cin >> n;
+	if(n==1) a1();
+	if(n==2) a2();
+	if(n==3) a3();
+	if(n==4) a4();
+	if(n==5) a5();
+	if(n==6) a6();
+	cout << "\n";
+	return 0;
+}
+@@@@@
+1
+@@@@@
+2
+@@@@@
+3
+@@@@@
+4
+@@@@@
+5
+@@@@@
+6
+@@@@@
