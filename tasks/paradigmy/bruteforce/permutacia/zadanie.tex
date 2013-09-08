@@ -1,18 +1,19 @@
+%gram. kontrola Maja
+
 \input ../../../../include/include.tex
 
 \begin{document}
 
-\velkynadpis{Permutácia čísiel}
+\velkynadpis{Permutácia čísel}
 
-Na vstupe dostanete $n$ čísiel, každé má presne $k$ cifier. Nájdite takú permutáciu cifier v týchto
-číslach, že rozdiel najväčšieho a najmenšieho takto spermutovaného čísla bude čo najmenší. Všimnite
-si, že na všetky čísla má byť použitá tá istá permutácia a takisto, že dovoľujeme čísla, ktoré
-začínajú jednou alebo viacerými nulami.
+Na vstupe dostanete $n$ čísel, každé má presne $k$ cifier. Nájdite takú permutáciu cifier v týchto
+číslach, že rozdiel najväčšieho a najmenšieho takto spermutovaného čísla bude čo najmenší. Na všetky čísla
+má byť použitá tá istá permutácia a takisto je dovolené, aby čísla začínali jednou alebo viacerými nulami.
 
 \nadpis{Vstup}
 
-Na prvom riadku sú dve čísla $n$ a $k$ ($1 \leq n, k \leq 8$) -- počet čísiel na vstupe a počet
-cifier v nich. Nasleduje $n$ $k$-ciferných čísiel, niektoré môžu začínať prebytočnými nulami.
+Na prvom riadku sú dve čísla $n$ a $k$ ($1 \leq n, k \leq 8$) -- počet čísel na vstupe a počet
+cifier v nich. Nasleduje $n$ $k$-ciferných čísel, niektoré môžu začínať prebytočnými nulami.
 
 \nadpis{Výstup}
 
@@ -29,7 +30,7 @@ pôvodných číslach.
 \vystup
 3
 \komentar
-Ak použijem permutáciu $(2, 1, 3)$ dostanem čísla $100$, $099$ a $102$, takže rozdiel najväčšieho a
+Ak použijem permutáciu $(2, 1, 3)$, dostanem čísla $100$, $099$ a $102$, takže rozdiel najväčšieho a
 najmenšieho čísla bude $102 - 99 = 3$.
 \koniec
 
