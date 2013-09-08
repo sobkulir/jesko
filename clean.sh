@@ -22,8 +22,12 @@ if [[ $1 == h* ]]; then
     exit
 fi
 
-for x in `find .`; do
+for x in `find . -not -name *.in -not -name *.out -not -name *.aux -not -name *.log`; do
+    if [[ "$x" == ./.git* ]]; then continue; fi
+    if [[ "$x" == *.pdf ]] || [[ "$x" == *.tex ]]; then continue; fi
     if [[ "$x" == *.in ]] || [[ "$x" == *.out ]]; then continue; fi
+    if [[ "$x" == *.cpp ]] || [[ "$x" == *.cc ]]; then continue; fi
+    #echo $x
     if file $x | grep -q "ELF"; then
         if [[ "$x" == *.bin ]]; then
             if [ "$1" == "rmbin" ]; then
