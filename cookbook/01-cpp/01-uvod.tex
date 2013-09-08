@@ -142,7 +142,7 @@ int main(){
 
 Samotný program v C++ píšeme medzi \verb!int main(){! a \verb!}!.  To, čo je
 tam napísané, sa začne vykonávať pri spustení skompilovaného kódu.
-\verb!main()! je v skutočnosti funkcia, a medzi kučeravými zátvorkami \verb'{'
+\verb!main()! je v skutočnosti funkcia a medzi kučeravými zátvorkami \verb'{'
 a \verb'}' je jej telo.  O funkciách si povieme viac neskôr, teraz nám stačí
 vedieť, že funkcia je v podstate pomenovaný program (postupnosť príkazov). 
 
@@ -228,15 +228,15 @@ napríklad \verb!int cislo;!
 Do premenných môžeme vkladať priradením, teda pomocou \verb'='. Syntax je
 \verb!<meno-premennej> = <výraz>!, napríklad \verb!a = 4!. O výrazoch si
 povieme viac neskôr, dôležité zatiaľ je, že výraz musí mať nejakú hodnotu.
-Napríklad výraz $4$ má hodnotu $4$. Výraz $a$ má hodnotu toho, čo je vnútri
-premennej/krabičky s menom $a$.  Výraz $4 + 7$ má hodnotu $11$. Pokiaľ v $a$ je
-číslo $5$, tak výraz $a + 5$ má hodnotu $10$.
+Napríklad výraz \verb!4! má hodnotu 4. Výraz \verb!a! má hodnotu toho, čo je
+vnútri premennej/krabičky s menom \verb!a!.  Výraz \verb!4 + 7! má hodnotu 11.
+Pokiaľ v \verb!a! je číslo 5, tak výraz \verb!a + 5! má hodnotu 10.
 
 Výraz musí mať hodnotu preto, lebo práve táto hodnota sa uloží do premennej:
-Napríklad keď napíšeme $a = 3 + 8;$ tak do a sa priradí číslo $11$.
+Napríklad keď napíšeme \verb!a = 3 + 8;! tak do \verb!a! sa priradí číslo 11.
 
 \cvicenie Skúste určiť, čo robí nasledovný program. Aké hodnoty budú na
-konci v premenných $a$, $b$ ,$c$?
+konci v premenných \verb!a!, \verb!b!, \verb!c!?
 \lstlang{cpp}\begin{lstlisting}
 int main(){
     int a;
@@ -251,14 +251,15 @@ int main(){
 \end{lstlisting}
 
 \riesenie
-Najskôr sme vyrobili premennú $a$. Potom sme do nej priradili hodnotu $4$.
-Následne sme do nej priradili hodnotu $7$ (stará hodnota $4$ sa zahodila), teda
-premenná bude obsahovať iba číslo $7$. Potom sme vyrobili dve nové premenné $b$
-a $c$ (správne, premenných rovnakého typu vieme vyrábať aj viac naraz, stačí
-ich mená oddeliť čiarkou).  Do premennej $b$ sa priradila hodnota výrazu $a$,
-teda $7$. Do $c$ sa priradí hodnota výrazu $a + b$, čo je hodnotou výrazu $7 +
-7$ teda $14$. Nakoniec sa do $a$ priradí $a + 4$, čiže $7+4$, čiže $11$. V
-$a,b,c$ budú na konci programu postupne hodnoty $11,7,14$.
+Najskôr sme vyrobili premennú \verb!a!. Potom sme do nej priradili hodnotu 4.
+Následne sme do nej priradili hodnotu 7 (stará hodnota 4 sa zahodila), teda
+premenná bude obsahovať iba číslo 7. Potom sme vyrobili dve nové premenné
+\verb!b!  a \verb!c! (správne, premenných rovnakého typu vieme vyrábať aj viac
+naraz, stačí ich mená oddeliť čiarkou).  Do premennej \verb!b! sa priradila
+hodnota výrazu \verb!a!, teda 7. Do \verb!c! sa priradí hodnota výrazu 
+\verb!a + b!, čo je hodnotou výrazu \verb!7 + 7! teda 14. Nakoniec sa do
+\verb!a!  priradí \verb!a + 4!, čiže \verb!7 + 4!, čiže 11. V \verb!a, b, c!
+budú na konci programu postupne hodnoty 11, 7, 14.
 
 \medskip
 
@@ -280,13 +281,13 @@ int main(){
 \end{lstlisting}
 Mal by vypísať reťazec \verb!4 + 7 = 11!. Totiž funkcii \verb!printf! sme dali
 4 argumenty (argumenty oddeľujeme čiarkou) reťazec \verb!"%d + %d = %d\n"! a
-tri výrazy $4$, $7$ a $4+7$ s hodnotami $4$, $7$ a $11$.  Funkcia najprv
+tri výrazy \verb!4!, \verb!7! a \verb!4+7! s hodnotami 4, 7 a 11.  Funkcia najprv
 zoberie prvý argument, ktorý musí byť reťazec, nájde tam všetky výskyty
 \verb!%<nieco>! a nahradí ich hodnotami ďalších argumentov.  \verb!%d! znamená,
 že argument bude celé číslo, ktoré chceme vypísať v desiatkovej sústave. O
 iných značkách si povieme viac neskôr, slúžia buď na vypisovanie iných typov
-objektov (reálne čísla, znaky, reťazce\dots) alebo rôzny spôsob ich vypísania
-(počet desatinných miest, sústava\dots).
+objektov (reálne čísla, znaky, reťazce\dots) alebo na rôzny spôsob ich
+vypísania (počet desatinných miest, sústava\dots).
 
 Keďže premenné sú tiež výrazy, tak môžeme vypisovať ich hodnoty takto:
 \lstlang{cpp}\begin{lstlisting}
@@ -341,9 +342,10 @@ vypisovaní však treba dávať pozor, namiesto \verb!"%d"! treba písať
 \verb!"%lld"! na Linuxe alebo \verb!"%I64d"! na Windowse.
 
 Existujú aj typy premenných, ktoré neukladajú záporné čísla. Napríklad
-\verb!unsigned int! má rozsah $0..2^{32}-1$.  Pri ich používaní treba byť
-obozretný, lebo sa vám môže stať, že mínus jedna je viac ako nula.  (Totiž mínus
-v bezznamienkovej premennej môže byť 4294967295.)
+\verb!unsigned int! má rozsah $0..2^{32}-1$.  Pri ich používaní musíme byť
+obozretní, lebo sa vám môže stať, že mínus jedna je viac ako nula.  
+(Totiž -1 v bezznamienkovom \verb!int!e bude 4294967295, kvôli tomu, ako sa
+udržujú hodnoty v pamäti.)
 
 \nadpis{Binárna sústava a reprezentácia dát v pamäti.}
 
@@ -510,7 +512,7 @@ Pretypovanie bežne funguje automaticky, ale vieme ho spôsobovať aj ručne.
 Syntax je \verb!(<typ>)<hodnota>! alebo \verb!<typ>(hodnota)! alebo použijeme
 obe dvojice zátvoriek.
 
-\cvicenie Aké budu hodnoty v $a$, $b$ po nasledovných priradeniach? 
+\cvicenie Aké budu hodnoty v \verb!a!, \verb!b! po nasledovných priradeniach? 
 \begin{lstlisting}
 int a = 1234, b;
 b = (char)a;
@@ -518,8 +520,8 @@ b = char(a);
 b = char(a)*a;
 \end{lstlisting}
 
-\riesenie Hodnota $a$ bude vždy 1234, pretypovanie nemení premenné. 
-$b$ bude mať hodnoty -46, -46 a -56764 (teda $-46\cdot 1234$).
+\riesenie Hodnota \verb!a! bude vždy 1234, pretypovanie nemení premenné. 
+\verb!b! bude mať hodnoty -46, -46 a -56764 (teda $-46\cdot 1234$).
 
 \medskip
 
