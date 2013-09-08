@@ -370,7 +370,7 @@ vždy len po najbližší biely znak (medzera, koniec riadku, tabulátor).
 
 Pri reťazcoch (ale aj iných poliach) a operátoroch si treba dávať pozor.  Keď
 \verb!A! a \verb!B! sú polia, tak \verb!A<B! \textbf{ne}vráti \verb!true! v
-prípade, že A obsahuje menši čísla. Rovnako aj \verb!A == B! \textbf{ne}testuje
+prípade, že A obsahuje menšie čísla. Rovnako aj \verb!A == B! \textbf{ne}testuje,
 či polia obsahujú rovnaké čísla. Ani \verb!A + B! \textbf{ne}sčíta obsahy polí
 ani \verb!A = B!  \textbf{ne}prekopíruje čísla z jedného do druhého. Jednoducho
 operátory robia s poľami celkom odlišné veci.
@@ -385,9 +385,6 @@ Okrem celých čísel máme v C++ aj reálne. Pre ne máme typ
 pri výpise vieme ovplyvniť počet vypísaných desatinným miest \verb"%<pocet>lf"
 ako vidíme v príklade:
 
-Keď chceme napísať nejakú reálnočíselnú hodnotu, môžeme buď pretypovať
-\verb!double(7)! alebo napísať desatinnú bodku \verb!7.0!.
-
 \lstlang{cpp}\begin{lstlisting}
 int main(){
     double a;
@@ -398,10 +395,13 @@ int main(){
 }
 \end{lstlisting}
 
+Keď chceme napísať nejakú reálnočíselnú hodnotu, môžeme buď pretypovať
+\verb!double(7)!, alebo napísať desatinnú bodku \verb!7.0!.
+
 \medskip
 
 Pri práci s reálnymi číslami si musíme dávať obrovský pozor na presnosť.
-Napríklad $(5.1 - 3.1 - 2.0 == 0.0)$ vráti $false$. Počas výpočtov totiž
+Napríklad \verb!(5.1 - 3.1 - 2.0 == 0.0)! vráti \verb!false!. Počas výpočtov totiž
 dochádza k drobným zaokúhľovaniam.
 
 Ilustrovať si to vieme nasledovným príkladom: majme kalkulačku, ktorá počíta v
