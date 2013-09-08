@@ -1,0 +1,1 @@
+Na vstupe je 5 rôznych kladných celý čísel oddelených medzerou. Na jediný riadok výstupu vypíšte súčet všetkých, okrem najväčšieho.

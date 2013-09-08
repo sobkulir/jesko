@@ -1,0 +1,1 @@
+Na vstupe je 5 celých čísel oddelených medzerou. Na jediný riadok výstupu vypíšte ich priemer zaokrúhlený smerom nadol.

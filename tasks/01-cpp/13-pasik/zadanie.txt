@@ -1,0 +1,1 @@
+Na vstupe je jedno nezáporné celé číslo $s$. Vypíš jeden riadok pozostávajúci z $s$ hviezdičiek.

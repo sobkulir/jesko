@@ -1,0 +1,4 @@
+Na vstupe máte celé číslo $n$, vypíšte $n$ riadkovú pyramídu nasledovne:
+
+Na $i$-tom riadku je $2i-1$ hviezdičiek obkolesených z obochstrán rovnakým počtom medzier tak,
+že celý "obrázok" je rovnako široký ako najspodnejší riadok pyramídy.

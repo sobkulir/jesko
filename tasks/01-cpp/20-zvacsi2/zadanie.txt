@@ -1,0 +1,2 @@
+Na vstupe bude v prvom riadku číslo $n \leq 100$, v druhom $n$ čísel oddelených medzerou a v treťom číslo $x$.
+Na výstup vypíš pôvodných $n$ čísel, ale každé zväčšené o $x$.
