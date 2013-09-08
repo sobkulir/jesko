@@ -1,0 +1,41 @@
+Rozdiel
+@@@@@
+Na vstupe dostanete číslo $n \leq 100$, a kladné číslo $x$ a $n$ čísel. Vašou úlohou je zistiť, či rozdiel medzi nejakými dvomi číslami na vstupe je rovný $x$.
+@@@@@
+#include<iostream>
+#include <cstdlib>  
+
+using namespace std;
+
+int main(){
+	int n,x;
+	int a[100];
+	cin >> n >> x;
+	for(int i=0;i<n;i++){
+		cin >> a[i];
+	}
+	bool nachadza=false;
+	for(int i=0;i<n;i++){
+		for(int j=i+1;j<n;j++){
+			if(abs(a[i]-a[j])==x){
+				nachadza=true;
+			}
+		}
+	}
+	if(nachadza){
+		cout << "Ano";
+	}else{
+		cout << "Nie";
+	}
+	return 0;
+}
+@@@@@
+7 4
+1 2 3 5 4 7 6
+@@@@@
+3 8
+2 4 6
+@@@@@
+1
+3
+@@@@@

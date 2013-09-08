@@ -1,0 +1,1 @@
+Na vstupe dostanete číslo $n \leq 100$, číslo $m \leq 100$ a obdĺžnik čísel veľkosti $n*m$. Vašou úlohou je vymeniť riadky a stĺpce. Teda napríklad číslo, ktoré bolo v 3. stĺpci a 4. riadku. bude teraz v 4. stĺpci a 3. riadku. 
