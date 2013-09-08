@@ -1,0 +1,27 @@
+Trojuholník
+@@@@@
+Na vstupe dostanete jedno číslo $n$. Vypíšte trojuholník hviezdičiek so základňou dĺžky $n$ (Tak ako v príklade).
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int n;
+	cin >> n;
+	for (int i = 0; i<n; ++i) {
+		for (int j = i; j<n; ++j) {
+			cout << "*";
+		}
+		cout << endl;
+	}
+}
+@@@@@
+7
+@@@@@
+10
+@@@@@
+5
+@@@@@
+42
+@@@@@

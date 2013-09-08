@@ -1,0 +1,31 @@
+Pásik
+@@@@@
+Na vstupe sú dve nezáporné celé číslo $r$ a $s$ - počet riadkov a stĺpcov obdĺžnika. Vypíš tento obĺžnik pomocou hviezdičiek.
+Nezabudni na nový riadok na konci.
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int s, r;
+	cin >> r >> s;
+	for(int j = 1; j <= r; j++){
+		for(int i = 1; i <= s; i++){
+			cout << "*";
+		}
+		cout << endl;
+	}
+	return 0;
+}
+@@@@@
+3 4
+@@@@@
+42 47
+@@@@@
+1 5
+@@@@@
+5 1
+@@@@@
+0 100
+@@@@@

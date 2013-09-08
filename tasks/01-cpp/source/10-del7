@@ -1,0 +1,27 @@
+Zvyšok po delení 7
+@@@@@
+Napíš program, ktorý načíta celé číslo zo vstupu a na jediný riadok výstupu výstupu vypíše texttt("ano") pokiaľ je delitelné $7$ a texttt("nie") v opačnom prípade.
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int x;
+	cin >> x;
+	if(x%7==0){
+		cout << "ano" << endl;
+	} else {
+		cout << "nie" << endl;
+	}
+	return 0;
+}
+@@@@@
+47
+@@@@@
+42
+@@@@@
+40
+@@@@@
+35
+@@@@@

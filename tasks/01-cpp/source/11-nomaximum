@@ -1,0 +1,45 @@
+Nenajväčší
+@@@@@
+Na vstupe je 5 rôznych kladných celý čísel oddelených medzerou. Na jediný riadok výstupu vypíšte súčet všetkých, okrem najväčšieho.
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int x,suma,max;
+	suma = 0;
+	max = 0;
+
+	cin >> x;
+	suma+=x;
+	if(x > max) max = x;
+	
+	cin >> x;
+	suma+=x;
+	if(x > max) max = x;
+	
+	cin >> x;
+	suma+=x;
+	if(x > max) max = x;
+	
+	cin >> x;
+	suma+=x;
+	if(x > max) max = x;
+	
+	cin >> x;
+	suma+=x;
+	if(x > max) max = x;
+	
+	cout << suma-max << endl;
+	return 0;
+}
+@@@@@
+42 8 47 31 32 
+@@@@@
+4 9 8 6 3
+@@@@@
+5 2 4 9 8
+@@@@@
+3 8 1 6 7
+@@@@@

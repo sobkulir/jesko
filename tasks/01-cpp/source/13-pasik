@@ -1,0 +1,26 @@
+Pásik
+@@@@@
+Na vstupe je jedno nezáporné celé číslo $s$. Vypíš jeden riadok pozostávajúci z $s$ hviezdičiek.
+@@@@@
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	int s;
+	cin >> s;
+	for(int i = 1; i <= s; i++){
+		cout << "*";
+	}
+	cout << endl;
+	return 0;
+}
+@@@@@
+8
+@@@@@
+42
+@@@@@
+1
+@@@@@
+0
+@@@@@
