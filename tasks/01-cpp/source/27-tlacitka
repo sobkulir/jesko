@@ -2,7 +2,8 @@ Tlačítka
 @@@@@
 Táto úloha má dlhé zadanie. To však neznamená, že je ťažká.
 
-Janko si letí vesmírnou loďou. Jej ovládanie je celkom jednoduché - pomocou 4 tlačítok A,B,C a D. K lodi dostal manuál, kde je popísaných niekoľko základných akcií:
+Janko si letí vesmírnou loďou. Jej ovládanie je celkom jednoduché - pomocou 4 tlačítok A,B,C a D. K
+lodi dostal manuál, kde je popísaných niekoľko základných akcií:
 
 \begin{itemize}
 	\item Akcia 1
@@ -54,9 +55,11 @@ Janko si letí vesmírnou loďou. Jej ovládanie je celkom jednoduché - pomocou
 
 \end{itemize}
 
-Janko je z toho jeleň. Najradšej by bol, ak by dostal iba zoznam tlačítok, ktoré má stlačiť. Pomôžete mu?
+Janko je z toho jeleň. Najradšej by bol, ak by dostal iba zoznam tlačítok, ktoré má stlačiť.
+Pomôžete mu?
 
-Na vstupe dostanete jedno číslo od $1$ do $6$ - číslo akcie. Vypíšte jeden riadok a v ňom postupnosť tlačítiek, ktoré má janko stlačiť. (Veľkým písmom bez medzier).
+Na vstupe dostanete jedno číslo od $1$ do $6$ - číslo akcie. Vypíšte jeden riadok a v ňom postupnosť
+tlačítiek, ktoré má Janko stlačiť. (Veľkým písmom bez medzier).
 @@@@@
 #include<iostream>
 
@@ -116,6 +119,8 @@ int main(){
 	cout << "\n";
 	return 0;
 }
+@@@@@
+1
 @@@@@
 1
 @@@@@

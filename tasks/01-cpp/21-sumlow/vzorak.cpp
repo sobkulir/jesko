@@ -4,7 +4,7 @@ using namespace std;
 
 int main(){
 	int n,x;
-	int a[n];
+	int a[107];
 	cin >> n;
 	for(int i=0;i<n;i++){
 		cin >> a[i];
@@ -17,5 +17,4 @@ int main(){
 		}
 	}
 	cout << sum;
-	return 0;
 }

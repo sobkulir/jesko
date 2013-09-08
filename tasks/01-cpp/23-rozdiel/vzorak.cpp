@@ -18,10 +18,9 @@ int main(){
 			}
 		}
 	}
-	if(nachadza){
+	if(nachadza)
 		cout << "Ano";
-	}else{
+	else
 		cout << "Nie";
-	}
-	return 0;
+	
 }

@@ -32,8 +32,6 @@ ktoré ovládaš.}
     \item načítavanie vstupu
     \vspace{-5pt}
     \item polia
-    \vspace{-5pt}
-    \item testovač
 \end{itemize}
 
 \medskip
@@ -164,8 +162,8 @@ rozumne.
 
 \medskip
 
-Vyriešte v testovači úlohy \textbf{rovnake}, \textbf{cislo2}, \textbf{minimum3}
-a \textbf{median3}.
+Vyriešte v testovači úlohy \textbf{rovnake}, \textbf{cislo2}, \textbf{minimum3},
+\textbf{median3}, \textbf{priemer5}, \textbf{del7} a \textbf{nomaximum}.
 
 \cvicenie Akú pravdivostnú hodnotu má výraz 
 \verb'( (!7 == false) && (0 | (a = 5)) <= 4 )'?
@@ -319,15 +317,17 @@ int main(){
 }
 \end{lstlisting}
 
-
+Vyriešte v testovači úlohy \textbf{supercykly}, \textbf{pasik},
+\textbf{obdlznik2}, \textbf{trojuholnik}, \textbf{pyramida}, 
+\textbf{maximum\_n}, \textbf{fibonacci}, \textbf{zvacsi1}.
 
 \kapitola{Polia}
 
 Sú situácie, kde si jednoducho neporadíme s obmedzeným množstvom premenných.
 (Vedeli by ste načítať $n$ čísel zo vstupu a následne ich vypísať v opačnom
-poradí?) To sa s obmedzeným množstvom číselných premenných nedá, pretože ak je
-na vstupe viac čísel ako máme premenných, tak si ich nedokážeme zapamätať na
-neskorší výpis. 
+poradí? A čo príklad \textbf{zvacsi2?}) To sa s obmedzeným množstvom číselných
+premenných nedá, pretože ak je na vstupe viac čísel ako máme premenných, tak si
+ich nedokážeme zapamätať na neskorší výpis. 
 
 Aj keby sme mali napríklad na vstupe 20 čísel, tak je veľmi nepraktické vyrobiť
 si premenné \verb!a0! až \verb!a19!, do ktorých si vstup načítame.
@@ -394,10 +394,23 @@ z polí vieme robiť polia. Pole polí (dvojrozmerné pole) vieme vyrobiť napr�
 takto \verb!int A[1000][1000];! Takto vieme ísť aj ďalej, len treba zasa dávať
 pozor na pamäť \verb!int A[100][100][100][10][10];! zaberá cca 400MB.
 
-\kapitola{Zoznámte sa s testovačom}
+\medskip
 
-Teraz už by ste mali vedieť dosť na to, aby ste vyriešili tieto úlohy: TODO %TODO
+Ak chceme, tak môžeme polia vyplniť už pri deklarácii, napríklad 
+\verb!int a[5] = {1, 2, 3, 4, 5};! Dokonca vtedy si kompilátor dokáže sám
+pozrieť počet prvkov, takže stačí napísať. \verb!int a[] = {1, 2, 3, 4, 5};!
 
+Pri viacrozmerných poliach môžeme nenapísať len prvé číslo, napr. 
+\verb!int a[][2][1]! \verb!=! \verb!{{{1}, {2}}, {{3}, {4}}, {{5}, {6}}};!
+
+Toto vieme robiť len pri deklarácii, takže \verb!int a[2];! \verb!a = {1, 2};!
+nefunguje.
+
+\medskip
+
+Vyriešte v testovači úlohy \textbf{zvacsi2}, \textbf{sumlow},
+\textbf{najmensie}, \textbf{rozdiel}, \textbf{pyramida2}, 
+\textbf{vymenRS} a \textbf{otocRS}.
 
 \end{document}
 

@@ -530,6 +530,20 @@ je 0 hoci posledný bit v zápise 4 je 0.  Pre \verb!bool! platí, že
 \verb!bool(0)! je \verb!false! (resp. 0), všetky ostatné čísla sa zmenia na
 \verb!true! (resp. 1).
 
+\medskip
+
+Ku číslam sa hodí spomenúť ešte dve číselné operácie, delenie \verb'/' a zvyšok
+po delení \verb'%'. 
+
+Keď pracujeme s celými číslami, tak chceme aby aj podiel bol celé číslo.  Preto
+sa výsledok vždy zaokrúhľuje smerom k nule.  $3/2$ nie je $1.5$ ale $3/2 = 1$,
+$11/3 = 3$, $14/7 = 2$, $-15/3 = -5$, $-100/3 = -33\dots$
+
+Zvyšok po delení určite poznáte so základnej školy, dá sa definovať ako $a \% b
+= a - (a/b)\cdot b$.
+Napríklad $47 \% 10 = 47 - 47/10\cdot 10 = 47 - 4\cdot 10 = 47 - 40 = 7$,
+$-5 \% 3 = -2$.
+
 \kapitola{Alternatívny výstup}
 
 V C++ sa dá na výstup vypisovať aj inak ako cez \verb!printf!. Pokiaľ
@@ -646,7 +660,6 @@ pripravené množstvo úloh.
 
 Vyriešte prvé štryri úlohy v prvej sade: \textbf{hello}, \textbf{cislo}, 
 \textbf{swap}, \textbf{obdlznik}.
-
 
 \end{document}
 

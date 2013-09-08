@@ -7,7 +7,7 @@
 
 \begin{document}
 
-\velkynadpis{Pokračovanie C++}
+\velkynadpis{Ďalšie časti C++}
 
 \textit{Ako správne používať tento študijný text: Milý čitateľ, chystáš sa
 prečítať si kuchárku o základoch programovacieho jazyka C++. Najdôležitejšie
@@ -20,14 +20,16 @@ do krvi.}
 už máš nejaké základy z programovania, môžeš pokojne preskakovať tie časti,
 ktoré ovládaš.}
 
-Obsah:
+\nadpis{Obsah:}
 \begin{itemize}
+    \vspace{-8pt}
     \item funkcie
+    \vspace{-5pt}
     \item znaky
+    \vspace{-5pt}
     \item reálne čísla
+    \vspace{-5pt}
     \item matematika
-    \item vlastné typy premenných
-    \item makrá
 \end{itemize}
 
 \medskip
@@ -266,6 +268,132 @@ funkcie a program spadne.
 
 \cvicenie Napíšte funkciu, ktorá počíta $n!$ ($n$ faktoriál, $n! = 1\cdot
 2\cdot\dots\cdot (n-1)\cdot n$) bez použitia cyklov.
+
+\kapitola{Znaky}
+
+V C++ okrem čísel vieme pracovať aj so znakmi. Znaky píšeme medzi jednoité
+úvodzovky, napríklad \verb!'a'! \verb!'z'! \verb!'F'! \verb!'7'! \verb!'.'!
+\verb!'#'! \verb!'-'!\dots Niektoré znaky treba písať pomocou \verb'\', ako sme
+si už spomínali, napríklad \verb!'\n'! alebo \verb!'\''!.
+
+Čo sa týka premenných, najlepšie je používať typ char, ktorý je v skutočnosti
+číselná premenná s rozsahom -128 až 127. Každé z týchto čísel má priradený
+nejaký znak podľa ASCII \url{http://sk.wikipedia.org/wiki/ASCII}. 
+
+Napríklad \verb!'A'! má číslo 64, ale takéto veci si nemusíme pamätať,
+keďže so znakmi sa dajú robiť matematické operácie ako s číslami. 
+Napríklad \verb!'a'+1 == 'b'!.
+
+Ak chceme znak vypísať ako znak, tak použijeme značku \verb!%c!. 
+
+\cvicenie Skúste si spustiť nasledovné programy a porovnajte ich správanie:
+
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+
+int main(){
+    char a;
+    scanf("%c", &a);
+    printf("<%c>\n", a);
+}
+\end{lstlisting}
+\lstlang{cpp}\begin{lstlisting}
+#include<iostream>
+using namespace std;
+
+int main(){
+    char a;
+    cin >> a;
+    cout << "<" << a << ">" << endl;
+}
+\end{lstlisting}
+
+\riesenie Prvý program načítava všetky riadky, teda aj biele znaky
+(medzery, tabulátory, konce riadkov). Druhý program biele znaky preskakuje.
+V prípade, že by sme v prvom programe napísali miesto \verb!scanf("%c", &a);!
+\verb!scanf(" %c", &a);! mal by sa správať rovnako ako druhý.
+
+\medskip
+
+Pole znakov, teda \verb!char meno[]!, môžeme nazývať reťazec. 
+Napríklad \verb!"jesko"! je reťazec ale zároveň je to pole
+\verb!{'j', 'e', 's', 'k', 'o', '\0'}!. \verb!'\0'! je znak s hodnotou 0
+a v C++ sa ním ukončujú všetky reťazce. 
+
+Všetky funkcie, ktoré robia niečo s reťazcami, končia čítanie reťazca
+na nulových znakoch. Preto aj \verb!printf("a\0hoj");! vypíše len \verb!"a"!. 
+
+Jeden zo spôsobov ako vyrábať nami definované reťazce je napr.
+\verb!char retazec[] = "lubovolny text";!
+
+\cvicenie Ako jedným príkazom skrátime reťazec 
+\verb!char str[] = "dlhy retazec";! na dĺžku 3?
+
+\riesenie \verb!str[3] = 0;! alebo \verb!str[3] = '\0';!.
+
+Načítavať a vypisovať reťazce vieme pomocou značky \verb!%s! ale pri načítavaní
+ž nepíšeme \verb!&!.
+
+\lstlang{cpp}\begin{lstlisting}
+#include<cstdio>
+
+int main(){
+    char a[100];
+    scanf("%s", a);
+    printf("<%s>\n", a);
+}
+\end{lstlisting}
+\lstlang{cpp}\begin{lstlisting}
+#include<iostream>
+using namespace std;
+
+int main(){
+    char a[100];
+    cin >> a;
+    cout << "<" << a << ">" << endl;
+}
+\end{lstlisting}
+
+Ako si iste všimneme po spustení, reťazce sa načítavajú "po slovách",
+vždy len po najbližší biely znak (medzera, koniec riadku, tabulátor).
+
+\medskip
+
+Pri reťazcoch (ale aj iných poliach) a operátoroch si treba dávať pozor.  Keď
+\verb!A! a \verb!B! sú polia, tak \verb!A<B! \textbf{ne}vráti \verb!true! v
+prípade, že A obsahuje menši čísla. Rovnako aj \verb!A == B! \textbf{ne}testuje
+či polia obsahujú rovnaké čísla. Ani \verb!A + B! \textbf{ne}sčíta obsahy polí
+ani \verb!A = B!  \textbf{ne}prekopíruje čísla z jedného do druhého. Jednoducho
+operátory robia s poľami celkom odlišné veci.
+
+Je to spôsobené tým, že hodnota premenných \verb!A! a \verb!B! sú smerníky do
+pamäte a operátory pracujú len s týmito smerníkmi.
+
+\kapitola{Reálne čísla}
+
+Okrem celých čísel máme v C++ aj reálne. Pre ne máme typ
+\verb!double!, načítavame a vypisujeme ich pomocou značky \verb"%lf",
+pri výpise vieme ovplyvniť počet vypísaných desatinným miest \verb"%<pocet>lf"
+ako vidíme v príklade:
+
+Keď chceme napísať nejakú reálnočíselnú hodnotu, môžeme buď pretypovať
+\verb!double(7)! alebo napísať desatinnú bodku \verb!7.0!.
+
+\lstlang{cpp}\begin{lstlisting}
+int main(){
+    double a;
+    scanf("%lf", &a);
+    printf("%2lf\n", a);
+    cin >> a;
+    cout << a << endl;
+}
+\end{lstlisting}
+
+\medskip
+
+Pri práci s reálnymi číslami si musíme dávať obrovský pozor na presnosť.
+Napríklad ( 
+
 
 
 %\lstlang{cpp}\begin{lstlisting}
