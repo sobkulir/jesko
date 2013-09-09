@@ -65,4 +65,37 @@ int main() {
 }
 \end{lstlisting}
 
+\nadpis{Podmienky}
+
+Ak chceme aby sa program správal inak za splnení istej podmienky, použijeme príkaz \texttt{if}. Ten
+zjednodušene vyzerá \texttt{if(<podmienka>) <prikaz>;}. To znamená, \texttt{Ak platí <podmienka>
+vykonaj <príkaz>}. \textbf{Nezabudnite}, že porovnávanie dvoch vecí sa vykonáva pomocou \textbf{dvoch}
+rovná sa \texttt{==}. Ak chcem vykonať po splnení \texttt{if}u viac príkazov, uzavriem ich do
+kučeravých zátvoriek. Takto vyzerá použitie:
+
+\lstlang{cpp}\begin{lstlisting}
+int main() {
+    int x,p;
+    //jednoducha podmienka if
+    if(x == 4) p=8;
+    //podmienka if s vetvou else
+    if(p<10) x=x+2;
+    else x=x+14;
+    //vetvena podmienka if
+    if(x%3 == 0) x=4;
+    else if(x%3 == 1) {x=13; p=8;}
+    else x=6;
+}
+\end{lstlisting}
+
+Podmienka vie byť ľubovoľný vyraz, ktorý vieme vyhodnotiť ako \texttt{true} alebo \texttt{false}.
+Takisto však vieme skladať viac výrazov pomocou logických spojek \texttt{and} -- \texttt{\&\&} a
+\texttt{or} -- \texttt{||}.
+
+Priraď do premennej $x$ číslo $5$, ak $x$ sa rovná $4$ \textbf{alebo} je $p$ rovné $8$ \textbf{x}
+rovné $7$.
+\lstlang{cpp}\begin{lstlisting}
+if(x==4 || (p==8 && x==7)) x=5;
+\end{lstlisting}
+
 \end{document}
