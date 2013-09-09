@@ -30,6 +30,10 @@ ktoré ovládaš.}
     \item reálne čísla
     \vspace{-5pt}
     \item matematika
+    \vspace{-5pt}
+    \item vlastné typy premenných
+    \vspace{-5pt}
+    \item makrá
 \end{itemize}
 
 \medskip
@@ -455,14 +459,164 @@ int main(){
 }
 \end{lstlisting}
 
-%\lstlang{cpp}\begin{lstlisting}
-%\end{lstlisting}
 
+\kapitola{Vlastné typy premenných}
 
+V C++ si môžte vyrábať vlastné typy premenných. Napríklad, ak vás nebaví písať
+veľakrát \verb!long long!, ale radšej by ste písali \verb!ll!:
 
+\lstlang{cpp}\begin{lstlisting}
+typedef long long ll;
+int main(){
+    ll a;
+}
+\end{lstlisting}
 
+Alebo ste zistili, že existujú dvojice -- tie nájdete v knižnici \verb!algorihtm! a volajú sa \verb!pair!.
+Dvojica \verb!int!ov je \verb!pair<int, int>!, trojica \verb!char!u \verb!int!u a \verb!char!u je napríklad
+\verb!pair<char, pair<int, char> >!. A to už je celkom dlhý výraz na písanie, takže je fajn použiť:
+
+\lstlang{cpp}\begin{lstlisting}
+typedef pair<int, int> pii;
+typedef pair<int, char> pic;
+typedef pair<char, pic> pcic;
+
+int main(){
+    // takto sa dvojice vyrabaju
+    pii dvainty = pii(7, 8);
+
+    // alebo takto
+    pic intaznak = make_pair(10, 'a');
+
+    // da sa aj kombinovat
+    pcic troica = make_pair('b', pic(11, 'c'));
+    
+    // takto sa pristupuje ku prvkom
+    dvainty.second = intaznak.first;
+    troica.second.first = dvainty.second;
+    intaznak = troica.second;
+
+    //teraz si predstavte, ake by to bolo neprehladne bez typedefu
+}
+\end{lstlisting}
+
+Dajú sa vyrábať aj zložitejšie štruktúry pomocou \verb!struct!. Tu je jednoduchý príklad,
+keď chcete vedieť viac, trocha pogooglite. Všimnite si, že za definíciu \verb!struct! sa píše
+bodkočiarka.
+
+\lstlang{cpp}\begin{lstlisting}
+struct Stvorica{
+    int a, b, c, d;
+    char e, f;
+};
+
+int main(){
+    Stvorica s;
+    s.a = 7;
+    s.b = s.a + 8;
+    s.e = s.f = '.';
+}
+\end{lstlisting}
+
+\kapitola{Makrá a preprocesing}
+
+Pred tým, ako sa váš program skompiluje, robí sa časť nazývaná preprocesing.  V
+tomto štádiu, sa dejú všeliaké podivnosti s riadkami, ktoré začínajú znakom
+\verb!#!.  Týmto znakom sa píšu príkazy pre preprocesor. 
+
+Z jedným z takýchto príkazov sme sa už stretli, volá sa \verb!#include!. Tento
+príkaz nakopíruje do náško kódu obsah hlavičky knižnice -- teda napr.
+deklarácie funkcií (ako napr \verb!printf! v \verb!cstdio!, či \verb!cout! v
+\verb!iostreame!), nie však definície, tie tam netreba.  Pre nás tento príkaz
+nemá nejaký hlbší význam.
+
+Ďalším príkazom je \verb!#define!. Tento príkaz sa dá použiť napríklad na
+definovanie konštánt. Toto môže mať výhodu prehľadnejšieho kódu a zároveň, keď
+sa rozhodneme zmeniť hodnotu, stačí nám zmeniť ju na jednom mieste. To čo
+vyrobíme príkazom \verb!#define!  nazývame makro.
+
+\lstlang{cpp}\begin{lstlisting}
+// preprocesor odstrani aj komentrare
+#define MAXN 1047
+#define INF 1023456789
+#define eps 1e-8
+
+int main(){
+    int A[MAXN]; 
+    for(int i = 0; i<MAXN; ++i)
+        A[i] = INF;
+}
+\end{lstlisting}
+Tento program sa po preprocessingu zmení na 
+\lstlang{cpp}\begin{lstlisting}
+int main(){
+    int A[1047]; 
+    for(int i = 0; i<1047; ++i)
+        A[i] = 1023456789;
+}
+\end{lstlisting}
+a až potom sa kompiluje.
+
+Príkaz \verb!#define! vieme použiť aj na definíciu makier s parametrami.  Tieto
+nám takisto môžu zjednodušiť prácu. Treba si však dávať pozor pri práci s nimi,
+ako uvidíme na príklade makier \verb!rozdiel1!, \verb!rozdiel2! a
+\verb!rozdiel3!. Skôr než si pozriete zvyšok kódu, zamyslite sa, prečo sú makrá
+\verb!rozdiel1! a \verb!rozdiel2! zlé.
+
+\lstlang{cpp}\begin{lstlisting}
+#define rozdiel1(a,b) a-b
+#define rozdiel2(a,b) (a-b)
+#define rozdiel3(a,b) ((a)-(b))
+//namiesto predoslych makier sa daju pouzit funkcie
+//oproti funkciam ma makro vyhodu, ze funguje bez ohladu na typ premennej
+
+//nasledovnu konstrukciu uz funkciou spravime len tazko
+#define FOR(i, n) for(int i = 0; i<(n); ++i)
+
+int main(){
+    int a = 0, b = 0, c = 0, d = 0;
+    // pre toto je makro rozdiel1 zle:
+    // namiesto (a-b)*c budeme mat a - b*c;
+    a = rozdiel1(a, b)*c;
+
+    // pre toto je makro rozdiel2 zle:
+    // namiesto a-(b+c) budeme mat a - b + c;
+    a = rozdiel2(a, b+c);
+
+    // konecne spravne makro:
+    a = rozdiel3(a, b+c)*d;
+
+    int celkovyrozdiel = 0; 
+    FOR(i,n) FOR(j, n) {
+        celkovyrozdiel = rozdiel3(i,j);
+    }
+    // na zamyslenie: aka bude hodnota celkovyrozdiel teraz?
+}
+\end{lstlisting}
+
+Poslendé, čo si o preprocesingu ukážeme, sú \verb!ifdef!y. Jednoducho sa vďaka
+ním dajú vypínať kusy kódu. Napríklad vypínateľné debugovacie výpisy: 
+
+\lstlang{cpp}\begin{lstlisting}
+#include<iostream>
+using namespace std;
+
+// skus zakomentovat nasledujuci riadok, co sa zmeni?
+#define DEBUG
+
+#ifdef DEBUG
+#define DBG(x) cout << #x << ": " << (x) << endl;
+#else
+#define DBG(x)
+#endif
+
+int main(){
+    int a = 7;
+    DBG(a);
+    DBG(a+7);
+}
+\end{lstlisting}
 
 
 \end{document}
-
 
