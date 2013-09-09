@@ -11,6 +11,5 @@ int main(){
 			maximum = a;
 		}
 	}
-	cout << maximum;
-	return 0;
+	cout << maximum << endl;
 }

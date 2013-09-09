@@ -1,1 +1,2 @@
-Na vstupe dostanete jedno číslo $n$. Vypíšte trojuholník hviezdičiek so základňou dĺžky $n$ (Tak ako v príklade).
+Na vstupe dostanete jedno číslo $n$. Vypíšte trojuholník hviezdičiek so základňou dĺžky $n$ (pozri
+vzorový príklad). 

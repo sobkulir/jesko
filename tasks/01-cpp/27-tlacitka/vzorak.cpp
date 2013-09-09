@@ -54,5 +54,4 @@ int main(){
 	if(n==5) a5();
 	if(n==6) a6();
 	cout << "\n";
-	return 0;
 }
