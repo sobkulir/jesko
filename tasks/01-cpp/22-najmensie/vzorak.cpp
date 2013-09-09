@@ -21,5 +21,5 @@ int main(){
 			poc++;
 		}
 	}
-	cout << poc;
+	cout << poc << endl;
 }

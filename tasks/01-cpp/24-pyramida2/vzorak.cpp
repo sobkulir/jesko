@@ -12,7 +12,8 @@ int main(){
 	for(int i=n-1;i>0;i--){	
 		for(int j=0;j<i;j++){
 			a[j]=a[j]+a[j+1];
-			cout<< a[j] << "  ";
+			cout<< a[j];
+                        if(j!=i-1) cout << " ";
 		}
 		cout << endl;
 	}

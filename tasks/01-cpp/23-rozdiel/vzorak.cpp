@@ -19,8 +19,8 @@ int main(){
 		}
 	}
 	if(nachadza)
-		cout << "Ano";
+		cout << "Ano" << endl;
 	else
-		cout << "Nie";
+		cout << "Nie" << endl;
 	
 }

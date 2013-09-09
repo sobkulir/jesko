@@ -11,7 +11,8 @@ int main(){
 	}
 	cin >> x;
 	for (int i = 0; i<n; ++i) {
-		cout << a[i]+x << " ";
+		cout << a[i]+x;
+                if(i!=n-1) cout << " ";
 	}
 	cout << endl;
 }

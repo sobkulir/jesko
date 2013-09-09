@@ -13,7 +13,8 @@ int main(){
 	}
 	for(int i=0;i<m;i++){
 		for(int j=0;j<n;j++){
-			cout << a[j][i] << " ";
+			cout << a[j][i];
+                        if(j!=n-1) cout << " ";
 		}
 		cout << "\n";
 	}

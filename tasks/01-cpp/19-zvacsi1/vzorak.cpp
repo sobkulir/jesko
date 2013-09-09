@@ -8,7 +8,8 @@ int main(){
 	cin >> x;
 	for (int i = 0; i<n; ++i) {
 		cin >> c;
-		cout << c+x << " ";
+		cout << c+x;
+                if(i!=n-1) cout << " ";
 	}
 	cout << endl;
 }
