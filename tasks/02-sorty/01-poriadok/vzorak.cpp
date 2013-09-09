@@ -11,7 +11,7 @@ int main(){
     for(int i=0; i<n-1; i++) if(A[i]>A[i+1]) over1=false;
     //overim, ci su od najvacsieho po najmensi
     bool over2=true;
-    for(int i=n-1; i>0; i--) if(A[i]<A[i-1]) over2=false;
+    for(int i=0; i<n; i++) if(A[i]<A[i+1]) over2=false;
     if(over1 || over2) printf("poriadok\n");
     else printf("bordel\n");
 }

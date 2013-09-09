@@ -17,7 +17,8 @@ int main(){
 \end{lstlisting}
 
 Nezabudnite, že každý program musíte pred spustením skompilovať (v DevC++ \texttt{F9}) -- vytvoriť
-spustiteľnú binárku a až potom ho spustiť (v DevC++ \texttt{F10}).
+spustiteľnú binárku a až potom ho spustiť (v DevC++ \texttt{F10}). (V DevC++ môžete použiť aj
+\texttt{F11} -- skompiluje a rovno spustí.)
 
 \nadpis{Premenné}
 
@@ -47,7 +48,7 @@ int main() {
 }
 \end{lstlisting}
 
-\nadpis{Načítavanie vstupu a výpis výstupu}
+\nadpis{Načítavanie vstupu a výpis výstupu -- knižnica iostream}
 
 Na načítavanie a vypisovanie používame funkcie \texttt{cin} a \texttt{cout}, ktoré patria do
 knižnice \texttt{iostream}. Nezabudnite na magický riadok \texttt{using namespace std;}
@@ -62,6 +63,23 @@ int main() {
     cin >> a >> b;
     //vypisem na vystup cislo b, medzeru, a, text " sucet ", ich sucet a+b a koniec riadka (enter)
     cout << b << " " << a << " sucet " << a+b << endl;
+}
+\end{lstlisting}
+
+\nadpis{Načítavanie vstupu a výpis výstupu -- knižnica cstdio}
+
+Na načítavanie a vypisovanie používame funkcie \texttt{scanf()} a \texttt{printf()}, ktoré patria do
+knižnice \texttt{cstdio}.
+
+\lstlang{cpp}\begin{lstlisting}
+#include <cstdio>
+
+int main() {
+    int a,b;
+    //nacitam dve cisla na vstupe, prve do premennej a, druhe do b
+    scanf("%d %d",&a,&b);
+    //vypisem na vystup cislo b, medzeru, a, text " sucet ", ich sucet a+b a koniec riadka (enter)
+    printf("%d %d sucet %d\n",b,a,a+b);
 }
 \end{lstlisting}
 
@@ -98,8 +116,6 @@ rovné $7$.
 if(x==4 || (p==8 && x==7)) x=5;
 \end{lstlisting}
 
-\newpage
-
 \nadpis{Cykly}
 
 Ak chceme aby sa nám nejaká časť programu opakovala viac krát, môžeme použiť cykly. Základný cyklus
@@ -108,16 +124,18 @@ je príkaz \texttt{for}.
 Na vypísanie čísiel od $1$ po $10$ môžeme použiť nasledovný kus programu.
 
 \lstlang{cpp}\begin{lstlisting}
-for(int i=1; i<=10; i++) cout << i << endl;
+for(int i=1; i<=10; i++)
+    cout << i << endl;
 \end{lstlisting}
 
-Význam toho: vytvor premennú cyklu $i$. Kým platí podmienka ($i\leq10$) vykonávaj príkaz za
+Význam toho: vytvor premennú cyklu $i$. Kým platí podmienka ($i <= 10$) vykonávaj príkaz za
 \texttt{for}om a po každom vykonaní zmeň premennú $i$ podľa posledného príkazu ($i++$ -- pričítaj
 $1$). Ak chcem vykonať viac príkazov v cykle, použijem \textbf{kučeravé zátvorky}.
 
 Vypíš párne čísla medzi $20$ až $40$ by sa zapísalo:
 \lstlang{cpp}\begin{lstlisting}
-for(int j=20; j<=40; j=j+2) cout << j << endl;
+for(int j=20; j<=40; j=j+2)
+    cout << j << endl;
 \end{lstlisting}
 
 Všestrannejší spôsob cyklu v programe je použiť cyklus \texttt{while}, ktorý funguje
