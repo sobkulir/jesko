@@ -1,7 +1,8 @@
 Zvyšok po delení 7
 @@@@@
 Napíš program, ktorý načíta celé číslo zo vstupu a na jediný riadok výstupu výstupu vypíše
-texttt("ano") pokiaľ je delitelné $7$ a texttt("nie") v opačnom prípade.
+\texttt{"ano"} pokiaľ je delitelné $7$ a \texttt{"nie"} v opačnom prípade (úvodzovky
+nevypisujte).
 @@@@@
 #include<iostream>
 
