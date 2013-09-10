@@ -1,31 +1,37 @@
 \input ../../../include/include.tex
-
+% proofread by Sameth
+% proofread by Jano
 \begin{document}
 
 \velkynadpis{Výstavný kus}
 
-% proofread by Sameth
-Ježko si nazbieral veľa húb. A jedna z nich je naozaj parádny výstavný kus. Má ich teraz rozložené
-pred sebou na poličke. Chcel by však, aby jeho výstavný kus bol na hrdej prvej pozícii. Pomôžte mu
-to spraviť.
+Ježko si nazbieral veľa húb. A jedna z nich je naozaj parádny výstavný kus. Má
+ich teraz rozložené pred sebou na poličke. Chcel by však, aby jeho výstavný kus
+bol na hrdej prvej pozícii. Pomôžte mu to spraviť.
 
 \nadpis{Úloha}
 
-Na vstupe dostanete popis poličky, teda poradie v akom sú huby uložené a tiež nakoľko sú červivé.
-Samozrejme, najmenej červivá huba je ježkov výstavný kus. Chce spraviť jedinú operáciu. Vymeniť hubu
-na prvej pozícii s jeho výstavným kusom. Ostatných húb sa ani nedotkne. Vypíšte, ako bude vyzerať
+Na vstupe dostanete popis poličky, teda poradie v akom sú huby uložené a tiež
+nakoľko sú červivé.  Samozrejme, najmenej červivá huba je ježkov výstavný kus.
+\textbf{Pokiaľ je húb s najmenšou červivosťou viacero, výstavný kus je tá
+huba, ktorá je najbližšie ku začiatku poličky.} 
+
+Ježko chce spraviť jedinú operáciu. Vymeniť hubu na prvej pozícii s jeho
+výstavným kusom. Ostatných húb sa ani nedotkne.  Vypíšte, ako bude vyzerať
 polička po tejto výmene.
 
 \nadpis{Vstup}
 
-Na prvom riadku je číslo $n$ ($1 \leq n \leq 100000$) -- počet ježkových húb.
+Na prvom riadku je číslo $n$ ($1 \leq n \leq 100000$) -- počet ježkových
+húb.
 
-Na druhom riadku je $n$ kladných celých čísel $c_i$ ($1 \leq c_i \leq 1000$) určujúcich červivosti
-jednotlivých húb v poradí, v akom sú na poličke.
+Na druhom riadku je $n$ kladných celých čísel $c_i$ ($1 \leq c_i \leq 1000$)
+určujúcich červivosti jednotlivých húb v poradí, v akom sú na poličke.
 
 \nadpis{Výstup}
 
-Vypíšte, ako bude vyzerať polička, keď ježko vymení hubu na prvom mieste s jeho výstavným kusom.
+Vypíšte, ako bude vyzerať polička, keď ježko vymení hubu na prvom mieste s jeho
+výstavným kusom.
 
 \nadpis{Príklady}
 
@@ -46,6 +52,15 @@ situáciu vo výstupe.
 1 2 3
 \komentar
 Výstavný kus už je na prvom mieste, preto sa nič nezmení.
+\koniec
+
+\vstup
+4
+2 2 1 1
+\vystup
+1 2 2 1
+\komentar
+Pokiaľ má ježko viac možností, vyberie si skoršiu hubu.
 \koniec
 
 \end{document}
