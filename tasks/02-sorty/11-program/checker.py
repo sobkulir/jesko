@@ -18,6 +18,12 @@ if (n != len(A)):
     print('Zla dlzka postupnosti')
     quit(1)
 
+for x in A:
+    if (x < 1) or (x > 1000000):
+        print('Zly rozsah cisel')
+        quit(1)
+
+
 for i in range(n-1):
     for j in range(i, n-1):
         if (A[j]>A[j+1]): 
